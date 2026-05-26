@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Engineering Wallapop's Private API — Guillem Climent</title>
+    <meta name="description" content="How I reverse-engineered a marketplace's private API, built anti-detection systems, and evolved the architecture through 5 major versions over 2 years.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="../" class="nav__logo">GC<span class="accent">.</span></a>
+            <div class="nav__actions">
+                <a href="../" class="btn btn--outline btn--sm">Back to Portfolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <article class="blog-post">
+        <div class="container container--narrow">
+            <header class="blog-post__header">
+                <div class="blog-post__meta">
+                    <time>May 2026</time>
+                    <span class="blog-post__read">8 min read</span>
+                </div>
+                <h1>Reverse Engineering a Marketplace API: 5 Versions, 2 Years, 2100 Lines</h1>
+                <p class="blog-post__lead">How I went from copying cURL commands from browser DevTools to building a production-grade, multi-account extraction system with cookie-based auth, anti-detection, and parallel processing.</p>
+                <div class="blog-post__tags">
+                    <span class="tag">Reverse Engineering</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">APIs</span>
+                    <span class="tag">Anti-Detection</span>
+                </div>
+            </header>
+
+            <div class="blog-post__body">
+                <h2>Why Reverse Engineer?</h2>
+
+                <p>Wallapop is Spain's largest second-hand marketplace. It doesn't have a public API. No OAuth docs, no developer portal, no rate limit documentation. But my business depended on it — I needed to extract orders, track shipments, analyze conversations, and manage listings across multiple accounts.</p>
+
+                <p>So I opened Chrome DevTools and started watching network requests.</p>
+
+                <h2>The Evolution: V1 → V3</h2>
+
+                <h3>V1: The Naive Approach</h3>
+
+                <p>The first version was embarrassingly simple: hardcode a bearer token, make requests to the endpoints I found in DevTools, parse the JSON. It worked for about a week before the token expired.</p>
+
+                <p>The token management was manual — I'd open Wallapop in the browser, copy the bearer from the Network tab, paste it into a JSON config file. For one account, this was annoying. For the 12+ accounts we eventually operated, it was unsustainable.</p>
+
+                <h3>V2: Bearer Management + Multi-Account</h3>
+
+                <p>V2 introduced two key innovations:</p>
+
+                <ul>
+                    <li><strong>Bearers stored in Google Sheets</strong> — Instead of local JSON files, tokens went into a shared Sheet that multiple scripts could read. Each row: account name, bearer token, user hash, last validated timestamp</li>
+                    <li><strong>Validation before use</strong> — Before making API calls, the system would hit a lightweight endpoint (<code>/bff/messaging/inbox</code>) to verify the token was still valid. If not, it'd flag the account for manual token refresh</li>
+                </ul>
+
+                <p>I built a Tkinter UI (yes, desktop Python GUI) that my employees could use to paste new bearers when they expired. Not elegant, but functional.</p>
+
+                <h3>V2.5: Cookie-Based Auth</h3>
+
+                <p>The breakthrough came when I realized I didn't need bearers at all. Wallapop's web app uses cookie-based sessions. If I could capture and refresh the session cookies, I could maintain auth indefinitely without manual intervention.</p>
+
+                <p>The <code>CookieManager</code> (~990 lines) handles:</p>
+                <ul>
+                    <li>Cookie storage in Google Sheets (later PostgreSQL)</li>
+                    <li>Automatic <code>accessToken</code> refresh using the session cookie</li>
+                    <li>JWT decoding to check expiration times</li>
+                    <li>Validation against the API before each extraction run</li>
+                </ul>
+
+                <p>This eliminated 90% of the manual token management. Accounts would stay authenticated for weeks instead of hours.</p>
+
+                <h3>V2.6: Parallel Processing</h3>
+
+                <p>With 12+ accounts, sequential extraction was too slow. V2.6 introduced <code>ThreadPoolExecutor</code> for parallel multi-account extraction. Each account gets its own thread, its own session, and its own rate limiting.</p>
+
+                <h3>V3: Bundles and Complex Order Logic</h3>
+
+                <p>Wallapop introduced "bundles" — orders that contain multiple items from the same seller. This broke my entire order processing pipeline because the API response structure changed: one delivery could contain multiple items, each with its own LPN code that needed to be extracted from the product description using regex.</p>
+
+                <p>V3 (~748 lines for the manager alone) handles bundle detection, LPN extraction via regex patterns, warehouse location enrichment from comments, and cross-referencing with the preparation Excel from Google Drive.</p>
+
+                <h2>Anti-Detection Engineering</h2>
+
+                <p>When you're making thousands of API calls per day across multiple accounts, you need to not look like a bot. Here's what I built:</p>
+
+                <ul>
+                    <li><strong>User-Agent rotation</strong> — Pool of 50+ real browser UAs, rotated per-request, stored in PostgreSQL</li>
+                    <li><strong>Request timing</strong> — Random delays between requests (not fixed intervals, which are a detection signal)</li>
+                    <li><strong>Header fingerprinting</strong> — Exact replication of browser request headers, including order, casing, and optional headers</li>
+                    <li><strong>Session consistency</strong> — Same UA and cookie set for the duration of a session, switching only between runs</li>
+                    <li><strong>Image perturbation</strong> — For uploaded product images, OpenCV transformations (noise, micro-rotation, stretch) to avoid perceptual hashing detection of "duplicate" listings across accounts</li>
+                </ul>
+
+                <h2>The Architecture Today</h2>
+
+                <div class="code-block">
+                    <div class="code-block__header">Extractor Architecture</div>
+<pre><code>BaseExtractor (ABC)
+├── Anti-detection: UA rotation, header fingerprint, timing
+├── Session management: cookie refresh, JWT validation
+├── Error handling: retries, backoff, account-level circuit breaker
+│
+├── OrdersExtractor (~2100 lines)
+│   ├── 20+ order state machine transitions
+│   ├── Bundle detection and LPN extraction
+│   ├── Sale creation with price/fee/net calculation
+│   └── Withdrawal tracking for returns
+│
+├── ChatsExtractor
+│   ├── Conversation pagination
+│   ├── Message extraction with threading
+│   └── Async Sheets writer with batching
+│
+└── ListingsExtractor
+    ├── Stats accumulation (views, favorites, conversations)
+    ├── Anti-oscillation for product_id changes
+    └── Price and status change tracking</code></pre>
+                </div>
+
+                <p>The orders extractor alone is 2,100 lines because marketplace order logic is genuinely complex. An order can be: pending acceptance, accepted, shipped, delivered, completed, cancelled, returned, disputed, or stuck in any intermediate state. Each transition needs to update the right tables and trigger the right downstream actions.</p>
+
+                <h2>Lessons Learned</h2>
+
+                <ol>
+                    <li><strong>Version your architecture aggressively.</strong> I kept all 5 versions because going back to V2 when V2.5 had a bug was a real scenario. The naming convention (V1, V2, V2.5, V2.6, V3) tells a story of incremental evolution</li>
+                    <li><strong>Anti-detection is an arms race.</strong> What works today won't work in 6 months. Build your system to be modular enough that you can swap detection-avoidance strategies without rewriting the extraction logic</li>
+                    <li><strong>Invest in auth management early.</strong> I spent weeks on manual bearer token management that could have been avoided if I'd built the cookie-based system from the start</li>
+                </ol>
+
+                <p>The extractors are open-source: <a href="https://github.com/AspiranteD/wallapop-data-extractors">github.com/AspiranteD/wallapop-data-extractors</a></p>
+            </div>
+
+            <footer class="blog-post__footer">
+                <a href="../#blog" class="btn btn--outline">← Back to all articles</a>
+            </footer>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by Guillem Climent. Source on <a href="https://github.com/AspiranteD/AspiranteD.github.io" target="_blank">GitHub</a>.</p>
+        </div>
+    </footer>
+</body>
+</html>

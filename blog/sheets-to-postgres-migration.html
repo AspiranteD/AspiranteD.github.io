@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I Migrated a Production Business from Google Sheets to PostgreSQL — Guillem Climent</title>
+    <meta name="description" content="A real story about migrating a running e-commerce business from Google Sheets to PostgreSQL — while processing orders, managing employees, and keeping everything operational.">
+    <meta property="og:title" content="How I Migrated a Production Business from Google Sheets to PostgreSQL">
+    <meta property="og:description" content="5 phases, daily syncs, financial reconciliation, and zero downtime — the real engineering behind a spreadsheet-to-database migration.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="../" class="nav__logo">GC<span class="accent">.</span></a>
+            <div class="nav__actions">
+                <a href="../" class="btn btn--outline btn--sm">Back to Portfolio</a>
+            </div>
+        </div>
+    </nav>
+
+    <article class="blog-post">
+        <div class="container container--narrow">
+            <header class="blog-post__header">
+                <div class="blog-post__meta">
+                    <time>May 2026</time>
+                    <span class="blog-post__read">12 min read</span>
+                </div>
+                <h1>How I Migrated a Production Business from Google Sheets to PostgreSQL</h1>
+                <p class="blog-post__lead">The real story of migrating a running e-commerce operation — with employees working, orders flowing, and money on the line — from spreadsheets to a proper database. No downtime. No data loss. While running the business simultaneously.</p>
+                <div class="blog-post__tags">
+                    <span class="tag">PostgreSQL</span>
+                    <span class="tag">Data Engineering</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Google Sheets</span>
+                    <span class="tag">Production Migration</span>
+                </div>
+            </header>
+
+            <div class="blog-post__body">
+                <h2>The Starting Point: When Google Sheets Is Your Database</h2>
+
+                <p>When I founded my e-commerce automation company, Google Sheets was the obvious choice for managing inventory. It's collaborative, visual, everyone knows how to use it, and it's free. My warehouse team could update stock locations. I could write formulas. Everyone could see everything in real time.</p>
+
+                <p>The problem is that Google Sheets was never designed to be a database. And when you're processing thousands of Amazon liquidation SKUs across multiple marketplace accounts, it starts to break in ways that are hard to predict:</p>
+
+                <ul>
+                    <li><strong>API rate limits</strong> — Google Sheets API has a quota of ~60 requests per minute per user. When you have 5 automated scripts hitting the same sheet, you burn through that instantly</li>
+                    <li><strong>Concurrency nightmares</strong> — Two scripts updating the same row at the same time. An employee editing while a script writes. Formula recalculations during data imports. Data corruption was a constant risk</li>
+                    <li><strong>No referential integrity</strong> — A "sale" was a row in one tab. The "item" it referenced was a row in another tab. The connection? A text string (the LPN code). Typo in the LPN? Orphaned sale. No foreign key to save you</li>
+                    <li><strong>Performance degradation</strong> — At ~8,000 rows with formulas, the sheet took 15+ seconds to load. My employees were waiting. Operations were slowing down</li>
+                    <li><strong>No query capability</strong> — "Show me all items from truckload A2Z33838 that are still in stock and haven't been listed on eBay" requires a 200-character QUERY formula that breaks if someone inserts a column</li>
+                </ul>
+
+                <p>I had to migrate. But I couldn't stop the business to do it.</p>
+
+                <h2>The Constraint That Changed Everything</h2>
+
+                <p>This wasn't a weekend side project migration. This was a <strong>production business</strong> with real constraints:</p>
+
+                <ul>
+                    <li><strong>4 employees</strong> who relied on Google Sheets every day — warehouse workers scanning items, admin processing orders, logistics coordinating shipments</li>
+                    <li><strong>Orders flowing in daily</strong> across Wallapop (our main channel), each needing to be processed within hours</li>
+                    <li><strong>Financial data</strong> that had to be accurate to the cent — we track costs per Amazon truckload (A2Z codes) for tax and profitability reporting</li>
+                    <li><strong>No second engineer</strong> — I was the only developer, AND I was running the business operations simultaneously</li>
+                </ul>
+
+                <p>I couldn't flip a switch. I needed a migration strategy that would let me move incrementally, validate at every step, and roll back if something went wrong.</p>
+
+                <h2>The 5-Phase Pipeline</h2>
+
+                <p>I designed the migration as a 5-phase pipeline, where each phase could be run independently in either <code>dry-run</code> or <code>execute</code> mode:</p>
+
+                <div class="code-block">
+                    <div class="code-block__header">Migration Pipeline</div>
+<pre><code>Phase 1: EXTRACT & ANALYZE
+  └─ Pull all data from 3 Google Sheets tabs → CSVs
+  └─ Generate analysis report (row counts, data types, anomalies)
+
+Phase 2: VALIDATE
+  └─ Parse every row against the target PostgreSQL schema
+  └─ Type conversions (dates, decimals, booleans, enums)
+  └─ Flag invalid rows with specific error reasons
+  └─ Generate validation report
+
+Phase 3: MIGRATE
+  └─ Load validated data into PostgreSQL
+  └─ Respect foreign key ordering (items → listings → sales)
+  └─ Dry-run mode: simulate without writing
+  └─ Execute mode: actual INSERT with transaction safety
+
+Phase 4: SYNC OPERATIONAL DATA
+  └─ Pull "Prep de Pedidos" (order preparation) tab
+  └─ Match warehouse status to database records
+  └─ Update pick/pack states
+
+Phase 5: CONTINUOUS SYNC
+  └─ Daily: Sheet → DB delta sync
+  └─ Handles new rows, updates, and edge cases
+  └─ Runs alongside the database as source of truth transitions</code></pre>
+                </div>
+
+                <h2>The Hard Parts Nobody Talks About</h2>
+
+                <h3>1. Data Quality Is Never What You Think</h3>
+
+                <p>Google Sheets is "flexible" — which means your data is a mess. Here's what I found when I tried to parse 8,000+ inventory rows:</p>
+
+                <ul>
+                    <li>Prices stored as text with Euro symbols: <code>"12,50 €"</code>, <code>"12.50"</code>, <code>"12,5"</code>, and <code>""</code> (empty) — all meaning different things</li>
+                    <li>Dates in 4 different formats depending on who entered them and which locale their browser was set to</li>
+                    <li>LPN codes (our primary identifier) with inconsistent casing, trailing spaces, and occasional duplicates</li>
+                    <li>Status fields that had evolved organically: <code>"vendido"</code>, <code>"VENDIDO"</code>, <code>"Vendido (devuelto)"</code>, <code>"vendido?"</code></li>
+                </ul>
+
+                <p>I spent more time writing data cleaning and normalization code than the actual migration logic. Every edge case I fixed revealed two more.</p>
+
+                <h3>2. Financial Reconciliation Per Truckload</h3>
+
+                <p>We buy Amazon liquidation by the truckload. Each truckload has a code (A2Z33838, A2Z34102, etc.) and a cost. For tax purposes, I need to know: for each truckload, how much did we pay, how much did we sell, what's still in stock, and what's the margin?</p>
+
+                <p>In Google Sheets, this was a tab with SUMIFS formulas. In PostgreSQL, I needed to rebuild this as a view (<code>v_resumen_a2z</code>) and validate that the numbers matched <strong>to the cent</strong>.</p>
+
+                <div class="code-block">
+                    <div class="code-block__header">Reconciliation Output (example)</div>
+<pre><code>Truckload  | Sheet Total | DB Total  | Diff    | Status
+A2Z33838   | €14,230.50  | €14,230.50| €0.00   | ✓ MATCH
+A2Z34102   | €8,445.00   | €8,445.00 | €0.00   | ✓ MATCH
+A2Z34567   | €11,200.75  | €11,198.25| €2.50   | ✗ INVESTIGATE
+           |             |           |         |   → 1 sale missing
+           |             |           |         |   → LPN XU-20240312</code></pre>
+                </div>
+
+                <p>I generated hundreds of these reconciliation reports. Every discrepancy had to be investigated. Most were caused by timing issues (a sale recorded in the sheet but not yet extracted from Wallapop's API) or by my employees making manual corrections directly in the sheet.</p>
+
+                <h3>3. The Parallel Operation Period</h3>
+
+                <p>For about 3 weeks, I ran both systems simultaneously. Google Sheets remained the source of truth for my employees, while the database was being populated and validated in the background.</p>
+
+                <p>Every morning:</p>
+                <ol>
+                    <li>Run the sync script to pull changes from Sheets into PostgreSQL</li>
+                    <li>Check the reconciliation report for discrepancies</li>
+                    <li>Investigate and fix any issues (usually 2-5 per day)</li>
+                    <li>Test Retool dashboards against real data</li>
+                    <li>Process the day's orders (the actual business operations)</li>
+                </ol>
+
+                <p>Every evening:</p>
+                <ol>
+                    <li>Review what employees changed in Sheets during the day</li>
+                    <li>Run the sync again</li>
+                    <li>Verify financial totals still match</li>
+                </ol>
+
+                <p>This was exhausting. I was essentially running two systems, doing my job as business operator, AND debugging migration edge cases. But it was the only way to ensure confidence before the cutover.</p>
+
+                <h3>4. The Fix Scripts</h3>
+
+                <p>No migration is clean. I wrote 15+ specialized fix scripts for issues discovered during or after the parallel period:</p>
+
+                <ul>
+                    <li><code>fix_listing_prices_from_sheet.py</code> — Some listing prices in the DB came from the Wallapop API (which shows the current price), but the Sheet had the original listing price. These needed reconciliation</li>
+                    <li><code>fix_cash_transaction_duplicates.py</code> — Cash transactions that were entered twice (once by the sync script, once by the Retool UI after cutover)</li>
+                    <li><code>fix_incidents_create_returned_sales.py</code> — Returns that existed as "incidents" in Sheets but needed corresponding "sale" records in the database</li>
+                    <li><code>borrar_ventas_no_cuadran_sheet.py</code> — Sales that existed in the DB but had no match in the Sheet (ghost data from early API extraction bugs)</li>
+                    <li><code>fix_zero_price_sales.py</code> — Sales imported with €0.00 price due to a bug in the extractor that didn't capture the price field for certain order states</li>
+                </ul>
+
+                <p>Each fix script followed the same pattern: <strong>diagnose → dry-run → review → execute → verify</strong>. No blind fixes.</p>
+
+                <h3>5. Explaining to the Team</h3>
+
+                <p>The hardest part wasn't technical. It was explaining to 4 non-technical employees why we were changing how they worked.</p>
+
+                <p>"The spreadsheet works fine" is a perfectly reasonable thing for a warehouse worker to say. And from their perspective, it did work fine. They didn't see the API rate limits, the data corruption risks, or the 3 AM scripts crashing because of a formula recalculation.</p>
+
+                <p>I had to:</p>
+                <ul>
+                    <li>Build Retool interfaces that were <strong>at least as easy</strong> as the spreadsheet (otherwise adoption would fail)</li>
+                    <li>Train each person individually on the new workflow</li>
+                    <li>Keep the Sheet available as read-only backup for the first 2 weeks post-cutover</li>
+                    <li>Be responsive to "this doesn't work like before" feedback (most of which was valid)</li>
+                </ul>
+
+                <h2>The Cutover</h2>
+
+                <p>After 3 weeks of parallel operation, 200+ reconciliation reports, and 15 fix scripts, I documented the cutover plan:</p>
+
+                <div class="code-block">
+                    <div class="code-block__header">MIGRACION_PRODUCCION.md (excerpt)</div>
+<pre><code>CUTOVER CHECKLIST
+─────────────────
+[✓] All truckloads reconciled to €0.00 difference
+[✓] All active listings matched between Sheet and DB
+[✓] All pending orders present in both systems
+[✓] Retool modules tested: orders, items, sales, invoicing
+[✓] Employees trained on new workflow
+[✓] Sheet set to read-only with banner: "USE RETOOL"
+[✓] Automated extractors pointed to DB (not Sheet)
+[✓] Backup snapshot of all table counts taken
+[✓] Rollback procedure documented (Sheet restore)</code></pre>
+                </div>
+
+                <p>The cutover itself was anticlimactic — which is exactly what you want. I switched the extractors to write directly to PostgreSQL, set the Google Sheets to read-only, and told my team "starting today, use Retool for everything."</p>
+
+                <h2>What I Built (The Technical Stack)</h2>
+
+                <p>The migration wasn't just scripts. It required building the entire target infrastructure:</p>
+
+                <ul>
+                    <li><strong>16 modular DDL files</strong> defining the PostgreSQL schema (tables, views, materialized views, functions, triggers)</li>
+                    <li><strong>35+ incremental migration files</strong> for schema evolution post-cutover</li>
+                    <li><strong>25+ SQLModel data models</strong> in Python for the FastAPI backend</li>
+                    <li><strong>Materialized views</strong> like <code>mv_portalhero_feed</code> for marketplace feed generation</li>
+                    <li><strong>Views</strong> like <code>v_resumen_a2z</code> for financial reporting per truckload</li>
+                    <li><strong>Trigger functions</strong> for automatic sale tracking and inventory updates</li>
+                </ul>
+
+                <h2>Results</h2>
+
+                <p>6 months after the migration:</p>
+
+                <ul>
+                    <li><strong>Query times:</strong> From 15+ seconds (Sheet load) to <50ms (PostgreSQL query)</li>
+                    <li><strong>Concurrency:</strong> 5 automated scripts + 4 employees + Retool dashboards, all hitting the DB simultaneously with zero conflicts</li>
+                    <li><strong>Data integrity:</strong> Foreign keys, constraints, and triggers catch errors that would have silently corrupted the Sheet</li>
+                    <li><strong>Operational scale:</strong> Expanded from Wallapop-only to Wallapop + eBay + PortalHero — something that would have been impossible with Sheets as the backbone</li>
+                    <li><strong>Financial accuracy:</strong> Truckload reconciliation that used to take me 2 hours with SUMIFS now runs in 3 seconds as a materialized view</li>
+                </ul>
+
+                <h2>What I'd Do Differently</h2>
+
+                <p>If I did this again:</p>
+
+                <ol>
+                    <li><strong>Start with the database from day one.</strong> The "we'll migrate later" tax is real and expensive. Even a simple PostgreSQL + Retool setup from the start would have saved hundreds of hours</li>
+                    <li><strong>Automate the reconciliation checks</strong> instead of running them manually every morning. A CI-style pipeline that emails me only when discrepancies are found</li>
+                    <li><strong>Build the Retool UI first, then migrate.</strong> I built them in parallel, which meant employees saw half-finished interfaces during the transition period. If the UI had been polished before the cutover, adoption would have been smoother</li>
+                </ol>
+
+                <h2>The Takeaway</h2>
+
+                <p>Migrating a production system isn't a technical problem. It's an operational problem that requires technical solutions. The code is maybe 30% of the work. The other 70% is:</p>
+
+                <ul>
+                    <li>Understanding every edge case in your existing data</li>
+                    <li>Building confidence through parallel operation and reconciliation</li>
+                    <li>Managing the human side — training, communication, feedback</li>
+                    <li>Having the discipline to not cut corners when you're exhausted and the discrepancy count is finally down to zero</li>
+                </ul>
+
+                <p>I did all of this as a solo engineer running a business with 4 employees. No team of DBAs. No dedicated QA. Just systematic engineering and a lot of coffee.</p>
+
+                <p>The migration pipeline is open-source: <a href="https://github.com/AspiranteD/sheets-to-postgres-migration">github.com/AspiranteD/sheets-to-postgres-migration</a></p>
+            </div>
+
+            <footer class="blog-post__footer">
+                <a href="../#blog" class="btn btn--outline">← Back to all articles</a>
+            </footer>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Built by Guillem Climent. Source on <a href="https://github.com/AspiranteD/AspiranteD.github.io" target="_blank">GitHub</a>.</p>
+        </div>
+    </footer>
+</body>
+</html>

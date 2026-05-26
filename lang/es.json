@@ -5,6 +5,7 @@
         "architecture": "Arquitectura",
         "projects": "Proyectos",
         "skills": "Tecnologías",
+        "blog": "Blog",
         "contact": "Contacto"
     },
     "hero": {
@@ -93,6 +94,17 @@
         "scraping": "Scraping & Automatización",
         "devops": "DevOps & Infra",
         "integrations": "Integraciones"
+    },
+    "blog": {
+        "title": "Artículos Técnicos",
+        "subtitle": "Análisis en profundidad de problemas reales de ingeniería que resolví en producción.",
+        "migration_title": "Cómo Migré un Negocio en Producción de Google Sheets a PostgreSQL",
+        "migration_excerpt": "5 fases, syncs diarios, reconciliación financiera y cero downtime — mientras operaba el negocio con 4 empleados. La ingeniería real detrás de una migración de spreadsheet a base de datos.",
+        "wallapop_title": "Ingeniería Inversa de una API de Marketplace: 5 Versiones, 2 Años",
+        "wallapop_excerpt": "De copiar comandos cURL a construir un sistema de extracción multi-cuenta en producción con auth por cookies, anti-detección y procesamiento paralelo.",
+        "bridge_title": "Conectando Cloud y Local: Un Patrón de Cola de Comandos",
+        "bridge_excerpt": "Cuando tu UI cloud necesita imprimir una etiqueta física en una impresora USB de un almacén — necesitas una solución arquitectónica creativa.",
+        "read_more": "Leer artículo →"
     },
     "contact": {
         "title": "Contacto",

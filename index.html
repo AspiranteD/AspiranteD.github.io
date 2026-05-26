@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/blog.css">
 </head>
 <body>
     <nav class="nav" id="nav">
@@ -25,6 +26,7 @@
                 <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
                 <a href="#projects" data-i18n="nav.projects">Projects</a>
                 <a href="#skills" data-i18n="nav.skills">Skills</a>
+                <a href="#blog" data-i18n="nav.blog">Blog</a>
                 <a href="#contact" data-i18n="nav.contact">Contact</a>
             </div>
             <div class="nav__actions">
@@ -620,6 +622,43 @@
                         <span class="pill">Brother QL-700</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section class="section section--alt" id="blog">
+        <div class="container">
+            <h2 class="section__title" data-i18n="blog.title">Technical Writing</h2>
+            <p class="section__subtitle" data-i18n="blog.subtitle">Deep dives into real engineering problems I solved in production.</p>
+            <div class="blog-grid">
+                <a href="blog/sheets-to-postgres-migration.html" class="blog-card" data-animate>
+                    <div class="blog-card__meta">
+                        <span>May 2026</span>
+                        <span>12 min</span>
+                    </div>
+                    <h3 class="blog-card__title" data-i18n="blog.migration_title">How I Migrated a Production Business from Google Sheets to PostgreSQL</h3>
+                    <p class="blog-card__excerpt" data-i18n="blog.migration_excerpt">5 phases, daily syncs, financial reconciliation, and zero downtime — while running the business with 4 employees. The real engineering behind a spreadsheet-to-database migration.</p>
+                    <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
+                </a>
+                <a href="blog/reverse-engineering-wallapop.html" class="blog-card" data-animate>
+                    <div class="blog-card__meta">
+                        <span>May 2026</span>
+                        <span>8 min</span>
+                    </div>
+                    <h3 class="blog-card__title" data-i18n="blog.wallapop_title">Reverse Engineering a Marketplace API: 5 Versions, 2 Years</h3>
+                    <p class="blog-card__excerpt" data-i18n="blog.wallapop_excerpt">From copying cURL commands to building a production-grade multi-account extraction system with cookie auth, anti-detection, and parallel processing.</p>
+                    <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
+                </a>
+                <a href="blog/cloud-local-command-bridge.html" class="blog-card" data-animate>
+                    <div class="blog-card__meta">
+                        <span>May 2026</span>
+                        <span>6 min</span>
+                    </div>
+                    <h3 class="blog-card__title" data-i18n="blog.bridge_title">Bridging Cloud and Local: A Database Command Queue Pattern</h3>
+                    <p class="blog-card__excerpt" data-i18n="blog.bridge_excerpt">When your cloud UI needs to print a physical label on a USB printer in a warehouse — you need a creative architectural solution.</p>
+                    <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
+                </a>
             </div>
         </div>
     </section>
