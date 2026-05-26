@@ -100,8 +100,8 @@
         "subtitle": "Deep dives into real engineering problems I solved in production.",
         "migration_title": "How I Migrated a Production Business from Google Sheets to PostgreSQL",
         "migration_excerpt": "5 phases, daily syncs, financial reconciliation, and zero downtime — while running the business with 4 employees. The real engineering behind a spreadsheet-to-database migration.",
-        "wallapop_title": "Reverse Engineering a Marketplace API: 5 Versions, 2 Years",
-        "wallapop_excerpt": "From copying cURL commands to building a production-grade multi-account extraction system with cookie auth, anti-detection, and parallel processing.",
+        "wallapop_title": "From Manual Posting to Reverse Engineering: My Wallapop Journey",
+        "wallapop_excerpt": "10 min/item manually → Selenium bots across 6 remote PCs → reverse engineering a private API → 2,100-line extraction system processing 100 orders/day across 12 accounts.",
         "bridge_title": "Bridging Cloud and Local: A Database Command Queue Pattern",
         "bridge_excerpt": "When your cloud UI needs to print a physical label on a USB printer in a warehouse — you need a creative architectural solution.",
         "read_more": "Read article →"

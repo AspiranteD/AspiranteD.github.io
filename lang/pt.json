@@ -100,8 +100,8 @@
         "subtitle": "Análises aprofundadas de problemas reais de engenharia que resolvi em produção.",
         "migration_title": "Como Migrei um Negócio em Produção de Google Sheets para PostgreSQL",
         "migration_excerpt": "5 fases, syncs diários, reconciliação financeira e zero downtime — enquanto operava o negócio com 4 funcionários.",
-        "wallapop_title": "Engenharia Reversa de uma API de Marketplace: 5 Versões, 2 Anos",
-        "wallapop_excerpt": "De copiar comandos cURL a construir um sistema de extração multi-conta em produção com auth por cookies e anti-deteção.",
+        "wallapop_title": "De Publicar à Mão a Engenharia Reversa: A Minha Jornada Wallapop",
+        "wallapop_excerpt": "10 min/artigo manualmente → bots Selenium em 6 PCs remotos → engenharia reversa de API privada → sistema de extração de 2.100 linhas processando 100 pedidos/dia em 12 contas.",
         "bridge_title": "Conectando Cloud e Local: Um Padrão de Fila de Comandos",
         "bridge_excerpt": "Quando a sua UI cloud precisa imprimir uma etiqueta física numa impressora USB num armazém — precisa de uma solução arquitetónica criativa.",
         "read_more": "Ler artigo →"
