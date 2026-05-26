@@ -31,7 +31,7 @@
                     <span class="blog-post__read">12 min read</span>
                 </div>
                 <h1>How I Migrated a Production Business from Google Sheets to PostgreSQL</h1>
-                <p class="blog-post__lead">The real story of migrating a running e-commerce operation — with employees working, orders flowing, and money on the line — from spreadsheets to a proper database. No downtime. No data loss. While running the business simultaneously.</p>
+                <p class="blog-post__lead">After a catastrophic flood destroyed our warehouse and forced us to rebuild from zero, I decided to do it right this time — migrate from spreadsheets to a real database, build a proper ERP, and never lose control of our data again. This is the story of that migration.</p>
                 <div class="blog-post__tags">
                     <span class="tag">PostgreSQL</span>
                     <span class="tag">Data Engineering</span>
@@ -42,9 +42,17 @@
             </header>
 
             <div class="blog-post__body">
-                <h2>The Starting Point: When Google Sheets Is Your Database</h2>
+                <h2>Context: The Flood That Changed Everything</h2>
 
-                <p>When I founded my e-commerce automation company, Google Sheets was the obvious choice for managing inventory. It's collaborative, visual, everyone knows how to use it, and it's free. My warehouse team could update stock locations. I could write formulas. Everyone could see everything in real time.</p>
+                <p>In October 2024, the DANA — a catastrophic weather event — hit Valencia, Spain. Our warehouse in Alfafar was in one of the hardest-hit areas. Floodwater destroyed inventory, equipment, and months of operational momentum.</p>
+
+                <p>What followed was two months of crisis management that had nothing to do with code: coordinating dozens of volunteers who came to help, working alongside military personnel, navigating insurance claims, managing budgets with no revenue, and keeping a team together through uncertainty. It was the hardest period of my life.</p>
+
+                <p>But it was also a reset. When we rebuilt — and we did rebuild — I made a decision: <strong>we would do it right this time.</strong> No more duct tape. No more "good enough." We hired 2 more people (growing from 3 to 5), and I committed to building proper infrastructure: a real database, a real ERP, real documentation. The Google Sheets era was over.</p>
+
+                <h2>The Starting Point: Why Google Sheets Had to Go</h2>
+
+                <p>When I originally founded the company, Google Sheets was the obvious choice for managing inventory. It's collaborative, visual, everyone knows how to use it, and it's free. My warehouse team could update stock locations. I could write formulas. Everyone could see everything in real time.</p>
 
                 <p>The problem is that Google Sheets was never designed to be a database. And when you're processing thousands of Amazon liquidation SKUs across multiple marketplace accounts, it starts to break in ways that are hard to predict:</p>
 

@@ -78,6 +78,12 @@ Founded and built from scratch a vertically-integrated e-commerce automation com
 - **Analytics Suite**: 15+ audit/investigation scripts for Wallapop shadow listings, duplicate detection, policy compliance, email parsing (MBOX), wallet reconciliation
 - **Database Schema**: 16 modular DDL files, 35+ incremental migrations, views, materialized views, trigger functions
 
+**Crisis Management — DANA Floods (October 2024):**
+- Eight months after scaling to an industrial warehouse in Alfafar, the DANA floods devastated the facility — one of the hardest-hit areas in the Valencia region
+- Led crisis response: coordinated dozens of volunteers, managed military logistics, navigated insurance claims and emergency budgets
+- Rebuilt the company from scratch in 2 months: redesigned systems, improved documentation, expanded team from 3 to 5 employees
+- Used the forced reset as an opportunity to migrate the entire tech stack to production-grade infrastructure (PostgreSQL + Retool ERP)
+
 **Key Metrics:**
 - ~180 Python scripts in the backend repository alone
 - 25+ SQLModel data models
@@ -246,6 +252,6 @@ Internal ERP system built on Retool Cloud with 342 files: SQL queries, JS handle
 
 ## What Drives Me
 
-I founded a company at 25, built its entire tech stack from zero, and operated it for 3+ years while simultaneously working as a senior engineer at enterprise consultancies. I've written code that processes real money, manages real inventory, and coordinates real people in a warehouse.
+I founded a company at 25, built its entire tech stack from zero, survived a catastrophic flood that destroyed our warehouse, rebuilt the company from scratch, and operated it for 3+ years while simultaneously working as a senior engineer at enterprise consultancies. I've written code that processes real money, manages real inventory, and coordinates real people in a warehouse.
 
 I'm not a tutorial developer. I build systems that run businesses — and I've proven it by running one myself.
