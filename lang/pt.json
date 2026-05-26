@@ -99,13 +99,15 @@
     },
     "blog": {
         "title": "Artigos Técnicos",
-        "subtitle": "Análises aprofundadas de problemas reais de engenharia que resolvi em produção.",
+        "subtitle": "Análises aprofundadas de problemas reais que resolvi — técnicos e não só.",
         "migration_title": "Como Migrei um Negócio em Produção de Google Sheets para PostgreSQL",
         "migration_excerpt": "5 fases, syncs diários, reconciliação financeira e zero downtime — enquanto operava o negócio com 4 funcionários.",
         "wallapop_title": "De Publicar à Mão a Engenharia Reversa: A Minha Jornada Wallapop",
         "wallapop_excerpt": "10 min/artigo manualmente → bots Selenium em 6 PCs remotos → engenharia reversa de API privada → sistema de extração de 2.100 linhas processando 100 pedidos/dia em 12 contas.",
         "bridge_title": "Conectando Cloud e Local: Um Padrão de Fila de Comandos",
         "bridge_excerpt": "Quando a sua UI cloud precisa imprimir uma etiqueta física numa impressora USB num armazém — precisa de uma solução arquitetónica criativa.",
+        "dana_title": "Reconstruir uma Empresa Após uma Inundação Catastrófica",
+        "dana_excerpt": "As cheias DANA destruíram o nosso armazém. Dirigi 60 pessoas na recuperação, reconstruímos do zero em 2 meses, a equipa cresceu de 3 para 5, e usei a crise para construir tudo melhor.",
         "read_more": "Ler artigo →"
     },
     "contact": {

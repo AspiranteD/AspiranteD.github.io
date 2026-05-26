@@ -99,13 +99,15 @@
     },
     "blog": {
         "title": "Technical Writing",
-        "subtitle": "Deep dives into real engineering problems I solved in production.",
+        "subtitle": "Deep dives into real problems I solved — technical and otherwise.",
         "migration_title": "How I Migrated a Production Business from Google Sheets to PostgreSQL",
         "migration_excerpt": "5 phases, daily syncs, financial reconciliation, and zero downtime — while running the business with 4 employees. The real engineering behind a spreadsheet-to-database migration.",
         "wallapop_title": "From Manual Posting to Reverse Engineering: My Wallapop Journey",
         "wallapop_excerpt": "10 min/item manually → Selenium bots across 6 remote PCs → reverse engineering a private API → 2,100-line extraction system processing 100 orders/day across 12 accounts.",
         "bridge_title": "Bridging Cloud and Local: A Database Command Queue Pattern",
         "bridge_excerpt": "When your cloud UI needs to print a physical label on a USB printer in a warehouse — you need a creative architectural solution.",
+        "dana_title": "Rebuilding a Company After a Catastrophic Flood",
+        "dana_excerpt": "The DANA floods destroyed our warehouse. I directed 60 people in recovery, rebuilt from scratch in 2 months, grew the team from 3 to 5, and used the crisis to build everything better.",
         "read_more": "Read article →"
     },
     "contact": {

@@ -99,13 +99,15 @@
     },
     "blog": {
         "title": "Articles Techniques",
-        "subtitle": "Analyses approfondies de problèmes d'ingénierie réels que j'ai résolus en production.",
+        "subtitle": "Analyses approfondies de problèmes réels que j'ai résolus — techniques et autres.",
         "migration_title": "Comment j'ai migré une entreprise en production de Google Sheets vers PostgreSQL",
         "migration_excerpt": "5 phases, syncs quotidiens, réconciliation financière et zéro downtime — tout en gérant l'entreprise avec 4 employés.",
         "wallapop_title": "De la Publication Manuelle au Reverse Engineering : Mon Parcours Wallapop",
         "wallapop_excerpt": "10 min/article manuellement → bots Selenium sur 6 PCs distants → reverse engineering d'API privée → système d'extraction de 2 100 lignes traitant 100 commandes/jour sur 12 comptes.",
         "bridge_title": "Connecter Cloud et Local : Un Pattern de File de Commandes",
         "bridge_excerpt": "Quand votre UI cloud doit imprimer une étiquette physique sur une imprimante USB dans un entrepôt — il faut une solution architecturale créative.",
+        "dana_title": "Reconstruire une Entreprise Après une Inondation Catastrophique",
+        "dana_excerpt": "Les inondations DANA ont détruit notre entrepôt. J'ai dirigé 60 personnes pour la récupération, reconstruit à partir de zéro en 2 mois, agrandi l'équipe de 3 à 5, et utilisé la crise pour tout reconstruire mieux.",
         "read_more": "Lire l'article →"
     },
     "contact": {
