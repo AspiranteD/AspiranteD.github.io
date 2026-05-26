@@ -27,6 +27,11 @@ function applyTranslations(data) {
             }
         }
     });
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        const value = getNestedValue(data, key);
+        if (value) el.innerHTML = value;
+    });
 }
 
 function getNestedValue(obj, path) {
