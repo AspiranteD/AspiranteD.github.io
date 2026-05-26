@@ -193,6 +193,19 @@
             <h2 class="section__title" data-i18n="projects.title">Projects</h2>
             <p class="section__subtitle" data-i18n="projects.subtitle">Components of a production e-commerce platform — built, iterated, and operated over 3 years.</p>
 
+            <!-- Flagship System Card -->
+            <a href="blog/reusalia-full-system.html" class="project-card project-card--flagship" data-animate>
+                <div class="project-card--flagship__inner">
+                    <div class="project-card--flagship__content">
+                        <span class="project-card__badge">Flagship System</span>
+                        <h3 class="project-card__title" data-i18n="projects.flagship_title">The Full REUSALIA Platform</h3>
+                        <p class="project-card__metric" data-i18n="projects.flagship_metric">~100 orders/day · 12 accounts · 6 employees · 3 marketplaces · 180+ scripts</p>
+                        <p class="project-card__desc" data-i18n="projects.flagship_desc">End-to-end e-commerce automation: reverse-engineered APIs, AI enrichment, multi-marketplace sync, ERP, and hardware integration — designed, built, and operated by one engineer.</p>
+                    </div>
+                    <span class="project-card--flagship__cta" data-i18n="projects.flagship_cta">Read the full case study →</span>
+                </div>
+            </a>
+
             <!-- Featured Projects (3 hero cards) -->
             <div class="projects__featured" id="projectsFeatured">
                 <article class="project-card project-card--featured" data-category="api infra" data-animate>
@@ -204,8 +217,8 @@
                     </div>
                     <div class="project-card__badge" data-i18n="projects.badge_core">Core System</div>
                     <h3 class="project-card__title">Inventory Operations API</h3>
-                    <p class="project-card__desc" data-i18n="projects.inventory_desc">Full REST API for e-commerce ops: items, orders, sales, invoicing, scheduler, cookie management, label printing integration. The backbone of the entire REUSALIA platform.</p>
                     <p class="project-card__metric" data-i18n="projects.inventory_metric">Used daily by 6 employees · Powers operations across 3 marketplaces</p>
+                    <p class="project-card__desc" data-i18n="projects.inventory_desc">Full REST API for e-commerce ops: items, orders, sales, invoicing, scheduler, cookie management, label printing integration. The backbone of the entire REUSALIA platform.</p>
                     <div class="project-card__tags">
                         <span>FastAPI</span><span>SQLModel</span><span>PostgreSQL</span><span>APScheduler</span>
                     </div>
@@ -220,8 +233,8 @@
                     </div>
                     <div class="project-card__badge" data-i18n="projects.badge_unique">Unique Engineering</div>
                     <h3 class="project-card__title">Wallapop Data Extractors</h3>
-                    <p class="project-card__desc" data-i18n="projects.wallapop_desc">Reverse-engineered private API. Multi-account extraction with cookie auth, anti-detection, parallel processing. 2,100+ lines, 5 major versions, ~100 orders/day across 12 accounts.</p>
                     <p class="project-card__metric" data-i18n="projects.wallapop_metric">Replaces ~5h/day manual work · Makes multi-account ops physically possible</p>
+                    <p class="project-card__desc" data-i18n="projects.wallapop_desc">Reverse-engineered private API. Multi-account extraction with cookie auth, anti-detection, parallel processing. 2,100+ lines, 5 major versions, ~100 orders/day across 12 accounts.</p>
                     <div class="project-card__tags">
                         <span>Python</span><span>Reverse Engineering</span><span>Threading</span><span>PostgreSQL</span>
                     </div>
@@ -236,8 +249,8 @@
                     </div>
                     <div class="project-card__badge" data-i18n="projects.badge_ai">AI Pipeline</div>
                     <h3 class="project-card__title">AI Product Enrichment</h3>
-                    <p class="project-card__desc" data-i18n="projects.ai_enrichment_desc">Automated pipeline: Amazon scraping → GPT categorization → description generation → listing sync. Processes thousands of SKUs autonomously in production.</p>
                     <p class="project-card__metric" data-i18n="projects.ai_enrichment_metric">Saves ~40h/week vs manual descriptions · Thousands of SKUs processed</p>
+                    <p class="project-card__desc" data-i18n="projects.ai_enrichment_desc">Automated pipeline: Amazon scraping → GPT categorization → description generation → listing sync. Processes thousands of SKUs autonomously in production.</p>
                     <div class="project-card__tags">
                         <span>Python</span><span>OpenAI</span><span>BeautifulSoup</span><span>FastAPI</span>
                     </div>
@@ -259,8 +272,8 @@
                         </div>
                     </div>
                     <h3 class="project-card__title">eBay Automation Toolkit</h3>
-                    <p class="project-card__desc" data-i18n="projects.ebay_desc">End-to-end eBay automation: OAuth2 auth, bulk CSV generation, Feed API uploads, order import, shipping with tracking.</p>
                     <p class="project-card__metric" data-i18n="projects.ebay_metric">1,000+ item batch uploads · Full order lifecycle automated</p>
+                    <p class="project-card__desc" data-i18n="projects.ebay_desc">End-to-end eBay automation: OAuth2 auth, bulk CSV generation, Feed API uploads, order import, shipping with tracking.</p>
                     <div class="project-card__tags"><span>Python</span><span>eBay API</span><span>OAuth2</span><span>pandas</span></div>
                 </article>
 
@@ -272,8 +285,8 @@
                         </div>
                     </div>
                     <h3 class="project-card__title">Cloud-Local Command Bridge</h3>
-                    <p class="project-card__desc" data-i18n="projects.bridge_desc">Distributed pattern: cloud UI enqueues commands via database, local backend processes with exclusive locking, heartbeat, and ~60s failover.</p>
                     <p class="project-card__metric" data-i18n="projects.bridge_metric">~60s failover · Bridges cloud Retool UI to local label printers</p>
+                    <p class="project-card__desc" data-i18n="projects.bridge_desc">Distributed pattern: cloud UI enqueues commands via database, local backend processes with exclusive locking, heartbeat, and ~60s failover.</p>
                     <div class="project-card__tags"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Distributed Systems</span></div>
                 </article>
 
@@ -285,8 +298,8 @@
                         </div>
                     </div>
                     <h3 class="project-card__title">Sheets → Postgres Migration</h3>
-                    <p class="project-card__desc" data-i18n="projects.migration_desc">5-phase production migration pipeline: extract → validate → migrate → sync → verify. Financial reconciliation per Amazon truckload.</p>
                     <p class="project-card__metric" data-i18n="projects.migration_metric">3 years of production data · Zero-downtime cutover</p>
+                    <p class="project-card__desc" data-i18n="projects.migration_desc">5-phase production migration pipeline: extract → validate → migrate → sync → verify. Financial reconciliation per Amazon truckload.</p>
                     <div class="project-card__tags"><span>Python</span><span>PostgreSQL</span><span>gspread</span><span>pandas</span></div>
                 </article>
 
@@ -298,8 +311,8 @@
                         </div>
                     </div>
                     <h3 class="project-card__title">Marketplace Sync Engine</h3>
-                    <p class="project-card__desc" data-i18n="projects.sync_desc">Multi-platform inventory sync: single source of truth in PostgreSQL, syncs to Wallapop, eBay, and PortalHero with marketplace-specific formatting.</p>
                     <p class="project-card__metric" data-i18n="projects.sync_metric">3 marketplaces synced · Single source of truth for all stock</p>
+                    <p class="project-card__desc" data-i18n="projects.sync_desc">Multi-platform inventory sync: single source of truth in PostgreSQL, syncs to Wallapop, eBay, and PortalHero with marketplace-specific formatting.</p>
                     <div class="project-card__tags"><span>Python</span><span>FastAPI</span><span>Google Drive</span><span>PostgreSQL</span></div>
                 </article>
 
@@ -311,8 +324,8 @@
                         </div>
                     </div>
                     <h3 class="project-card__title">Amazon Product Scraper</h3>
-                    <p class="project-card__desc" data-i18n="projects.scraper_desc">Production scraper for Amazon.es: titles, prices, hi-res images, features. Anti-detection with UA rotation and request throttling.</p>
                     <p class="project-card__metric" data-i18n="projects.scraper_metric">Feeds AI pipeline with product data at scale · Autonomous execution</p>
+                    <p class="project-card__desc" data-i18n="projects.scraper_desc">Production scraper for Amazon.es: titles, prices, hi-res images, features. Anti-detection with UA rotation and request throttling.</p>
                     <div class="project-card__tags"><span>Python</span><span>BeautifulSoup</span><span>Requests</span></div>
                 </article>
 
@@ -324,8 +337,8 @@
                         </div>
                     </div>
                     <h3 class="project-card__title">Marketplace Auth Manager</h3>
-                    <p class="project-card__desc" data-i18n="projects.auth_desc">Multi-account authentication lifecycle: cookie/bearer management, JWT decoding, automatic token refresh, secure storage in PostgreSQL.</p>
                     <p class="project-card__metric" data-i18n="projects.auth_metric">12+ accounts managed · Automatic rotation across all extractors</p>
+                    <p class="project-card__desc" data-i18n="projects.auth_desc">Multi-account authentication lifecycle: cookie/bearer management, JWT decoding, automatic token refresh, secure storage in PostgreSQL.</p>
                     <div class="project-card__tags"><span>Python</span><span>JWT</span><span>Requests</span><span>PostgreSQL</span></div>
                 </article>
 
@@ -337,8 +350,8 @@
                         </div>
                     </div>
                     <h3 class="project-card__title">Product Image Pipeline</h3>
-                    <p class="project-card__desc" data-i18n="projects.image_desc">Image processing for marketplaces: download, anti-duplicate transforms (OpenCV), resize, compress, upload to cloud storage.</p>
                     <p class="project-card__metric" data-i18n="projects.image_metric">Anti-duplicate transforms bypass marketplace filters</p>
+                    <p class="project-card__desc" data-i18n="projects.image_desc">Image processing for marketplaces: download, anti-duplicate transforms (OpenCV), resize, compress, upload to cloud storage.</p>
                     <div class="project-card__tags"><span>Python</span><span>OpenCV</span><span>PIL</span><span>NumPy</span></div>
                 </article>
 
@@ -350,8 +363,8 @@
                         </div>
                     </div>
                     <h3 class="project-card__title">Retool ERP Modules</h3>
-                    <p class="project-card__desc" data-i18n="projects.retool_desc">Internal ERP on Retool: 342 files across 10+ modules — orders, inventory, invoicing, incidents, chat analytics, mobile scanner.</p>
                     <p class="project-card__metric" data-i18n="projects.retool_metric">342 files · 10+ modules · Used daily by entire team</p>
+                    <p class="project-card__desc" data-i18n="projects.retool_desc">Internal ERP on Retool: 342 files across 10+ modules — orders, inventory, invoicing, incidents, chat analytics, mobile scanner.</p>
                     <div class="project-card__tags"><span>SQL</span><span>JavaScript</span><span>Retool</span><span>PostgreSQL</span></div>
                 </article>
             </div>

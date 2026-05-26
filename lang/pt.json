@@ -69,6 +69,10 @@
     "projects": {
         "title": "Projetos",
         "subtitle": "Componentes de uma plataforma de e-commerce em produção — construída, iterada e operada durante mais de 3 anos.",
+        "flagship_title": "A Plataforma Completa REUSALIA",
+        "flagship_metric": "~100 pedidos/dia · 12 contas · 6 funcionários · 3 marketplaces · 180+ scripts",
+        "flagship_desc": "Automação e-commerce end-to-end: APIs de engenharia reversa, enriquecimento IA, sync multi-marketplace, ERP e integração de hardware — projetado, construído e operado por um único engenheiro.",
+        "flagship_cta": "Ler o estudo de caso completo →",
         "badge_core": "Sistema Central",
         "badge_unique": "Engenharia Única",
         "badge_ai": "Pipeline IA",
