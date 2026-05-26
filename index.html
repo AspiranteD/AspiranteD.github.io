@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guillem Climent — Technical Founder & Engineer</title>
-    <meta name="description" content="Technical Founder & Full-Stack Engineer. I build systems that run businesses.">
+    <meta name="description" content="Technical Founder & Full-Stack Engineer. I design and operate production systems for e-commerce automation.">
     <meta name="author" content="Guillem Climent Pavia">
     <meta property="og:title" content="Guillem Climent — Technical Founder & Engineer">
     <meta property="og:description" content="5+ years building production systems. From enterprise logistics to founding my own company.">
@@ -21,12 +21,12 @@
         <div class="nav__inner">
             <a href="#" class="nav__logo">GC<span class="accent">.</span></a>
             <div class="nav__links" id="navLinks">
-                <a href="#about" data-i18n="nav.about">About</a>
-                <a href="#experience" data-i18n="nav.experience">Experience</a>
                 <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
                 <a href="#projects" data-i18n="nav.projects">Projects</a>
-                <a href="#skills" data-i18n="nav.skills">Skills</a>
+                <a href="#experience" data-i18n="nav.experience">Experience</a>
+                <a href="#about" data-i18n="nav.about">About</a>
                 <a href="#blog" data-i18n="nav.blog">Blog</a>
+                <a href="#skills" data-i18n="nav.skills">Skills</a>
                 <a href="#contact" data-i18n="nav.contact">Contact</a>
             </div>
             <div class="nav__actions">
@@ -59,8 +59,8 @@
             <div class="hero__content">
                 <p class="hero__greeting" data-i18n="hero.greeting">Hi, I'm</p>
                 <h1 class="hero__name">Guillem Climent<span class="accent">.</span></h1>
-                <h2 class="hero__title" data-i18n="hero.title">I build systems that run businesses.</h2>
-                <p class="hero__description" data-i18n="hero.description">Technical founder and full-stack engineer with 5+ years of experience. From enterprise logistics (Mercadona, AIRBUS) to founding my own e-commerce automation company — I architect, build, and operate production systems end-to-end.</p>
+                <h2 class="hero__title" data-i18n="hero.title">I design and operate production systems for e-commerce automation.</h2>
+                <p class="hero__description" data-i18n="hero.description">Technical founder with 5+ years of experience. I built a full ERP, reverse-engineered private APIs, migrated production databases, and integrated physical hardware into cloud workflows — while running a real business with a team of 6.</p>
                 <div class="hero__cta">
                     <a href="#projects" class="btn btn--primary" data-i18n="hero.cta_projects">View Projects</a>
                     <a href="cv/CV_FULL.md" class="btn btn--outline" target="_blank" data-i18n="hero.cta_cv">Download CV</a>
@@ -71,151 +71,12 @@
                         <span class="stat__label" data-i18n="hero.stat_years">Years Experience</span>
                     </div>
                     <div class="stat">
-                        <span class="stat__number">11</span>
-                        <span class="stat__label" data-i18n="hero.stat_projects">Open Source Projects</span>
+                        <span class="stat__number">180+</span>
+                        <span class="stat__label" data-i18n="hero.stat_projects">Python Scripts</span>
                     </div>
                     <div class="stat">
                         <span class="stat__number">4</span>
                         <span class="stat__label" data-i18n="hero.stat_companies">Companies</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section class="section" id="about">
-        <div class="container">
-            <h2 class="section__title" data-i18n="about.title">About Me</h2>
-            <div class="about__grid">
-                <div class="about__text">
-                    <p data-i18n="about.p1">I founded a company at 25, built its entire tech stack from zero, and operated it for 3+ years — processing thousands of SKUs across multiple marketplaces, managing a growing team (now 6), and handling everything from warehouse logistics to AI-powered product enrichment.</p>
-                    <p data-i18n="about.p2">Before that, I cut my teeth at enterprise consultancies (Capgemini, Sopra Steria, LittleBig Connection), working on systems for AIRBUS and Mercadona — learning what scale, reliability, and stakeholder management really mean.</p>
-                    <p data-i18n="about.p3">In October 2024, the DANA floods devastated our warehouse in Alfafar, Valencia — one of the hardest-hit areas. We lost inventory, equipment, and months of momentum. In the aftermath, I organized and directed 50-60 people — volunteers and military personnel who came to help — coordinating cleanup and recovery operations in our facility. Then came the insurance claims, budgets, and the mental reset. Two months later we were operational again, rebuilt from scratch — this time with better systems, better documentation, and a bigger team (from 3 to 5). That's when I decided to migrate everything to a real database and build the ERP properly.</p>
-                    <p data-i18n="about.p4">I'm not a tutorial developer. Every line of code I write handles real inventory, real money, and real operations. I've reverse-engineered private APIs, migrated production databases, integrated physical printers into cloud workflows, and built AI pipelines that run autonomously in production.</p>
-                </div>
-                <div class="about__highlights">
-                    <div class="highlight">
-                        <div class="highlight__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                        </div>
-                        <h3 data-i18n="about.h_architect">Systems Architect</h3>
-                        <p data-i18n="about.d_architect">End-to-end platform design — from database schema to cloud deployment to hardware integration.</p>
-                    </div>
-                    <div class="highlight">
-                        <div class="highlight__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        </div>
-                        <h3 data-i18n="about.h_founder">Technical Founder</h3>
-                        <p data-i18n="about.d_founder">Built and ran a real business — team management, operations, and full-stack development simultaneously.</p>
-                    </div>
-                    <div class="highlight">
-                        <div class="highlight__icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                        </div>
-                        <h3 data-i18n="about.h_solver">Problem Solver</h3>
-                        <p data-i18n="about.d_solver">Reverse engineering, data migration, anti-detection — I solve problems others avoid.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience -->
-    <section class="section section--alt" id="experience">
-        <div class="container">
-            <h2 class="section__title" data-i18n="experience.title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline__item" data-animate>
-                    <div class="timeline__marker"></div>
-                    <div class="timeline__content">
-                        <div class="timeline__header">
-                            <h3>Technical Founder & Lead Engineer</h3>
-                            <span class="timeline__company">REUSALIA</span>
-                            <span class="timeline__date" data-i18n="experience.reusalia_date">Apr 2023 – Present</span>
-                        </div>
-                        <ul class="timeline__details">
-                            <li data-i18n="experience.reusalia_1">Founded e-commerce automation company; scaled team from 3 to 6 employees</li>
-                            <li data-i18n="experience.reusalia_2">Architected full ERP system: FastAPI + PostgreSQL + Retool (25+ models, 342 UI files)</li>
-                            <li data-i18n="experience.reusalia_3">Built multi-marketplace automation (Wallapop, eBay, PortalHero) with AI enrichment pipeline</li>
-                            <li data-i18n="experience.reusalia_4">Reverse-engineered private APIs, built anti-detection systems, integrated label printers</li>
-                            <li data-i18n="experience.reusalia_5">Survived DANA floods (Oct 2024) — rebuilt company from zero, grew team from 3 to 5</li>
-                            <li data-i18n="experience.reusalia_6">Migrated production data from Google Sheets → PostgreSQL (5-phase pipeline)</li>
-                        </ul>
-                        <div class="timeline__tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">OpenAI</span>
-                            <span class="tag">Retool</span>
-                            <span class="tag">eBay API</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline__item" data-animate>
-                    <div class="timeline__marker"></div>
-                    <div class="timeline__content">
-                        <div class="timeline__header">
-                            <h3>Senior Software Engineer</h3>
-                            <span class="timeline__company">LittleBig Connection</span>
-                            <span class="timeline__date" data-i18n="experience.lbc_date">Dec 2022 – Feb 2024</span>
-                        </div>
-                        <ul class="timeline__details">
-                            <li data-i18n="experience.lbc_1">Full-stack delivery: Java/Spring Boot APIs + Angular frontends</li>
-                            <li data-i18n="experience.lbc_2">Database design and optimization (MySQL) + Docker containerization</li>
-                            <li data-i18n="experience.lbc_3">Remote-first distributed team, agile methodologies</li>
-                        </ul>
-                        <div class="timeline__tags">
-                            <span class="tag">Java</span>
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">Angular</span>
-                            <span class="tag">MySQL</span>
-                            <span class="tag">Docker</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline__item" data-animate>
-                    <div class="timeline__marker"></div>
-                    <div class="timeline__content">
-                        <div class="timeline__header">
-                            <h3>Software Engineer</h3>
-                            <span class="timeline__company">Sopra Steria <span class="timeline__client" data-i18n="experience.sopra_client">(Client: AIRBUS)</span></span>
-                            <span class="timeline__date" data-i18n="experience.sopra_date">Nov 2021 – Dec 2022</span>
-                        </div>
-                        <ul class="timeline__details">
-                            <li data-i18n="experience.sopra_1">Technical ownership of e-Business contract infrastructure — monolith → microservices</li>
-                            <li data-i18n="experience.sopra_2">Re-architected Angular state management (NgRx), eliminating UI rendering freezes</li>
-                            <li data-i18n="experience.sopra_3">CI/CD pipelines with Jenkins + OpenShift cloud deployments</li>
-                        </ul>
-                        <div class="timeline__tags">
-                            <span class="tag">Java 11</span>
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">Angular 13</span>
-                            <span class="tag">NgRx</span>
-                            <span class="tag">Jenkins</span>
-                            <span class="tag">OpenShift</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline__item" data-animate>
-                    <div class="timeline__marker"></div>
-                    <div class="timeline__content">
-                        <div class="timeline__header">
-                            <h3>Software Engineer</h3>
-                            <span class="timeline__company">Capgemini <span class="timeline__client" data-i18n="experience.capgemini_client">(Client: Mercadona)</span></span>
-                            <span class="timeline__date" data-i18n="experience.capgemini_date">Oct 2020 – Feb 2022</span>
-                        </div>
-                        <ul class="timeline__details">
-                            <li data-i18n="experience.capgemini_1">Optimized legacy supply chain systems processing massive daily volumes</li>
-                            <li data-i18n="experience.capgemini_2">Database overhaul (OracleSQL) — redesigned bottlenecked transaction layers</li>
-                            <li data-i18n="experience.capgemini_3">Primary technical interface for Europe's largest grocery supply chain</li>
-                        </ul>
-                        <div class="timeline__tags">
-                            <span class="tag">Java 11</span>
-                            <span class="tag">C++</span>
-                            <span class="tag">OracleSQL</span>
-                            <span class="tag">MyBatis</span>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -233,63 +94,47 @@
                         <div class="arch-label" data-i18n="architecture.sources">Data Sources</div>
                         <div class="arch-nodes">
                             <div class="arch-node arch-node--source">
-                                <span class="arch-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                                </span>
+                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
                                 <strong>Amazon.es</strong>
                                 <small>HTML Scraping</small>
                             </div>
                             <div class="arch-node arch-node--source">
-                                <span class="arch-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                                </span>
+                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
                                 <strong>B-Stock</strong>
                                 <small>Manifest CSVs</small>
                             </div>
                             <div class="arch-node arch-node--source">
-                                <span class="arch-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                                </span>
+                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
                                 <strong>Wallapop API</strong>
                                 <small>Reverse-Engineered</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="arch-arrow">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-                </div>
+                <div class="arch-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
                 <div class="arch-row">
                     <div class="arch-group">
                         <div class="arch-label" data-i18n="architecture.processing">Processing Layer</div>
                         <div class="arch-nodes">
                             <div class="arch-node arch-node--process">
-                                <span class="arch-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                                </span>
+                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
                                 <strong>Extractors</strong>
                                 <small>Orders · Chats · Listings</small>
                             </div>
                             <div class="arch-node arch-node--process">
-                                <span class="arch-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                                </span>
+                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
                                 <strong>AI Enrichment</strong>
                                 <small>GPT Categorization · Descriptions</small>
                             </div>
                             <div class="arch-node arch-node--process">
-                                <span class="arch-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                                </span>
+                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
                                 <strong>Scheduler</strong>
                                 <small>5 Recurring Jobs + Watchdog</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="arch-arrow">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-                </div>
+                <div class="arch-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
                 <div class="arch-row">
                     <div class="arch-group arch-group--core">
                         <div class="arch-label" data-i18n="architecture.core">Core</div>
@@ -302,31 +147,23 @@
                         </div>
                     </div>
                 </div>
-                <div class="arch-arrow">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-                </div>
+                <div class="arch-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
                 <div class="arch-row">
                     <div class="arch-group">
                         <div class="arch-label" data-i18n="architecture.outputs">Outputs</div>
                         <div class="arch-nodes">
                             <div class="arch-node arch-node--output">
-                                <span class="arch-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-                                </span>
+                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></span>
                                 <strong>Retool ERP</strong>
                                 <small>342 Files · 10+ Modules</small>
                             </div>
                             <div class="arch-node arch-node--output">
-                                <span class="arch-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                </span>
+                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
                                 <strong>Marketplaces</strong>
                                 <small>Wallapop · eBay · PortalHero</small>
                             </div>
                             <div class="arch-node arch-node--output">
-                                <span class="arch-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-                                </span>
+                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
                                 <strong>Label Printer</strong>
                                 <small>Brother QL-700 via USB</small>
                             </div>
@@ -354,273 +191,272 @@
     <section class="section section--alt" id="projects">
         <div class="container">
             <h2 class="section__title" data-i18n="projects.title">Projects</h2>
-            <p class="section__subtitle" data-i18n="projects.subtitle">Open-source repositories extracted from production systems I built and operated.</p>
+            <p class="section__subtitle" data-i18n="projects.subtitle">Components of a production e-commerce platform — built, iterated, and operated over 3 years.</p>
 
-            <div class="projects__filters">
-                <button class="filter-btn active" data-filter="all" data-i18n="projects.filter_all">All</button>
-                <button class="filter-btn" data-filter="ai" data-i18n="projects.filter_ai">AI / ML</button>
-                <button class="filter-btn" data-filter="scraping" data-i18n="projects.filter_scraping">Scraping</button>
-                <button class="filter-btn" data-filter="api" data-i18n="projects.filter_api">APIs</button>
-                <button class="filter-btn" data-filter="data" data-i18n="projects.filter_data">Data</button>
-                <button class="filter-btn" data-filter="infra" data-i18n="projects.filter_infra">Infrastructure</button>
-            </div>
-
-            <div class="projects__grid" id="projectsGrid">
-                <article class="project-card" data-category="ai scraping" data-animate>
+            <!-- Featured Projects (3 hero cards) -->
+            <div class="projects__featured" id="projectsFeatured">
+                <article class="project-card project-card--featured" data-category="api infra" data-animate>
                     <div class="project-card__header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/ai-product-enrichment" target="_blank" aria-label="GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
+                            <a href="https://github.com/AspiranteD/inventory-ops-api" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                         </div>
                     </div>
-                    <h3 class="project-card__title">AI Product Enrichment</h3>
-                    <p class="project-card__desc" data-i18n="projects.ai_enrichment_desc">Automated pipeline: Amazon scraping → GPT categorization → description generation → listing sync. Processes thousands of SKUs in production.</p>
+                    <div class="project-card__badge" data-i18n="projects.badge_core">Core System</div>
+                    <h3 class="project-card__title">Inventory Operations API</h3>
+                    <p class="project-card__desc" data-i18n="projects.inventory_desc">Full REST API for e-commerce ops: items, orders, sales, invoicing, scheduler, cookie management, label printing integration. The backbone of the entire REUSALIA platform.</p>
                     <div class="project-card__tags">
-                        <span>Python</span><span>OpenAI</span><span>BeautifulSoup</span><span>FastAPI</span>
+                        <span>FastAPI</span><span>SQLModel</span><span>PostgreSQL</span><span>APScheduler</span>
                     </div>
                 </article>
 
-                <article class="project-card" data-category="scraping api" data-animate>
+                <article class="project-card project-card--featured" data-category="scraping api" data-animate>
                     <div class="project-card__header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/wallapop-data-extractors" target="_blank" aria-label="GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
+                            <a href="https://github.com/AspiranteD/wallapop-data-extractors" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                         </div>
                     </div>
+                    <div class="project-card__badge" data-i18n="projects.badge_unique">Unique Engineering</div>
                     <h3 class="project-card__title">Wallapop Data Extractors</h3>
-                    <p class="project-card__desc" data-i18n="projects.wallapop_desc">Reverse-engineered private API. Multi-account extraction with cookie auth, anti-detection, parallel processing. 5 major version iterations.</p>
+                    <p class="project-card__desc" data-i18n="projects.wallapop_desc">Reverse-engineered private API. Multi-account extraction with cookie auth, anti-detection, parallel processing. 2,100+ lines, 5 major versions, ~100 orders/day across 12 accounts.</p>
                     <div class="project-card__tags">
                         <span>Python</span><span>Reverse Engineering</span><span>Threading</span><span>PostgreSQL</span>
                     </div>
                 </article>
 
+                <article class="project-card project-card--featured" data-category="ai scraping" data-animate>
+                    <div class="project-card__header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                        <div class="project-card__links">
+                            <a href="https://github.com/AspiranteD/ai-product-enrichment" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="project-card__badge" data-i18n="projects.badge_ai">AI Pipeline</div>
+                    <h3 class="project-card__title">AI Product Enrichment</h3>
+                    <p class="project-card__desc" data-i18n="projects.ai_enrichment_desc">Automated pipeline: Amazon scraping → GPT categorization → description generation → listing sync. Processes thousands of SKUs autonomously in production.</p>
+                    <div class="project-card__tags">
+                        <span>Python</span><span>OpenAI</span><span>BeautifulSoup</span><span>FastAPI</span>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Toggle button -->
+            <div class="projects__toggle-wrap">
+                <button class="btn btn--outline projects__toggle" id="toggleProjects" data-i18n="projects.show_all">Show all components (8 more)</button>
+            </div>
+
+            <!-- Remaining projects (collapsed by default) -->
+            <div class="projects__grid projects__grid--collapsed" id="projectsGrid">
                 <article class="project-card" data-category="api" data-animate>
                     <div class="project-card__header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/ebay-automation-toolkit" target="_blank" aria-label="GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
+                            <a href="https://github.com/AspiranteD/ebay-automation-toolkit" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                         </div>
                     </div>
                     <h3 class="project-card__title">eBay Automation Toolkit</h3>
                     <p class="project-card__desc" data-i18n="projects.ebay_desc">End-to-end eBay automation: OAuth2 auth, bulk CSV generation, Feed API uploads, order import, shipping with tracking.</p>
-                    <div class="project-card__tags">
-                        <span>Python</span><span>eBay API</span><span>OAuth2</span><span>pandas</span>
-                    </div>
-                </article>
-
-                <article class="project-card" data-category="api infra" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/inventory-ops-api" target="_blank" aria-label="GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <h3 class="project-card__title">Inventory Operations API</h3>
-                    <p class="project-card__desc" data-i18n="projects.inventory_desc">Full REST API for e-commerce ops: items, orders, sales, invoicing, scheduler, cookie management, label printing integration.</p>
-                    <div class="project-card__tags">
-                        <span>FastAPI</span><span>SQLModel</span><span>PostgreSQL</span><span>APScheduler</span>
-                    </div>
+                    <div class="project-card__tags"><span>Python</span><span>eBay API</span><span>OAuth2</span><span>pandas</span></div>
                 </article>
 
                 <article class="project-card" data-category="infra" data-animate>
                     <div class="project-card__header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/cloud-local-command-bridge" target="_blank" aria-label="GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
+                            <a href="https://github.com/AspiranteD/cloud-local-command-bridge" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                         </div>
                     </div>
                     <h3 class="project-card__title">Cloud-Local Command Bridge</h3>
                     <p class="project-card__desc" data-i18n="projects.bridge_desc">Distributed pattern: cloud UI enqueues commands via database, local backend processes with exclusive locking, heartbeat, and ~60s failover.</p>
-                    <div class="project-card__tags">
-                        <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Distributed Systems</span>
-                    </div>
+                    <div class="project-card__tags"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Distributed Systems</span></div>
                 </article>
 
                 <article class="project-card" data-category="data" data-animate>
                     <div class="project-card__header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/sheets-to-postgres-migration" target="_blank" aria-label="GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
+                            <a href="https://github.com/AspiranteD/sheets-to-postgres-migration" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                         </div>
                     </div>
                     <h3 class="project-card__title">Sheets → Postgres Migration</h3>
                     <p class="project-card__desc" data-i18n="projects.migration_desc">5-phase production migration pipeline: extract → validate → migrate → sync → verify. Financial reconciliation per Amazon truckload.</p>
-                    <div class="project-card__tags">
-                        <span>Python</span><span>PostgreSQL</span><span>gspread</span><span>pandas</span>
-                    </div>
+                    <div class="project-card__tags"><span>Python</span><span>PostgreSQL</span><span>gspread</span><span>pandas</span></div>
                 </article>
 
                 <article class="project-card" data-category="api" data-animate>
                     <div class="project-card__header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/marketplace-sync-engine" target="_blank" aria-label="GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
+                            <a href="https://github.com/AspiranteD/marketplace-sync-engine" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                         </div>
                     </div>
                     <h3 class="project-card__title">Marketplace Sync Engine</h3>
                     <p class="project-card__desc" data-i18n="projects.sync_desc">Multi-platform inventory sync: single source of truth in PostgreSQL, syncs to Wallapop, eBay, and PortalHero with marketplace-specific formatting.</p>
-                    <div class="project-card__tags">
-                        <span>Python</span><span>FastAPI</span><span>Google Drive</span><span>PostgreSQL</span>
-                    </div>
+                    <div class="project-card__tags"><span>Python</span><span>FastAPI</span><span>Google Drive</span><span>PostgreSQL</span></div>
                 </article>
 
                 <article class="project-card" data-category="scraping" data-animate>
                     <div class="project-card__header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/amazon-product-scraper" target="_blank" aria-label="GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
+                            <a href="https://github.com/AspiranteD/amazon-product-scraper" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                         </div>
                     </div>
                     <h3 class="project-card__title">Amazon Product Scraper</h3>
                     <p class="project-card__desc" data-i18n="projects.scraper_desc">Production scraper for Amazon.es: titles, prices, hi-res images, features. Anti-detection with UA rotation and request throttling.</p>
-                    <div class="project-card__tags">
-                        <span>Python</span><span>BeautifulSoup</span><span>Requests</span>
-                    </div>
+                    <div class="project-card__tags"><span>Python</span><span>BeautifulSoup</span><span>Requests</span></div>
                 </article>
 
                 <article class="project-card" data-category="scraping infra" data-animate>
                     <div class="project-card__header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/marketplace-auth-manager" target="_blank" aria-label="GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
+                            <a href="https://github.com/AspiranteD/marketplace-auth-manager" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                         </div>
                     </div>
                     <h3 class="project-card__title">Marketplace Auth Manager</h3>
                     <p class="project-card__desc" data-i18n="projects.auth_desc">Multi-account authentication lifecycle: cookie/bearer management, JWT decoding, automatic token refresh, secure storage in PostgreSQL.</p>
-                    <div class="project-card__tags">
-                        <span>Python</span><span>JWT</span><span>Requests</span><span>PostgreSQL</span>
-                    </div>
+                    <div class="project-card__tags"><span>Python</span><span>JWT</span><span>Requests</span><span>PostgreSQL</span></div>
                 </article>
 
                 <article class="project-card" data-category="ai scraping" data-animate>
                     <div class="project-card__header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/product-image-pipeline" target="_blank" aria-label="GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
+                            <a href="https://github.com/AspiranteD/product-image-pipeline" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                         </div>
                     </div>
                     <h3 class="project-card__title">Product Image Pipeline</h3>
                     <p class="project-card__desc" data-i18n="projects.image_desc">Image processing for marketplaces: download, anti-duplicate transforms (OpenCV), resize, compress, upload to cloud storage.</p>
-                    <div class="project-card__tags">
-                        <span>Python</span><span>OpenCV</span><span>PIL</span><span>NumPy</span>
-                    </div>
+                    <div class="project-card__tags"><span>Python</span><span>OpenCV</span><span>PIL</span><span>NumPy</span></div>
                 </article>
 
                 <article class="project-card" data-category="infra data" data-animate>
                     <div class="project-card__header">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                         <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/retool-erp-modules" target="_blank" aria-label="GitHub">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            </a>
+                            <a href="https://github.com/AspiranteD/retool-erp-modules" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
                         </div>
                     </div>
                     <h3 class="project-card__title">Retool ERP Modules</h3>
                     <p class="project-card__desc" data-i18n="projects.retool_desc">Internal ERP on Retool: 342 files across 10+ modules — orders, inventory, invoicing, incidents, chat analytics, mobile scanner.</p>
-                    <div class="project-card__tags">
-                        <span>SQL</span><span>JavaScript</span><span>Retool</span><span>PostgreSQL</span>
-                    </div>
+                    <div class="project-card__tags"><span>SQL</span><span>JavaScript</span><span>Retool</span><span>PostgreSQL</span></div>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- Skills -->
-    <section class="section" id="skills">
+    <!-- Experience -->
+    <section class="section" id="experience">
         <div class="container">
-            <h2 class="section__title" data-i18n="skills.title">Technical Stack</h2>
-            <div class="skills__grid">
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.backend">Backend & APIs</h3>
-                    <div class="skill-pills">
-                        <span class="pill">Python</span>
-                        <span class="pill">FastAPI</span>
-                        <span class="pill">Java</span>
-                        <span class="pill">Spring Boot</span>
-                        <span class="pill">SQLModel</span>
-                        <span class="pill">REST APIs</span>
+            <h2 class="section__title" data-i18n="experience.title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline__item" data-animate>
+                    <div class="timeline__marker"></div>
+                    <div class="timeline__content">
+                        <div class="timeline__header">
+                            <h3>Technical Founder & Lead Engineer</h3>
+                            <span class="timeline__company">REUSALIA</span>
+                            <span class="timeline__date" data-i18n="experience.reusalia_date">Apr 2023 – Present</span>
+                        </div>
+                        <ul class="timeline__details">
+                            <li data-i18n="experience.reusalia_1">Founded e-commerce automation company; scaled team from 3 to 6 employees</li>
+                            <li data-i18n="experience.reusalia_2">Architected full ERP system: FastAPI + PostgreSQL + Retool (25+ models, 342 UI files)</li>
+                            <li data-i18n="experience.reusalia_3">Built multi-marketplace automation (Wallapop, eBay, PortalHero) with AI enrichment pipeline</li>
+                            <li data-i18n="experience.reusalia_4">Reverse-engineered private APIs, built anti-detection systems, integrated label printers</li>
+                            <li data-i18n="experience.reusalia_5">Survived DANA floods (Oct 2024) — rebuilt company from zero, grew team from 3 to 5</li>
+                            <li data-i18n="experience.reusalia_6">Migrated production data from Google Sheets → PostgreSQL (5-phase pipeline)</li>
+                        </ul>
+                        <div class="timeline__tags">
+                            <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">OpenAI</span><span class="tag">Retool</span><span class="tag">eBay API</span>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.frontend">Frontend</h3>
-                    <div class="skill-pills">
-                        <span class="pill">Angular</span>
-                        <span class="pill">Vue.js</span>
-                        <span class="pill">HTML/CSS/JS</span>
-                        <span class="pill">NgRx</span>
-                        <span class="pill">Retool</span>
-                        <span class="pill">Tkinter</span>
+                <div class="timeline__item" data-animate>
+                    <div class="timeline__marker"></div>
+                    <div class="timeline__content">
+                        <div class="timeline__header">
+                            <h3>Senior Software Engineer</h3>
+                            <span class="timeline__company">LittleBig Connection</span>
+                            <span class="timeline__date" data-i18n="experience.lbc_date">Dec 2022 – Feb 2024</span>
+                        </div>
+                        <ul class="timeline__details">
+                            <li data-i18n="experience.lbc_1">Full-stack delivery: Java/Spring Boot APIs + Angular frontends</li>
+                            <li data-i18n="experience.lbc_2">Database design and optimization (MySQL) + Docker containerization</li>
+                            <li data-i18n="experience.lbc_3">Remote-first distributed team, agile methodologies</li>
+                        </ul>
+                        <div class="timeline__tags">
+                            <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">MySQL</span><span class="tag">Docker</span>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.databases">Databases</h3>
-                    <div class="skill-pills">
-                        <span class="pill">PostgreSQL</span>
-                        <span class="pill">MySQL</span>
-                        <span class="pill">OracleSQL</span>
-                        <span class="pill">NeonDB</span>
-                        <span class="pill">SQLite</span>
+                <div class="timeline__item" data-animate>
+                    <div class="timeline__marker"></div>
+                    <div class="timeline__content">
+                        <div class="timeline__header">
+                            <h3>Software Engineer</h3>
+                            <span class="timeline__company">Sopra Steria <span class="timeline__client" data-i18n="experience.sopra_client">(Client: AIRBUS)</span></span>
+                            <span class="timeline__date" data-i18n="experience.sopra_date">Nov 2021 – Dec 2022</span>
+                        </div>
+                        <ul class="timeline__details">
+                            <li data-i18n="experience.sopra_1">Technical ownership of e-Business contract infrastructure — monolith → microservices</li>
+                            <li data-i18n="experience.sopra_2">Re-architected Angular state management (NgRx), eliminating UI rendering freezes</li>
+                            <li data-i18n="experience.sopra_3">CI/CD pipelines with Jenkins + OpenShift cloud deployments</li>
+                        </ul>
+                        <div class="timeline__tags">
+                            <span class="tag">Java 11</span><span class="tag">Spring Boot</span><span class="tag">Angular 13</span><span class="tag">NgRx</span><span class="tag">Jenkins</span><span class="tag">OpenShift</span>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.ai">AI & Data</h3>
-                    <div class="skill-pills">
-                        <span class="pill">OpenAI GPT</span>
-                        <span class="pill">LLM Pipelines</span>
-                        <span class="pill">pandas</span>
-                        <span class="pill">NumPy</span>
-                        <span class="pill">ETL</span>
-                        <span class="pill">OpenCV</span>
+                <div class="timeline__item" data-animate>
+                    <div class="timeline__marker"></div>
+                    <div class="timeline__content">
+                        <div class="timeline__header">
+                            <h3>Software Engineer</h3>
+                            <span class="timeline__company">Capgemini <span class="timeline__client" data-i18n="experience.capgemini_client">(Client: Mercadona)</span></span>
+                            <span class="timeline__date" data-i18n="experience.capgemini_date">Oct 2020 – Feb 2022</span>
+                        </div>
+                        <ul class="timeline__details">
+                            <li data-i18n="experience.capgemini_1">Optimized legacy supply chain systems processing massive daily volumes</li>
+                            <li data-i18n="experience.capgemini_2">Database overhaul (OracleSQL) — redesigned bottlenecked transaction layers</li>
+                            <li data-i18n="experience.capgemini_3">Primary technical interface for Europe's largest grocery supply chain</li>
+                        </ul>
+                        <div class="timeline__tags">
+                            <span class="tag">Java 11</span><span class="tag">C++</span><span class="tag">OracleSQL</span><span class="tag">MyBatis</span>
+                        </div>
                     </div>
                 </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.scraping">Scraping & Automation</h3>
-                    <div class="skill-pills">
-                        <span class="pill">BeautifulSoup</span>
-                        <span class="pill">Selenium</span>
-                        <span class="pill">Reverse Engineering</span>
-                        <span class="pill">Anti-Detection</span>
-                        <span class="pill">APScheduler</span>
-                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section section--alt" id="about">
+        <div class="container">
+            <h2 class="section__title" data-i18n="about.title">About Me</h2>
+            <div class="about__grid">
+                <div class="about__text">
+                    <p data-i18n="about.p1">I founded a company at 25, built its entire tech stack from zero, and operated it for 3+ years — processing thousands of SKUs across multiple marketplaces, managing a growing team (now 6), and handling everything from warehouse logistics to AI-powered product enrichment.</p>
+                    <p data-i18n="about.p2">Before that, I cut my teeth at enterprise consultancies (Capgemini, Sopra Steria, LittleBig Connection), working on systems for AIRBUS and Mercadona — learning what scale, reliability, and stakeholder management really mean.</p>
+                    <p data-i18n-html="about.p3">In October 2024, a catastrophic flood destroyed our warehouse. I directed 60 people in recovery, rebuilt the company from scratch in 2 months, and used the crisis to build everything better — proper database, proper ERP, proper documentation. <a href="blog/rebuilding-after-dana.html">Read the full story →</a></p>
+                    <p data-i18n="about.p4">I'm not a tutorial developer. Every line of code I write handles real inventory, real money, and real operations. I've reverse-engineered private APIs, migrated production databases, integrated physical printers into cloud workflows, and built AI pipelines that run autonomously in production.</p>
                 </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.devops">DevOps & Infra</h3>
-                    <div class="skill-pills">
-                        <span class="pill">Docker</span>
-                        <span class="pill">Jenkins</span>
-                        <span class="pill">OpenShift</span>
-                        <span class="pill">Git</span>
-                        <span class="pill">CI/CD</span>
+                <div class="about__highlights">
+                    <div class="highlight">
+                        <div class="highlight__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+                        <h3 data-i18n="about.h_architect">Systems Architect</h3>
+                        <p data-i18n="about.d_architect">End-to-end platform design — from database schema to cloud deployment to hardware integration.</p>
                     </div>
-                </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.integrations">Integrations</h3>
-                    <div class="skill-pills">
-                        <span class="pill">eBay API</span>
-                        <span class="pill">Google Sheets/Drive</span>
-                        <span class="pill">OpenAI API</span>
-                        <span class="pill">Wallapop (RE)</span>
-                        <span class="pill">Brother QL-700</span>
+                    <div class="highlight">
+                        <div class="highlight__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <h3 data-i18n="about.h_founder">Technical Founder</h3>
+                        <p data-i18n="about.d_founder">Built and ran a real business — team management, operations, and full-stack development simultaneously.</p>
+                    </div>
+                    <div class="highlight">
+                        <div class="highlight__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
+                        <h3 data-i18n="about.h_solver">Problem Solver</h3>
+                        <p data-i18n="about.d_solver">Reverse engineering, data migration, anti-detection — I solve problems others avoid.</p>
                     </div>
                 </div>
             </div>
@@ -628,47 +464,86 @@
     </section>
 
     <!-- Blog -->
-    <section class="section section--alt" id="blog">
+    <section class="section" id="blog">
         <div class="container">
             <h2 class="section__title" data-i18n="blog.title">Technical Writing</h2>
             <p class="section__subtitle" data-i18n="blog.subtitle">Deep dives into real problems I solved — technical and otherwise.</p>
             <div class="blog-grid">
                 <a href="blog/sheets-to-postgres-migration.html" class="blog-card" data-animate>
-                    <div class="blog-card__meta">
-                        <span>May 2026</span>
-                        <span>12 min</span>
-                    </div>
+                    <div class="blog-card__meta"><span>2026</span><span>12 min</span></div>
                     <h3 class="blog-card__title" data-i18n="blog.migration_title">How I Migrated a Production Business from Google Sheets to PostgreSQL</h3>
                     <p class="blog-card__excerpt" data-i18n="blog.migration_excerpt">5 phases, daily syncs, financial reconciliation, and zero downtime — while running the business with 4 employees. The real engineering behind a spreadsheet-to-database migration.</p>
                     <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
                 </a>
                 <a href="blog/reverse-engineering-wallapop.html" class="blog-card" data-animate>
-                    <div class="blog-card__meta">
-                        <span>May 2026</span>
-                        <span>14 min</span>
-                    </div>
+                    <div class="blog-card__meta"><span>2026</span><span>14 min</span></div>
                     <h3 class="blog-card__title" data-i18n="blog.wallapop_title">From Manual Posting to Reverse Engineering: My Wallapop Journey</h3>
                     <p class="blog-card__excerpt" data-i18n="blog.wallapop_excerpt">10 min/item manually → Selenium bots across 6 remote PCs → reverse engineering a private API → 2,100-line extraction system processing 100 orders/day across 12 accounts.</p>
                     <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
                 </a>
-                <a href="blog/cloud-local-command-bridge.html" class="blog-card" data-animate>
-                    <div class="blog-card__meta">
-                        <span>May 2026</span>
-                        <span>6 min</span>
-                    </div>
-                    <h3 class="blog-card__title" data-i18n="blog.bridge_title">Bridging Cloud and Local: A Database Command Queue Pattern</h3>
-                    <p class="blog-card__excerpt" data-i18n="blog.bridge_excerpt">When your cloud UI needs to print a physical label on a USB printer in a warehouse — you need a creative architectural solution.</p>
-                    <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
-                </a>
                 <a href="blog/rebuilding-after-dana.html" class="blog-card" data-animate>
-                    <div class="blog-card__meta">
-                        <span>2026</span>
-                        <span>10 min</span>
-                    </div>
+                    <div class="blog-card__meta"><span>2026</span><span>10 min</span></div>
                     <h3 class="blog-card__title" data-i18n="blog.dana_title">Rebuilding a Company After a Catastrophic Flood</h3>
                     <p class="blog-card__excerpt" data-i18n="blog.dana_excerpt">The DANA floods destroyed our warehouse. I directed 60 people in recovery, rebuilt from scratch in 2 months, grew the team from 3 to 5, and used the crisis to build everything better.</p>
                     <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
                 </a>
+                <a href="blog/cloud-local-command-bridge.html" class="blog-card" data-animate>
+                    <div class="blog-card__meta"><span>2026</span><span>6 min</span></div>
+                    <h3 class="blog-card__title" data-i18n="blog.bridge_title">Bridging Cloud and Local: A Database Command Queue Pattern</h3>
+                    <p class="blog-card__excerpt" data-i18n="blog.bridge_excerpt">When your cloud UI needs to print a physical label on a USB printer in a warehouse — you need a creative architectural solution.</p>
+                    <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section section--alt" id="skills">
+        <div class="container">
+            <h2 class="section__title" data-i18n="skills.title">Technical Stack</h2>
+            <div class="skills__grid">
+                <div class="skill-group" data-animate>
+                    <h3 data-i18n="skills.backend">Backend & APIs</h3>
+                    <div class="skill-pills">
+                        <span class="pill">Python</span><span class="pill">FastAPI</span><span class="pill">Java</span><span class="pill">Spring Boot</span><span class="pill">SQLModel</span><span class="pill">REST APIs</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-animate>
+                    <h3 data-i18n="skills.frontend">Frontend</h3>
+                    <div class="skill-pills">
+                        <span class="pill">Angular</span><span class="pill">Vue.js</span><span class="pill">HTML/CSS/JS</span><span class="pill">NgRx</span><span class="pill">Retool</span><span class="pill">Tkinter</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-animate>
+                    <h3 data-i18n="skills.databases">Databases</h3>
+                    <div class="skill-pills">
+                        <span class="pill">PostgreSQL</span><span class="pill">MySQL</span><span class="pill">OracleSQL</span><span class="pill">NeonDB</span><span class="pill">SQLite</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-animate>
+                    <h3 data-i18n="skills.ai">AI & Data</h3>
+                    <div class="skill-pills">
+                        <span class="pill">OpenAI GPT</span><span class="pill">LLM Pipelines</span><span class="pill">pandas</span><span class="pill">NumPy</span><span class="pill">ETL</span><span class="pill">OpenCV</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-animate>
+                    <h3 data-i18n="skills.scraping">Scraping & Automation</h3>
+                    <div class="skill-pills">
+                        <span class="pill">BeautifulSoup</span><span class="pill">Selenium</span><span class="pill">Reverse Engineering</span><span class="pill">Anti-Detection</span><span class="pill">APScheduler</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-animate>
+                    <h3 data-i18n="skills.devops">DevOps & Infra</h3>
+                    <div class="skill-pills">
+                        <span class="pill">Docker</span><span class="pill">Jenkins</span><span class="pill">OpenShift</span><span class="pill">Git</span><span class="pill">CI/CD</span>
+                    </div>
+                </div>
+                <div class="skill-group" data-animate>
+                    <h3 data-i18n="skills.integrations">Integrations</h3>
+                    <div class="skill-pills">
+                        <span class="pill">eBay API</span><span class="pill">Google Sheets/Drive</span><span class="pill">OpenAI API</span><span class="pill">Wallapop (RE)</span><span class="pill">Brother QL-700</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

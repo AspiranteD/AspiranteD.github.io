@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initNav();
-    initProjectFilters();
+    initProjectToggle();
     initScrollAnimations();
     initLangSwitcher();
 });
@@ -48,24 +48,20 @@ function initNav() {
     }, { passive: true });
 }
 
-function initProjectFilters() {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.project-card');
+function initProjectToggle() {
+    const btn = document.getElementById('toggleProjects');
+    const grid = document.getElementById('projectsGrid');
+    if (!btn || !grid) return;
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filter = btn.dataset.filter;
-            cards.forEach(card => {
-                if (filter === 'all' || card.dataset.category.includes(filter)) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-        });
+    btn.addEventListener('click', () => {
+        const isCollapsed = grid.classList.contains('projects__grid--collapsed');
+        grid.classList.toggle('projects__grid--collapsed');
+        if (isCollapsed) {
+            btn.textContent = btn.dataset.hideText || 'Show less';
+            grid.querySelectorAll('[data-animate]').forEach(el => el.classList.add('visible'));
+        } else {
+            btn.textContent = btn.dataset.showText || 'Show all components (8 more)';
+        }
     });
 }
 
