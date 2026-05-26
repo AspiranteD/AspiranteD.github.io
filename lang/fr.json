@@ -18,7 +18,7 @@
     },
     "about": {
         "title": "À Propos",
-        "p1": "J'ai fondé une entreprise à 26 ans, construit toute son infrastructure technique à partir de zéro, et l'ai opérée pendant plus de 3 ans — traitant des milliers de SKUs sur plusieurs marketplaces, gérant une équipe de 4 personnes, et m'occupant de tout, de la logistique d'entrepôt à l'enrichissement de produits par IA.",
+        "p1": "J'ai fondé une entreprise à 25 ans, construit toute son infrastructure technique à partir de zéro, et l'ai opérée pendant plus de 3 ans — traitant des milliers de SKUs sur plusieurs marketplaces, gérant une équipe de 4 personnes, et m'occupant de tout, de la logistique d'entrepôt à l'enrichissement de produits par IA.",
         "p2": "Avant cela, j'ai fait mes armes dans des cabinets de conseil enterprise (Capgemini, Sopra Steria, LittleBig Connection), travaillant sur des systèmes pour AIRBUS et Mercadona — apprenant ce que signifient réellement l'échelle, la fiabilité et la gestion des parties prenantes.",
         "p3": "Je ne suis pas un développeur de tutoriels. Chaque ligne de code que j'écris gère un inventaire réel, de l'argent réel et des opérations réelles. J'ai fait du reverse engineering d'APIs privées, migré des bases de données en production, intégré des imprimantes physiques dans des workflows cloud, et construit des pipelines IA qui fonctionnent de manière autonome en production.",
         "h_architect": "Architecte Systèmes",

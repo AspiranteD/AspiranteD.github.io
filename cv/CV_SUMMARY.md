@@ -46,7 +46,7 @@ Technical founder with 5+ years of experience building production systems — fr
 
 ## Technical Stack
 
-**Backend:** Python · FastAPI · Java · Spring Boot · Django · REST APIs  
+**Backend:** Python · FastAPI · Java · Spring Boot · REST APIs  
 **Frontend:** Angular · Vue.js · Retool · HTML/CSS/JS  
 **Databases:** PostgreSQL · MySQL · OracleSQL  
 **AI/ML:** OpenAI GPT · LLM Pipelines · Prompt Engineering  

@@ -18,7 +18,7 @@
     },
     "about": {
         "title": "About Me",
-        "p1": "I founded a company at 26, built its entire tech stack from zero, and operated it for 3+ years — processing thousands of SKUs across multiple marketplaces, managing a team of 4, and handling everything from warehouse logistics to AI-powered product enrichment.",
+        "p1": "I founded a company at 25, built its entire tech stack from zero, and operated it for 3+ years — processing thousands of SKUs across multiple marketplaces, managing a team of 4, and handling everything from warehouse logistics to AI-powered product enrichment.",
         "p2": "Before that, I cut my teeth at enterprise consultancies (Capgemini, Sopra Steria, LittleBig Connection), working on systems for AIRBUS and Mercadona — learning what scale, reliability, and stakeholder management really mean.",
         "p3": "I'm not a tutorial developer. Every line of code I write handles real inventory, real money, and real operations. I've reverse-engineered private APIs, migrated production databases, integrated physical printers into cloud workflows, and built AI pipelines that run autonomously in production.",
         "h_architect": "Systems Architect",

@@ -149,7 +149,7 @@ Interdisciplinary engineering degree combining computer science, software develo
 `Python` · `Java` · `JavaScript/TypeScript` · `SQL` · `C++` · `HTML/CSS`
 
 ### Backend & APIs
-`FastAPI` · `Spring Boot` · `SQLModel` · `Django` · `REST API Design`
+`FastAPI` · `Spring Boot` · `SQLModel` · `REST API Design`
 
 ### Databases
 `PostgreSQL (NeonDB)` · `MySQL` · `OracleSQL` · `SQLite`
@@ -246,6 +246,6 @@ Internal ERP system built on Retool Cloud with 342 files: SQL queries, JS handle
 
 ## What Drives Me
 
-I founded a company at 26, built its entire tech stack from zero, and operated it for 3+ years while simultaneously working as a senior engineer at enterprise consultancies. I've written code that processes real money, manages real inventory, and coordinates real people in a warehouse.
+I founded a company at 25, built its entire tech stack from zero, and operated it for 3+ years while simultaneously working as a senior engineer at enterprise consultancies. I've written code that processes real money, manages real inventory, and coordinates real people in a warehouse.
 
 I'm not a tutorial developer. I build systems that run businesses — and I've proven it by running one myself.
