@@ -675,7 +675,15 @@ img { max-width: 100%; display: block; }
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.7;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
+}
+
+.project-card__metric {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
     flex-grow: 1;
 }
 

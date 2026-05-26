@@ -84,7 +84,18 @@
         "scraper_desc": "Scraper de production pour Amazon.es : titres, prix, images hi-res, caractéristiques. Anti-détection avec rotation d'UA et throttling.",
         "auth_desc": "Cycle de vie d'authentification multi-comptes : gestion cookies/bearers, décodage JWT, refresh automatique, stockage sécurisé en PostgreSQL.",
         "image_desc": "Traitement d'images pour marketplaces : téléchargement, transformations anti-doublon (OpenCV), redimensionnement, compression, upload cloud.",
-        "retool_desc": "ERP interne sur Retool : 342 fichiers dans 10+ modules — commandes, inventaire, facturation, incidents, analytics de chats, scanner mobile."
+        "retool_desc": "ERP interne sur Retool : 342 fichiers dans 10+ modules — commandes, inventaire, facturation, incidents, analytics de chats, scanner mobile.",
+        "inventory_metric": "Utilisé quotidiennement par 6 employés · Opère sur 3 marketplaces",
+        "wallapop_metric": "Remplace ~5h/jour de travail manuel · Rend les opérations multi-comptes possibles",
+        "ai_enrichment_metric": "Économise ~40h/semaine vs descriptions manuelles · Milliers de SKUs traités",
+        "ebay_metric": "Uploads massifs de 1 000+ articles · Cycle complet des commandes automatisé",
+        "bridge_metric": "Failover ~60s · Connecte Retool cloud aux imprimantes locales",
+        "migration_metric": "3 ans de données de production · Migration sans downtime",
+        "sync_metric": "3 marketplaces synchronisés · Source unique de vérité pour tout le stock",
+        "scraper_metric": "Alimente le pipeline IA avec des données à grande échelle · Exécution autonome",
+        "auth_metric": "12+ comptes gérés · Rotation automatique sur tous les extracteurs",
+        "image_metric": "Transformations anti-doublon contournent les filtres des marketplaces",
+        "retool_metric": "342 fichiers · 10+ modules · Utilisé quotidiennement par toute l'équipe"
     },
     "skills": {
         "title": "Stack Technique",
@@ -107,6 +118,8 @@
         "bridge_excerpt": "Quand votre UI cloud doit imprimer une étiquette physique sur une imprimante USB dans un entrepôt — il faut une solution architecturale créative.",
         "dana_title": "Reconstruire une Entreprise Après une Inondation Catastrophique",
         "dana_excerpt": "Les inondations DANA ont détruit notre entrepôt. J'ai dirigé 60 personnes pour la récupération, reconstruit à partir de zéro en 2 mois, agrandi l'équipe de 3 à 5, et utilisé la crise pour tout reconstruire mieux.",
+        "flagship_title": "Comment j'ai Construit un ERP Complet qui Opère un Commerce E-Commerce Multi-Marketplace",
+        "flagship_excerpt": "Un ingénieur. 180+ scripts. 12 comptes. ~100 commandes/jour. L'histoire technique complète — des bots Selenium sur 6 PCs à un ERP complet avec APIs reverse-engineered, pipelines IA et intégration matérielle.",
         "read_more": "Lire l'article →"
     },
     "contact": {

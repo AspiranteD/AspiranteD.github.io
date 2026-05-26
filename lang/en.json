@@ -84,7 +84,18 @@
         "scraper_desc": "Production scraper for Amazon.es: titles, prices, hi-res images, features. Anti-detection with UA rotation and request throttling.",
         "auth_desc": "Multi-account authentication lifecycle: cookie/bearer management, JWT decoding, automatic token refresh, secure storage in PostgreSQL.",
         "image_desc": "Image processing for marketplaces: download, anti-duplicate transforms (OpenCV), resize, compress, upload to cloud storage.",
-        "retool_desc": "Internal ERP on Retool: 342 files across 10+ modules — orders, inventory, invoicing, incidents, chat analytics, mobile scanner."
+        "retool_desc": "Internal ERP on Retool: 342 files across 10+ modules — orders, inventory, invoicing, incidents, chat analytics, mobile scanner.",
+        "inventory_metric": "Used daily by 6 employees · Powers operations across 3 marketplaces",
+        "wallapop_metric": "Replaces ~5h/day manual work · Makes multi-account ops physically possible",
+        "ai_enrichment_metric": "Saves ~40h/week vs manual descriptions · Thousands of SKUs processed",
+        "ebay_metric": "1,000+ item batch uploads · Full order lifecycle automated",
+        "bridge_metric": "~60s failover · Bridges cloud Retool UI to local label printers",
+        "migration_metric": "3 years of production data · Zero-downtime cutover",
+        "sync_metric": "3 marketplaces synced · Single source of truth for all stock",
+        "scraper_metric": "Feeds AI pipeline with product data at scale · Autonomous execution",
+        "auth_metric": "12+ accounts managed · Automatic rotation across all extractors",
+        "image_metric": "Anti-duplicate transforms bypass marketplace filters",
+        "retool_metric": "342 files · 10+ modules · Used daily by entire team"
     },
     "skills": {
         "title": "Technical Stack",
@@ -107,6 +118,8 @@
         "bridge_excerpt": "When your cloud UI needs to print a physical label on a USB printer in a warehouse — you need a creative architectural solution.",
         "dana_title": "Rebuilding a Company After a Catastrophic Flood",
         "dana_excerpt": "The DANA floods destroyed our warehouse. I directed 60 people in recovery, rebuilt from scratch in 2 months, grew the team from 3 to 5, and used the crisis to build everything better.",
+        "flagship_title": "How I Built a Full ERP That Runs a Multi-Marketplace E-Commerce Operation",
+        "flagship_excerpt": "One engineer. 180+ scripts. 12 accounts. ~100 orders/day. The complete technical story — from Selenium bots on 6 PCs to a full ERP with reverse-engineered APIs, AI pipelines, and hardware integration.",
         "read_more": "Read article →"
     },
     "contact": {

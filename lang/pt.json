@@ -84,7 +84,18 @@
         "scraper_desc": "Scraper de produção para Amazon.es: títulos, preços, imagens hi-res, características. Anti-deteção com rotação de UA e throttling.",
         "auth_desc": "Ciclo de vida de autenticação multi-conta: gestão de cookies/bearers, descodificação JWT, refresh automático, armazenamento seguro em PostgreSQL.",
         "image_desc": "Processamento de imagens para marketplaces: download, transformações anti-duplicado (OpenCV), redimensionamento, compressão, upload cloud.",
-        "retool_desc": "ERP interno em Retool: 342 ficheiros em 10+ módulos — pedidos, inventário, faturação, incidentes, analytics de chats, scanner móvel."
+        "retool_desc": "ERP interno em Retool: 342 ficheiros em 10+ módulos — pedidos, inventário, faturação, incidentes, analytics de chats, scanner móvel.",
+        "inventory_metric": "Usado diariamente por 6 funcionários · Opera em 3 marketplaces",
+        "wallapop_metric": "Substitui ~5h/dia de trabalho manual · Torna possíveis as operações multi-conta",
+        "ai_enrichment_metric": "Poupa ~40h/semana vs descrições manuais · Milhares de SKUs processados",
+        "ebay_metric": "Uploads massivos de 1.000+ artigos · Ciclo completo de pedidos automatizado",
+        "bridge_metric": "Failover ~60s · Liga Retool cloud a impressoras locais",
+        "migration_metric": "3 anos de dados de produção · Migração sem downtime",
+        "sync_metric": "3 marketplaces sincronizados · Fonte única de verdade para todo o stock",
+        "scraper_metric": "Alimenta o pipeline IA com dados em escala · Execução autónoma",
+        "auth_metric": "12+ contas geridas · Rotação automática em todos os extratores",
+        "image_metric": "Transformações anti-duplicado contornam filtros de marketplaces",
+        "retool_metric": "342 ficheiros · 10+ módulos · Usado diariamente por toda a equipa"
     },
     "skills": {
         "title": "Stack Tecnológico",
@@ -107,6 +118,8 @@
         "bridge_excerpt": "Quando a sua UI cloud precisa imprimir uma etiqueta física numa impressora USB num armazém — precisa de uma solução arquitetónica criativa.",
         "dana_title": "Reconstruir uma Empresa Após uma Inundação Catastrófica",
         "dana_excerpt": "As cheias DANA destruíram o nosso armazém. Dirigi 60 pessoas na recuperação, reconstruímos do zero em 2 meses, a equipa cresceu de 3 para 5, e usei a crise para construir tudo melhor.",
+        "flagship_title": "Como Construí um ERP Completo que Opera um Negócio E-Commerce Multi-Marketplace",
+        "flagship_excerpt": "Um engenheiro. 180+ scripts. 12 contas. ~100 pedidos/dia. A história técnica completa — de bots Selenium em 6 PCs a um ERP completo com APIs de engenharia reversa, pipelines de IA e integração de hardware.",
         "read_more": "Ler artigo →"
     },
     "contact": {
