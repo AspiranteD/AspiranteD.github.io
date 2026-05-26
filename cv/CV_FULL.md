@@ -10,7 +10,7 @@ Valencia, Spain · [GitHub](https://github.com/AspiranteD) · [Portfolio](https:
 
 Technical founder and full-stack engineer with 5+ years of experience building production systems at scale — from high-volume enterprise logistics (Mercadona, AIRBUS) to founding and operating my own e-commerce automation company.
 
-I've architected and deployed end-to-end platforms that process thousands of SKUs across multiple marketplaces (Amazon, Wallapop, eBay), built AI-powered enrichment pipelines, reverse-engineered private APIs, migrated production databases from spreadsheets to PostgreSQL, and integrated physical hardware (label printers) into cloud workflows — all while managing a team of 4 and running day-to-day business operations.
+I've architected and deployed end-to-end platforms that process thousands of SKUs across multiple marketplaces (Amazon, Wallapop, eBay), built AI-powered enrichment pipelines, reverse-engineered private APIs, migrated production databases from spreadsheets to PostgreSQL, and integrated physical hardware (label printers) into cloud workflows — all while scaling a team from 3 to 6 and running day-to-day business operations.
 
 I don't just write code. I build systems that run businesses.
 
@@ -41,7 +41,7 @@ I don't just write code. I build systems that run businesses.
 - **Low-Code**: Retool as internal ERP frontend (342+ files: queries, scripts, transformers)
 
 ### Operations & Leadership
-- **Team Management**: Founded and scaled a business with 4 full-time employees (logistics, warehouse, administration)
+- **Team Management**: Founded and scaled a business from 3 to 6 full-time employees (logistics, warehouse, administration)
 - **Business Operations**: End-to-end — sourcing, inventory, pricing, fulfillment, customer service, accounting
 - **B2B Consulting**: System audits, database bottleneck resolution, infrastructure optimization for external clients
 
@@ -56,7 +56,7 @@ I don't just write code. I build systems that run businesses.
 Founded and built from scratch a vertically-integrated e-commerce automation company, handling everything from business strategy and team management to architecting the entire technical infrastructure.
 
 **Business Impact:**
-- Built and managed a team of 4 full-time employees across logistics, warehouse operations, and administration
+- Built and scaled a team from 3 to 6 full-time employees across logistics, warehouse operations, and administration
 - Processed thousands of Amazon liquidation SKUs through a fully automated pipeline: sourcing → inventory → enrichment → listing → fulfillment
 - Expanded from single-channel (Wallapop) to multi-marketplace (Wallapop + eBay + PortalHero) with unified inventory management
 
@@ -79,8 +79,8 @@ Founded and built from scratch a vertically-integrated e-commerce automation com
 - **Database Schema**: 16 modular DDL files, 35+ incremental migrations, views, materialized views, trigger functions
 
 **Crisis Management — DANA Floods (October 2024):**
-- Eight months after scaling to an industrial warehouse in Alfafar, the DANA floods devastated the facility — one of the hardest-hit areas in the Valencia region
-- Led crisis response: coordinated dozens of volunteers, managed military logistics, navigated insurance claims and emergency budgets
+- Six months after moving to an industrial warehouse in Alfafar (April 2024), the DANA floods devastated the facility in October 2024 — one of the hardest-hit areas in the Valencia region
+- Led crisis response: organized and directed 50-60 people (volunteers and military personnel), coordinating cleanup and recovery operations; navigated insurance claims and emergency budgets
 - Rebuilt the company from scratch in 2 months: redesigned systems, improved documentation, expanded team from 3 to 5 employees
 - Used the forced reset as an opportunity to migrate the entire tech stack to production-grade infrastructure (PostgreSQL + Retool ERP)
 

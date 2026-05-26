@@ -20,9 +20,9 @@
     },
     "about": {
         "title": "About Me",
-        "p1": "I founded a company at 25, built its entire tech stack from zero, and operated it for 3+ years — processing thousands of SKUs across multiple marketplaces, managing a team of 4, and handling everything from warehouse logistics to AI-powered product enrichment.",
+        "p1": "I founded a company at 25, built its entire tech stack from zero, and operated it for 3+ years — processing thousands of SKUs across multiple marketplaces, managing a growing team (now 6), and handling everything from warehouse logistics to AI-powered product enrichment.",
         "p2": "Before that, I cut my teeth at enterprise consultancies (Capgemini, Sopra Steria, LittleBig Connection), working on systems for AIRBUS and Mercadona — learning what scale, reliability, and stakeholder management really mean.",
-        "p3": "In October 2024, the DANA floods devastated our warehouse in Alfafar, Valencia — one of the hardest-hit areas. We lost inventory, equipment, and months of momentum. I coordinated volunteers, managed military logistics, handled insurance, and two months later rebuilt the company from scratch — this time with better systems, better documentation, and a bigger team. That's when I decided to migrate everything to a real database and build the ERP properly.",
+        "p3": "In October 2024, the DANA floods devastated our warehouse in Alfafar, Valencia — one of the hardest-hit areas. We lost inventory, equipment, and months of momentum. In the aftermath, I organized and directed 50-60 people — volunteers and military personnel who came to help — coordinating cleanup and recovery operations in our facility. Then came the insurance claims, budgets, and the mental reset. Two months later we were operational again, rebuilt from scratch — this time with better systems, better documentation, and a bigger team (from 3 to 5). That's when I decided to migrate everything to a real database and build the ERP properly.",
         "p4": "I'm not a tutorial developer. Every line of code I write handles real inventory, real money, and real operations. I've reverse-engineered private APIs, migrated production databases, integrated physical printers into cloud workflows, and built AI pipelines that run autonomously in production.",
         "h_architect": "Systems Architect",
         "d_architect": "End-to-end platform design — from database schema to cloud deployment to hardware integration.",
@@ -34,7 +34,7 @@
     "experience": {
         "title": "Experience",
         "reusalia_date": "Apr 2023 – Present",
-        "reusalia_1": "Founded e-commerce automation company; managed team of 4 employees",
+        "reusalia_1": "Founded e-commerce automation company; scaled team from 3 to 6 employees",
         "reusalia_2": "Architected full ERP system: FastAPI + PostgreSQL + Retool (25+ models, 342 UI files)",
         "reusalia_3": "Built multi-marketplace automation (Wallapop, eBay, PortalHero) with AI enrichment pipeline",
         "reusalia_4": "Reverse-engineered private APIs, built anti-detection systems, integrated label printers",

@@ -20,9 +20,9 @@
     },
     "about": {
         "title": "Sobre Mí",
-        "p1": "Fundé una empresa a los 25 años, construí toda su infraestructura tecnológica desde cero, y la operé durante más de 3 años — procesando miles de SKUs en múltiples marketplaces, gestionando un equipo de 4 personas, y encargándome de todo, desde la logística de almacén hasta el enriquecimiento de productos con IA.",
+        "p1": "Fundé una empresa a los 25 años, construí toda su infraestructura tecnológica desde cero, y la operé durante más de 3 años — procesando miles de SKUs en múltiples marketplaces, gestionando un equipo creciente (ahora 6 personas), y encargándome de todo, desde la logística de almacén hasta el enriquecimiento de productos con IA.",
         "p2": "Antes, me formé en consultoras enterprise (Capgemini, Sopra Steria, LittleBig Connection), trabajando en sistemas para AIRBUS y Mercadona — aprendiendo qué significan realmente la escala, la fiabilidad y la gestión de stakeholders.",
-        "p3": "En octubre de 2024, la DANA arrasó nuestro almacén en Alfafar, Valencia — una de las zonas más afectadas. Perdimos inventario, equipos y meses de impulso. Coordiné voluntarios, gestioné logística militar, tramité seguros, y dos meses después reconstruí la empresa desde cero — esta vez con mejores sistemas, mejor documentación y un equipo más grande. Ahí fue cuando decidí migrar todo a una base de datos real y construir el ERP como debe ser.",
+        "p3": "En octubre de 2024, la DANA arrasó nuestro almacén en Alfafar, Valencia — una de las zonas más afectadas. Perdimos inventario, equipos y meses de impulso. En los días siguientes, organicé y dirigí a 50-60 personas — voluntarios y militares que vinieron a ayudar — coordinando las operaciones de limpieza y recuperación en nuestra nave. Después vinieron los seguros, presupuestos y el reset mental. Dos meses después estábamos operativos otra vez, reconstruidos desde cero — esta vez con mejores sistemas, mejor documentación y un equipo más grande (de 3 a 5). Ahí fue cuando decidí migrar todo a una base de datos real y construir el ERP como debe ser.",
         "p4": "No soy un desarrollador de tutoriales. Cada línea de código que escribo gestiona inventario real, dinero real y operaciones reales. He hecho ingeniería inversa de APIs privadas, migrado bases de datos en producción, integrado impresoras físicas en flujos cloud, y construido pipelines de IA que funcionan de forma autónoma en producción.",
         "h_architect": "Arquitecto de Sistemas",
         "d_architect": "Diseño de plataformas end-to-end — desde esquemas de base de datos hasta despliegue cloud e integración hardware.",
@@ -34,7 +34,7 @@
     "experience": {
         "title": "Experiencia",
         "reusalia_date": "Abr 2023 – Presente",
-        "reusalia_1": "Fundé empresa de automatización e-commerce; gestioné equipo de 4 empleados",
+        "reusalia_1": "Fundé empresa de automatización e-commerce; equipo escalado de 3 a 6 empleados",
         "reusalia_2": "Diseñé sistema ERP completo: FastAPI + PostgreSQL + Retool (25+ modelos, 342 archivos UI)",
         "reusalia_3": "Construí automatización multi-marketplace (Wallapop, eBay, PortalHero) con pipeline de enriquecimiento IA",
         "reusalia_4": "Ingeniería inversa de APIs privadas, sistemas anti-detección, integración de impresoras de etiquetas",

@@ -20,9 +20,9 @@
     },
     "about": {
         "title": "Sobre Mim",
-        "p1": "Fundei uma empresa aos 25 anos, construí toda a sua infraestrutura tecnológica do zero, e operei-a por mais de 3 anos — processando milhares de SKUs em múltiplos marketplaces, gerindo uma equipa de 4 pessoas, e cuidando de tudo, desde logística de armazém até enriquecimento de produtos com IA.",
+        "p1": "Fundei uma empresa aos 25 anos, construí toda a sua infraestrutura tecnológica do zero, e operei-a por mais de 3 anos — processando milhares de SKUs em múltiplos marketplaces, gerindo uma equipa crescente (agora 6 pessoas), e cuidando de tudo, desde logística de armazém até enriquecimento de produtos com IA.",
         "p2": "Antes disso, ganhei experiência em consultoras enterprise (Capgemini, Sopra Steria, LittleBig Connection), trabalhando em sistemas para AIRBUS e Mercadona — aprendendo o que realmente significam escala, fiabilidade e gestão de stakeholders.",
-        "p3": "Em outubro de 2024, as cheias DANA devastaram o nosso armazém em Alfafar, Valência — uma das zonas mais afetadas. Perdemos stock, equipamento e meses de impulso. Coordenei voluntários, geri logística militar, tratei seguros, e dois meses depois reconstruí a empresa do zero — desta vez com melhores sistemas, melhor documentação e uma equipa maior.",
+        "p3": "Em outubro de 2024, as cheias DANA devastaram o nosso armazém em Alfafar, Valência — uma das zonas mais afetadas. Perdemos stock, equipamento e meses de impulso. Nos dias seguintes, organizei e dirigi 50-60 pessoas — voluntários e militares que vieram ajudar — coordenando as operações de limpeza e recuperação nas nossas instalações. Depois vieram os seguros, orçamentos e o reset mental. Dois meses depois estávamos operacionais de novo, reconstruídos do zero — desta vez com melhores sistemas, melhor documentação e uma equipa maior (de 3 para 5).",
         "p4": "Não sou um desenvolvedor de tutoriais. Cada linha de código que escrevo gere inventário real, dinheiro real e operações reais. Fiz engenharia reversa de APIs privadas, migrei bases de dados em produção, integrei impressoras físicas em workflows cloud, e construí pipelines de IA que funcionam de forma autónoma em produção.",
         "h_architect": "Arquiteto de Sistemas",
         "d_architect": "Design de plataformas end-to-end — desde esquemas de base de dados até deployment cloud e integração de hardware.",
@@ -34,7 +34,7 @@
     "experience": {
         "title": "Experiência",
         "reusalia_date": "Abr 2023 – Presente",
-        "reusalia_1": "Fundei empresa de automação e-commerce; geri equipa de 4 funcionários",
+        "reusalia_1": "Fundei empresa de automação e-commerce; equipa escalada de 3 a 6 funcionários",
         "reusalia_2": "Projetei sistema ERP completo: FastAPI + PostgreSQL + Retool (25+ modelos, 342 ficheiros UI)",
         "reusalia_3": "Construí automação multi-marketplace (Wallapop, eBay, PortalHero) com pipeline de enriquecimento IA",
         "reusalia_4": "Engenharia reversa de APIs privadas, sistemas anti-deteção, integração de impressoras de etiquetas",

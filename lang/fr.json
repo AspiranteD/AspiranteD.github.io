@@ -20,9 +20,9 @@
     },
     "about": {
         "title": "À Propos",
-        "p1": "J'ai fondé une entreprise à 25 ans, construit toute son infrastructure technique à partir de zéro, et l'ai opérée pendant plus de 3 ans — traitant des milliers de SKUs sur plusieurs marketplaces, gérant une équipe de 4 personnes, et m'occupant de tout, de la logistique d'entrepôt à l'enrichissement de produits par IA.",
+        "p1": "J'ai fondé une entreprise à 25 ans, construit toute son infrastructure technique à partir de zéro, et l'ai opérée pendant plus de 3 ans — traitant des milliers de SKUs sur plusieurs marketplaces, gérant une équipe croissante (maintenant 6 personnes), et m'occupant de tout, de la logistique d'entrepôt à l'enrichissement de produits par IA.",
         "p2": "Avant cela, j'ai fait mes armes dans des cabinets de conseil enterprise (Capgemini, Sopra Steria, LittleBig Connection), travaillant sur des systèmes pour AIRBUS et Mercadona — apprenant ce que signifient réellement l'échelle, la fiabilité et la gestion des parties prenantes.",
-        "p3": "En octobre 2024, les inondations DANA ont dévasté notre entrepôt à Alfafar, Valence — l'une des zones les plus touchées. Nous avons perdu du stock, du matériel et des mois d'élan. J'ai coordonné des bénévoles, géré la logistique militaire, traité les assurances, et deux mois plus tard j'ai reconstruit l'entreprise à partir de zéro — cette fois avec de meilleurs systèmes, une meilleure documentation et une équipe plus grande.",
+        "p3": "En octobre 2024, les inondations DANA ont dévasté notre entrepôt à Alfafar, Valence — l'une des zones les plus touchées. Nous avons perdu du stock, du matériel et des mois d'élan. Dans les jours qui ont suivi, j'ai organisé et dirigé 50-60 personnes — bénévoles et militaires venus aider — coordonnant les opérations de nettoyage et récupération dans nos locaux. Puis sont venus les assurances, les budgets et la remise à zéro mentale. Deux mois plus tard, nous étions de nouveau opérationnels, reconstruits à partir de zéro — cette fois avec de meilleurs systèmes, une meilleure documentation et une équipe plus grande (de 3 à 5).",
         "p4": "Je ne suis pas un développeur de tutoriels. Chaque ligne de code que j'écris gère un inventaire réel, de l'argent réel et des opérations réelles. J'ai fait du reverse engineering d'APIs privées, migré des bases de données en production, intégré des imprimantes physiques dans des workflows cloud, et construit des pipelines IA qui fonctionnent de manière autonome en production.",
         "h_architect": "Architecte Systèmes",
         "d_architect": "Conception de plateformes end-to-end — du schéma de base de données au déploiement cloud en passant par l'intégration matérielle.",
@@ -34,7 +34,7 @@
     "experience": {
         "title": "Expérience",
         "reusalia_date": "Avr 2023 – Présent",
-        "reusalia_1": "Fondé une entreprise d'automatisation e-commerce ; géré une équipe de 4 employés",
+        "reusalia_1": "Fondé une entreprise d'automatisation e-commerce ; équipe de 3 à 6 employés",
         "reusalia_2": "Conçu un système ERP complet : FastAPI + PostgreSQL + Retool (25+ modèles, 342 fichiers UI)",
         "reusalia_3": "Construit l'automatisation multi-marketplace (Wallapop, eBay, PortalHero) avec pipeline d'enrichissement IA",
         "reusalia_4": "Reverse engineering d'APIs privées, systèmes anti-détection, intégration d'imprimantes d'étiquettes",

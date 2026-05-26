@@ -15,7 +15,7 @@ Technical founder with 5+ years of experience building production systems — fr
 
 **Technical Founder & Lead Engineer** — REUSALIA  
 *Apr 2023 – Present · Valencia*  
-- Founded and scaled e-commerce automation company; managed team of 4
+- Founded and scaled e-commerce automation company; team scaled from 3 to 6
 - Architected full ERP: FastAPI + PostgreSQL + Retool (25+ models, 342 UI files)
 - Built multi-marketplace automation (Wallapop, eBay, PortalHero) with AI enrichment
 - Reverse-engineered private APIs, built anti-detection systems, integrated hardware (printers)
