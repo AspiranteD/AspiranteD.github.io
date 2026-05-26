@@ -22,6 +22,7 @@
             <div class="nav__links" id="navLinks">
                 <a href="#about" data-i18n="nav.about">About</a>
                 <a href="#experience" data-i18n="nav.experience">Experience</a>
+                <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
                 <a href="#projects" data-i18n="nav.projects">Projects</a>
                 <a href="#skills" data-i18n="nav.skills">Skills</a>
                 <a href="#contact" data-i18n="nav.contact">Contact</a>
@@ -217,8 +218,136 @@
         </div>
     </section>
 
+    <!-- Architecture -->
+    <section class="section" id="architecture">
+        <div class="container">
+            <h2 class="section__title" data-i18n="architecture.title">System Architecture</h2>
+            <p class="section__subtitle" data-i18n="architecture.subtitle">The full production system I designed, built, and operated — from marketplace APIs to physical label printing.</p>
+            <div class="arch-diagram" data-animate>
+                <div class="arch-row">
+                    <div class="arch-group">
+                        <div class="arch-label" data-i18n="architecture.sources">Data Sources</div>
+                        <div class="arch-nodes">
+                            <div class="arch-node arch-node--source">
+                                <span class="arch-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                                </span>
+                                <strong>Amazon.es</strong>
+                                <small>HTML Scraping</small>
+                            </div>
+                            <div class="arch-node arch-node--source">
+                                <span class="arch-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                </span>
+                                <strong>B-Stock</strong>
+                                <small>Manifest CSVs</small>
+                            </div>
+                            <div class="arch-node arch-node--source">
+                                <span class="arch-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                </span>
+                                <strong>Wallapop API</strong>
+                                <small>Reverse-Engineered</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                </div>
+                <div class="arch-row">
+                    <div class="arch-group">
+                        <div class="arch-label" data-i18n="architecture.processing">Processing Layer</div>
+                        <div class="arch-nodes">
+                            <div class="arch-node arch-node--process">
+                                <span class="arch-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                </span>
+                                <strong>Extractors</strong>
+                                <small>Orders · Chats · Listings</small>
+                            </div>
+                            <div class="arch-node arch-node--process">
+                                <span class="arch-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                </span>
+                                <strong>AI Enrichment</strong>
+                                <small>GPT Categorization · Descriptions</small>
+                            </div>
+                            <div class="arch-node arch-node--process">
+                                <span class="arch-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                                </span>
+                                <strong>Scheduler</strong>
+                                <small>5 Recurring Jobs + Watchdog</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                </div>
+                <div class="arch-row">
+                    <div class="arch-group arch-group--core">
+                        <div class="arch-label" data-i18n="architecture.core">Core</div>
+                        <div class="arch-core-node">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                            <div>
+                                <strong>PostgreSQL (NeonDB)</strong>
+                                <small data-i18n="architecture.core_desc">25+ models · 35+ migrations · Views · Triggers</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-arrow">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+                </div>
+                <div class="arch-row">
+                    <div class="arch-group">
+                        <div class="arch-label" data-i18n="architecture.outputs">Outputs</div>
+                        <div class="arch-nodes">
+                            <div class="arch-node arch-node--output">
+                                <span class="arch-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                                </span>
+                                <strong>Retool ERP</strong>
+                                <small>342 Files · 10+ Modules</small>
+                            </div>
+                            <div class="arch-node arch-node--output">
+                                <span class="arch-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </span>
+                                <strong>Marketplaces</strong>
+                                <small>Wallapop · eBay · PortalHero</small>
+                            </div>
+                            <div class="arch-node arch-node--output">
+                                <span class="arch-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                                </span>
+                                <strong>Label Printer</strong>
+                                <small>Brother QL-700 via USB</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-bridge" data-animate>
+                    <div class="arch-bridge__label" data-i18n="architecture.bridge">Command Bridge Pattern</div>
+                    <div class="arch-bridge__flow">
+                        <span>Retool Cloud</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        <span>DB Queue</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        <span>Local Backend</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        <span>Hardware</span>
+                    </div>
+                    <small data-i18n="architecture.bridge_desc">Exclusive lock · Heartbeat monitoring · ~60s automatic failover</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects -->
-    <section class="section" id="projects">
+    <section class="section section--alt" id="projects">
         <div class="container">
             <h2 class="section__title" data-i18n="projects.title">Projects</h2>
             <p class="section__subtitle" data-i18n="projects.subtitle">Open-source repositories extracted from production systems I built and operated.</p>
@@ -413,7 +542,7 @@
     </section>
 
     <!-- Skills -->
-    <section class="section section--alt" id="skills">
+    <section class="section" id="skills">
         <div class="container">
             <h2 class="section__title" data-i18n="skills.title">Technical Stack</h2>
             <div class="skills__grid">

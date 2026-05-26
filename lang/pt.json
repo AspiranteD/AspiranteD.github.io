@@ -2,6 +2,7 @@
     "nav": {
         "about": "Sobre",
         "experience": "Experiência",
+        "architecture": "Arquitetura",
         "projects": "Projetos",
         "skills": "Tecnologias",
         "contact": "Contato"
@@ -50,6 +51,17 @@
         "capgemini_1": "Otimizei sistemas legacy de cadeia de abastecimento processando volumes massivos diários",
         "capgemini_2": "Redesenho de bases de dados (OracleSQL) — reestruturei camadas de transação com bottlenecks",
         "capgemini_3": "Interface técnica principal para a maior cadeia de supermercados da Europa"
+    },
+    "architecture": {
+        "title": "Arquitetura do Sistema",
+        "subtitle": "O sistema de produção completo que projetei, construí e operei — desde APIs de marketplaces até impressão física de etiquetas.",
+        "sources": "Fontes de Dados",
+        "processing": "Camada de Processamento",
+        "core": "Núcleo",
+        "core_desc": "25+ modelos · 35+ migrações · Views · Triggers",
+        "outputs": "Saídas",
+        "bridge": "Padrão Command Bridge",
+        "bridge_desc": "Lock exclusivo · Monitorização heartbeat · Failover automático ~60s"
     },
     "projects": {
         "title": "Projetos",

@@ -2,6 +2,7 @@
     "nav": {
         "about": "About",
         "experience": "Experience",
+        "architecture": "Architecture",
         "projects": "Projects",
         "skills": "Skills",
         "contact": "Contact"
@@ -50,6 +51,17 @@
         "capgemini_1": "Optimized legacy supply chain systems processing massive daily volumes",
         "capgemini_2": "Database overhaul (OracleSQL) — redesigned bottlenecked transaction layers",
         "capgemini_3": "Primary technical interface for Europe's largest grocery supply chain"
+    },
+    "architecture": {
+        "title": "System Architecture",
+        "subtitle": "The full production system I designed, built, and operated — from marketplace APIs to physical label printing.",
+        "sources": "Data Sources",
+        "processing": "Processing Layer",
+        "core": "Core",
+        "core_desc": "25+ models · 35+ migrations · Views · Triggers",
+        "outputs": "Outputs",
+        "bridge": "Command Bridge Pattern",
+        "bridge_desc": "Exclusive lock · Heartbeat monitoring · ~60s automatic failover"
     },
     "projects": {
         "title": "Projects",
