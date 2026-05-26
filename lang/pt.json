@@ -1,0 +1,92 @@
+{
+    "nav": {
+        "about": "Sobre",
+        "experience": "Experiência",
+        "projects": "Projetos",
+        "skills": "Tecnologias",
+        "contact": "Contato"
+    },
+    "hero": {
+        "greeting": "Olá, eu sou",
+        "title": "Construo sistemas que operam negócios.",
+        "description": "Technical founder e engenheiro full-stack com mais de 5 anos de experiência. Da logística empresarial (Mercadona, AIRBUS) à fundação da minha própria empresa de automação e-commerce — projeto, construo e opero sistemas de produção de ponta a ponta.",
+        "cta_projects": "Ver Projetos",
+        "cta_cv": "Baixar CV",
+        "stat_years": "Anos de Experiência",
+        "stat_projects": "Projetos Open Source",
+        "stat_companies": "Empresas"
+    },
+    "about": {
+        "title": "Sobre Mim",
+        "p1": "Fundei uma empresa aos 26 anos, construí toda a sua infraestrutura tecnológica do zero, e operei-a por mais de 3 anos — processando milhares de SKUs em múltiplos marketplaces, gerindo uma equipa de 4 pessoas, e cuidando de tudo, desde logística de armazém até enriquecimento de produtos com IA.",
+        "p2": "Antes disso, ganhei experiência em consultoras enterprise (Capgemini, Sopra Steria, LittleBig Connection), trabalhando em sistemas para AIRBUS e Mercadona — aprendendo o que realmente significam escala, fiabilidade e gestão de stakeholders.",
+        "p3": "Não sou um desenvolvedor de tutoriais. Cada linha de código que escrevo gere inventário real, dinheiro real e operações reais. Fiz engenharia reversa de APIs privadas, migrei bases de dados em produção, integrei impressoras físicas em workflows cloud, e construí pipelines de IA que funcionam de forma autónoma em produção.",
+        "h_architect": "Arquiteto de Sistemas",
+        "d_architect": "Design de plataformas end-to-end — desde esquemas de base de dados até deployment cloud e integração de hardware.",
+        "h_founder": "Fundador Técnico",
+        "d_founder": "Construí e dirigi um negócio real — gestão de equipa, operações e desenvolvimento full-stack simultaneamente.",
+        "h_solver": "Solucionador de Problemas",
+        "d_solver": "Engenharia reversa, migração de dados, anti-deteção — resolvo problemas que outros evitam."
+    },
+    "experience": {
+        "title": "Experiência",
+        "reusalia_date": "Abr 2023 – Presente",
+        "reusalia_1": "Fundei empresa de automação e-commerce; geri equipa de 4 funcionários",
+        "reusalia_2": "Projetei sistema ERP completo: FastAPI + PostgreSQL + Retool (25+ modelos, 342 ficheiros UI)",
+        "reusalia_3": "Construí automação multi-marketplace (Wallapop, eBay, PortalHero) com pipeline de enriquecimento IA",
+        "reusalia_4": "Engenharia reversa de APIs privadas, sistemas anti-deteção, integração de impressoras de etiquetas",
+        "reusalia_5": "Migrei dados de produção de Google Sheets → PostgreSQL (pipeline de 5 fases)",
+        "lbc_date": "Dez 2022 – Fev 2024",
+        "lbc_1": "Desenvolvimento full-stack: APIs Java/Spring Boot + frontends Angular",
+        "lbc_2": "Design e otimização de bases de dados (MySQL) + containerização Docker",
+        "lbc_3": "Equipa distribuída remote-first, metodologias ágeis",
+        "sopra_client": "(Cliente: AIRBUS)",
+        "sopra_date": "Nov 2021 – Dez 2022",
+        "sopra_1": "Ownership técnico da infraestrutura de contratos e-Business — monólito → microsserviços",
+        "sopra_2": "Rearquitetei gestão de estado Angular (NgRx), eliminando freezes de renderização UI",
+        "sopra_3": "Pipelines CI/CD com Jenkins + deployments cloud OpenShift",
+        "capgemini_client": "(Cliente: Mercadona)",
+        "capgemini_date": "Out 2020 – Fev 2022",
+        "capgemini_1": "Otimizei sistemas legacy de cadeia de abastecimento processando volumes massivos diários",
+        "capgemini_2": "Redesenho de bases de dados (OracleSQL) — reestruturei camadas de transação com bottlenecks",
+        "capgemini_3": "Interface técnica principal para a maior cadeia de supermercados da Europa"
+    },
+    "projects": {
+        "title": "Projetos",
+        "subtitle": "Repositórios open-source extraídos de sistemas de produção que construí e operei.",
+        "filter_all": "Todos",
+        "filter_ai": "IA / ML",
+        "filter_scraping": "Scraping",
+        "filter_api": "APIs",
+        "filter_data": "Dados",
+        "filter_infra": "Infraestrutura",
+        "ai_enrichment_desc": "Pipeline automatizado: scraping Amazon → categorização GPT → geração de descrições → sync de listings. Processa milhares de SKUs em produção.",
+        "wallapop_desc": "Engenharia reversa de API privada. Extração multi-conta com auth por cookies, anti-deteção, processamento paralelo. 5 iterações maiores.",
+        "ebay_desc": "Automação eBay end-to-end: auth OAuth2, geração CSV em massa, uploads Feed API, importação de pedidos, envios com tracking.",
+        "inventory_desc": "API REST completa para ops e-commerce: itens, pedidos, vendas, faturação, scheduler, gestão de cookies, integração de impressão.",
+        "bridge_desc": "Padrão distribuído: UI cloud enfileira comandos via base de dados, backend local processa com locking exclusivo, heartbeat e failover ~60s.",
+        "migration_desc": "Pipeline de migração em 5 fases: extrair → validar → migrar → sincronizar → verificar. Reconciliação financeira por camião Amazon.",
+        "sync_desc": "Sync de inventário multi-plataforma: fonte única de verdade em PostgreSQL, sincroniza com Wallapop, eBay e PortalHero com formatação específica por marketplace.",
+        "scraper_desc": "Scraper de produção para Amazon.es: títulos, preços, imagens hi-res, características. Anti-deteção com rotação de UA e throttling.",
+        "auth_desc": "Ciclo de vida de autenticação multi-conta: gestão de cookies/bearers, descodificação JWT, refresh automático, armazenamento seguro em PostgreSQL.",
+        "image_desc": "Processamento de imagens para marketplaces: download, transformações anti-duplicado (OpenCV), redimensionamento, compressão, upload cloud.",
+        "retool_desc": "ERP interno em Retool: 342 ficheiros em 10+ módulos — pedidos, inventário, faturação, incidentes, analytics de chats, scanner móvel."
+    },
+    "skills": {
+        "title": "Stack Tecnológico",
+        "backend": "Backend & APIs",
+        "frontend": "Frontend",
+        "databases": "Bases de Dados",
+        "ai": "IA & Dados",
+        "scraping": "Scraping & Automação",
+        "devops": "DevOps & Infra",
+        "integrations": "Integrações"
+    },
+    "contact": {
+        "title": "Contato",
+        "text": "Estou aberto a projetos freelance, consultoria e oportunidades como co-fundador técnico. Se estás a construir algo interessante e precisas de alguém que possa projetar, construir e operar — vamos conversar."
+    },
+    "footer": {
+        "text": "Construído por Guillem Climent."
+    }
+}
