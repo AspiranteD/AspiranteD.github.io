@@ -2,7 +2,7 @@
 
 **Freelance Automation & Systems Consultant**
 
-Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/gcliment) · [GitHub](https://github.com/AspiranteD) · [Portfolio](https://aspiranted.github.io)
+Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/gcliment) · [GitHub](https://github.com/AspiranteD/AspiranteD) · [Portfolio](https://aspiranted.github.io)
 
 ---
 
@@ -20,7 +20,7 @@ I founded and operate a physical e-commerce business. Everything below runs in p
 
 | What I Built | Impact |
 |---|---|
-| Full ERP (FastAPI + PostgreSQL + Retool) | Used daily by 5 employees across 10+ modules |
+| Full ERP (FastAPI + PostgreSQL + custom ERP frontend on Retool) | Used daily by 5 employees across 10+ modules |
 | Wallapop private API reverse engineering | ~100 orders/day across 12 accounts, replaces ~5h/day manual work |
 | AI product enrichment pipeline | Saves ~40h/week vs manual descriptions |
 | Multi-marketplace sync engine | 3 platforms synced from single source of truth |
@@ -39,7 +39,7 @@ I founded and operate a physical e-commerce business. Everything below runs in p
 - Reverse engineering of private/undocumented APIs
 
 ### E-Commerce Operations Systems
-- Custom ERP/inventory systems (FastAPI + PostgreSQL + Retool)
+- Custom ERP/inventory systems (FastAPI + PostgreSQL + custom ERP frontend on Retool)
 - Order management, invoicing, fulfillment tracking
 - Warehouse tool integration (barcode scanners, label printers)
 
@@ -73,7 +73,8 @@ I understand enterprise constraints: compliance, stakeholder management, legacy 
 **Databases:** PostgreSQL, MySQL, OracleSQL
 **AI:** OpenAI GPT-4, LLM pipelines, prompt engineering
 **Scraping:** BeautifulSoup, Selenium, reverse engineering, anti-detection
-**Frontend:** Angular, Vue.js, Retool
+**Frontend:** Angular, Vue.js
+**Internal tools:** Retool
 **DevOps:** Docker, Git, CI/CD
 **Integrations:** eBay API, Google Sheets/Drive, Wallapop API (rev. eng.), Brother QL-700
 

@@ -2,7 +2,7 @@
 
 **Senior Full-Stack Engineer**
 
-Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/gcliment) · [GitHub](https://github.com/AspiranteD) · [Portfolio](https://aspiranted.github.io)
+Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/gcliment) · [GitHub](https://github.com/AspiranteD/AspiranteD) · [Portfolio](https://aspiranted.github.io)
 
 ---
 
@@ -71,7 +71,8 @@ Full-stack ownership of a production e-commerce platform — backend, frontend, 
 | Layer | Technologies |
 |---|---|
 | **Backend** | Python, FastAPI, Java, Spring Boot, SQLModel, REST APIs |
-| **Frontend** | Angular, Vue.js, NgRx, Retool, HTML/CSS/JS |
+| **Frontend** | Angular, Vue.js, NgRx, HTML/CSS/JS |
+| **Internal Tools** | Retool |
 | **Databases** | PostgreSQL, MySQL, OracleSQL, SQLite |
 | **AI & Data** | OpenAI GPT-4, pandas, ETL pipelines, data migrations |
 | **Scraping** | BeautifulSoup, Selenium, reverse engineering, anti-detection |

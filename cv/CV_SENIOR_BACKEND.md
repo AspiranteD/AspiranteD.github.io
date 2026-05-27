@@ -2,7 +2,7 @@
 
 **Senior Backend & Platform Engineer**
 
-Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/gcliment) · [GitHub](https://github.com/AspiranteD) · [Portfolio](https://aspiranted.github.io)
+Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/gcliment) · [GitHub](https://github.com/AspiranteD/AspiranteD) · [Portfolio](https://aspiranted.github.io)
 
 ---
 

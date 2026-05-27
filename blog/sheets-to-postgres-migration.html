@@ -27,7 +27,7 @@
         <div class="container container--narrow">
             <header class="blog-post__header">
                 <div class="blog-post__meta">
-                    <time>May 2026</time>
+                    <time datetime="2026-05">Published May 2026</time>
                     <span class="blog-post__read">12 min read</span>
                 </div>
                 <h1>How I Migrated a Production Business from Google Sheets to PostgreSQL</h1>
@@ -246,7 +246,7 @@ A2Z34567   | €11,200.75  | €11,198.25| €2.50   | ✗ INVESTIGATE
                 <p>If I did this again:</p>
 
                 <ol>
-                    <li><strong>Start with the database from day one.</strong> The "we'll migrate later" tax is real and expensive. Even a simple PostgreSQL + Retool setup from the start would have saved hundreds of hours</li>
+                    <li><strong>Start with the database from day one.</strong> The "we'll migrate later" tax is real and expensive. Even a simple PostgreSQL + custom ERP frontend on Retool setup from the start would have saved hundreds of hours</li>
                     <li><strong>Automate the reconciliation checks</strong> instead of running them manually every morning. A CI-style pipeline that emails me only when discrepancies are found</li>
                     <li><strong>Build the Retool UI first, then migrate.</strong> I built them in parallel, which meant employees saw half-finished interfaces during the transition period. If the UI had been polished before the cutover, adoption would have been smoother</li>
                 </ol>

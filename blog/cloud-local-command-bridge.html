@@ -25,7 +25,7 @@
         <div class="container container--narrow">
             <header class="blog-post__header">
                 <div class="blog-post__meta">
-                    <time>May 2026</time>
+                    <time datetime="2026-05">Published May 2026</time>
                     <span class="blog-post__read">6 min read</span>
                 </div>
                 <h1>Bridging Cloud and Local: A Database Command Queue Pattern</h1>
@@ -41,7 +41,7 @@
             <div class="blog-post__body">
                 <h2>The Problem</h2>
 
-                <p>My ERP runs on Retool Cloud. My label printer (Brother QL-700) is connected via USB to a Windows PC in the warehouse. My database (NeonDB) is in the cloud. When an employee clicks "Print Label" in Retool, a physical label needs to come out of a printer 3,000 km away from the Retool servers.</p>
+                <p>My custom ERP frontend runs on Retool Cloud. My label printer (Brother QL-700) is connected via USB to a Windows PC in the warehouse. My database (NeonDB) is in the cloud. When an employee clicks "Print Label" in Retool, a physical label needs to come out of a printer 3,000 km away from the Retool servers.</p>
 
                 <p>Retool Cloud can't talk to a local printer. There's no direct network path. Port forwarding is fragile. VPNs add complexity. Webhooks require a public endpoint.</p>
 

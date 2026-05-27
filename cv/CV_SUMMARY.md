@@ -1,7 +1,7 @@
 # Guillem Climent Pavia
 
 **Technical Founder · Full-Stack Engineer · Systems Architect**  
-Valencia, Spain · [github.com/AspiranteD](https://github.com/AspiranteD) · [aspiranted.github.io](https://aspiranted.github.io)
+Valencia, Spain · [github.com/AspiranteD/AspiranteD](https://github.com/AspiranteD/AspiranteD) · [aspiranted.github.io](https://aspiranted.github.io)
 
 ---
 
@@ -64,16 +64,16 @@ Technical founder with 5+ years of experience building production systems — fr
 | **ai-product-enrichment** | AI pipeline: scrape → categorize → describe → list |
 | **wallapop-data-extractors** | Reverse-engineered API, multi-account, anti-detection |
 | **ebay-automation-toolkit** | OAuth2 + Feed API + Fulfillment, end-to-end |
-| **inventory-ops-api** | Full REST API for e-commerce operations |
+| **inventory-ops-api** | Inventory domain layer (6 models, 6 services) |
 | **cloud-local-command-bridge** | Cloud↔local coordination via DB command queue |
 | **sheets-to-postgres-migration** | 5-phase production data migration |
 | **marketplace-sync-engine** | Multi-platform inventory synchronization |
 | **amazon-product-scraper** | Production scraper with anti-detection |
 | **marketplace-auth-manager** | Multi-account auth lifecycle management |
-| **product-image-pipeline** | OpenCV image processing for marketplaces |
+| **product-image-pipeline** | Warehouse labels, barcodes, carrier PDFs (PIL) |
 | **retool-erp-modules** | Internal ERP frontend: 342 frontend files, 10+ modules |
 
-→ All projects: [github.com/AspiranteD](https://github.com/AspiranteD)
+→ All projects: [github.com/AspiranteD/AspiranteD](https://github.com/AspiranteD/AspiranteD)
 
 ---
 

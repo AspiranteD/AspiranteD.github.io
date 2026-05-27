@@ -2,7 +2,7 @@
 
 **Technical Founder · Full-Stack Engineer · Systems Architect**
 
-Valencia, Spain · [GitHub](https://github.com/AspiranteD) · [Portfolio](https://aspiranted.github.io)
+Valencia, Spain · [GitHub](https://github.com/AspiranteD/AspiranteD) · [Portfolio](https://aspiranted.github.io)
 
 ---
 
@@ -37,12 +37,12 @@ I don't just write code. I build systems that run businesses.
 
 ### Frontend & UI
 - **Web**: Angular (NgRx state management), Vue.js, vanilla HTML/CSS/JS
-- **Low-Code/Internal Tools**: Retool as internal ERP frontend (342+ files: queries, scripts, transformers)
+- **Low-Code/Internal Tools**: custom ERP frontend built on Retool (342+ files: queries, scripts, transformers)
 
 ### Operations & Leadership
 - **Team Management**: Founded and scaled a business from 2 to 5 employees (logistics, warehouse, administration)
 - **Business Operations**: End-to-end — sourcing, inventory, pricing, fulfillment, customer service, accounting
-- **B2B Consulting**: System audits, database bottleneck resolution, infrastructure optimization for external clients
+- **B2B Consulting (open to)**: System audits, database bottleneck resolution, infrastructure optimization for external clients
 
 ---
 
@@ -61,7 +61,7 @@ Founded and built from scratch a physical e-commerce operations business powered
 
 **Technical Architecture — Internal ERP System:**
 - **Backend API** (FastAPI + SQLModel + PostgreSQL on NeonDB): 25+ data models, RESTful endpoints for inventory, orders, sales, invoicing, appointments, and cash management
-- **Frontend** (Retool Cloud): Full internal ERP with 342 frontend files — order management, inventory search, invoicing, incident tracking, mobile barcode scanner, chat analytics dashboards
+- **Frontend**: Custom ERP frontend built on Retool Cloud with 342 frontend files — order management, inventory search, invoicing, incident tracking, mobile barcode scanner, chat analytics dashboards
 - **Hybrid Cloud/Local Architecture**: Retool Cloud ↔ NeonDB ↔ Local backend with `CommandPoller` (lock/heartbeat/failover pattern for bridging cloud UI to local hardware and processes)
 
 **Automation Systems Built:**
@@ -220,8 +220,8 @@ Multi-platform inventory synchronization: maintains a single source of truth in 
 **→** [github.com/AspiranteD/marketplace-sync-engine](https://github.com/AspiranteD/marketplace-sync-engine)
 
 ### 8. Inventory Operations API
-Full REST API for e-commerce inventory management: items (by LPN), orders, sales, invoicing, appointments, expenses, and analytics. Includes automated scheduler, cookie management, and label printing integration.  
-**Stack:** Python, FastAPI, SQLModel, PostgreSQL, APScheduler  
+Production inventory domain layer (extracted): items (by LPN), orders, sales, incidents, listings — business rules, side effects, and aggregations. The full platform adds FastAPI (~60 endpoints), scheduler, and auth.  
+**Stack:** Python, SQLModel, PostgreSQL  
 **→** [github.com/AspiranteD/inventory-ops-api](https://github.com/AspiranteD/inventory-ops-api)
 
 ### 9. Marketplace Auth Manager
@@ -230,12 +230,12 @@ Authentication management system for multi-account marketplace operations. Handl
 **→** [github.com/AspiranteD/marketplace-auth-manager](https://github.com/AspiranteD/marketplace-auth-manager)
 
 ### 10. Product Image Pipeline
-Image processing pipeline for marketplace listings: downloads from Amazon, applies anti-duplicate transformations (noise, rotation, stretch via OpenCV), resizes/compresses, and uploads to cloud storage (MEGA, ImgBB).  
-**Stack:** Python, OpenCV, PIL, NumPy, ThreadPoolExecutor  
+Warehouse image ops (this repo): photo validation, thermal shipping labels, barcodes, carrier PDF download (PIL). The full platform also uses OpenCV for listing anti-duplicate transforms.  
+**Stack:** Python, PIL/Pillow, label layout engine  
 **→** [github.com/AspiranteD/product-image-pipeline](https://github.com/AspiranteD/product-image-pipeline)
 
 ### 11. Custom ERP Frontend
-Internal ERP system built on Retool Cloud with 342 frontend files: SQL queries, JS handlers, and data transformers. Modules include order management, inventory, invoicing, incident tracking, chat analytics, mobile scanner, and appointment scheduling.
+Custom ERP frontend built on Retool Cloud with 342 frontend files: SQL queries, JS handlers, and data transformers. Modules include order management, inventory, invoicing, incident tracking, chat analytics, mobile scanner, and appointment scheduling.
 **Stack:** SQL, JavaScript, Retool  
 **→** [github.com/AspiranteD/retool-erp-modules](https://github.com/AspiranteD/retool-erp-modules)
 

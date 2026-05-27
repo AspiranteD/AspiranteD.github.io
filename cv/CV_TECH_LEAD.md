@@ -2,7 +2,7 @@
 
 **Technical Lead · Engineering Manager**
 
-Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/gcliment) · [GitHub](https://github.com/AspiranteD) · [Portfolio](https://aspiranted.github.io)
+Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/gcliment) · [GitHub](https://github.com/AspiranteD/AspiranteD) · [Portfolio](https://aspiranted.github.io)
 
 ---
 
@@ -70,7 +70,8 @@ Founded and scaled a physical e-commerce business powered by custom automation. 
 
 **Backend:** Python (FastAPI), Java (Spring Boot), REST APIs, SQLModel
 **Databases:** PostgreSQL, MySQL, OracleSQL
-**Frontend:** Angular, Vue.js, Retool (342-file internal ERP)
+**Frontend:** Angular, Vue.js
+**Internal tools:** Retool (342-file custom ERP frontend)
 **AI/Data:** OpenAI GPT-4, pandas, ETL pipelines, data migrations
 **Automation:** Reverse engineering, web scraping, anti-detection systems
 **DevOps:** Docker, Jenkins, OpenShift, Git, CI/CD
