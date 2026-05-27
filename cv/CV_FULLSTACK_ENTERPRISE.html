@@ -8,89 +8,145 @@
 </head>
 <body>
     <div class="cv-actions">
-        <a href="./" class="btn-back">← All CV versions</a>
-        <button class="btn-print" onclick="window.print()">Print / Save PDF</button>
+        <a href="./" class="btn-back">← All versions</a>
+        <button class="btn-print" onclick="window.print()">Print / PDF</button>
     </div>
 
-    <div class="cv-wrapper">
-        <div class="cv-header">
-            <div class="cv-header__left">
-                <h1>Guillem Climent Pavia</h1>
-                <div class="subtitle">Senior Full-Stack Engineer</div>
-                <div class="contact-line">
-                    Valencia, Spain<br>
-                    <a href="mailto:guillemclim@gmail.com">guillemclim@gmail.com</a> · <a href="https://linkedin.com/in/gcliment">LinkedIn</a> · <a href="https://github.com/AspiranteD">GitHub</a> · <a href="https://aspiranted.github.io">Portfolio</a>
+    <div class="cv">
+        <!-- ─── SIDEBAR ─── -->
+        <aside class="cv-sidebar">
+            <div>
+                <div class="cv-sidebar__name">Guillem<br>Climent</div>
+                <div class="cv-sidebar__title">Senior Full-Stack Engineer</div>
+            </div>
+            <div class="cv-sidebar__divider"></div>
+
+            <div>
+                <h4>Contact</h4>
+                <ul class="cv-contact">
+                    <li><span class="icon">◉</span> Valencia, Spain</li>
+                    <li><span class="icon">✉</span> <a href="mailto:guillemclim@gmail.com">guillemclim@gmail.com</a></li>
+                    <li><span class="icon">⬡</span> <a href="https://linkedin.com/in/gcliment">linkedin.com/in/gcliment</a></li>
+                    <li><span class="icon">⌘</span> <a href="https://github.com/AspiranteD">github.com/AspiranteD</a></li>
+                    <li><span class="icon">◈</span> <a href="https://aspiranted.github.io">aspiranted.github.io</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Backend</h4>
+                <div class="cv-skills">
+                    <span class="cv-skill cv-skill--accent">Python</span>
+                    <span class="cv-skill cv-skill--accent">FastAPI</span>
+                    <span class="cv-skill cv-skill--accent">Java</span>
+                    <span class="cv-skill cv-skill--accent">Spring Boot</span>
+                    <span class="cv-skill">SQLModel</span>
+                    <span class="cv-skill">REST APIs</span>
                 </div>
             </div>
-            <div class="cv-header__accent"></div>
-        </div>
 
-        <p class="summary">Full-stack engineer with 5+ years across enterprise and startup environments. Backend-heavy (Python/FastAPI, Java/Spring Boot) with strong frontend delivery (Angular, Vue.js) and deep database expertise (PostgreSQL, MySQL, OracleSQL). Shipped systems for AIRBUS and Mercadona, and built a complete ERP from scratch that runs a real business with 6 employees.</p>
-
-        <div class="section">
-            <h2>Experience</h2>
-
-            <h3>Technical Founder & Lead Engineer — REUSALIA</h3>
-            <div class="job-meta">April 2023 – Present · Valencia, Spain</div>
-            <p>Full-stack ownership of a production e-commerce platform. Solo engineer.</p>
-            <ul>
-                <li><strong>Backend:</strong> FastAPI — 25+ models, 35+ migrations, ~60 endpoints, APScheduler</li>
-                <li><strong>Frontend:</strong> Retool ERP — 342 files, 10+ modules, daily use by 6 employees</li>
-                <li><strong>Database:</strong> PostgreSQL — views, triggers, financial reconciliation. 3-year Sheets migration</li>
-                <li><strong>Integrations:</strong> Wallapop API (rev. eng., 2,100+ lines), eBay Feed API, GPT-4, Brother QL-700</li>
-                <li><strong>Scale:</strong> ~100 orders/day, 12 accounts, 3 marketplaces synced</li>
-            </ul>
-
-            <h3>Senior Software Engineer — LittleBig Connection</h3>
-            <div class="job-meta">December 2022 – February 2024 · Valencia, Spain</div>
-            <ul>
-                <li><strong>Backend:</strong> Java/Spring Boot REST APIs, OAuth2/JWT</li>
-                <li><strong>Frontend:</strong> Angular modular UI development</li>
-                <li><strong>Database:</strong> MySQL schema design and optimization</li>
-                <li><strong>Infra:</strong> Docker containerization, multi-environment deployments</li>
-            </ul>
-
-            <h3>Software Engineer — Sopra Steria <span style="font-weight:400;color:#94a3b8">(AIRBUS)</span></h3>
-            <div class="job-meta">November 2021 – December 2022 · Valencia, Spain</div>
-            <ul>
-                <li><strong>Backend:</strong> Monolith → microservices (Java 11, Spring Boot)</li>
-                <li><strong>Frontend:</strong> Angular 13 + NgRx — eliminated rendering freezes</li>
-                <li><strong>DevOps:</strong> Jenkins CI/CD, OpenShift cloud</li>
-            </ul>
-
-            <h3>Software Engineer — Capgemini <span style="font-weight:400;color:#94a3b8">(Mercadona)</span></h3>
-            <div class="job-meta">October 2020 – February 2022 · Valencia, Spain</div>
-            <ul>
-                <li><strong>Backend:</strong> Java 11, C++ batch scripting for supply chain</li>
-                <li><strong>Database:</strong> OracleSQL overhaul — transaction bottleneck fix</li>
-                <li><strong>Stakeholder:</strong> Technical interface for Europe's largest grocery chain</li>
-            </ul>
-        </div>
-
-        <hr>
-
-        <div class="section">
-            <h2>Technical Stack</h2>
-            <div class="tech-grid">
-                <span class="tech-label">Backend</span><span class="tech-value">Python · FastAPI · Java · Spring Boot · SQLModel</span>
-                <span class="tech-label">Frontend</span><span class="tech-value">Angular · Vue.js · NgRx · Retool · HTML/CSS/JS</span>
-                <span class="tech-label">Databases</span><span class="tech-value">PostgreSQL · MySQL · OracleSQL · SQLite</span>
-                <span class="tech-label">AI & Data</span><span class="tech-value">OpenAI GPT-4 · pandas · ETL · data migrations</span>
-                <span class="tech-label">DevOps</span><span class="tech-value">Docker · Jenkins · OpenShift · Git · CI/CD</span>
+            <div>
+                <h4>Frontend</h4>
+                <div class="cv-skills">
+                    <span class="cv-skill cv-skill--accent">Angular</span>
+                    <span class="cv-skill cv-skill--accent">Vue.js</span>
+                    <span class="cv-skill">NgRx</span>
+                    <span class="cv-skill">Retool</span>
+                    <span class="cv-skill">HTML/CSS/JS</span>
+                </div>
             </div>
-        </div>
 
-        <hr>
+            <div>
+                <h4>Data & DevOps</h4>
+                <div class="cv-skills">
+                    <span class="cv-skill">PostgreSQL</span>
+                    <span class="cv-skill">MySQL</span>
+                    <span class="cv-skill">OracleSQL</span>
+                    <span class="cv-skill">Docker</span>
+                    <span class="cv-skill">Jenkins</span>
+                    <span class="cv-skill">OpenShift</span>
+                    <span class="cv-skill">GPT-4</span>
+                    <span class="cv-skill">CI/CD</span>
+                </div>
+            </div>
 
-        <div class="section">
-            <h2>Education</h2>
-            <p class="education-line"><strong>Multimedia Engineering (B.Eng.)</strong> — Universitat de València <em>(2016–2021)</em></p>
-        </div>
+            <div>
+                <h4>Languages</h4>
+                <ul class="cv-languages">
+                    <li><span>Spanish</span><span>Native</span></li>
+                    <li><span>English</span><span>Professional</span></li>
+                    <li><span>Valencian</span><span>Native</span></li>
+                </ul>
+            </div>
 
-        <div class="section">
-            <h2>Languages</h2>
-            <p class="languages-line">Spanish (native) · English (professional) · Valencian/Catalan (native)</p>
-        </div>
+            <div>
+                <h4>Education</h4>
+                <div class="cv-edu-sidebar">
+                    <strong>Multimedia Engineering</strong>
+                    Universitat de València<br>
+                    <em>2016 – 2021</em>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ─── MAIN ─── -->
+        <main class="cv-main">
+            <p class="cv-summary">Full-stack engineer with 5+ years across enterprise and startup. Backend-heavy (<strong>Python/FastAPI, Java/Spring Boot</strong>) with strong frontend delivery (<strong>Angular, Vue.js</strong>) and deep database expertise. Shipped for AIRBUS and Mercadona, and built a complete ERP from scratch that runs a real business with 6 employees.</p>
+
+            <section>
+                <h2>Experience</h2>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Technical Founder & Lead Engineer <span class="cv-job__company">— REUSALIA</span></div>
+                        <span class="cv-job__dates">Apr 2023 – Present</span>
+                    </div>
+                    <p>Full-stack ownership of a production e-commerce platform. Solo engineer.</p>
+                    <ul>
+                        <li><strong>Backend:</strong> FastAPI — 25+ models, 35+ migrations, ~60 endpoints, APScheduler</li>
+                        <li><strong>Frontend:</strong> Retool ERP — 342 files, 10+ modules, daily use by 6 employees</li>
+                        <li><strong>Database:</strong> PostgreSQL — views, triggers, financial reconciliation. 3-year data migration</li>
+                        <li><strong>Integrations:</strong> Wallapop API (rev. eng., 2,100+ lines), eBay Feed API, GPT-4, Brother QL-700</li>
+                        <li><strong>Scale:</strong> ~100 orders/day, 12 accounts, 3 marketplaces synced</li>
+                    </ul>
+                </div>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Senior Software Engineer <span class="cv-job__company">— LittleBig Connection</span></div>
+                        <span class="cv-job__dates">Dec 2022 – Feb 2024</span>
+                    </div>
+                    <ul>
+                        <li><strong>Backend:</strong> Java/Spring Boot REST APIs, OAuth2/JWT security</li>
+                        <li><strong>Frontend:</strong> Angular modular UI development</li>
+                        <li><strong>Database:</strong> MySQL schema design, Docker containerization</li>
+                    </ul>
+                </div>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Software Engineer <span class="cv-job__company">— Sopra Steria (AIRBUS)</span></div>
+                        <span class="cv-job__dates">Nov 2021 – Dec 2022</span>
+                    </div>
+                    <ul>
+                        <li><strong>Backend:</strong> Monolith → microservices (Java 11, Spring Boot)</li>
+                        <li><strong>Frontend:</strong> Angular 13 + NgRx — eliminated rendering freezes</li>
+                        <li><strong>DevOps:</strong> Jenkins CI/CD, OpenShift cloud deployments</li>
+                    </ul>
+                </div>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Software Engineer <span class="cv-job__company">— Capgemini (Mercadona)</span></div>
+                        <span class="cv-job__dates">Oct 2020 – Feb 2022</span>
+                    </div>
+                    <ul>
+                        <li><strong>Backend:</strong> Java 11, C++ batch scripting for supply chain</li>
+                        <li><strong>Database:</strong> OracleSQL overhaul — transaction bottleneck fix</li>
+                        <li><strong>Stakeholder:</strong> Technical interface for Europe's largest grocery chain</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
     </div>
 </body>
 </html>

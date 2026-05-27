@@ -8,101 +8,158 @@
 </head>
 <body>
     <div class="cv-actions">
-        <a href="./" class="btn-back">← All CV versions</a>
-        <button class="btn-print" onclick="window.print()">Print / Save PDF</button>
+        <a href="./" class="btn-back">← All versions</a>
+        <button class="btn-print" onclick="window.print()">Print / PDF</button>
     </div>
 
-    <div class="cv-wrapper">
-        <div class="cv-header">
-            <div class="cv-header__left">
-                <h1>Guillem Climent Pavia</h1>
-                <div class="subtitle">Technical Lead · Engineering Manager</div>
-                <div class="contact-line">
-                    Valencia, Spain<br>
-                    <a href="mailto:guillemclim@gmail.com">guillemclim@gmail.com</a> · <a href="https://linkedin.com/in/gcliment">LinkedIn</a> · <a href="https://github.com/AspiranteD">GitHub</a> · <a href="https://aspiranted.github.io">Portfolio</a>
+    <div class="cv">
+        <!-- ─── SIDEBAR ─── -->
+        <aside class="cv-sidebar">
+            <div>
+                <div class="cv-sidebar__name">Guillem<br>Climent</div>
+                <div class="cv-sidebar__title">Technical Lead</div>
+            </div>
+            <div class="cv-sidebar__divider"></div>
+
+            <div>
+                <h4>Contact</h4>
+                <ul class="cv-contact">
+                    <li><span class="icon">◉</span> Valencia, Spain</li>
+                    <li><span class="icon">✉</span> <a href="mailto:guillemclim@gmail.com">guillemclim@gmail.com</a></li>
+                    <li><span class="icon">⬡</span> <a href="https://linkedin.com/in/gcliment">linkedin.com/in/gcliment</a></li>
+                    <li><span class="icon">⌘</span> <a href="https://github.com/AspiranteD">github.com/AspiranteD</a></li>
+                    <li><span class="icon">◈</span> <a href="https://aspiranted.github.io">aspiranted.github.io</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Technical Stack</h4>
+                <div class="cv-skills">
+                    <span class="cv-skill cv-skill--accent">Python</span>
+                    <span class="cv-skill cv-skill--accent">FastAPI</span>
+                    <span class="cv-skill cv-skill--accent">PostgreSQL</span>
+                    <span class="cv-skill">Java</span>
+                    <span class="cv-skill">Spring Boot</span>
+                    <span class="cv-skill">Angular</span>
+                    <span class="cv-skill">Vue.js</span>
+                    <span class="cv-skill">Retool</span>
+                    <span class="cv-skill">Docker</span>
+                    <span class="cv-skill">Jenkins</span>
+                    <span class="cv-skill">OpenShift</span>
+                    <span class="cv-skill">GPT-4</span>
+                    <span class="cv-skill">CI/CD</span>
                 </div>
             </div>
-            <div class="cv-header__accent"></div>
-        </div>
 
-        <p class="summary">Technical founder turned engineering leader with 5+ years shipping production systems and 3+ years managing teams and operations simultaneously. Built a full e-commerce platform from scratch (180+ scripts, 25+ DB models, 10+ ERP modules) while scaling a team from 3 to 6, surviving a catastrophic flood, and rebuilding the business in 2 months. Deep technical ownership combined with real business context.</p>
-
-        <div class="section">
-            <h2>Experience</h2>
-
-            <h3>Technical Founder & Lead Engineer — REUSALIA</h3>
-            <div class="job-meta">April 2023 – Present · Valencia, Spain</div>
-
-            <p><strong>Leadership & Operations:</strong></p>
-            <ul>
-                <li>Scaled team from <strong>3 to 6 employees</strong> (logistics, warehouse, administration)</li>
-                <li>Led crisis response after <strong>DANA floods</strong> (Oct 2024): directed 60 people in recovery, rebuilt company from zero in 2 months</li>
-                <li>Designed internal ERP (Retool, 342 files, 10+ modules) — trained non-technical staff for daily use</li>
-                <li>Managed full P&L: sourcing, pricing, fulfillment, customer service, accounting</li>
-            </ul>
-
-            <p><strong>Technical Architecture (sole engineer):</strong></p>
-            <ul>
-                <li>FastAPI + PostgreSQL: 25+ models, 35+ migrations, ~60 endpoints</li>
-                <li>Reverse-engineered Wallapop private API — <strong>~100 orders/day across 12 accounts</strong></li>
-                <li>AI pipeline: Amazon scraping → GPT-4 → auto-listings. <strong>Saves ~40h/week</strong></li>
-                <li>Cloud-Local Bridge with exclusive locking + heartbeat for hardware integration</li>
-            </ul>
-
-            <h3>Senior Software Engineer — LittleBig Connection</h3>
-            <div class="job-meta">December 2022 – February 2024 · Valencia, Spain</div>
-            <ul>
-                <li>Java/Spring Boot APIs + Angular frontends, MySQL, Docker, distributed team</li>
-            </ul>
-
-            <h3>Software Engineer — Sopra Steria <span style="font-weight:400;color:#94a3b8">(AIRBUS)</span></h3>
-            <div class="job-meta">November 2021 – December 2022 · Valencia, Spain</div>
-            <ul>
-                <li>Monolith → microservices, Angular + NgRx, Jenkins/OpenShift CI/CD</li>
-            </ul>
-
-            <h3>Software Engineer — Capgemini <span style="font-weight:400;color:#94a3b8">(Mercadona)</span></h3>
-            <div class="job-meta">October 2020 – February 2022 · Valencia, Spain</div>
-            <ul>
-                <li>Supply chain optimization, OracleSQL overhaul, stakeholder management</li>
-            </ul>
-        </div>
-
-        <hr>
-
-        <div class="section">
-            <h2>What Sets Me Apart</h2>
-            <ul>
-                <li><strong>CEO and CTO at the same time</strong> — engineering trade-offs in business context</li>
-                <li><strong>Crisis-tested</strong> — rebuilt a company from zero after a natural disaster</li>
-                <li><strong>Full ownership</strong> — deploy, maintain, train users, and fix at 2 AM</li>
-            </ul>
-        </div>
-
-        <hr>
-
-        <div class="section">
-            <h2>Technical Stack</h2>
-            <div class="tech-grid">
-                <span class="tech-label">Backend</span><span class="tech-value">Python (FastAPI) · Java (Spring Boot) · REST APIs</span>
-                <span class="tech-label">Databases</span><span class="tech-value">PostgreSQL · MySQL · OracleSQL</span>
-                <span class="tech-label">Frontend</span><span class="tech-value">Angular · Vue.js · Retool (342-file ERP)</span>
-                <span class="tech-label">AI & Data</span><span class="tech-value">OpenAI GPT-4 · pandas · ETL · data migrations</span>
-                <span class="tech-label">DevOps</span><span class="tech-value">Docker · Jenkins · OpenShift · Git · CI/CD</span>
+            <div>
+                <h4>Leadership</h4>
+                <div class="cv-skillbar">
+                    <div class="cv-skillbar__label">Team Scaling (3→6)</div>
+                    <div class="cv-skillbar__track"><div class="cv-skillbar__fill" style="width:90%"></div></div>
+                </div>
+                <div class="cv-skillbar">
+                    <div class="cv-skillbar__label">System Architecture</div>
+                    <div class="cv-skillbar__track"><div class="cv-skillbar__fill" style="width:95%"></div></div>
+                </div>
+                <div class="cv-skillbar">
+                    <div class="cv-skillbar__label">Crisis Management</div>
+                    <div class="cv-skillbar__track"><div class="cv-skillbar__fill" style="width:100%"></div></div>
+                </div>
+                <div class="cv-skillbar">
+                    <div class="cv-skillbar__label">P&L Ownership</div>
+                    <div class="cv-skillbar__track"><div class="cv-skillbar__fill" style="width:85%"></div></div>
+                </div>
             </div>
-        </div>
 
-        <hr>
+            <div>
+                <h4>Languages</h4>
+                <ul class="cv-languages">
+                    <li><span>Spanish</span><span>Native</span></li>
+                    <li><span>English</span><span>Professional</span></li>
+                    <li><span>Valencian</span><span>Native</span></li>
+                </ul>
+            </div>
 
-        <div class="section">
-            <h2>Education</h2>
-            <p class="education-line"><strong>Multimedia Engineering (B.Eng.)</strong> — Universitat de València <em>(2016–2021)</em></p>
-        </div>
+            <div>
+                <h4>Education</h4>
+                <div class="cv-edu-sidebar">
+                    <strong>Multimedia Engineering</strong>
+                    Universitat de València<br>
+                    <em>2016 – 2021</em>
+                </div>
+            </div>
+        </aside>
 
-        <div class="section">
-            <h2>Languages</h2>
-            <p class="languages-line">Spanish (native) · English (professional) · Valencian/Catalan (native)</p>
-        </div>
+        <!-- ─── MAIN ─── -->
+        <main class="cv-main">
+            <p class="cv-summary">Technical founder turned engineering leader. 5+ years shipping production systems, 3+ years managing teams + operations simultaneously. Built a full e-commerce platform from scratch (<strong>180+ scripts, 25+ DB models, 10+ ERP modules</strong>) while scaling a team from 3 to 6 and rebuilding after a catastrophic flood.</p>
+
+            <section>
+                <h2>Experience</h2>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Technical Founder & Lead Engineer <span class="cv-job__company">— REUSALIA</span></div>
+                        <span class="cv-job__dates">Apr 2023 – Present</span>
+                    </div>
+
+                    <div class="cv-job__subtitle">Leadership & Operations</div>
+                    <ul>
+                        <li>Scaled team from <strong>3 to 6 employees</strong> (logistics, warehouse, admin)</li>
+                        <li>Led crisis response after <strong>DANA floods</strong> (Oct 2024): directed 60 people, rebuilt company from zero in 2 months</li>
+                        <li>Designed ERP (Retool, 342 files, 10+ modules) — trained non-technical staff for daily use</li>
+                        <li>Managed full P&L: sourcing, pricing, fulfillment, customer service, accounting</li>
+                    </ul>
+
+                    <div class="cv-job__subtitle">Technical Architecture (sole engineer)</div>
+                    <ul>
+                        <li>FastAPI + PostgreSQL: 25+ models, 35+ migrations, ~60 endpoints</li>
+                        <li>Reverse-engineered Wallapop private API — <strong>~100 orders/day across 12 accounts</strong></li>
+                        <li>AI pipeline: Amazon → GPT-4 → auto-listings. <strong>Saves ~40h/week</strong></li>
+                        <li>Cloud-Local Bridge with exclusive locking + heartbeat for hardware integration</li>
+                    </ul>
+                </div>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Senior Software Engineer <span class="cv-job__company">— LittleBig Connection</span></div>
+                        <span class="cv-job__dates">Dec 2022 – Feb 2024</span>
+                    </div>
+                    <ul>
+                        <li>Java/Spring Boot APIs + Angular frontends, MySQL, Docker, distributed team</li>
+                    </ul>
+                </div>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Software Engineer <span class="cv-job__company">— Sopra Steria (AIRBUS)</span></div>
+                        <span class="cv-job__dates">Nov 2021 – Dec 2022</span>
+                    </div>
+                    <ul>
+                        <li>Monolith → microservices, Angular + NgRx, Jenkins/OpenShift CI/CD</li>
+                    </ul>
+                </div>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Software Engineer <span class="cv-job__company">— Capgemini (Mercadona)</span></div>
+                        <span class="cv-job__dates">Oct 2020 – Feb 2022</span>
+                    </div>
+                    <ul>
+                        <li>Supply chain optimization, OracleSQL overhaul, stakeholder management</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>What Sets Me Apart</h2>
+                <ul class="cv-highlights">
+                    <li><span class="hl-icon">▸</span><span><strong>CEO and CTO at the same time</strong> — engineering trade-offs with real business context</span></li>
+                    <li><span class="hl-icon">▸</span><span><strong>Crisis-tested</strong> — rebuilt a company from zero after a natural disaster</span></li>
+                    <li><span class="hl-icon">▸</span><span><strong>Full ownership</strong> — deploy, maintain, train users, and fix at 2 AM</span></li>
+                </ul>
+            </section>
+        </main>
     </div>
 </body>
 </html>

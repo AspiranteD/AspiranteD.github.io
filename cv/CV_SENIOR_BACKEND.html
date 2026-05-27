@@ -8,89 +8,141 @@
 </head>
 <body>
     <div class="cv-actions">
-        <a href="./" class="btn-back">← All CV versions</a>
-        <button class="btn-print" onclick="window.print()">Print / Save PDF</button>
+        <a href="./" class="btn-back">← All versions</a>
+        <button class="btn-print" onclick="window.print()">Print / PDF</button>
     </div>
 
-    <div class="cv-wrapper">
-        <div class="cv-header">
-            <div class="cv-header__left">
-                <h1>Guillem Climent Pavia</h1>
-                <div class="subtitle">Senior Backend & Platform Engineer</div>
-                <div class="contact-line">
-                    Valencia, Spain<br>
-                    <a href="mailto:guillemclim@gmail.com">guillemclim@gmail.com</a> · <a href="https://linkedin.com/in/gcliment">LinkedIn</a> · <a href="https://github.com/AspiranteD">GitHub</a> · <a href="https://aspiranted.github.io">Portfolio</a>
+    <div class="cv">
+        <!-- ─── SIDEBAR ─── -->
+        <aside class="cv-sidebar">
+            <div>
+                <div class="cv-sidebar__name">Guillem<br>Climent</div>
+                <div class="cv-sidebar__title">Senior Backend Engineer</div>
+            </div>
+            <div class="cv-sidebar__divider"></div>
+
+            <div>
+                <h4>Contact</h4>
+                <ul class="cv-contact">
+                    <li><span class="icon">◉</span> Valencia, Spain</li>
+                    <li><span class="icon">✉</span> <a href="mailto:guillemclim@gmail.com">guillemclim@gmail.com</a></li>
+                    <li><span class="icon">⬡</span> <a href="https://linkedin.com/in/gcliment">linkedin.com/in/gcliment</a></li>
+                    <li><span class="icon">⌘</span> <a href="https://github.com/AspiranteD">github.com/AspiranteD</a></li>
+                    <li><span class="icon">◈</span> <a href="https://aspiranted.github.io">aspiranted.github.io</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Core Stack</h4>
+                <div class="cv-skills">
+                    <span class="cv-skill cv-skill--accent">Python</span>
+                    <span class="cv-skill cv-skill--accent">FastAPI</span>
+                    <span class="cv-skill cv-skill--accent">PostgreSQL</span>
+                    <span class="cv-skill">SQLModel</span>
+                    <span class="cv-skill">REST APIs</span>
+                    <span class="cv-skill">Java</span>
+                    <span class="cv-skill">Spring Boot</span>
+                    <span class="cv-skill">Docker</span>
+                    <span class="cv-skill">OpenAI GPT-4</span>
+                    <span class="cv-skill">Selenium</span>
+                    <span class="cv-skill">BeautifulSoup</span>
+                    <span class="cv-skill">eBay API</span>
+                    <span class="cv-skill">Wallapop API</span>
+                    <span class="cv-skill">CI/CD</span>
+                    <span class="cv-skill">Git</span>
                 </div>
             </div>
-            <div class="cv-header__accent"></div>
-        </div>
 
-        <p class="summary">Backend engineer with 5+ years building production systems — from enterprise logistics (Mercadona, AIRBUS) to designing and operating a full e-commerce platform processing ~100 orders/day across 12 marketplace accounts. I specialize in Python/FastAPI APIs, PostgreSQL schema design, data pipelines, and system integrations. Every system I've built handles real traffic, real money, and real operational load.</p>
-
-        <div class="section">
-            <h2>Experience</h2>
-
-            <h3>Technical Founder & Lead Engineer — REUSALIA</h3>
-            <div class="job-meta">April 2023 – Present · Valencia, Spain</div>
-            <p>Solely designed and built the entire backend platform for a physical e-commerce business. The system runs in production daily, used by 6 employees.</p>
-            <ul>
-                <li>Architected <strong>FastAPI backend</strong> with 25+ SQLModel data models, 35+ Alembic migrations, ~60 REST endpoints</li>
-                <li>Designed <strong>PostgreSQL schema</strong> with views, materialized views, triggers, and financial reconciliation logic</li>
-                <li>Built <strong>reverse-engineered API client</strong> for Wallapop (private, undocumented) — cookie auth, anti-detection, parallel extraction across 12 accounts. 2,100+ lines, 5 major versions</li>
-                <li>Engineered <strong>AI enrichment pipeline</strong>: Amazon scraping → GPT-4 categorization → description generation → marketplace sync. Saves ~40h/week</li>
-                <li>Implemented <strong>Cloud-Local Bridge</strong>: database command queue with exclusive locking, heartbeat, ~60s failover</li>
-                <li>Built <strong>multi-marketplace sync</strong>: PostgreSQL → Wallapop, eBay (Feed API), PortalHero</li>
-                <li>Executed <strong>Sheets → PostgreSQL migration</strong>: 5-phase pipeline, 3 years of data, zero-downtime cutover</li>
-            </ul>
-
-            <h3>Senior Software Engineer — LittleBig Connection</h3>
-            <div class="job-meta">December 2022 – February 2024 · Valencia, Spain</div>
-            <ul>
-                <li>REST APIs with <strong>Java/Spring Boot</strong>, OAuth2/JWT security modules</li>
-                <li><strong>MySQL</strong> schema design and optimization, Docker containerization</li>
-            </ul>
-
-            <h3>Software Engineer — Sopra Steria <span style="font-weight:400;color:#94a3b8">(AIRBUS)</span></h3>
-            <div class="job-meta">November 2021 – December 2022 · Valencia, Spain</div>
-            <ul>
-                <li>e-Business contract infrastructure — <strong>monolith → microservices</strong> (Java 11, Spring Boot)</li>
-                <li>CI/CD with <strong>Jenkins + OpenShift</strong></li>
-            </ul>
-
-            <h3>Software Engineer — Capgemini <span style="font-weight:400;color:#94a3b8">(Mercadona)</span></h3>
-            <div class="job-meta">October 2020 – February 2022 · Valencia, Spain</div>
-            <ul>
-                <li>Legacy supply chain optimization, <strong>OracleSQL</strong> database overhaul</li>
-                <li>Primary technical interface for Europe's largest grocery supply chain</li>
-            </ul>
-        </div>
-
-        <hr>
-
-        <div class="section">
-            <h2>Technical Stack</h2>
-            <div class="tech-grid">
-                <span class="tech-label">Languages</span><span class="tech-value">Python · Java · SQL · JavaScript · C++</span>
-                <span class="tech-label">Backend</span><span class="tech-value">FastAPI · Spring Boot · SQLModel · REST APIs</span>
-                <span class="tech-label">Databases</span><span class="tech-value">PostgreSQL · MySQL · OracleSQL · NeonDB</span>
-                <span class="tech-label">Data & AI</span><span class="tech-value">OpenAI GPT-4 · pandas · ETL · data migration</span>
-                <span class="tech-label">Automation</span><span class="tech-value">BeautifulSoup · Selenium · rev. eng. · anti-detection</span>
-                <span class="tech-label">DevOps</span><span class="tech-value">Docker · Jenkins · OpenShift · Git · CI/CD</span>
-                <span class="tech-label">Integrations</span><span class="tech-value">eBay API · Wallapop API · Google Drive · Retool</span>
+            <div>
+                <h4>Databases</h4>
+                <div class="cv-skillbar">
+                    <div class="cv-skillbar__label">PostgreSQL</div>
+                    <div class="cv-skillbar__track"><div class="cv-skillbar__fill" style="width:95%"></div></div>
+                </div>
+                <div class="cv-skillbar">
+                    <div class="cv-skillbar__label">MySQL</div>
+                    <div class="cv-skillbar__track"><div class="cv-skillbar__fill" style="width:75%"></div></div>
+                </div>
+                <div class="cv-skillbar">
+                    <div class="cv-skillbar__label">OracleSQL</div>
+                    <div class="cv-skillbar__track"><div class="cv-skillbar__fill" style="width:60%"></div></div>
+                </div>
             </div>
-        </div>
 
-        <hr>
+            <div>
+                <h4>Languages</h4>
+                <ul class="cv-languages">
+                    <li><span>Spanish</span><span>Native</span></li>
+                    <li><span>English</span><span>Professional</span></li>
+                    <li><span>Valencian</span><span>Native</span></li>
+                </ul>
+            </div>
 
-        <div class="section">
-            <h2>Education</h2>
-            <p class="education-line"><strong>Multimedia Engineering (B.Eng.)</strong> — Universitat de València <em>(2016–2021)</em></p>
-        </div>
+            <div>
+                <h4>Education</h4>
+                <div class="cv-edu-sidebar">
+                    <strong>Multimedia Engineering</strong>
+                    Universitat de València<br>
+                    <em>2016 – 2021</em>
+                </div>
+            </div>
+        </aside>
 
-        <div class="section">
-            <h2>Languages</h2>
-            <p class="languages-line">Spanish (native) · English (professional) · Valencian/Catalan (native)</p>
-        </div>
+        <!-- ─── MAIN ─── -->
+        <main class="cv-main">
+            <p class="cv-summary">Backend engineer with 5+ years building production systems — from enterprise logistics (Mercadona, AIRBUS) to designing a full e-commerce platform processing <strong>~100 orders/day</strong> across <strong>12 marketplace accounts</strong>. Every system I've built handles real traffic, real money, and real operational load.</p>
+
+            <section>
+                <h2>Experience</h2>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Technical Founder & Lead Engineer <span class="cv-job__company">— REUSALIA</span></div>
+                        <span class="cv-job__dates">Apr 2023 – Present</span>
+                    </div>
+                    <p>Solely designed and built the entire backend platform for a physical e-commerce business. The system runs in production daily, used by 6 employees.</p>
+                    <ul>
+                        <li><strong>FastAPI backend</strong> — 25+ SQLModel models, 35+ Alembic migrations, ~60 REST endpoints</li>
+                        <li><strong>PostgreSQL</strong> schema with views, triggers, and financial reconciliation</li>
+                        <li><strong>Reverse-engineered Wallapop API</strong> — cookie auth, anti-detection, 12 parallel accounts. 2,100+ lines, 5 major versions</li>
+                        <li><strong>AI enrichment</strong>: Amazon → GPT-4 categorization → description gen → marketplace sync. Saves ~40h/week</li>
+                        <li><strong>Cloud-Local Bridge</strong>: DB command queue, exclusive locking, heartbeat, ~60s failover</li>
+                        <li><strong>Sheets → PostgreSQL</strong>: 5-phase migration, 3 years of data, zero-downtime cutover</li>
+                    </ul>
+                </div>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Senior Software Engineer <span class="cv-job__company">— LittleBig Connection</span></div>
+                        <span class="cv-job__dates">Dec 2022 – Feb 2024</span>
+                    </div>
+                    <ul>
+                        <li>REST APIs with <strong>Java/Spring Boot</strong>, OAuth2/JWT security, Docker containerization</li>
+                        <li>MySQL schema design and optimization</li>
+                    </ul>
+                </div>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Software Engineer <span class="cv-job__company">— Sopra Steria (AIRBUS)</span></div>
+                        <span class="cv-job__dates">Nov 2021 – Dec 2022</span>
+                    </div>
+                    <ul>
+                        <li>Monolith → microservices (Java 11, Spring Boot), CI/CD with Jenkins + OpenShift</li>
+                    </ul>
+                </div>
+
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Software Engineer <span class="cv-job__company">— Capgemini (Mercadona)</span></div>
+                        <span class="cv-job__dates">Oct 2020 – Feb 2022</span>
+                    </div>
+                    <ul>
+                        <li>Legacy supply chain optimization, OracleSQL overhaul, primary technical interface</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
     </div>
 </body>
 </html>

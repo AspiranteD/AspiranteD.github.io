@@ -8,88 +8,140 @@
 </head>
 <body>
     <div class="cv-actions">
-        <a href="./" class="btn-back">← All CV versions</a>
-        <button class="btn-print" onclick="window.print()">Print / Save PDF</button>
+        <a href="./" class="btn-back">← All versions</a>
+        <button class="btn-print" onclick="window.print()">Print / PDF</button>
     </div>
 
-    <div class="cv-wrapper">
-        <div class="cv-header">
-            <div class="cv-header__left">
-                <h1>Guillem Climent Pavia</h1>
-                <div class="subtitle">Freelance Automation & Systems Consultant</div>
-                <div class="contact-line">
-                    Valencia, Spain<br>
-                    <a href="mailto:guillemclim@gmail.com">guillemclim@gmail.com</a> · <a href="https://linkedin.com/in/gcliment">LinkedIn</a> · <a href="https://github.com/AspiranteD">GitHub</a> · <a href="https://aspiranted.github.io">Portfolio</a>
+    <div class="cv">
+        <!-- ─── SIDEBAR ─── -->
+        <aside class="cv-sidebar">
+            <div>
+                <div class="cv-sidebar__name">Guillem<br>Climent</div>
+                <div class="cv-sidebar__title">Automation Consultant</div>
+            </div>
+            <div class="cv-sidebar__divider"></div>
+
+            <div>
+                <h4>Contact</h4>
+                <ul class="cv-contact">
+                    <li><span class="icon">◉</span> Valencia, Spain</li>
+                    <li><span class="icon">✉</span> <a href="mailto:guillemclim@gmail.com">guillemclim@gmail.com</a></li>
+                    <li><span class="icon">⬡</span> <a href="https://linkedin.com/in/gcliment">linkedin.com/in/gcliment</a></li>
+                    <li><span class="icon">⌘</span> <a href="https://github.com/AspiranteD">github.com/AspiranteD</a></li>
+                    <li><span class="icon">◈</span> <a href="https://aspiranted.github.io">aspiranted.github.io</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Services</h4>
+                <div class="cv-skills">
+                    <span class="cv-skill cv-skill--accent">Marketplace APIs</span>
+                    <span class="cv-skill cv-skill--accent">E-Commerce ERP</span>
+                    <span class="cv-skill cv-skill--accent">Data Migration</span>
+                    <span class="cv-skill">AI Automation</span>
+                    <span class="cv-skill">Reverse Engineering</span>
+                    <span class="cv-skill">Web Scraping</span>
+                    <span class="cv-skill">Hardware Integration</span>
                 </div>
             </div>
-            <div class="cv-header__accent"></div>
-        </div>
 
-        <p class="summary">I build production-grade automation systems for e-commerce and marketplace operations. I replace manual processes with custom software that runs autonomously. I've done it for my own company for 3+ years — now I do it for yours.</p>
-
-        <div class="section">
-            <h2>Proof of Work: REUSALIA</h2>
-            <p>I founded and operate a physical e-commerce business. Everything below runs in production daily, built by me alone.</p>
-            <table class="metrics-table">
-                <thead><tr><th>What I Built</th><th>Impact</th></tr></thead>
-                <tbody>
-                    <tr><td>Full ERP (FastAPI + PostgreSQL + Retool)</td><td>6 employees · 10+ modules</td></tr>
-                    <tr><td>Wallapop private API reverse engineering</td><td>~100 orders/day · 12 accounts</td></tr>
-                    <tr><td>AI product enrichment pipeline</td><td>Saves ~40h/week</td></tr>
-                    <tr><td>Multi-marketplace sync engine</td><td>3 platforms synced</td></tr>
-                    <tr><td>Cloud-to-hardware bridge</td><td>~60s failover</td></tr>
-                    <tr><td>Google Sheets → PostgreSQL migration</td><td>3 years data · 0 downtime</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <hr>
-
-        <div class="section">
-            <h2>Services</h2>
-            <ul>
-                <li><strong>Marketplace Automation</strong> — API integration (eBay, Amazon, Wallapop), multi-account ops, reverse engineering</li>
-                <li><strong>E-Commerce Systems</strong> — Custom ERP/inventory (FastAPI + PostgreSQL + Retool), hardware integration</li>
-                <li><strong>Data Engineering</strong> — Spreadsheet → database migrations, ETL, reconciliation, zero-downtime cutover</li>
-                <li><strong>AI Automation</strong> — Product categorization/description (GPT-4), scraping, autonomous workflows</li>
-            </ul>
-        </div>
-
-        <hr>
-
-        <div class="section">
-            <h2>Enterprise Background</h2>
-            <ul>
-                <li><strong>LittleBig Connection</strong> (2022–2024) — Java/Spring Boot, Angular, MySQL, Docker</li>
-                <li><strong>Sopra Steria / AIRBUS</strong> (2021–2022) — Monolith → microservices, Jenkins/OpenShift</li>
-                <li><strong>Capgemini / Mercadona</strong> (2020–2022) — Supply chain, OracleSQL, batch processing</li>
-            </ul>
-        </div>
-
-        <hr>
-
-        <div class="section">
-            <h2>Technical Stack</h2>
-            <div class="tech-grid">
-                <span class="tech-label">Backend</span><span class="tech-value">Python · FastAPI · Java · Spring Boot</span>
-                <span class="tech-label">Databases</span><span class="tech-value">PostgreSQL · MySQL · OracleSQL</span>
-                <span class="tech-label">AI</span><span class="tech-value">OpenAI GPT-4 · LLM pipelines</span>
-                <span class="tech-label">Automation</span><span class="tech-value">BeautifulSoup · Selenium · rev. eng.</span>
-                <span class="tech-label">Integrations</span><span class="tech-value">eBay API · Wallapop API · Retool · Brother QL-700</span>
+            <div>
+                <h4>Stack</h4>
+                <div class="cv-skills">
+                    <span class="cv-skill">Python</span>
+                    <span class="cv-skill">FastAPI</span>
+                    <span class="cv-skill">PostgreSQL</span>
+                    <span class="cv-skill">OpenAI GPT-4</span>
+                    <span class="cv-skill">Selenium</span>
+                    <span class="cv-skill">eBay API</span>
+                    <span class="cv-skill">Retool</span>
+                    <span class="cv-skill">Docker</span>
+                </div>
             </div>
-        </div>
 
-        <hr>
+            <div>
+                <h4>Availability</h4>
+                <div class="cv-edu-sidebar">
+                    <strong>Remote (EU timezone)</strong>
+                    Project-based · Retainer<br>
+                    Embedded team
+                </div>
+            </div>
 
-        <div class="section">
-            <h2>Availability</h2>
-            <p>Remote (Europe timezone) · Project-based, retainer, or embedded team<br>Spanish (native) · English (professional)</p>
-        </div>
+            <div>
+                <h4>Languages</h4>
+                <ul class="cv-languages">
+                    <li><span>Spanish</span><span>Native</span></li>
+                    <li><span>English</span><span>Professional</span></li>
+                    <li><span>Valencian</span><span>Native</span></li>
+                </ul>
+            </div>
 
-        <div class="section">
-            <h2>Education</h2>
-            <p class="education-line"><strong>Multimedia Engineering (B.Eng.)</strong> — Universitat de València <em>(2016–2021)</em></p>
-        </div>
+            <div>
+                <h4>Education</h4>
+                <div class="cv-edu-sidebar">
+                    <strong>Multimedia Engineering</strong>
+                    Universitat de València<br>
+                    <em>2016 – 2021</em>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ─── MAIN ─── -->
+        <main class="cv-main">
+            <p class="cv-summary">I build production-grade automation systems for e-commerce and marketplace operations. I replace manual processes with custom software that runs autonomously. <strong>I've done it for my own company for 3+ years</strong> — now I do it for yours.</p>
+
+            <section>
+                <h2>Proof of Work — REUSALIA</h2>
+                <p style="font-size:9pt;color:#475569;margin-bottom:10px;">Founded and operate a physical e-commerce business. Everything below runs in production daily, built by me alone.</p>
+                <table class="cv-metrics">
+                    <thead><tr><th>What I Built</th><th>Impact</th></tr></thead>
+                    <tbody>
+                        <tr><td>Full ERP (FastAPI + PostgreSQL + Retool)</td><td>6 employees · 10+ modules</td></tr>
+                        <tr><td>Wallapop private API reverse engineering</td><td>~100 orders/day · 12 accounts</td></tr>
+                        <tr><td>AI product enrichment pipeline</td><td>Saves ~40h/week</td></tr>
+                        <tr><td>Multi-marketplace sync engine</td><td>3 platforms synced</td></tr>
+                        <tr><td>Cloud-to-hardware bridge</td><td>~60s failover</td></tr>
+                        <tr><td>Google Sheets → PostgreSQL migration</td><td>3 yrs data · 0 downtime</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h2>What I Deliver</h2>
+                <ul class="cv-services">
+                    <li><strong>Marketplace Automation</strong> — API integration (eBay, Amazon, Wallapop), multi-account ops, reverse engineering private APIs</li>
+                    <li><strong>E-Commerce Systems</strong> — Custom ERP/inventory (FastAPI + PostgreSQL + Retool), label printing, hardware bridges</li>
+                    <li><strong>Data Engineering</strong> — Spreadsheet → database migrations, ETL, reconciliation, zero-downtime cutover</li>
+                    <li><strong>AI Automation</strong> — GPT-4 product categorization, description generation, autonomous data pipelines</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Enterprise Background</h2>
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">LittleBig Connection</div>
+                        <span class="cv-job__dates">Dec 2022 – Feb 2024</span>
+                    </div>
+                    <p>Java/Spring Boot, Angular, MySQL, Docker</p>
+                </div>
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Sopra Steria <span class="cv-job__company">(AIRBUS)</span></div>
+                        <span class="cv-job__dates">Nov 2021 – Dec 2022</span>
+                    </div>
+                    <p>Monolith → microservices, Jenkins/OpenShift</p>
+                </div>
+                <div class="cv-job">
+                    <div class="cv-job__header">
+                        <div class="cv-job__title">Capgemini <span class="cv-job__company">(Mercadona)</span></div>
+                        <span class="cv-job__dates">Oct 2020 – Feb 2022</span>
+                    </div>
+                    <p>Supply chain optimization, OracleSQL, batch processing</p>
+                </div>
+            </section>
+        </main>
     </div>
 </body>
 </html>
