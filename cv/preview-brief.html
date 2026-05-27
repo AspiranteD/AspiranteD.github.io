@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Preview — The Brief</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #d1d5db;
+            color: #1e293b;
+            display: flex;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #fff;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* Header band */
+        .header {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 40px 48px 32px;
+        }
+
+        .header__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .header__name {
+            font-size: 32pt;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .header__contact {
+            text-align: right;
+            font-size: 8pt;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .header__contact a { color: #93c5fd; }
+
+        .header__role {
+            font-size: 12pt;
+            font-weight: 300;
+            color: #60a5fa;
+            margin-top: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .header__summary {
+            margin-top: 16px;
+            font-size: 9.5pt;
+            font-weight: 300;
+            color: #cbd5e1;
+            line-height: 1.7;
+            max-width: 85%;
+        }
+
+        /* Metrics strip */
+        .metrics-strip {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            background: #1e293b;
+        }
+
+        .ms-item {
+            padding: 16px 20px;
+            text-align: center;
+            border-right: 1px solid #334155;
+        }
+        .ms-item:last-child { border-right: none; }
+
+        .ms-item__number {
+            font-size: 20pt;
+            font-weight: 800;
+            color: #60a5fa;
+            line-height: 1;
+        }
+
+        .ms-item__label {
+            font-size: 6.5pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* Body */
+        .body { padding: 28px 48px 36px; }
+
+        h2 {
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #0f172a;
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #0f172a;
+            display: inline-block;
+        }
+
+        .section { margin-bottom: 24px; }
+        .section::after { content: ''; display: block; clear: both; }
+
+        /* Jobs */
+        .job { margin-bottom: 14px; }
+
+        .job__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .job__title { font-size: 10pt; font-weight: 700; color: #0f172a; }
+        .job__company { font-weight: 400; color: #94a3b8; }
+        .job__dates { font-size: 7.5pt; color: #cbd5e1; font-weight: 500; background: #f1f5f9; padding: 2px 8px; border-radius: 2px; }
+
+        .job__desc {
+            font-size: 8.5pt;
+            color: #64748b;
+            margin-top: 2px;
+            font-style: italic;
+        }
+
+        .job ul { margin-top: 5px; padding-left: 0; list-style: none; }
+        .job li {
+            font-size: 8.5pt;
+            color: #334155;
+            line-height: 1.55;
+            padding: 2px 0 2px 16px;
+            position: relative;
+        }
+        .job li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 6px;
+            height: 2px;
+            background: #60a5fa;
+        }
+        .job li strong { color: #0f172a; }
+
+        /* Callout box */
+        .callout {
+            background: #f8fafc;
+            border-left: 3px solid #60a5fa;
+            padding: 12px 16px;
+            margin: 14px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout__text {
+            font-size: 9pt;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .callout__text strong { color: #0f172a; }
+
+        /* Stack — compact */
+        .stack-compact {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 3px 12px;
+            font-size: 8.5pt;
+        }
+
+        .stack-compact dt { font-weight: 600; color: #0f172a; text-align: right; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.05em; padding-top: 1px; }
+        .stack-compact dd { color: #475569; margin: 0; }
+
+        /* Footer */
+        .footer {
+            padding: 0 48px 24px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 8pt;
+            color: #cbd5e1;
+        }
+
+        /* Nav */
+        .nav {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+        .nav a, .nav button {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            transition: all 0.2s;
+        }
+        .nav button { background: #60a5fa; color: #0f172a; }
+        .nav button:hover { background: #93c5fd; }
+        .nav a { background: #fff; color: #64748b; border: 1px solid #e2e8f0; }
+        .nav a:hover { border-color: #60a5fa; color: #60a5fa; }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            .page { box-shadow: none; }
+            .nav { display: none; }
+            .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .metrics-strip { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .ms-item__number { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .job li::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .job__dates { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+        @page { size: A4; margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="./">← Back</a>
+        <button onclick="window.print()">Print / PDF</button>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <div class="header__top">
+                <div>
+                    <div class="header__name">Guillem Climent</div>
+                    <div class="header__role">Senior Backend & Platform Engineer</div>
+                </div>
+                <div class="header__contact">
+                    Valencia, Spain<br>
+                    <a href="mailto:guillemclim@gmail.com">guillemclim@gmail.com</a><br>
+                    <a href="https://linkedin.com/in/gcliment">linkedin.com/in/gcliment</a><br>
+                    <a href="https://github.com/AspiranteD">github.com/AspiranteD</a>
+                </div>
+            </div>
+            <p class="header__summary">Backend engineer with 5+ years building production systems. Founded a physical e-commerce company and engineered its entire platform — APIs, databases, reverse-engineered integrations, AI pipelines, and hardware bridges. One engineer, real production, real scale.</p>
+        </div>
+
+        <div class="metrics-strip">
+            <div class="ms-item">
+                <div class="ms-item__number">~100</div>
+                <div class="ms-item__label">Orders / day</div>
+            </div>
+            <div class="ms-item">
+                <div class="ms-item__number">12</div>
+                <div class="ms-item__label">Accounts</div>
+            </div>
+            <div class="ms-item">
+                <div class="ms-item__number">25+</div>
+                <div class="ms-item__label">DB Models</div>
+            </div>
+            <div class="ms-item">
+                <div class="ms-item__number">~40h</div>
+                <div class="ms-item__label">Saved / week</div>
+            </div>
+            <div class="ms-item">
+                <div class="ms-item__number">180+</div>
+                <div class="ms-item__label">Scripts</div>
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="section">
+                <h2>Experience</h2>
+
+                <div class="job">
+                    <div class="job__header">
+                        <div class="job__title">Technical Founder & Lead Engineer <span class="job__company">— REUSALIA</span></div>
+                        <span class="job__dates">Apr 2023 – Present</span>
+                    </div>
+                    <div class="job__desc">Sole engineer. Full platform for a physical e-commerce business, 6 employees.</div>
+                    <ul>
+                        <li><strong>FastAPI backend</strong> — 25+ SQLModel models, 35+ Alembic migrations, ~60 endpoints</li>
+                        <li><strong>Reverse-engineered Wallapop API</strong> — cookie auth, anti-detection, 12 accounts, 2,100+ lines</li>
+                        <li><strong>AI enrichment</strong> — Amazon scraping → GPT-4 categorization → marketplace sync</li>
+                        <li><strong>Cloud-Local Bridge</strong> — DB command queue, exclusive lock, heartbeat, ~60s failover</li>
+                        <li><strong>Data migration</strong> — Sheets → PostgreSQL, 5 phases, 3 years data, zero downtime</li>
+                    </ul>
+                </div>
+
+                <div class="callout">
+                    <p class="callout__text"><strong>Crisis leadership:</strong> In Oct 2024, DANA floods destroyed the warehouse. Directed 60 people in recovery, rebuilt company from zero in 2 months, scaled team from 3 to 6.</p>
+                </div>
+
+                <div class="job">
+                    <div class="job__header">
+                        <div class="job__title">Senior Software Engineer <span class="job__company">— LittleBig Connection</span></div>
+                        <span class="job__dates">Dec 2022 – Feb 2024</span>
+                    </div>
+                    <ul>
+                        <li>Java/Spring Boot REST APIs, OAuth2/JWT, MySQL, Docker containerization</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job__header">
+                        <div class="job__title">Software Engineer <span class="job__company">— Sopra Steria (AIRBUS)</span></div>
+                        <span class="job__dates">Nov 2021 – Dec 2022</span>
+                    </div>
+                    <ul>
+                        <li>Monolith → microservices (Java 11), Angular 13 + NgRx, Jenkins/OpenShift CI/CD</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job__header">
+                        <div class="job__title">Software Engineer <span class="job__company">— Capgemini (Mercadona)</span></div>
+                        <span class="job__dates">Oct 2020 – Feb 2022</span>
+                    </div>
+                    <ul>
+                        <li>Supply chain optimization, OracleSQL overhaul, primary technical interface</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Technical Stack</h2>
+                <dl class="stack-compact">
+                    <dt>Backend</dt><dd>Python · FastAPI · SQLModel · Java · Spring Boot · REST</dd>
+                    <dt>Data</dt><dd>PostgreSQL · MySQL · OracleSQL · OpenAI GPT-4 · pandas</dd>
+                    <dt>Scraping</dt><dd>BeautifulSoup · Selenium · reverse engineering</dd>
+                    <dt>Infra</dt><dd>Docker · Jenkins · OpenShift · Git · CI/CD</dd>
+                    <dt>APIs</dt><dd>eBay · Wallapop (rev. eng.) · Google Drive · Retool</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>B.Eng. Multimedia Engineering — Universitat de València (2016–2021)</span>
+            <span>Spanish (native) · English (professional) · Valencian (native)</span>
+        </div>
+    </div>
+</body>
+</html>

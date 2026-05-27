@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Preview — The Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0a0a0a;
+            color: #a0a0a0;
+            display: flex;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #111;
+            padding: 48px 44px;
+            box-shadow: 0 0 80px rgba(0,255,136,0.03);
+            border: 1px solid #1a1a1a;
+        }
+
+        a { color: #5ae; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* Header */
+        .header { margin-bottom: 36px; }
+
+        .header__prompt {
+            font-size: 8pt;
+            color: #555;
+            margin-bottom: 6px;
+        }
+        .header__prompt span { color: #0f8; }
+
+        .header__name {
+            font-size: 32pt;
+            font-weight: 800;
+            color: #f0f0f0;
+            letter-spacing: -0.03em;
+            line-height: 1;
+        }
+
+        .header__role {
+            font-size: 11pt;
+            font-weight: 400;
+            color: #0f8;
+            margin-top: 8px;
+        }
+
+        .header__contact {
+            margin-top: 14px;
+            font-size: 8pt;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .header__contact a { color: #5ae; }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #222;
+            margin: 28px 0;
+        }
+
+        .divider--accent {
+            border-color: #0f8;
+            opacity: 0.3;
+        }
+
+        /* Summary */
+        .summary {
+            font-family: 'Inter', sans-serif;
+            font-size: 10pt;
+            font-weight: 300;
+            line-height: 1.7;
+            color: #888;
+            padding-left: 16px;
+            border-left: 2px solid #0f8;
+            margin-bottom: 32px;
+        }
+
+        /* Metrics — key:value */
+        .metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2px 40px;
+            margin-bottom: 32px;
+            padding: 16px 20px;
+            background: #0d0d0d;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #161616;
+            font-size: 8.5pt;
+        }
+
+        .metric__key { color: #666; }
+        .metric__val { color: #0f8; font-weight: 600; }
+
+        /* Section */
+        h2 {
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #0f8;
+            margin-bottom: 16px;
+        }
+        h2::before {
+            content: '## ';
+            color: #333;
+        }
+
+        .section { margin-bottom: 28px; }
+
+        /* Jobs */
+        .job { margin-bottom: 16px; }
+
+        .job__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .job__title {
+            font-size: 10pt;
+            font-weight: 700;
+            color: #e0e0e0;
+        }
+
+        .job__company { color: #666; font-weight: 400; }
+
+        .job__dates {
+            font-size: 7.5pt;
+            color: #444;
+        }
+
+        .job__desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 8.5pt;
+            color: #666;
+            margin-top: 3px;
+        }
+
+        .job ul {
+            margin-top: 6px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .job li {
+            font-size: 8.5pt;
+            color: #888;
+            line-height: 1.6;
+            padding: 1px 0;
+        }
+
+        .job li::before {
+            content: '› ';
+            color: #333;
+        }
+
+        .job li strong { color: #ccc; }
+
+        /* Stack */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            gap: 4px 12px;
+            font-size: 8.5pt;
+        }
+
+        .stack-grid dt {
+            color: #555;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .stack-grid dd { color: #888; margin: 0; }
+
+        /* Footer */
+        .footer {
+            margin-top: 28px;
+            padding-top: 14px;
+            border-top: 1px solid #1a1a1a;
+            font-size: 7.5pt;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Nav */
+        .nav {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+        .nav a, .nav button {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            transition: all 0.2s;
+        }
+        .nav button { background: #0f8; color: #000; }
+        .nav button:hover { background: #0da; }
+        .nav a { background: #1a1a1a; color: #666; border: 1px solid #333; }
+        .nav a:hover { border-color: #0f8; color: #0f8; }
+
+        @media print {
+            body { background: #111; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .page { box-shadow: none; border: none; padding: 32px 36px; }
+            .nav { display: none; }
+        }
+        @page { size: A4; margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="./">← back</a>
+        <button onclick="window.print()">print</button>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <div class="header__prompt"><span>~</span>/cv $ cat guillem.yml</div>
+            <div class="header__name">Guillem Climent</div>
+            <div class="header__role">Senior Backend Engineer</div>
+            <div class="header__contact">
+                Valencia, Spain<br>
+                <a href="mailto:guillemclim@gmail.com">guillemclim@gmail.com</a> · <a href="https://linkedin.com/in/gcliment">linkedin</a> · <a href="https://github.com/AspiranteD">github</a> · <a href="https://aspiranted.github.io">portfolio</a>
+            </div>
+        </div>
+
+        <hr class="divider divider--accent">
+
+        <p class="summary">Backend engineer, 5+ years. Founded a physical e-commerce company and built its entire platform from scratch — APIs, databases, reverse-engineered marketplace integrations, AI pipelines, and hardware bridges. One engineer. Real production. Real money.</p>
+
+        <div class="metrics">
+            <div class="metric"><span class="metric__key">orders_per_day</span><span class="metric__val">~100</span></div>
+            <div class="metric"><span class="metric__key">marketplace_accounts</span><span class="metric__val">12</span></div>
+            <div class="metric"><span class="metric__key">db_models</span><span class="metric__val">25+</span></div>
+            <div class="metric"><span class="metric__key">db_migrations</span><span class="metric__val">35+</span></div>
+            <div class="metric"><span class="metric__key">api_endpoints</span><span class="metric__val">~60</span></div>
+            <div class="metric"><span class="metric__key">ai_hours_saved_week</span><span class="metric__val">~40h</span></div>
+            <div class="metric"><span class="metric__key">team_size</span><span class="metric__val">6</span></div>
+            <div class="metric"><span class="metric__key">python_scripts</span><span class="metric__val">180+</span></div>
+        </div>
+
+        <div class="section">
+            <h2>Experience</h2>
+
+            <div class="job">
+                <div class="job__header">
+                    <div class="job__title">Technical Founder <span class="job__company">— REUSALIA</span></div>
+                    <span class="job__dates">2023 – present</span>
+                </div>
+                <p class="job__desc">Sole engineer. Full platform for physical e-commerce, 6 employees.</p>
+                <ul>
+                    <li><strong>FastAPI</strong> — 25+ models, 35+ migrations, ~60 endpoints, APScheduler</li>
+                    <li><strong>Wallapop API</strong> — reverse-engineered, cookie auth, anti-detection, 12 accounts</li>
+                    <li><strong>AI pipeline</strong> — Amazon → GPT-4 → auto-listings → marketplace sync</li>
+                    <li><strong>Cloud-Local Bridge</strong> — exclusive lock, heartbeat, ~60s failover, hardware</li>
+                    <li><strong>Data migration</strong> — Sheets → PostgreSQL, 5 phases, zero downtime</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job__header">
+                    <div class="job__title">Senior Engineer <span class="job__company">— LittleBig Connection</span></div>
+                    <span class="job__dates">2022 – 2024</span>
+                </div>
+                <ul>
+                    <li>Java/Spring Boot, OAuth2/JWT, MySQL, Docker</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job__header">
+                    <div class="job__title">Software Engineer <span class="job__company">— Sopra Steria (AIRBUS)</span></div>
+                    <span class="job__dates">2021 – 2022</span>
+                </div>
+                <ul>
+                    <li>Monolith → microservices, Angular + NgRx, Jenkins/OpenShift</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job__header">
+                    <div class="job__title">Software Engineer <span class="job__company">— Capgemini (Mercadona)</span></div>
+                    <span class="job__dates">2020 – 2022</span>
+                </div>
+                <ul>
+                    <li>Supply chain, OracleSQL, batch processing, stakeholder interface</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Stack</h2>
+            <dl class="stack-grid">
+                <dt>backend</dt><dd>Python · FastAPI · SQLModel · Java · Spring Boot</dd>
+                <dt>data</dt><dd>PostgreSQL · MySQL · OracleSQL · GPT-4 · pandas</dd>
+                <dt>scraping</dt><dd>BeautifulSoup · Selenium · reverse engineering</dd>
+                <dt>infra</dt><dd>Docker · Jenkins · OpenShift · Git · CI/CD</dd>
+                <dt>integrate</dt><dd>eBay API · Wallapop API · Google Drive · Retool</dd>
+            </dl>
+        </div>
+
+        <div class="footer">
+            <span>B.Eng. Multimedia Engineering — Universitat de València (2016–2021)</span>
+            <span>es: native · en: professional · ca: native</span>
+        </div>
+    </div>
+</body>
+</html>

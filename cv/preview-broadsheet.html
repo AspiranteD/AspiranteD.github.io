@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Preview — The Broadsheet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0ece4;
+            color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background: #faf8f4;
+            padding: 44px 48px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            border: 1px solid #e8e4dc;
+        }
+
+        a { color: #1a1a1a; text-decoration: none; }
+
+        /* Masthead */
+        .masthead {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px double #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .masthead__name {
+            font-family: 'Playfair Display', serif;
+            font-size: 48pt;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
+
+        .masthead__tagline {
+            font-size: 9pt;
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #888;
+            margin-top: 8px;
+        }
+
+        .masthead__contact {
+            font-size: 7.5pt;
+            color: #aaa;
+            margin-top: 10px;
+            letter-spacing: 0.04em;
+        }
+
+        /* Edition line */
+        .edition {
+            display: flex;
+            justify-content: space-between;
+            font-size: 7pt;
+            color: #bbb;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 6px 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        /* Headline */
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 20pt;
+            font-weight: 700;
+            line-height: 1.2;
+            text-align: center;
+            margin-bottom: 6px;
+            max-width: 85%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .subheadline {
+            text-align: center;
+            font-size: 9.5pt;
+            font-weight: 300;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .rule { border: none; border-top: 1px solid #ddd; margin: 16px 0; }
+        .rule--thick { border-top: 2px solid #1a1a1a; }
+
+        /* Two-column layout */
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 28px;
+        }
+
+        .col { }
+        .col:first-child { border-right: 1px solid #eee; padding-right: 28px; }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 11pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .section { margin-bottom: 18px; }
+
+        /* Jobs */
+        .job { margin-bottom: 12px; }
+
+        .job__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 10pt;
+            font-weight: 700;
+        }
+
+        .job__meta {
+            font-size: 7.5pt;
+            color: #999;
+            margin-top: 1px;
+            font-style: italic;
+        }
+
+        .job p {
+            font-size: 8.5pt;
+            color: #444;
+            line-height: 1.6;
+            margin-top: 4px;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .job ul {
+            margin-top: 4px;
+            padding-left: 14px;
+            list-style: none;
+        }
+
+        .job li {
+            font-size: 8.5pt;
+            color: #444;
+            line-height: 1.55;
+            padding: 1px 0;
+            text-align: justify;
+        }
+
+        .job li::before {
+            content: '■ ';
+            color: #ccc;
+            font-size: 5pt;
+            vertical-align: 2px;
+        }
+
+        .job li strong { color: #1a1a1a; }
+
+        /* Metrics — editorial pullquote style */
+        .pullquote {
+            text-align: center;
+            padding: 14px 0;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            margin: 14px 0;
+        }
+
+        .pullquote__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .pullquote__item { }
+
+        .pullquote__number {
+            font-family: 'Playfair Display', serif;
+            font-size: 22pt;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .pullquote__label {
+            font-size: 7pt;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+            margin-top: 2px;
+        }
+
+        /* Stack */
+        .stack-line {
+            font-size: 8.5pt;
+            color: #555;
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+        .stack-line strong {
+            color: #1a1a1a;
+            font-weight: 600;
+            display: inline-block;
+            width: 72px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 3px double #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            font-size: 7.5pt;
+            color: #bbb;
+        }
+
+        /* Nav */
+        .nav {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            gap: 8px;
+            z-index: 100;
+        }
+        .nav a, .nav button {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 0;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            transition: all 0.2s;
+        }
+        .nav button { background: #1a1a1a; color: #faf8f4; }
+        .nav button:hover { background: #444; }
+        .nav a { background: #faf8f4; color: #888; border: 1px solid #ddd; }
+        .nav a:hover { border-color: #1a1a1a; color: #1a1a1a; }
+
+        @media print {
+            body { background: #fff; padding: 0; }
+            .page { box-shadow: none; border: none; background: #fff; padding: 32px 40px; }
+            .nav { display: none; }
+        }
+        @page { size: A4; margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="./">← Back</a>
+        <button onclick="window.print()">Print / PDF</button>
+    </div>
+
+    <div class="page">
+        <div class="masthead">
+            <div class="masthead__name">Guillem Climent</div>
+            <div class="masthead__tagline">Senior Backend Engineer · Valencia, Spain</div>
+            <div class="masthead__contact">guillemclim@gmail.com · linkedin.com/in/gcliment · github.com/AspiranteD · aspiranted.github.io</div>
+        </div>
+
+        <div class="edition">
+            <span>Curriculum Vitae</span>
+            <span>5+ Years in Production Systems</span>
+            <span>Founded REUSALIA at 25</span>
+        </div>
+
+        <div class="headline">One Engineer, One Platform, One Hundred Orders Per Day</div>
+        <p class="subheadline">Founded a physical e-commerce company and built its entire tech stack from scratch — APIs, databases, reverse-engineered marketplace integrations, AI pipelines, and hardware bridges.</p>
+
+        <hr class="rule rule--thick">
+
+        <div class="columns">
+            <div class="col">
+                <div class="section">
+                    <h2>Experience</h2>
+
+                    <div class="job">
+                        <div class="job__title">Technical Founder — REUSALIA</div>
+                        <div class="job__meta">April 2023 – Present</div>
+                        <p>Sole engineer building and operating the full platform for a physical e-commerce business with 6 employees.</p>
+                        <ul>
+                            <li><strong>FastAPI backend</strong> — 25+ models, 35+ migrations, ~60 endpoints</li>
+                            <li><strong>Wallapop API</strong> — reverse-engineered private API, cookie auth, anti-detection, 12 parallel accounts</li>
+                            <li><strong>AI enrichment</strong> — Amazon → GPT-4 → auto-listings → sync</li>
+                            <li><strong>Cloud-Local Bridge</strong> — exclusive lock, heartbeat, hardware integration</li>
+                            <li><strong>Migration</strong> — Sheets → PostgreSQL, 5 phases, zero downtime</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job__title">Senior Engineer — LittleBig Connection</div>
+                        <div class="job__meta">Dec 2022 – Feb 2024</div>
+                        <p>Java/Spring Boot APIs, OAuth2/JWT security, MySQL, Docker containerization.</p>
+                    </div>
+
+                    <div class="job">
+                        <div class="job__title">Engineer — Sopra Steria (AIRBUS)</div>
+                        <div class="job__meta">Nov 2021 – Dec 2022</div>
+                        <p>Monolith → microservices, Angular 13 + NgRx, Jenkins/OpenShift CI/CD.</p>
+                    </div>
+
+                    <div class="job">
+                        <div class="job__title">Engineer — Capgemini (Mercadona)</div>
+                        <div class="job__meta">Oct 2020 – Feb 2022</div>
+                        <p>Supply chain optimization, OracleSQL overhaul, primary technical interface.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="pullquote">
+                    <div class="pullquote__grid">
+                        <div class="pullquote__item">
+                            <div class="pullquote__number">~100</div>
+                            <div class="pullquote__label">Orders / day</div>
+                        </div>
+                        <div class="pullquote__item">
+                            <div class="pullquote__number">12</div>
+                            <div class="pullquote__label">Marketplace accounts</div>
+                        </div>
+                        <div class="pullquote__item">
+                            <div class="pullquote__number">~40h</div>
+                            <div class="pullquote__label">Saved / week (AI)</div>
+                        </div>
+                        <div class="pullquote__item">
+                            <div class="pullquote__number">180+</div>
+                            <div class="pullquote__label">Python scripts</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Technical Stack</h2>
+                    <div class="stack-line"><strong>Backend</strong> Python · FastAPI · SQLModel · Java · Spring Boot</div>
+                    <div class="stack-line"><strong>Data</strong> PostgreSQL · MySQL · OracleSQL · GPT-4 · pandas</div>
+                    <div class="stack-line"><strong>Scraping</strong> BeautifulSoup · Selenium · reverse engineering</div>
+                    <div class="stack-line"><strong>Infra</strong> Docker · Jenkins · OpenShift · Git · CI/CD</div>
+                    <div class="stack-line"><strong>APIs</strong> eBay · Wallapop (rev. eng.) · Google Drive · Retool</div>
+                </div>
+
+                <div class="section">
+                    <h2>Education</h2>
+                    <div class="stack-line"><strong>B.Eng.</strong> Multimedia Engineering — Universitat de València (2016–2021)</div>
+                </div>
+
+                <div class="section">
+                    <h2>Languages</h2>
+                    <div class="stack-line">Spanish (native) · English (professional) · Valencian (native)</div>
+                </div>
+
+                <div class="section">
+                    <h2>The Full Story</h2>
+                    <p style="font-size:8.5pt;color:#555;line-height:1.6;text-align:justify;">Founded REUSALIA at 25. Scaled from a bedroom operation to an industrial warehouse. In October 2024, the DANA floods destroyed everything. Directed 60 people in recovery, rebuilt in 2 months, and came back with better systems, better documentation, and a bigger team.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>aspiranted.github.io</span>
+            <span>guillemclim@gmail.com</span>
+        </div>
+    </div>
+</body>
+</html>

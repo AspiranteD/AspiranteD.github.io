@@ -12,23 +12,49 @@
         .cv-page { padding: 120px 0 80px; min-height: 100vh; }
         .cv-page h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
         .cv-page__lead { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 48px; max-width: 600px; }
-        .cv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+
+        .cv-section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .cv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 48px; }
+
         .cv-card {
             background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
-            padding: 28px; transition: all var(--transition); text-decoration: none; color: inherit;
+            padding: 24px; transition: all var(--transition); text-decoration: none; color: inherit;
             display: flex; flex-direction: column;
         }
-        .cv-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: var(--shadow); }
+        .cv-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: var(--shadow); }
+
         .cv-card__badge {
-            display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            display: inline-block; font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
             letter-spacing: 0.08em; color: var(--accent); background: var(--tag-bg);
-            padding: 4px 10px; border-radius: 4px; margin-bottom: 14px; width: fit-content;
+            padding: 3px 8px; border-radius: 3px; margin-bottom: 10px; width: fit-content;
         }
-        .cv-card__title { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
-        .cv-card__desc { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; flex-grow: 1; }
-        .cv-card__cta { font-size: 0.85rem; font-weight: 600; color: var(--accent); }
-        .cv-card--recommended { border-color: var(--accent); }
-        .cv-tip { margin-top: 40px; font-size: 0.85rem; color: var(--text-muted); }
+        .cv-card__title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+        .cv-card__desc { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.55; flex-grow: 1; }
+
+        .cv-preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 48px; }
+
+        .cv-preview-card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 20px 16px; text-decoration: none; color: inherit; text-align: center;
+            transition: all var(--transition);
+        }
+        .cv-preview-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+        .cv-preview-card__letter {
+            font-size: 1.6rem; font-weight: 800; color: var(--accent); margin-bottom: 4px;
+        }
+        .cv-preview-card__name { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
+        .cv-preview-card__desc { font-size: 0.72rem; color: var(--text-muted); line-height: 1.4; }
+
+        .cv-tip { font-size: 0.82rem; color: var(--text-muted); margin-top: 8px; }
         .cv-tip strong { color: var(--text-secondary); }
     </style>
 </head>
@@ -45,39 +71,38 @@
     <div class="cv-page">
         <div class="container">
             <h1>Download CV</h1>
-            <p class="cv-page__lead">Choose the version that best matches the role you're evaluating me for. Each one highlights different strengths from the same experience.</p>
+            <p class="cv-page__lead">Choose the version that best matches the role. Each one highlights different strengths from the same experience.</p>
 
-            <div class="cv-grid">
-                <a href="CV_SENIOR_BACKEND.html" class="cv-card cv-card--recommended">
-                    <span class="cv-card__badge">Recommended</span>
-                    <h3 class="cv-card__title">Senior Backend Engineer</h3>
-                    <p class="cv-card__desc">Python, FastAPI, PostgreSQL, API design, data pipelines, system architecture. Best for backend-heavy roles and platform engineering positions.</p>
-                    <span class="cv-card__cta">View & Print →</span>
+            <div class="cv-section-title">Choose a style first</div>
+            <div class="cv-preview-grid">
+                <a href="preview-monograph.html" class="cv-preview-card">
+                    <div class="cv-preview-card__letter">A</div>
+                    <div class="cv-preview-card__name">The Monograph</div>
+                    <div class="cv-preview-card__desc">Editorial. Big type. Magazine infographic metrics.</div>
                 </a>
-
-                <a href="CV_TECH_LEAD.html" class="cv-card">
-                    <span class="cv-card__badge">Leadership</span>
-                    <h3 class="cv-card__title">Technical Lead</h3>
-                    <p class="cv-card__desc">Engineering leadership + technical depth. Team scaling, crisis management, product ownership. Best for tech lead, EM, or CTO roles.</p>
-                    <span class="cv-card__cta">View & Print →</span>
+                <a href="preview-terminal.html" class="cv-preview-card">
+                    <div class="cv-preview-card__letter">B</div>
+                    <div class="cv-preview-card__name">The Terminal</div>
+                    <div class="cv-preview-card__desc">Dark mode. Monospace. Engineer aesthetic.</div>
                 </a>
-
-                <a href="CV_FULLSTACK_ENTERPRISE.html" class="cv-card">
-                    <span class="cv-card__badge">Full-Stack</span>
-                    <h3 class="cv-card__title">Senior Full-Stack Engineer</h3>
-                    <p class="cv-card__desc">Backend + frontend balanced. Angular, Vue.js, Spring Boot, FastAPI. Best for enterprise full-stack roles and product engineering.</p>
-                    <span class="cv-card__cta">View & Print →</span>
+                <a href="preview-grid.html" class="cv-preview-card">
+                    <div class="cv-preview-card__letter">C</div>
+                    <div class="cv-preview-card__name">The Grid</div>
+                    <div class="cv-preview-card__desc">Swiss minimal. Strict grid. Zero decoration.</div>
                 </a>
-
-                <a href="CV_FREELANCE_CONSULTANT.html" class="cv-card">
-                    <span class="cv-card__badge">Consulting</span>
-                    <h3 class="cv-card__title">Freelance Consultant</h3>
-                    <p class="cv-card__desc">Services-oriented. Proof of work with metrics, service categories, availability. Best for B2B clients and project-based work.</p>
-                    <span class="cv-card__cta">View & Print →</span>
+                <a href="preview-broadsheet.html" class="cv-preview-card">
+                    <div class="cv-preview-card__letter">D</div>
+                    <div class="cv-preview-card__name">The Broadsheet</div>
+                    <div class="cv-preview-card__desc">Newspaper editorial. Serif headlines. Unique.</div>
+                </a>
+                <a href="preview-brief.html" class="cv-preview-card">
+                    <div class="cv-preview-card__letter">E</div>
+                    <div class="cv-preview-card__name">The Brief</div>
+                    <div class="cv-preview-card__desc">Executive pitch. Navy header. Investment-grade.</div>
                 </a>
             </div>
 
-            <p class="cv-tip"><strong>Tip:</strong> Open any CV → Ctrl+P (or Cmd+P) → Save as PDF. The layout is optimized for A4 printing.</p>
+            <p class="cv-tip"><strong>Tip:</strong> Open any preview, then Ctrl+P (or Cmd+P) to save as PDF. All layouts are print-optimized for A4.</p>
         </div>
     </div>
 
