@@ -37,8 +37,7 @@ I don't just write code. I build systems that run businesses.
 
 ### Frontend & UI
 - **Web**: Angular (NgRx state management), Vue.js, vanilla HTML/CSS/JS
-- **Desktop**: Tkinter-based operational tools (auth managers, inventory UIs)
-- **Low-Code**: Retool as internal ERP frontend (342+ files: queries, scripts, transformers)
+- **Low-Code/Internal Tools**: Retool as internal ERP frontend (342+ files: queries, scripts, transformers)
 
 ### Operations & Leadership
 - **Team Management**: Founded and scaled a business from 3 to 6 full-time employees (logistics, warehouse, administration)
@@ -53,7 +52,7 @@ I don't just write code. I build systems that run businesses.
 **REUSALIA** · Self-employed  
 *April 2023 – Present · Valencia, Spain*
 
-Founded and built from scratch a vertically-integrated e-commerce automation company, handling everything from business strategy and team management to architecting the entire technical infrastructure.
+Founded and built from scratch a physical e-commerce operations business powered by custom automation, handling everything from business strategy and team management to architecting the entire technical infrastructure.
 
 **Business Impact:**
 - Built and scaled a team from 3 to 6 full-time employees across logistics, warehouse operations, and administration
@@ -161,7 +160,7 @@ Interdisciplinary engineering degree combining computer science, software develo
 `PostgreSQL (NeonDB)` · `MySQL` · `OracleSQL` · `SQLite`
 
 ### Frontend
-`Angular` · `Vue.js` · `Retool` · `Tkinter` · `HTML/CSS/JS`
+`Angular` · `Vue.js` · `HTML/CSS/JS` · `NgRx`
 
 ### AI & ML
 `OpenAI API (GPT-4)` · `LLM Prompt Engineering` · `NLP Pipelines`
@@ -176,7 +175,7 @@ Interdisciplinary engineering degree combining computer science, software develo
 `Docker` · `Jenkins` · `OpenShift` · `Git` · `CI/CD Pipelines` · `NeonDB (Cloud Postgres)`
 
 ### Integrations
-`eBay API (OAuth2 + Feed + Fulfillment)` · `Google Drive/Sheets API` · `OpenAI API` · `Wallapop (Reverse-Engineered)` · `Brother QL-700 (Hardware)` · `MEGA API` · `ImgBB API`
+`eBay API (OAuth2 + Feed + Fulfillment)` · `Google Drive/Sheets API` · `OpenAI API` · `Wallapop API (Rev. Eng.)` · `Brother QL-700 (Hardware)` · `MEGA API` · `ImgBB API`
 
 ### Tools & Platforms
 `Retool` · `APScheduler` · `ThreadPoolExecutor` · `pytest` · `pre-commit` · `OpenCV`
@@ -227,7 +226,7 @@ Full REST API for e-commerce inventory management: items (by LPN), orders, sales
 
 ### 9. Marketplace Auth Manager
 Authentication management system for multi-account marketplace operations. Handles Wallapop cookie/bearer lifecycle, automatic token refresh, JWT decoding, validation, and secure storage in PostgreSQL.  
-**Stack:** Python, JWT, Requests, PostgreSQL, Tkinter  
+**Stack:** Python, JWT, Requests, PostgreSQL  
 **→** [github.com/AspiranteD/marketplace-auth-manager](https://github.com/AspiranteD/marketplace-auth-manager)
 
 ### 10. Product Image Pipeline
