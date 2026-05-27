@@ -71,7 +71,7 @@
                 <p>This wasn't a weekend side project migration. This was a <strong>production business</strong> with real constraints:</p>
 
                 <ul>
-                    <li><strong>4 employees</strong> who relied on Google Sheets every day — warehouse workers scanning items, admin processing orders, logistics coordinating shipments</li>
+                    <li><strong>5 employees</strong> who relied on Google Sheets every day — warehouse workers scanning items, admin processing orders, logistics coordinating shipments</li>
                     <li><strong>Orders flowing in daily</strong> across Wallapop (our main channel), each needing to be processed within hours</li>
                     <li><strong>Financial data</strong> that had to be accurate to the cent — we track costs per Amazon truckload (A2Z codes) for tax and profitability reporting</li>
                     <li><strong>No second engineer</strong> — I was the only developer, AND I was running the business operations simultaneously</li>
@@ -235,7 +235,7 @@ A2Z34567   | €11,200.75  | €11,198.25| €2.50   | ✗ INVESTIGATE
 
                 <ul>
                     <li><strong>Query times:</strong> From 15+ seconds (Sheet load) to <50ms (PostgreSQL query)</li>
-                    <li><strong>Concurrency:</strong> 5 automated scripts + 4 employees + Retool dashboards, all hitting the DB simultaneously with zero conflicts</li>
+                    <li><strong>Concurrency:</strong> 5 automated scripts + 5 employees + Retool dashboards, all hitting the DB simultaneously with zero conflicts</li>
                     <li><strong>Data integrity:</strong> Foreign keys, constraints, and triggers catch errors that would have silently corrupted the Sheet</li>
                     <li><strong>Operational scale:</strong> Expanded from Wallapop-only to Wallapop + eBay + PortalHero — something that would have been impossible with Sheets as the backbone</li>
                     <li><strong>Financial accuracy:</strong> Truckload reconciliation that used to take me 2 hours with SUMIFS now runs in 3 seconds as a materialized view</li>
@@ -262,7 +262,7 @@ A2Z34567   | €11,200.75  | €11,198.25| €2.50   | ✗ INVESTIGATE
                     <li>Having the discipline to not cut corners when you're exhausted and the discrepancy count is finally down to zero</li>
                 </ul>
 
-                <p>I did all of this as a solo engineer running a business with 4 employees. No team of DBAs. No dedicated QA. Just systematic engineering and a lot of coffee.</p>
+                <p>I did all of this as a solo engineer running a business with 5 employees. No team of DBAs. No dedicated QA. Just systematic engineering and a lot of coffee.</p>
 
                 <p>The migration pipeline is open-source: <a href="https://github.com/AspiranteD/sheets-to-postgres-migration">github.com/AspiranteD/sheets-to-postgres-migration</a></p>
             </div>

@@ -34,7 +34,7 @@
     "experience": {
         "title": "Experiência",
         "reusalia_date": "Abr 2023 – Presente",
-        "reusalia_1": "Fundei empresa de automação e-commerce; equipa escalada de 3 a 6 funcionários",
+        "reusalia_1": "Fundei negócio de e-commerce físico com automação própria; equipa escalada de 3 a 6",
         "reusalia_2": "Projetei sistema ERP completo: FastAPI + PostgreSQL + Retool (25+ modelos, 342 ficheiros UI)",
         "reusalia_3": "Construí automação multi-marketplace (Wallapop, eBay, PortalHero) com pipeline de enriquecimento IA",
         "reusalia_4": "Engenharia reversa de APIs privadas, sistemas anti-deteção, integração de impressoras de etiquetas",
@@ -115,7 +115,7 @@
         "title": "Artigos Técnicos",
         "subtitle": "Análises aprofundadas de problemas reais que resolvi — técnicos e não só.",
         "migration_title": "Como Migrei um Negócio em Produção de Google Sheets para PostgreSQL",
-        "migration_excerpt": "5 fases, syncs diários, reconciliação financeira e zero downtime — enquanto operava o negócio com 4 funcionários.",
+        "migration_excerpt": "5 fases, syncs diários, reconciliação financeira e zero downtime — enquanto operava o negócio com 5 funcionários.",
         "wallapop_title": "De Publicar à Mão a Engenharia Reversa: A Minha Jornada Wallapop",
         "wallapop_excerpt": "10 min/artigo manualmente → bots Selenium em 6 PCs remotos → engenharia reversa de API privada → sistema de extração de 2.100 linhas processando 100 pedidos/dia em 12 contas.",
         "bridge_title": "Conectando Cloud e Local: Um Padrão de Fila de Comandos",

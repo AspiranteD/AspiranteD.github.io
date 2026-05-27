@@ -34,7 +34,7 @@
     "experience": {
         "title": "Experience",
         "reusalia_date": "Apr 2023 – Present",
-        "reusalia_1": "Founded e-commerce automation company; scaled team from 3 to 6 employees",
+        "reusalia_1": "Founded physical e-commerce business powered by custom automation; scaled team from 3 to 6",
         "reusalia_2": "Architected full ERP system: FastAPI + PostgreSQL + Retool (25+ models, 342 UI files)",
         "reusalia_3": "Built multi-marketplace automation (Wallapop, eBay, PortalHero) with AI enrichment pipeline",
         "reusalia_4": "Reverse-engineered private APIs, built anti-detection systems, integrated label printers",
@@ -115,7 +115,7 @@
         "title": "Technical Writing",
         "subtitle": "Deep dives into real problems I solved — technical and otherwise.",
         "migration_title": "How I Migrated a Production Business from Google Sheets to PostgreSQL",
-        "migration_excerpt": "5 phases, daily syncs, financial reconciliation, and zero downtime — while running the business with 4 employees. The real engineering behind a spreadsheet-to-database migration.",
+        "migration_excerpt": "5 phases, daily syncs, financial reconciliation, and zero downtime — while running the business with 5 employees. The real engineering behind a spreadsheet-to-database migration.",
         "wallapop_title": "From Manual Posting to Reverse Engineering: My Wallapop Journey",
         "wallapop_excerpt": "10 min/item manually → Selenium bots across 6 remote PCs → reverse engineering a private API → 2,100-line extraction system processing 100 orders/day across 12 accounts.",
         "bridge_title": "Bridging Cloud and Local: A Database Command Queue Pattern",
