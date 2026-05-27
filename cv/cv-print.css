@@ -1,10 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -13,154 +9,240 @@ body {
     color: #1a1a2e;
     max-width: 210mm;
     margin: 0 auto;
-    padding: 16mm 18mm;
+    padding: 20mm 22mm;
+    background: #f8fafc;
 }
 
-a {
-    color: #4f46e5;
-    text-decoration: none;
+.cv-wrapper {
+    background: #fff;
+    padding: 40px 44px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
 }
+
+a { color: #4f46e5; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Header */
+.cv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16pt;
+    gap: 20px;
+}
+
+.cv-header__left { flex: 1; }
 
 h1 {
-    font-size: 20pt;
+    font-size: 22pt;
     font-weight: 800;
     letter-spacing: -0.03em;
     margin-bottom: 2pt;
+    color: #0f172a;
 }
 
 .subtitle {
-    font-size: 12pt;
+    font-size: 11pt;
     font-weight: 600;
     color: #4f46e5;
-    margin-bottom: 4pt;
+    margin-bottom: 6pt;
 }
 
 .contact-line {
     font-size: 8.5pt;
     color: #64748b;
-    margin-bottom: 12pt;
+    line-height: 1.6;
+}
+.contact-line a { color: #4f46e5; }
+
+.cv-header__accent {
+    width: 4px;
+    height: 60px;
+    background: linear-gradient(180deg, #4f46e5, #7c3aed);
+    border-radius: 2px;
+    flex-shrink: 0;
 }
 
-.contact-line a { color: #64748b; }
+/* Summary */
+.summary {
+    font-size: 9.5pt;
+    line-height: 1.6;
+    margin-bottom: 14pt;
+    padding: 12pt 16pt;
+    background: #f8fafc;
+    border-left: 3px solid #4f46e5;
+    border-radius: 0 6px 6px 0;
+    color: #334155;
+}
 
+/* Sections */
 hr {
     border: none;
     border-top: 1px solid #e2e8f0;
-    margin: 10pt 0;
+    margin: 12pt 0;
 }
 
 h2 {
-    font-size: 10pt;
+    font-size: 9pt;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     color: #4f46e5;
-    margin-bottom: 6pt;
-    border-bottom: 1.5px solid #4f46e5;
-    padding-bottom: 3pt;
+    margin-bottom: 8pt;
+    display: flex;
+    align-items: center;
+    gap: 8pt;
+}
+
+h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e2e8f0;
 }
 
 h3 {
     font-size: 10pt;
     font-weight: 700;
     margin-bottom: 1pt;
+    color: #0f172a;
 }
 
 .job-meta {
     font-size: 8.5pt;
     color: #64748b;
-    margin-bottom: 4pt;
+    margin-bottom: 5pt;
+    font-style: italic;
 }
 
 ul {
     padding-left: 14pt;
-    margin-bottom: 8pt;
+    margin-bottom: 10pt;
 }
 
 li {
     font-size: 9.5pt;
-    margin-bottom: 2pt;
-    line-height: 1.45;
+    margin-bottom: 3pt;
+    line-height: 1.5;
+    color: #334155;
 }
+
+li strong { color: #0f172a; }
 
 p {
     font-size: 9.5pt;
     margin-bottom: 6pt;
-    line-height: 1.5;
-}
-
-.summary {
-    font-size: 9.5pt;
     line-height: 1.55;
-    margin-bottom: 10pt;
+    color: #334155;
 }
 
+.section { margin-bottom: 12pt; }
+
+/* Tech grid */
 .tech-grid {
     display: grid;
     grid-template-columns: 100px 1fr;
-    gap: 2pt 8pt;
+    gap: 3pt 10pt;
     font-size: 9pt;
     margin-bottom: 8pt;
 }
 
 .tech-label {
     font-weight: 600;
-    color: #334155;
+    color: #0f172a;
+    font-size: 8.5pt;
 }
 
 .tech-value {
     color: #475569;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5pt;
 }
 
+/* Metrics table */
 .metrics-table {
     width: 100%;
     border-collapse: collapse;
     font-size: 9pt;
-    margin-bottom: 8pt;
+    margin-bottom: 10pt;
+    border-radius: 6px;
+    overflow: hidden;
 }
 
 .metrics-table th,
 .metrics-table td {
     text-align: left;
-    padding: 3pt 6pt;
-    border-bottom: 0.5px solid #e2e8f0;
+    padding: 6pt 10pt;
+    border-bottom: 1px solid #f1f5f9;
 }
 
 .metrics-table th {
     font-weight: 600;
-    font-size: 8.5pt;
+    font-size: 8pt;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     color: #64748b;
+    background: #f8fafc;
 }
 
 .metrics-table td:last-child {
-    font-weight: 600;
+    font-weight: 700;
     color: #4f46e5;
     font-family: 'JetBrains Mono', monospace;
     font-size: 8.5pt;
 }
 
-.education-line {
-    font-size: 9.5pt;
+.education-line { font-size: 9.5pt; }
+.languages-line { font-size: 9pt; color: #475569; }
+
+/* Print button */
+.cv-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    justify-content: flex-end;
 }
 
-.languages-line {
-    font-size: 9pt;
-    color: #475569;
+.cv-actions a, .cv-actions button {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
 }
 
-.section { margin-bottom: 10pt; }
+.btn-print {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+}
+.btn-print:hover { background: #4338ca; }
 
+.btn-back {
+    background: transparent;
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+}
+.btn-back:hover { border-color: #4f46e5; color: #4f46e5; }
+
+/* Print styles */
 @media print {
-    body { padding: 12mm 16mm; }
+    body { padding: 10mm 14mm; background: #fff; }
+    .cv-wrapper { box-shadow: none; padding: 0; border-radius: 0; }
+    .cv-actions { display: none; }
     a { color: #1a1a2e !important; }
-    h2 { color: #000 !important; border-bottom-color: #000 !important; }
+    h2 { color: #000 !important; }
+    h2::after { background: #ccc; }
     .subtitle { color: #333 !important; }
-    .no-print { display: none; }
+    .summary { background: #f5f5f5; border-left-color: #333; }
+    .contact-line a { color: #333 !important; }
+    .cv-header__accent { background: #333; }
+    .tech-value { color: #333; }
+    .metrics-table td:last-child { color: #000; }
 }
 
-@page {
-    size: A4;
-    margin: 0;
-}
+@page { size: A4; margin: 0; }
