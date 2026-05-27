@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guillem Climent — Senior Backend Engineer</title>
+    <link rel="stylesheet" href="cv-print.css">
+</head>
+<body>
+    <h1>Guillem Climent Pavia</h1>
+    <div class="subtitle">Senior Backend & Platform Engineer</div>
+    <div class="contact-line">
+        Valencia, Spain · <a href="mailto:guillemclim@gmail.com">guillemclim@gmail.com</a> · <a href="https://linkedin.com/in/gcliment">linkedin.com/in/gcliment</a> · <a href="https://github.com/AspiranteD">github.com/AspiranteD</a> · <a href="https://aspiranted.github.io">aspiranted.github.io</a>
+    </div>
+
+    <p class="summary">Backend engineer with 5+ years building production systems — from enterprise logistics (Mercadona, AIRBUS) to designing and operating a full e-commerce platform processing ~100 orders/day across 12 marketplace accounts. I specialize in Python/FastAPI APIs, PostgreSQL schema design, data pipelines, and system integrations. Every system I've built handles real traffic, real money, and real operational load.</p>
+
+    <hr>
+
+    <div class="section">
+        <h2>Experience</h2>
+
+        <h3>Technical Founder & Lead Engineer — REUSALIA</h3>
+        <div class="job-meta">April 2023 – Present · Valencia, Spain</div>
+        <p>Solely designed and built the entire backend platform for a physical e-commerce business (Amazon liquidation → multi-marketplace resale). The system runs in production daily, used by 6 employees.</p>
+        <ul>
+            <li>Architected <strong>FastAPI backend</strong> with 25+ SQLModel data models, 35+ Alembic migrations, ~60 REST endpoints</li>
+            <li>Designed <strong>PostgreSQL schema</strong> with views, materialized views, triggers, and financial reconciliation logic</li>
+            <li>Built <strong>reverse-engineered API client</strong> for Wallapop (private, undocumented) — cookie auth, anti-detection, parallel extraction across 12 accounts. 2,100+ lines, 5 major versions</li>
+            <li>Engineered <strong>AI enrichment pipeline</strong>: Amazon scraping → GPT-4 categorization → description generation → marketplace sync. Saves ~40h/week</li>
+            <li>Implemented <strong>Cloud-Local Bridge</strong>: database command queue with exclusive locking, heartbeat monitoring, ~60s failover for on-premise hardware</li>
+            <li>Built <strong>multi-marketplace sync engine</strong>: PostgreSQL as single source of truth → Wallapop, eBay (Feed API), PortalHero</li>
+            <li>Executed <strong>Sheets → PostgreSQL migration</strong>: 5-phase pipeline, 3 years of data, zero-downtime cutover</li>
+            <li>Managed <strong>APScheduler</strong> with 5+ recurring jobs, zombie process watchdog, background task orchestration</li>
+        </ul>
+
+        <h3>Senior Software Engineer — LittleBig Connection</h3>
+        <div class="job-meta">December 2022 – February 2024 · Valencia, Spain</div>
+        <ul>
+            <li>Built REST APIs with <strong>Java/Spring Boot</strong>, OAuth2/JWT security modules</li>
+            <li>Designed and optimized <strong>MySQL schemas</strong>, executed data migration plans</li>
+            <li>Docker containerization for consistent multi-environment deployments</li>
+        </ul>
+
+        <h3>Software Engineer — Sopra Steria <span style="font-weight:400;color:#64748b">(Client: AIRBUS)</span></h3>
+        <div class="job-meta">November 2021 – December 2022 · Valencia, Spain</div>
+        <ul>
+            <li>Technical ownership of e-Business contract infrastructure — <strong>monolith → microservices</strong></li>
+            <li>Java 11 / Spring Boot REST APIs with aviation security compliance</li>
+            <li>CI/CD pipelines with <strong>Jenkins + OpenShift</strong></li>
+        </ul>
+
+        <h3>Software Engineer — Capgemini <span style="font-weight:400;color:#64748b">(Client: Mercadona)</span></h3>
+        <div class="job-meta">October 2020 – February 2022 · Valencia, Spain</div>
+        <ul>
+            <li>Optimized legacy supply chain systems processing <strong>massive daily volumes</strong></li>
+            <li>Redesigned bottlenecked <strong>OracleSQL</strong> databases for batch processing</li>
+            <li>Primary technical interface for Europe's largest grocery supply chain</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Technical Stack</h2>
+        <div class="tech-grid">
+            <span class="tech-label">Languages</span><span class="tech-value">Python, Java, SQL, JavaScript, C++</span>
+            <span class="tech-label">Backend</span><span class="tech-value">FastAPI, Spring Boot, SQLModel, REST API Design</span>
+            <span class="tech-label">Databases</span><span class="tech-value">PostgreSQL, MySQL, OracleSQL, NeonDB</span>
+            <span class="tech-label">Data & AI</span><span class="tech-value">OpenAI GPT-4, pandas, ETL pipelines, data migration</span>
+            <span class="tech-label">Automation</span><span class="tech-value">BeautifulSoup, Selenium, reverse engineering, anti-detection</span>
+            <span class="tech-label">DevOps</span><span class="tech-value">Docker, Jenkins, OpenShift, Git, CI/CD</span>
+            <span class="tech-label">Integrations</span><span class="tech-value">eBay API (OAuth2), Wallapop API (rev. eng.), Google Drive, Retool</span>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Education</h2>
+        <p class="education-line"><strong>Multimedia Engineering (B.Eng.)</strong> — Universitat de València <em>(2016–2021)</em></p>
+    </div>
+
+    <div class="section">
+        <h2>Languages</h2>
+        <p class="languages-line">Spanish (native) · English (professional) · Valencian/Catalan (native)</p>
+    </div>
+</body>
+</html>

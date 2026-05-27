@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 10pt;
+    line-height: 1.5;
+    color: #1a1a2e;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 16mm 18mm;
+}
+
+a {
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+h1 {
+    font-size: 20pt;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 2pt;
+}
+
+.subtitle {
+    font-size: 12pt;
+    font-weight: 600;
+    color: #4f46e5;
+    margin-bottom: 4pt;
+}
+
+.contact-line {
+    font-size: 8.5pt;
+    color: #64748b;
+    margin-bottom: 12pt;
+}
+
+.contact-line a { color: #64748b; }
+
+hr {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 10pt 0;
+}
+
+h2 {
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #4f46e5;
+    margin-bottom: 6pt;
+    border-bottom: 1.5px solid #4f46e5;
+    padding-bottom: 3pt;
+}
+
+h3 {
+    font-size: 10pt;
+    font-weight: 700;
+    margin-bottom: 1pt;
+}
+
+.job-meta {
+    font-size: 8.5pt;
+    color: #64748b;
+    margin-bottom: 4pt;
+}
+
+ul {
+    padding-left: 14pt;
+    margin-bottom: 8pt;
+}
+
+li {
+    font-size: 9.5pt;
+    margin-bottom: 2pt;
+    line-height: 1.45;
+}
+
+p {
+    font-size: 9.5pt;
+    margin-bottom: 6pt;
+    line-height: 1.5;
+}
+
+.summary {
+    font-size: 9.5pt;
+    line-height: 1.55;
+    margin-bottom: 10pt;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 2pt 8pt;
+    font-size: 9pt;
+    margin-bottom: 8pt;
+}
+
+.tech-label {
+    font-weight: 600;
+    color: #334155;
+}
+
+.tech-value {
+    color: #475569;
+}
+
+.metrics-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9pt;
+    margin-bottom: 8pt;
+}
+
+.metrics-table th,
+.metrics-table td {
+    text-align: left;
+    padding: 3pt 6pt;
+    border-bottom: 0.5px solid #e2e8f0;
+}
+
+.metrics-table th {
+    font-weight: 600;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+}
+
+.metrics-table td:last-child {
+    font-weight: 600;
+    color: #4f46e5;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5pt;
+}
+
+.education-line {
+    font-size: 9.5pt;
+}
+
+.languages-line {
+    font-size: 9pt;
+    color: #475569;
+}
+
+.section { margin-bottom: 10pt; }
+
+@media print {
+    body { padding: 12mm 16mm; }
+    a { color: #1a1a2e !important; }
+    h2 { color: #000 !important; border-bottom-color: #000 !important; }
+    .subtitle { color: #333 !important; }
+    .no-print { display: none; }
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
