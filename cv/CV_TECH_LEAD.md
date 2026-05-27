@@ -8,7 +8,7 @@ Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/g
 
 ## Summary
 
-Technical founder turned engineering leader with 5+ years shipping production systems and 3+ years managing teams and operations simultaneously. I've built and operated a full e-commerce platform from scratch (180+ scripts, 25+ DB models, 10+ ERP modules) while scaling a team from 3 to 6, surviving a catastrophic flood, and rebuilding the business in 2 months. I combine deep technical ownership with real business context — budgets, timelines, hiring, and stakeholder management.
+Technical founder turned engineering leader with 5+ years shipping production systems and 3+ years managing teams and operations simultaneously. I've built and operated a full e-commerce platform from scratch (180+ scripts, 25+ DB models, 10+ ERP modules) while scaling a team from 2 to 5 and rebuilding warehouse operations after a natural disaster. I combine deep technical ownership with real business context — budgets, timelines, hiring, and stakeholder management.
 
 ---
 
@@ -20,10 +20,10 @@ Technical founder turned engineering leader with 5+ years shipping production sy
 Founded and scaled a physical e-commerce business powered by custom automation. Sole architect of the entire technical platform, while simultaneously managing business operations, team, and strategy.
 
 **Leadership & Operations:**
-- Scaled team from 3 to 6 employees (logistics, warehouse, administration)
+- Scaled team from 2 to 5 employees (logistics, warehouse, administration)
 - Managed full P&L: sourcing, pricing, fulfillment, customer service, accounting
-- Led crisis response after DANA floods (Oct 2024): directed 60 people in recovery, rebuilt company from zero in 2 months, expanded team from 3 to 5
-- Designed and deployed internal ERP (Retool, 342 files, 10+ modules) — trained non-technical staff to use it daily without documentation
+- Rebuilt warehouse operations after a natural disaster destroyed inventory and equipment, with volunteer support over several weeks
+- Designed and deployed internal ERP frontend (342 frontend files, 10+ modules) — trained non-technical staff to use it daily without documentation
 
 **Technical Architecture (sole engineer):**
 - FastAPI + PostgreSQL backend: 25+ models, 35+ migrations, ~60 endpoints

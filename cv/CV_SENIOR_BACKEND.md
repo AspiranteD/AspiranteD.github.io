@@ -17,7 +17,7 @@ Backend engineer with 5+ years building production systems — from enterprise l
 ### Technical Founder & Lead Engineer — REUSALIA
 *April 2023 – Present · Valencia, Spain*
 
-Solely designed and built the entire backend platform for a physical e-commerce business (Amazon liquidation → multi-marketplace resale). The system runs in production daily, used by 6 employees.
+Solely designed and built the entire backend platform for a physical e-commerce business (Amazon liquidation → multi-marketplace resale). The system runs in production daily, used by 5 employees.
 
 - Architected **FastAPI backend** with 25+ SQLModel data models, 35+ Alembic migrations, ~60 REST endpoints
 - Designed **PostgreSQL schema** with views, materialized views, triggers, and financial reconciliation logic

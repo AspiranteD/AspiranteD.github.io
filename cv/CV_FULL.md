@@ -8,9 +8,9 @@ Valencia, Spain · [GitHub](https://github.com/AspiranteD) · [Portfolio](https:
 
 ## Professional Summary
 
-Technical founder and full-stack engineer with 5+ years of experience building production systems at scale — from high-volume enterprise logistics (Mercadona, AIRBUS) to founding and operating my own e-commerce automation company.
+Technical founder and full-stack engineer with 5+ years of experience building production systems at scale — from high-volume enterprise logistics (Mercadona, AIRBUS) to founding and operating my own physical e-commerce operation supported by custom engineering.
 
-I've architected and deployed end-to-end platforms that process thousands of SKUs across multiple marketplaces (Amazon, Wallapop, eBay), built AI-powered enrichment pipelines, reverse-engineered private APIs, migrated production databases from spreadsheets to PostgreSQL, and integrated physical hardware (label printers) into cloud workflows — all while scaling a team from 3 to 6 and running day-to-day business operations.
+I've architected and deployed end-to-end platforms that process thousands of SKUs across multiple marketplaces (Amazon, Wallapop, eBay), built AI-powered enrichment pipelines, reverse-engineered private APIs, migrated production databases from spreadsheets to PostgreSQL, and integrated physical hardware (label printers) into cloud workflows — all while scaling a team from 2 to 5 and running day-to-day business operations.
 
 I don't just write code. I build systems that run businesses.
 
@@ -40,7 +40,7 @@ I don't just write code. I build systems that run businesses.
 - **Low-Code/Internal Tools**: Retool as internal ERP frontend (342+ files: queries, scripts, transformers)
 
 ### Operations & Leadership
-- **Team Management**: Founded and scaled a business from 3 to 6 full-time employees (logistics, warehouse, administration)
+- **Team Management**: Founded and scaled a business from 2 to 5 employees (logistics, warehouse, administration)
 - **Business Operations**: End-to-end — sourcing, inventory, pricing, fulfillment, customer service, accounting
 - **B2B Consulting**: System audits, database bottleneck resolution, infrastructure optimization for external clients
 
@@ -55,13 +55,13 @@ I don't just write code. I build systems that run businesses.
 Founded and built from scratch a physical e-commerce operations business powered by custom automation, handling everything from business strategy and team management to architecting the entire technical infrastructure.
 
 **Business Impact:**
-- Built and scaled a team from 3 to 6 full-time employees across logistics, warehouse operations, and administration
+- Built and scaled a team from 2 to 5 employees across logistics, warehouse operations, and administration
 - Processed thousands of Amazon liquidation SKUs through a fully automated pipeline: sourcing → inventory → enrichment → listing → fulfillment
 - Expanded from single-channel (Wallapop) to multi-marketplace (Wallapop + eBay + PortalHero) with unified inventory management
 
 **Technical Architecture — Internal ERP System:**
 - **Backend API** (FastAPI + SQLModel + PostgreSQL on NeonDB): 25+ data models, RESTful endpoints for inventory, orders, sales, invoicing, appointments, and cash management
-- **Frontend** (Retool Cloud): Full internal ERP with 342 files — order management, inventory search, invoicing, incident tracking, mobile barcode scanner, chat analytics dashboards
+- **Frontend** (Retool Cloud): Full internal ERP with 342 frontend files — order management, inventory search, invoicing, incident tracking, mobile barcode scanner, chat analytics dashboards
 - **Hybrid Cloud/Local Architecture**: Retool Cloud ↔ NeonDB ↔ Local backend with `CommandPoller` (lock/heartbeat/failover pattern for bridging cloud UI to local hardware and processes)
 
 **Automation Systems Built:**
@@ -79,9 +79,9 @@ Founded and built from scratch a physical e-commerce operations business powered
 
 **Crisis Management — DANA Floods (October 2024):**
 - Six months after moving to an industrial warehouse in Alfafar (April 2024), the DANA floods devastated the facility in October 2024 — one of the hardest-hit areas in the Valencia region
-- Led crisis response: organized and directed 50-60 people (volunteers and military personnel), coordinating cleanup and recovery operations; navigated insurance claims and emergency budgets
-- Rebuilt the company from scratch in 2 months: redesigned systems, improved documentation, expanded team from 3 to 5 employees
-- Used the forced reset as an opportunity to migrate the entire tech stack to production-grade infrastructure (PostgreSQL + Retool ERP)
+- Rebuilt warehouse operations after a natural disaster destroyed inventory and equipment, coordinating volunteer support over several weeks while navigating insurance claims and emergency budgets
+- Rebuilt operations in 2 months: redesigned systems, improved documentation, and strengthened internal structure
+- Used the forced reset as an opportunity to migrate the entire tech stack to production-grade infrastructure (PostgreSQL + custom ERP frontend)
 
 **Key Metrics:**
 - ~180 Python scripts in the backend repository alone
@@ -175,7 +175,7 @@ Interdisciplinary engineering degree combining computer science, software develo
 `Docker` · `Jenkins` · `OpenShift` · `Git` · `CI/CD Pipelines` · `NeonDB (Cloud Postgres)`
 
 ### Integrations
-`eBay API (OAuth2 + Feed + Fulfillment)` · `Google Drive/Sheets API` · `OpenAI API` · `Wallapop API (Rev. Eng.)` · `Brother QL-700 (Hardware)` · `MEGA API` · `ImgBB API`
+`eBay API (OAuth2 + Feed + Fulfillment)` · `Google Drive/Sheets API` · `OpenAI API` · `Wallapop API (Reverse-Engineered)` · `Brother QL-700 (Hardware)` · `MEGA API` · `ImgBB API`
 
 ### Tools & Platforms
 `Retool` · `APScheduler` · `ThreadPoolExecutor` · `pytest` · `pre-commit` · `OpenCV`
@@ -234,8 +234,8 @@ Image processing pipeline for marketplace listings: downloads from Amazon, appli
 **Stack:** Python, OpenCV, PIL, NumPy, ThreadPoolExecutor  
 **→** [github.com/AspiranteD/product-image-pipeline](https://github.com/AspiranteD/product-image-pipeline)
 
-### 11. Retool ERP Modules
-Internal ERP system built on Retool Cloud with 342 files: SQL queries, JS handlers, and data transformers. Modules include order management, inventory, invoicing, incident tracking, chat analytics, mobile scanner, and appointment scheduling.  
+### 11. Custom ERP Frontend
+Internal ERP system built on Retool Cloud with 342 frontend files: SQL queries, JS handlers, and data transformers. Modules include order management, inventory, invoicing, incident tracking, chat analytics, mobile scanner, and appointment scheduling.
 **Stack:** SQL, JavaScript, Retool  
 **→** [github.com/AspiranteD/retool-erp-modules](https://github.com/AspiranteD/retool-erp-modules)
 

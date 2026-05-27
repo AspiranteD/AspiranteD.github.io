@@ -309,6 +309,81 @@ img { max-width: 100%; display: block; }
     letter-spacing: 0.05em;
 }
 
+/* ===== Selected Impact ===== */
+.impact {
+    padding: 28px 0 72px;
+    margin-top: -72px;
+}
+
+.impact__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 18px;
+}
+
+.impact__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.impact__note {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    max-width: 520px;
+    text-align: right;
+}
+
+.impact__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.impact-card {
+    padding: 24px 22px;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    transition: all var(--transition);
+}
+
+.impact-card:last-child { border-right: none; }
+
+.impact-card:hover {
+    background: var(--bg-card-hover);
+    transform: translateY(-2px);
+}
+
+.impact-card__kicker {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+}
+
+.impact-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+}
+
+.impact-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.65;
+}
+
 /* ===== Sections ===== */
 .section { padding: 100px 0; }
 .section--alt { background: var(--bg-secondary); }
@@ -881,6 +956,12 @@ img { max-width: 100%; display: block; }
     .hero__name { font-size: 2.2rem; }
     .hero__stats { gap: 24px; }
     .stat__number { font-size: 1.5rem; }
+    .impact { margin-top: 0; padding: 0 0 56px; }
+    .impact__header { flex-direction: column; gap: 8px; }
+    .impact__note { text-align: left; }
+    .impact__grid { grid-template-columns: 1fr; }
+    .impact-card { border-right: none; border-bottom: 1px solid var(--border); }
+    .impact-card:last-child { border-bottom: none; }
 
     .about__grid { grid-template-columns: 1fr; gap: 40px; }
     .section { padding: 60px 0; }

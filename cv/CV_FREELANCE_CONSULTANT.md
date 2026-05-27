@@ -20,14 +20,14 @@ I founded and operate a physical e-commerce business. Everything below runs in p
 
 | What I Built | Impact |
 |---|---|
-| Full ERP (FastAPI + PostgreSQL + Retool) | Used daily by 6 employees across 10+ modules |
+| Full ERP (FastAPI + PostgreSQL + Retool) | Used daily by 5 employees across 10+ modules |
 | Wallapop private API reverse engineering | ~100 orders/day across 12 accounts, replaces ~5h/day manual work |
 | AI product enrichment pipeline | Saves ~40h/week vs manual descriptions |
 | Multi-marketplace sync engine | 3 platforms synced from single source of truth |
 | Cloud-to-hardware bridge | Prints labels from cloud UI to USB printer with ~60s failover |
 | Google Sheets → PostgreSQL migration | 3 years of data, zero-downtime cutover |
 
-**Total:** 180+ Python scripts, 25+ database models, 342 Retool files, 35+ migrations.
+**Total:** 180+ Python scripts, 25+ database models, 342 frontend files, 35+ migrations.
 
 ---
 

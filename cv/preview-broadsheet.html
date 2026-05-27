@@ -97,6 +97,62 @@
             font-style: italic;
         }
 
+        .founder-note {
+            text-align: center;
+            font-size: 8.5pt;
+            color: #555;
+            line-height: 1.5;
+            max-width: 82%;
+            margin: 10px auto 0;
+        }
+
+        .proof-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 10pt;
+            font-weight: 700;
+            text-align: center;
+            margin: 18px 0 0;
+        }
+
+        .proof-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border-top: 1px solid #1a1a1a;
+            border-bottom: 1px solid #ddd;
+            margin: 8px 0 18px;
+        }
+
+        .proof-item {
+            padding: 14px 15px;
+            border-right: 1px solid #eee;
+        }
+        .proof-item:last-child { border-right: none; }
+
+        .proof-item__kicker {
+            font-size: 6.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .proof-item__title {
+            font-family: 'Playfair Display', serif;
+            font-size: 10.5pt;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #1a1a1a;
+        }
+
+        .proof-item__desc {
+            font-size: 7.5pt;
+            color: #666;
+            line-height: 1.55;
+            margin-top: 4px;
+        }
+
         .rule { border: none; border-top: 1px solid #ddd; margin: 16px 0; }
         .rule--thick { border-top: 2px solid #1a1a1a; }
 
@@ -268,7 +324,7 @@
     <div class="page">
         <div class="masthead">
             <div class="masthead__name">Guillem Climent</div>
-            <div class="masthead__tagline">Technical Founder · Systems Architect · Valencia, Spain</div>
+            <div class="masthead__tagline">Technical Founder · Production Systems Architect · Valencia, Spain</div>
             <div class="masthead__contact">guillemclim@gmail.com · linkedin.com/in/gcliment · github.com/AspiranteD · aspiranted.github.io</div>
         </div>
 
@@ -278,8 +334,28 @@
             <span>Built and Operated Real Systems</span>
         </div>
 
-        <div class="headline">I Build Tailored Systems That Optimize Operations and Reduce Cost</div>
-        <p class="subheadline">Technical founder focused on designing practical, production-grade solutions: custom workflows, LLM-assisted pipelines, reverse engineering, and end-to-end system integration.</p>
+        <div class="headline">I Build Production Systems for Real Operations</div>
+        <p class="subheadline">Founder-led infrastructure for multi-marketplace commerce: inventory orchestration, order workflows, catalog enrichment, and warehouse execution in production.</p>
+        <p class="founder-note">Rebuilt warehouse and inventory operations after disaster-related infrastructure loss.</p>
+
+        <div class="proof-heading">Selected Impact</div>
+        <div class="proof-strip">
+            <div class="proof-item">
+                <div class="proof-item__kicker">Built from scratch</div>
+                <div class="proof-item__title">Production ERP from Scratch</div>
+                <div class="proof-item__desc">10+ modules, 342 frontend files, 25+ DB models, ~60 API endpoints, used daily by a 5-employee operation.</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-item__kicker">Data backbone</div>
+                <div class="proof-item__title">Inventory & Database</div>
+                <div class="proof-item__desc">PostgreSQL-backed system managing 40,000 unique inventory references and operational records.</div>
+            </div>
+            <div class="proof-item">
+                <div class="proof-item__kicker">Marketplaces</div>
+                <div class="proof-item__title">Extraction & Sync</div>
+                <div class="proof-item__desc">12 Wallapop accounts + eBay, with custom extraction and near-real-time synchronization into PostgreSQL.</div>
+            </div>
+        </div>
 
         <hr class="rule rule--thick">
 
@@ -290,14 +366,14 @@
 
                     <div class="job">
                         <div class="job__title">Technical Founder — REUSALIA</div>
-                        <div class="job__meta">April 2023 – Present</div>
-                        <p>Founded and scaled a physical e-commerce operation supported by custom engineering. Defined the business model, built the full technical backbone, and aligned both people and systems around operational reliability, including a full post-DANA rebuild with stronger internal structure.</p>
+                        <div class="job__meta">April 2023 – Present · Built alongside enterprise engineering work until Feb 2024</div>
+                        <p>Founded and scaled a physical e-commerce operation supported by custom engineering. Built the technical backbone used daily across inventory, pricing, listings, orders, and warehouse execution for a 5-employee operation processing thousands of SKUs.</p>
                         <ul>
-                            <li><strong>Built tailored internal systems</strong> for inventory, order flow, pricing, listings, and execution control across daily operations.</li>
-                            <li><strong>Designed custom data pipelines</strong> to keep information synchronized, auditable, and decision-ready across multiple channels.</li>
-                            <li><strong>Applied reverse engineering</strong> to integrate with private/undocumented marketplace behavior where no official integration existed.</li>
-                            <li><strong>Integrated LLM workflows</strong> to improve product data quality, structure, and publishing consistency at scale.</li>
-                            <li><strong>Migrated operations from fragile tools to robust architecture</strong>, improving reliability, traceability, and long-term maintainability.</li>
+                            <li><strong>Built a production ERP from scratch</strong> covering inventory, order flow, pricing, listings, invoicing, and warehouse execution.</li>
+                            <li><strong>Designed custom data pipelines</strong> to keep operational data synchronized, auditable, and decision-ready across marketplaces.</li>
+                            <li><strong>Reverse-engineered private marketplace behavior</strong> to automate workflows where no official integration existed.</li>
+                            <li><strong>Integrated LLM workflows</strong> for product enrichment, categorization, and publishing consistency across thousands of SKUs.</li>
+                            <li><strong>Rebuilt from fragile tools into robust architecture</strong> after a natural disaster damaged warehouse operations, inventory, and equipment.</li>
                         </ul>
                     </div>
                     <h2>Engineering Stage</h2>
@@ -325,11 +401,11 @@
             <div class="col">
                 <div class="section">
                     <h2>What I Build</h2>
-                    <div class="stack-line"><strong>Solutions</strong> Tailored operational systems for real businesses, not generic templates.</div>
-                    <div class="stack-line"><strong>Pipelines</strong> End-to-end data and automation pipelines from ingestion to execution.</div>
-                    <div class="stack-line"><strong>LLM</strong> Applied LLM workflows for structured enrichment and operational acceleration.</div>
-                    <div class="stack-line"><strong>Integration</strong> Reverse engineering and custom connectors when official APIs are insufficient.</div>
-                    <div class="stack-line"><strong>Architecture</strong> Reliable, maintainable systems focused on reducing operational cost and friction.</div>
+                    <div class="stack-line"><strong>Ops Platforms</strong> ERP, inventory, pricing, order workflows, and warehouse execution.</div>
+                    <div class="stack-line"><strong>Data Pipes</strong> Synchronization, reconciliation, validation, migration, and reporting.</div>
+                    <div class="stack-line"><strong>Applied AI</strong> Operationalized LLM workflows for attribute extraction, taxonomy normalization, product descriptions, and catalog publishing consistency.</div>
+                    <div class="stack-line"><strong>Marketplaces</strong> Reverse-engineered private APIs and multi-account extraction workflows.</div>
+                    <div class="stack-line"><strong>Cloud/Local</strong> Cloud workflows connected to on-prem hardware without inbound network exposure.</div>
                 </div>
 
                 <div class="section">

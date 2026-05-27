@@ -7,7 +7,7 @@ Valencia, Spain · [github.com/AspiranteD](https://github.com/AspiranteD) · [as
 
 ## Summary
 
-Technical founder with 5+ years of experience building production systems — from enterprise logistics (Mercadona, AIRBUS) to founding my own e-commerce automation company. I architect end-to-end platforms, lead teams, and ship systems that process real inventory, real money, and real operations.
+Technical founder with 5+ years of experience building production systems — from enterprise logistics (Mercadona, AIRBUS) to founding my own physical e-commerce operation supported by custom engineering. I architect end-to-end platforms, lead teams, and ship systems that process real inventory, real money, and real operations.
 
 ---
 
@@ -15,8 +15,8 @@ Technical founder with 5+ years of experience building production systems — fr
 
 **Technical Founder & Lead Engineer** — REUSALIA  
 *Apr 2023 – Present · Valencia*  
-- Founded and scaled e-commerce automation company; team scaled from 3 to 6
-- Architected full ERP: FastAPI + PostgreSQL + Retool (25+ models, 342 UI files)
+- Founded and scaled a physical e-commerce operation supported by custom engineering; team scaled from 2 to 5
+- Architected full ERP: FastAPI + PostgreSQL + custom frontend (25+ models, 342 frontend files)
 - Built multi-marketplace automation (Wallapop, eBay, PortalHero) with AI enrichment
 - Reverse-engineered private APIs, built anti-detection systems, integrated hardware (printers)
 - Migrated production data from Google Sheets → PostgreSQL (5-phase pipeline)
@@ -71,7 +71,7 @@ Technical founder with 5+ years of experience building production systems — fr
 | **amazon-product-scraper** | Production scraper with anti-detection |
 | **marketplace-auth-manager** | Multi-account auth lifecycle management |
 | **product-image-pipeline** | OpenCV image processing for marketplaces |
-| **retool-erp-modules** | Internal ERP: 342 files, 10+ modules |
+| **retool-erp-modules** | Internal ERP frontend: 342 frontend files, 10+ modules |
 
 → All projects: [github.com/AspiranteD](https://github.com/AspiranteD)
 

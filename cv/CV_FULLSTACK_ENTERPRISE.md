@@ -8,7 +8,7 @@ Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/g
 
 ## Summary
 
-Full-stack engineer with 5+ years of experience across enterprise and startup environments. Backend-heavy (Python/FastAPI, Java/Spring Boot) with strong frontend delivery (Angular, Vue.js) and deep database expertise (PostgreSQL, MySQL, OracleSQL). I've shipped production systems for AIRBUS, Mercadona, and international SaaS platforms, and I've built a complete ERP from scratch that runs a real business with 6 employees.
+Full-stack engineer with 5+ years of experience across enterprise and startup environments. Backend-heavy (Python/FastAPI, Java/Spring Boot) with strong frontend delivery (Angular, Vue.js) and deep database expertise (PostgreSQL, MySQL, OracleSQL). I've shipped production systems for AIRBUS, Mercadona, and international SaaS platforms, and I've built a complete ERP from scratch that runs a real business with 5 employees.
 
 ---
 
@@ -25,7 +25,7 @@ Full-stack ownership of a production e-commerce platform — backend, frontend, 
 - OAuth2/JWT integration, rate limiting, structured error handling
 
 **Frontend:**
-- Retool ERP: 342 files, 10+ modules (orders, inventory, invoicing, incidents, analytics, mobile scanner)
+- Custom ERP frontend: 342 frontend files, 10+ modules (orders, inventory, invoicing, incidents, analytics, mobile scanner)
 - Designed UX flows for non-technical warehouse workers — daily use without training documentation
 
 **Database:**
@@ -37,7 +37,7 @@ Full-stack ownership of a production e-commerce platform — backend, frontend, 
 - eBay Feed API (OAuth2, batch uploads), Google Drive/Sheets, OpenAI GPT-4
 - Hardware: Brother QL-700 label printer via cloud-local command bridge
 
-**Scale:** ~100 orders/day, 12 marketplace accounts, 3 platforms synced, 6 employees using the system daily.
+**Scale:** ~100 orders/day, 12 marketplace accounts, 3 platforms synced, 5 employees using the system daily.
 
 ### Senior Software Engineer — LittleBig Connection
 *December 2022 – February 2024 · Valencia, Spain*
