@@ -8,7 +8,7 @@ Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/g
 
 ## Summary
 
-Technical founder turned engineering leader with 5+ years shipping production systems and 3+ years managing teams and operations simultaneously. I've built and operated a full e-commerce platform from scratch (180+ scripts, 25+ DB models, 10+ ERP modules) while scaling a team from 2 to 5 and rebuilding warehouse operations after a natural disaster. I combine deep technical ownership with real business context — budgets, timelines, hiring, and stakeholder management.
+Technical founder turned engineering leader with 5+ years shipping production systems and 3+ years of founder-led people and operations leadership. I've built and operated a full e-commerce platform from scratch while leading a 5-person warehouse team for 1+ years — hiring, scheduling, training, and rebuilding after a natural disaster.
 
 ---
 
@@ -20,7 +20,7 @@ Technical founder turned engineering leader with 5+ years shipping production sy
 Founded and scaled a physical e-commerce business powered by custom automation. Sole architect of the entire technical platform, while simultaneously managing business operations, team, and strategy.
 
 **Leadership & Operations:**
-- Scaled team from 2 to 5 employees (logistics, warehouse, administration)
+- Lead a **5-person team** (warehouse, logistics, admin) for **1+ years** — hiring, scheduling, training, accountability; scaled 2→5 over 3+ years since founding
 - Managed full P&L: sourcing, pricing, fulfillment, customer service, accounting
 - Rebuilt warehouse operations after a natural disaster destroyed inventory and equipment, with volunteer support over several weeks
 - Designed and deployed internal ERP frontend (342 frontend files, 10+ modules) — trained non-technical staff to use it daily without documentation
@@ -42,7 +42,7 @@ Founded and scaled a physical e-commerce business powered by custom automation. 
 - Concurrent with early REUSALIA — managed dual high-intensity roles
 
 ### Software Engineer — Sopra Steria *(Client: AIRBUS)*
-*November 2021 – December 2022 · Valencia, Spain*
+*March 2022 – December 2022 · Valencia, Spain*
 
 - Technical ownership of e-Business contract infrastructure (monolith → microservices)
 - Angular state management redesign (NgRx), eliminating rendering freezes

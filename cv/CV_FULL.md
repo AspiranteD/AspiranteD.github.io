@@ -55,7 +55,7 @@ I don't just write code. I build systems that run businesses.
 Founded and built from scratch a physical e-commerce operations business powered by custom automation, handling everything from business strategy and team management to architecting the entire technical infrastructure.
 
 **Business Impact:**
-- Built and scaled a team from 2 to 5 employees across logistics, warehouse operations, and administration
+- Lead a 5-person team (warehouse, logistics, administration) for 1+ years — hiring, scheduling, training non-technical staff on custom tools, and operational accountability; scaled from 2→5 over 3+ years since founding
 - Processed thousands of Amazon liquidation SKUs through a fully automated pipeline: sourcing → inventory → enrichment → listing → fulfillment
 - Expanded from single-channel (Wallapop) to multi-marketplace (Wallapop + eBay + PortalHero) with unified inventory management
 
@@ -102,13 +102,11 @@ Full-stack engineer delivering scalable enterprise applications in a remote-firs
 - **Data & Infrastructure**: Designed and optimized MySQL database schemas, executed complex data migration plans, containerized applications via Docker for consistent multi-environment deployments
 - **Collaboration**: Worked across distributed teams using agile methodologies, code reviews, and CI/CD best practices
 
-*Note: Overlapped with early REUSALIA period — managed both roles concurrently, demonstrating capacity to operate at high intensity across multiple contexts.*
-
 ---
 
 ### Software Engineer
 **Sopra Steria** · Full-time (Client: AIRBUS)  
-*November 2021 – December 2022 · Valencia, Spain*
+*March 2022 – December 2022 · Valencia, Spain*
 
 Full-stack engineer with technical ownership of core systems for Tier-1 aviation sector clients.
 

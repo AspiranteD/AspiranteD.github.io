@@ -37,7 +37,7 @@ Solely designed and built the entire backend platform for a physical e-commerce 
 - Distributed remote-first team, agile methodologies
 
 ### Software Engineer — Sopra Steria *(Client: AIRBUS)*
-*November 2021 – December 2022 · Valencia, Spain*
+*March 2022 – December 2022 · Valencia, Spain*
 
 - Technical ownership of e-Business contract infrastructure — **monolith → microservices** decomposition
 - Java 11 / Spring Boot REST APIs with strict aviation security compliance

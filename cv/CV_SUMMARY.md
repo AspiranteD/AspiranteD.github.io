@@ -15,7 +15,7 @@ Technical founder with 5+ years of experience building production systems — fr
 
 **Technical Founder & Lead Engineer** — REUSALIA  
 *Apr 2023 – Present · Valencia*  
-- Founded and scaled a physical e-commerce operation supported by custom engineering; team scaled from 2 to 5
+- Founded and scaled a physical e-commerce operation supported by custom engineering; lead a 5-person team for 1+ years (2→5 over 3+ years)
 - Architected full ERP: FastAPI + PostgreSQL + custom frontend (25+ models, 342 frontend files)
 - Built multi-marketplace automation (Wallapop, eBay, PortalHero) with AI enrichment
 - Reverse-engineered private APIs, built anti-detection systems, integrated hardware (printers)
@@ -27,7 +27,7 @@ Technical founder with 5+ years of experience building production systems — fr
 - Delivered scalable enterprise apps in remote-first distributed teams
 
 **Software Engineer** — Sopra Steria (Client: AIRBUS)  
-*Nov 2021 – Dec 2022 · Valencia*  
+*Mar 2022 – Dec 2022 · Valencia*  
 - Owned e-Business contract infrastructure; decoupled monoliths into microservices
 - Re-architected Angular state management (NgRx); set up Jenkins/OpenShift CI/CD
 

@@ -49,7 +49,7 @@ Full-stack ownership of a production e-commerce platform — backend, frontend, 
 - Remote-first distributed team, agile workflows
 
 ### Software Engineer — Sopra Steria *(Client: AIRBUS)*
-*November 2021 – December 2022 · Valencia, Spain*
+*March 2022 – December 2022 · Valencia, Spain*
 
 - **Backend:** Monolith → microservices decomposition (Java 11, Spring Boot)
 - **Frontend:** Angular 13 + NgRx state management redesign — eliminated rendering freezes
