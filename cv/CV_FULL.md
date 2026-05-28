@@ -10,7 +10,7 @@ Valencia, Spain · [GitHub](https://github.com/AspiranteD/AspiranteD) · [Portfo
 
 Technical founder and full-stack engineer with 5+ years of experience building production systems at scale — from high-volume enterprise logistics (Mercadona, AIRBUS) to founding and operating my own physical e-commerce operation supported by custom engineering.
 
-I've architected and deployed end-to-end platforms that process thousands of SKUs across multiple marketplaces (Amazon, Wallapop, eBay), built AI-powered enrichment pipelines, reverse-engineered private APIs, migrated production databases from spreadsheets to PostgreSQL, and integrated physical hardware (label printers) into cloud workflows — all while scaling a team from 2 to 5 and running day-to-day business operations.
+I've architected and deployed end-to-end platforms that process thousands of SKUs across multiple marketplaces (Amazon, Wallapop, eBay), built AI-powered enrichment pipelines, reverse-engineered private APIs, migrated production databases from spreadsheets to PostgreSQL, and integrated physical hardware (label printers) into cloud workflows — all while leading a 5-person team and running day-to-day business operations.
 
 I don't just write code. I build systems that run businesses.
 
@@ -40,7 +40,7 @@ I don't just write code. I build systems that run businesses.
 - **Low-Code/Internal Tools**: custom ERP frontend built on Retool (342+ files: queries, scripts, transformers)
 
 ### Operations & Leadership
-- **Team Management**: Founded and scaled a business from 2 to 5 employees (logistics, warehouse, administration)
+- **Team Management**: Lead a 5-person team (logistics, warehouse, administration) — hiring, scheduling, training, and operational accountability
 - **Business Operations**: End-to-end — sourcing, inventory, pricing, fulfillment, customer service, accounting
 - **B2B Consulting (open to)**: System audits, database bottleneck resolution, infrastructure optimization for external clients
 
@@ -55,7 +55,7 @@ I don't just write code. I build systems that run businesses.
 Founded and built from scratch a physical e-commerce operations business powered by custom automation, handling everything from business strategy and team management to architecting the entire technical infrastructure.
 
 **Business Impact:**
-- Lead a 5-person team (warehouse, logistics, administration) for 1+ years — hiring, scheduling, training non-technical staff on custom tools, and operational accountability; scaled from 2→5 over 3+ years since founding
+- Lead a 5-person team (warehouse, logistics, administration) — hiring, scheduling, training non-technical staff on custom tools, and operational accountability
 - Processed thousands of Amazon liquidation SKUs through a fully automated pipeline: sourcing → inventory → enrichment → listing → fulfillment
 - Expanded from single-channel (Wallapop) to multi-marketplace (Wallapop + eBay + PortalHero) with unified inventory management
 

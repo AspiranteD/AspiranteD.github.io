@@ -8,7 +8,7 @@ Valencia, Spain · guillemclim@gmail.com · [LinkedIn](https://linkedin.com/in/g
 
 ## Summary
 
-Technical founder turned engineering leader with 5+ years shipping production systems and 3+ years of founder-led people and operations leadership. I've built and operated a full e-commerce platform from scratch while leading a 5-person warehouse team for 1+ years — hiring, scheduling, training, and rebuilding after a natural disaster.
+Technical founder turned engineering leader with 5+ years shipping production systems. Built and operated a full e-commerce platform from scratch while leading a 5-person warehouse team — hiring, scheduling, training, accountability — and rebuilding after a natural disaster.
 
 ---
 
@@ -20,7 +20,7 @@ Technical founder turned engineering leader with 5+ years shipping production sy
 Founded and scaled a physical e-commerce business powered by custom automation. Sole architect of the entire technical platform, while simultaneously managing business operations, team, and strategy.
 
 **Leadership & Operations:**
-- Lead a **5-person team** (warehouse, logistics, admin) for **1+ years** — hiring, scheduling, training, accountability; scaled 2→5 over 3+ years since founding
+- Lead a **5-person team** (warehouse, logistics, admin) — hiring, scheduling, training, operational accountability
 - Managed full P&L: sourcing, pricing, fulfillment, customer service, accounting
 - Rebuilt warehouse operations after a natural disaster destroyed inventory and equipment, with volunteer support over several weeks
 - Designed and deployed internal ERP frontend (342 frontend files, 10+ modules) — trained non-technical staff to use it daily without documentation

@@ -33,7 +33,7 @@
     },
     "about": {
         "title": "Sobre Mim",
-        "p1": "Fundei uma empresa aos 25 anos, construí toda a infraestrutura tecnológica do zero, e operei-a mais de 3 anos — com uma equipa de 5 pessoas (armazém, logística, admin) sob a minha liderança há mais de um ano. Isso implica contratar, turnos, formar pessoal não técnica em ferramentas próprias, coordenação de salários e manter responsabilidade quando não sou eu a preparar encomendas.",
+        "p1": "Fundei uma empresa aos 25 anos, construí toda a infraestrutura tecnológica do zero, e hoje dirijo-a com uma equipa de 5 pessoas (armazém, logística, admin) sob a minha liderança direta. Isso implica contratar, turnos, formar pessoal não técnica em ferramentas próprias, coordenação de salários e manter responsabilidade quando não sou eu a preparar encomendas.",
         "p2": "Antes disso, ganhei experiência em consultoras enterprise (Capgemini, Sopra Steria, LittleBig Connection), trabalhando em sistemas para AIRBUS e Mercadona — aprendendo o que realmente significam escala, fiabilidade e gestão de stakeholders.",
         "p3": "Em outubro de 2024, uma catástrofe natural destruiu as nossas operações de armazém, incluindo inventário e equipamento. Com apoio de voluntários durante várias semanas, reconstruímos a operação em dois meses e usámos esse reset para melhorar sistemas, documentação e estrutura interna. <a href=\"blog/rebuilding-after-dana.html\">Ler a história completa →</a>",
         "p4": "Não sou um desenvolvedor de tutoriais. Cada linha de código que escrevo gere inventário real, dinheiro real e operações reais. Fiz engenharia reversa de APIs privadas, migrei bases de dados em produção, integrei impressoras físicas em workflows cloud, e construí pipelines de IA que funcionam de forma autónoma em produção.",
@@ -47,7 +47,7 @@
     "experience": {
         "title": "Experiência",
         "reusalia_date": "Abr 2023 – Presente",
-        "reusalia_1": "Lidero uma operação de 5 pessoas (armazém, logística, admin) há mais de um ano — contratação, turnos, formação, responsabilidade; equipa escalada de 2 para 5 em 3+ anos desde a fundação",
+        "reusalia_1": "Lidero uma operação de 5 pessoas (armazém, logística, admin) — contratação, turnos, formação e responsabilidade operacional",
         "reusalia_2": "Construí ERP de produção do zero: 10+ módulos, 342 ficheiros frontend, 25+ modelos DB, ~60 endpoints API",
         "reusalia_3": "Construí extração e sincronização marketplace: 12 contas Wallapop + eBay com sincronização quase em tempo real para PostgreSQL",
         "reusalia_4": "Operacionalizei workflows LLM para extração de atributos, normalização taxonómica, descrições de produto e consistência de publicação",
