@@ -11,7 +11,7 @@
     "hero": {
         "greeting": "Hola, soy",
         "title": "Construyo sistemas de producción para operaciones reales.",
-        "description": "Infraestructura liderada por founder para comercio multi-marketplace — y los sistemas de personas detrás de un equipo de almacén de 5: inventario, pedidos, catálogo y responsabilidad operativa diaria.",
+        "description": "Diseño y opero sistemas que mantienen el comercio real en movimiento.",
         "cta_projects": "Ver Proyectos",
         "cta_cv": "Descargar CV",
         "stat_years": "Años de Experiencia",
@@ -33,7 +33,7 @@
     },
     "about": {
         "title": "Sobre Mí",
-        "p1": "Fundé una empresa a los 25 años, construí toda su infraestructura tecnológica desde cero, y hoy la dirijo con un equipo de 5 personas (almacén, logística, administración) bajo mi liderazgo directo. Eso implica contratar, turnos, formar a gente no técnica en herramientas propias, coordinación de nóminas y seguir siendo responsable cuando no soy yo quien prepara pedidos.",
+        "p1": "Fundé una empresa a los 25 años, construí toda su infraestructura tecnológica desde cero, y hoy la dirijo con un equipo de 5 personas (almacén, logística, administración) bajo mi liderazgo directo.",
         "p2": "Antes, me formé en consultoras enterprise (Capgemini, Sopra Steria, LittleBig Connection), trabajando en sistemas para AIRBUS y Mercadona — aprendiendo qué significan realmente la escala, la fiabilidad y la gestión de stakeholders.",
         "p3": "En octubre de 2024, una catástrofe natural destruyó nuestras operaciones de almacén, incluyendo inventario y equipamiento. Con apoyo de voluntarios durante varias semanas, reconstruimos la operativa en dos meses y usamos ese reset para mejorar sistemas, documentación y estructura interna. <a href=\"blog/rebuilding-after-dana.html\">Leer la historia completa →</a>",
         "p4": "No soy un desarrollador de tutoriales. Cada línea de código que escribo gestiona inventario real, dinero real y operaciones reales. He hecho ingeniería inversa de APIs privadas, migrado bases de datos en producción, integrado impresoras físicas en flujos cloud, y construido pipelines de IA que funcionan de forma autónoma en producción.",

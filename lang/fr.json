@@ -11,7 +11,7 @@
     "hero": {
         "greeting": "Bonjour, je suis",
         "title": "Je construis des systèmes de production pour des opérations réelles.",
-        "description": "Infrastructure founder-led pour le commerce multi-marketplace — et les systèmes humains derrière une équipe entrepôt de 5 : inventaire, commandes, catalogue et responsabilité opérationnelle quotidienne.",
+        "description": "Je conçois et j'opère des systèmes qui maintiennent le commerce réel en mouvement.",
         "cta_projects": "Voir les Projets",
         "cta_cv": "Télécharger CV",
         "stat_years": "Années d'Expérience",
@@ -33,7 +33,7 @@
     },
     "about": {
         "title": "À Propos",
-        "p1": "J'ai fondé une entreprise à 25 ans, construit toute son infrastructure technique à partir de zéro, et je la dirige aujourd'hui avec une équipe de 5 personnes (entrepôt, logistique, admin) sous ma direction directe. Cela signifie recruter, plannings, former du personnel non technique sur des outils sur mesure, coordination paie, et rester responsable quand ce n'est plus moi qui prépare les commandes.",
+        "p1": "J'ai fondé une entreprise à 25 ans, construit toute son infrastructure technique à partir de zéro, et je la dirige aujourd'hui avec une équipe de 5 personnes (entrepôt, logistique, admin) sous ma direction directe.",
         "p2": "Avant cela, j'ai fait mes armes dans des cabinets de conseil enterprise (Capgemini, Sopra Steria, LittleBig Connection), travaillant sur des systèmes pour AIRBUS et Mercadona — apprenant ce que signifient réellement l'échelle, la fiabilité et la gestion des parties prenantes.",
         "p3": "En octobre 2024, une catastrophe naturelle a détruit nos opérations d'entrepôt, y compris l'inventaire et l'équipement. Avec l'aide de volontaires pendant plusieurs semaines, nous avons reconstruit l'activité en deux mois et utilisé ce reset pour améliorer nos systèmes, notre documentation et notre structure interne. <a href=\"blog/rebuilding-after-dana.html\">Lire l'histoire complète →</a>",
         "p4": "Je ne suis pas un développeur de tutoriels. Chaque ligne de code que j'écris gère un inventaire réel, de l'argent réel et des opérations réelles. J'ai fait du reverse engineering d'APIs privées, migré des bases de données en production, intégré des imprimantes physiques dans des workflows cloud, et construit des pipelines IA qui fonctionnent de manière autonome en production.",

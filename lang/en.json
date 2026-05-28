@@ -11,7 +11,7 @@
     "hero": {
         "greeting": "Hi, I'm",
         "title": "I build production systems for real operations.",
-        "description": "Founder-led infrastructure for multi-marketplace commerce — and the people systems behind a 5-person warehouse team: inventory, orders, catalog enrichment, and daily ops accountability.",
+        "description": "I design and operate systems that keep real-world commerce moving.",
         "cta_projects": "View Projects",
         "cta_cv": "Download CV",
         "stat_years": "Years Experience",
@@ -33,7 +33,7 @@
     },
     "about": {
         "title": "About Me",
-        "p1": "I founded a company at 25, built its entire tech stack from zero, and run it today with a 5-person team (warehouse, logistics, admin) under my direct leadership. That means hiring, schedules, training non-technical staff on custom tools, payroll coordination, and staying responsible when I'm not the one picking orders.",
+        "p1": "I founded a company at 25, built its entire tech stack from zero, and run it today with a 5-person team (warehouse, logistics, admin) under my direct leadership.",
         "p2": "Before that, I cut my teeth at enterprise consultancies (Capgemini, Sopra Steria, LittleBig Connection), working on systems for AIRBUS and Mercadona — learning what scale, reliability, and stakeholder management really mean.",
         "p3": "In October 2024, a natural disaster destroyed our warehouse operations, including inventory and equipment. With volunteer support over several weeks, we rebuilt operations within two months and used the reset to improve our systems, documentation, and internal structure. <a href=\"blog/rebuilding-after-dana.html\">Read the full story →</a>",
         "p4": "I'm not a tutorial developer. Every line of code I write handles real inventory, real money, and real operations. I've reverse-engineered private APIs, migrated production databases, integrated physical printers into cloud workflows, and built AI pipelines that run autonomously in production.",
