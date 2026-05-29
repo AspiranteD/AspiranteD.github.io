@@ -60,7 +60,7 @@ function initProjectToggle() {
             btn.textContent = btn.dataset.hideText || 'Show less';
             grid.querySelectorAll('[data-animate]').forEach(el => el.classList.add('visible'));
         } else {
-            btn.textContent = btn.dataset.showText || 'Show all components (8 more)';
+            btn.textContent = btn.dataset.showText || 'Show all components (9 more)';
         }
     });
 }

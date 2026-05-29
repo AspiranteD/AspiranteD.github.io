@@ -89,7 +89,7 @@
         "badge_core": "Core System",
         "badge_unique": "Unique Engineering",
         "badge_ai": "AI Pipeline",
-        "show_all": "Show all components (8 more)",
+        "show_all": "Show all components (9 more)",
         "show_less": "Show less",
         "ai_enrichment_desc": "Automated pipeline: Amazon scraping → GPT categorization → description generation → listing sync. Processes thousands of SKUs autonomously in production.",
         "wallapop_desc": "Reverse-engineered private API. Multi-account extraction with cookie auth, anti-detection, parallel processing. 2,100+ lines, 5 major versions, ~100 orders/day across 12 accounts.",
@@ -112,7 +112,9 @@
         "scraper_metric": "Feeds AI pipeline with product data at scale · Autonomous execution",
         "auth_metric": "12+ accounts managed · Automatic rotation across all extractors",
         "image_metric": "Anti-duplicate transforms bypass marketplace filters",
-        "retool_metric": "342 frontend files · 10+ modules · Used daily by 5 employees"
+        "retool_metric": "342 frontend files · 10+ modules · Used daily by 5 employees",
+        "jobmonitor_metric": "Automated daily digest · Two-phase classification · Follow-up reminders",
+        "jobmonitor_desc": "Gmail bot that classifies job application responses using regex heuristics + LLM. Tracks applications in CSV, flags unanswered follow-ups, generates daily markdown reports with per-platform stats."
     },
     "skills": {
         "title": "Technical Stack",

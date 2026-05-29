@@ -89,7 +89,7 @@
         "badge_core": "Système Central",
         "badge_unique": "Ingénierie Unique",
         "badge_ai": "Pipeline IA",
-        "show_all": "Voir tous les composants (8 de plus)",
+        "show_all": "Voir tous les composants (9 de plus)",
         "show_less": "Voir moins",
         "ai_enrichment_desc": "Pipeline automatisé : scraping Amazon → catégorisation GPT → génération de descriptions → sync des listings. Traite des milliers de SKUs de manière autonome en production.",
         "wallapop_desc": "API privée reverse-engineered. Extraction multi-comptes avec auth par cookies, anti-détection, traitement parallèle. 2 100+ lignes, 5 versions majeures, ~100 commandes/jour sur 12 comptes.",
@@ -112,7 +112,9 @@
         "scraper_metric": "Alimente le pipeline IA avec des données à grande échelle · Exécution autonome",
         "auth_metric": "12+ comptes gérés · Rotation automatique sur tous les extracteurs",
         "image_metric": "Transformations anti-doublon contournent les filtres des marketplaces",
-        "retool_metric": "342 fichiers frontend · 10+ modules · Utilisé quotidiennement par 5 employés"
+        "retool_metric": "342 fichiers frontend · 10+ modules · Utilisé quotidiennement par 5 employés",
+        "jobmonitor_metric": "Digest quotidien automatique · Classification en deux phases · Rappels de relance",
+        "jobmonitor_desc": "Bot Gmail qui classe les réponses aux candidatures via heuristiques regex + LLM. Suivi des candidatures en CSV, alertes de relance, rapports quotidiens markdown avec statistiques par plateforme."
     },
     "skills": {
         "title": "Stack Technique",
