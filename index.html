@@ -1,655 +1,1864 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guillem Climent — Technical Founder & Engineer</title>
-    <meta name="description" content="Technical Founder & Production Systems Architect. I build production systems for real operations: ERP, inventory, marketplace extraction, and warehouse workflows.">
-    <meta name="author" content="Guillem Climent Pavia">
-    <meta property="og:title" content="Guillem Climent — Technical Founder & Engineer">
-    <meta property="og:description" content="5+ years building production systems. From enterprise logistics to founding my own company.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://aspiranted.github.io">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/blog.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-i18n="meta.title">Guillem Climent — Technical Founder &amp; Systems Architect</title>
+<meta name="description" data-i18n-attr="content:meta.description" content="Guillem Climent — Technical Founder &amp; Engineer. I build production infrastructure for real e-commerce operations: custom ERP, marketplace extraction, AI enrichment, and cloud-to-local hardware workflows." />
+<meta name="author" content="Guillem Climent" />
+<meta name="theme-color" content="#f6f3ec" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" data-i18n-attr="content:meta.title" content="Guillem Climent — Technical Founder &amp; Systems Architect" />
+<meta property="og:description" data-i18n-attr="content:meta.ogDescription" content="Founder &amp; sole technical architect of REUSALIA — I build the infrastructure that runs a real six-figure e-commerce business." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================================
+   RESET & TOKENS
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Palette — warm paper, dark ink, single restrained accent */
+  --paper:      #f6f3ec;
+  --paper-2:    #efeae0;
+  --ink:        #1a1814;
+  --ink-soft:   #4a443b;
+  --ink-mute:   #877f70;
+  --line:       #d8d1c2;
+  --line-soft:  #e4ddce;
+  --accent:     #b8431f; /* terracotta / vermilion */
+  --accent-deep:#8f3013;
+
+  /* Type */
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans:  "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Rhythm */
+  --gutter: clamp(1.25rem, 5vw, 6rem);
+  --maxw:   1440px;
+  --ease:   cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Stay editorial-light by design; only deepen for OLED comfort minimally */
+}
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: clamp(1rem, 0.55vw + 0.9rem, 1.125rem);
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain via layered gradients (no images) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(184,67,31,0.025), transparent 38%),
+    radial-gradient(circle at 84% 78%, rgba(26,24,20,0.025), transparent 42%);
+}
+
+img, svg { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+::selection { background: var(--accent); color: var(--paper); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   LAYOUT PRIMITIVES
+   ============================================================ */
+.wrap {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  position: relative;
+  z-index: 1;
+}
+
+.section { padding-block: clamp(4.5rem, 11vh, 9rem); }
+.section--tight { padding-block: clamp(3rem, 7vh, 6rem); }
+
+.rule { height: 1px; background: var(--line); border: 0; }
+
+/* Section header w/ index number + small-caps label */
+.shead {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1rem, 4vw, 3rem);
+  align-items: baseline;
+  padding-bottom: 2.25rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid var(--line);
+}
+.shead__num {
+  font-family: var(--serif);
+  font-size: clamp(0.9rem, 1vw, 1.05rem);
+  font-weight: 500;
+  color: var(--accent);
+  font-feature-settings: "tnum" 1;
+  letter-spacing: 0.04em;
+}
+.shead__title {
+  font-family: var(--serif);
+  font-weight: 380;
+  font-size: clamp(1.9rem, 4.6vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  max-width: 18ch;
+}
+.shead__title em { font-style: italic; color: var(--accent); }
+.shead__meta {
+  grid-column: 2;
+  margin-top: 1rem;
+  color: var(--ink-soft);
+  max-width: 56ch;
+  font-size: 1rem;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-mute);
+}
+
+/* ============================================================
+   TOP NAV
+   ============================================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  backdrop-filter: blur(10px) saturate(1.2);
+  -webkit-backdrop-filter: blur(10px) saturate(1.2);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+}
+.nav.is-stuck { border-bottom-color: var(--line); }
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.brand {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.brand__mark {
+  width: 11px; height: 11px;
+  background: var(--accent);
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+.nav__links {
+  display: flex;
+  gap: clamp(1.2rem, 2.4vw, 2.4rem);
+  align-items: center;
+  list-style: none;
+}
+.nav__links a {
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  position: relative;
+  padding-block: 0.4rem;
+  font-weight: 500;
+}
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0.15rem;
+  width: 100%; height: 1px;
+  background: var(--ink);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--ease);
+}
+.nav__links a:hover { color: var(--ink); }
+.nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
+.nav__num { color: var(--accent); margin-right: 0.35rem; font-feature-settings: "tnum" 1; }
+
+.nav__cta {
+  border: 1px solid var(--ink);
+  padding: 0.45rem 0.95rem;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background 0.3s var(--ease), color 0.3s var(--ease);
+}
+.nav__cta:hover { background: var(--ink); color: var(--paper); }
+
+/* Language switcher */
+.langswitch {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.langswitch__btn {
+  background: none; border: 0; cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-mute);
+  padding: 0.25rem 0.1rem;
+  position: relative;
+  transition: color 0.3s var(--ease);
+}
+.langswitch__btn::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0.05rem;
+  height: 1px; background: currentColor;
+  transform: scaleX(0); transform-origin: right;
+  transition: transform 0.35s var(--ease);
+}
+.langswitch__btn:hover { color: var(--ink); }
+.langswitch__btn:hover::after { transform: scaleX(1); transform-origin: left; }
+.langswitch__btn.is-active { color: var(--accent); }
+.langswitch__btn.is-active::after { transform: scaleX(1); }
+.langswitch__sep { color: var(--line); font-size: 0.7rem; }
+
+.nav__toggle {
+  display: none;
+  background: none; border: 0; cursor: pointer;
+  width: 40px; height: 40px;
+  color: var(--ink);
+  align-items: center; justify-content: center;
+}
+.nav__toggle svg { width: 22px; height: 22px; }
+
+@media (max-width: 860px) {
+  .nav__links {
+    position: fixed;
+    inset: 64px 0 auto 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 0.5rem var(--gutter) 1.5rem;
+    transform: translateY(-120%);
+    transition: transform 0.5s var(--ease);
+    box-shadow: 0 24px 40px -28px rgba(26,24,20,0.4);
+  }
+  .nav__links.is-open { transform: translateY(0); }
+  .nav__links li { width: 100%; border-bottom: 1px solid var(--line-soft); }
+  .nav__links li:last-child { border-bottom: 0; }
+  .nav__links a { display: block; padding: 0.95rem 0; font-size: 1rem; }
+  .nav__links a::after { display: none; }
+  .nav__cta { display: inline-block; margin-top: 1rem; }
+  .nav__toggle { display: inline-flex; }
+  .nav__langli { border-bottom: 0 !important; }
+  .langswitch { padding: 1.1rem 0 0.2rem; gap: 0.55rem; }
+  .langswitch__btn { font-size: 0.9rem; padding: 0.3rem 0.15rem; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero { padding-top: clamp(2.5rem, 6vh, 5rem); padding-bottom: clamp(3rem, 7vh, 6rem); position: relative; }
+.hero__top {
+  display: flex; flex-wrap: wrap; gap: 1rem 2rem;
+  justify-content: space-between; align-items: baseline;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(2rem, 6vh, 4rem);
+}
+.hero__avail {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink-soft);
+}
+.dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 rgba(184,67,31,0.5);
+  animation: pulse 2.6s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(184,67,31,0.45); }
+  70% { box-shadow: 0 0 0 9px rgba(184,67,31,0); }
+  100% { box-shadow: 0 0 0 0 rgba(184,67,31,0); }
+}
+.hero__loc { font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink-mute); }
+
+.hero__name {
+  font-family: var(--serif);
+  font-weight: 340;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  font-size: clamp(3.4rem, 13.5vw, 13rem);
+  margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
+}
+.hero__name .line { display: block; overflow: hidden; }
+.hero__name .line > span { display: inline-block; }
+.hero__name em { font-style: italic; }
+.hero__name .amp { color: var(--accent); font-style: italic; font-weight: 300; }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(1.5rem, 5vw, 4.5rem);
+  align-items: end;
+}
+.hero__lead {
+  font-family: var(--serif);
+  font-weight: 330;
+  font-size: clamp(1.25rem, 2.3vw, 1.75rem);
+  line-height: 1.32;
+  letter-spacing: -0.01em;
+  max-width: 26ch;
+}
+.hero__lead em { font-style: italic; color: var(--accent); }
+.hero__side { display: flex; flex-direction: column; gap: 1.6rem; }
+.hero__role {
+  font-size: 0.95rem; color: var(--ink-soft); line-height: 1.5;
+  border-left: 2px solid var(--accent);
+  padding-left: 1rem;
+}
+.hero__role strong { color: var(--ink); font-weight: 600; }
+
+.hero__cta { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.92rem; font-weight: 500;
+  padding: 0.85rem 1.4rem;
+  border-radius: 100px;
+  border: 1px solid var(--ink);
+  transition: transform 0.35s var(--ease), background 0.35s var(--ease), color 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+.btn svg { width: 16px; height: 16px; transition: transform 0.35s var(--ease); }
+.btn--solid { background: var(--ink); color: var(--paper); }
+.btn--solid:hover { background: var(--accent); border-color: var(--accent); }
+.btn--solid:hover svg { transform: translate(3px, -3px); }
+.btn--ghost:hover { background: var(--ink); color: var(--paper); }
+.btn--ghost:hover svg { transform: translateY(2px); }
+
+.hero__socials { display: flex; gap: 1.3rem; align-items: center; }
+.hero__socials a {
+  font-size: 0.82rem; letter-spacing: 0.04em; color: var(--ink-soft);
+  position: relative;
+}
+.hero__socials a::after {
+  content: ""; position: absolute; left: 0; bottom: -2px; height: 1px; width: 100%;
+  background: var(--accent); transform: scaleX(0); transform-origin: right;
+  transition: transform 0.35s var(--ease);
+}
+.hero__socials a:hover { color: var(--ink); }
+.hero__socials a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* Marquee stat strip */
+.statstrip {
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+  border-block: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stat {
+  padding: 1.5rem clamp(0.75rem, 2vw, 1.5rem);
+  border-right: 1px solid var(--line);
+}
+.stat:last-child { border-right: 0; }
+.stat__n {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.6vw, 2.9rem);
+  font-weight: 380;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-feature-settings: "tnum" 1;
+}
+.stat__n .accent { color: var(--accent); }
+.stat__l {
+  margin-top: 0.55rem;
+  font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-mute); font-weight: 500;
+}
+
+@media (max-width: 880px) {
+  .hero__grid { grid-template-columns: 1fr; align-items: start; gap: 2.2rem; }
+  .statstrip { grid-template-columns: repeat(2, 1fr); }
+  .stat:nth-child(2) { border-right: 0; }
+  .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 460px) {
+  .statstrip { grid-template-columns: 1fr; }
+  .stat { border-right: 0; border-bottom: 1px solid var(--line); }
+  .stat:last-child { border-bottom: 0; }
+}
+
+/* ============================================================
+   ARCHITECTURE
+   ============================================================ */
+.arch__intro {
+  max-width: 60ch; color: var(--ink-soft);
+  margin-bottom: clamp(2.5rem, 6vh, 4rem);
+  font-size: 1.05rem;
+}
+.arch__intro strong { color: var(--ink); font-weight: 600; }
+
+.diagram {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.75rem, 1.6vw, 1.4rem);
+  align-items: stretch;
+  counter-reset: stage;
+}
+.stage {
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--paper) 60%, #fff) , var(--paper));
+  border-radius: 6px;
+  padding: 1.25rem 1.1rem 1.4rem;
+  display: flex; flex-direction: column;
+  position: relative;
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+.stage:hover {
+  border-color: var(--ink);
+  transform: translateY(-4px);
+  box-shadow: 0 22px 40px -30px rgba(26,24,20,0.45);
+}
+.stage__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.stage__kicker {
+  font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); font-weight: 600;
+}
+.stage__idx {
+  font-family: var(--serif); font-size: 0.85rem; color: var(--ink-mute);
+  font-feature-settings: "tnum" 1;
+}
+.stage__title {
+  font-family: var(--serif); font-weight: 420; font-size: 1.18rem;
+  letter-spacing: -0.01em; margin-bottom: 0.9rem; line-height: 1.15;
+}
+.stage__list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; margin-top: auto; }
+.stage__list li {
+  font-size: 0.82rem; color: var(--ink-soft);
+  display: flex; gap: 0.55rem; align-items: flex-start; line-height: 1.4;
+}
+.stage__list li::before {
+  content: ""; flex: none; margin-top: 0.55em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+}
+/* connector arrow between stages */
+.stage:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: calc(-1 * clamp(0.75rem, 1.6vw, 1.4rem) / 2 - 1px);
+  top: 50%;
+  width: 8px; height: 8px;
+  border-top: 1.5px solid var(--ink-mute);
+  border-right: 1.5px solid var(--ink-mute);
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: 2;
+}
+.arch__caption {
+  margin-top: 1.6rem; font-size: 0.8rem; color: var(--ink-mute);
+  display: flex; align-items: center; gap: 0.6rem; letter-spacing: 0.02em;
+}
+.arch__caption .badge {
+  font-family: var(--serif); color: var(--accent); font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .diagram { grid-template-columns: 1fr 1fr; }
+  .stage:nth-child(2)::after, .stage:nth-child(4)::after { display: none; }
+  .stage:nth-child(odd)::after {
+    right: 50%; top: auto; bottom: calc(-1 * clamp(0.75rem, 1.6vw, 1.4rem) / 2 - 3px);
+    transform: translate(50%, 0) rotate(135deg);
+  }
+}
+@media (max-width: 560px) {
+  .diagram { grid-template-columns: 1fr; }
+  .stage::after { display: none !important; }
+}
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.proj__flag {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: clamp(2rem, 5vh, 3.5rem);
+  background: var(--ink);
+  color: var(--paper);
+  position: relative;
+}
+.proj__flag-inner { padding: clamp(1.8rem, 4vw, 3.2rem); }
+.proj__flag .eyebrow { color: var(--accent); }
+.proj__flag h3 {
+  font-family: var(--serif); font-weight: 360;
+  font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.02;
+  letter-spacing: -0.02em; margin: 1rem 0 1.2rem;
+  max-width: 16ch;
+}
+.proj__flag p { color: color-mix(in srgb, var(--paper) 76%, transparent); max-width: 60ch; font-size: 1.02rem; }
+.proj__flag-stats {
+  display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem;
+  margin-top: 1.8rem; padding-top: 1.6rem;
+  border-top: 1px solid rgba(246,243,236,0.18);
+}
+.proj__flag-stats div { display: flex; flex-direction: column; gap: 0.2rem; }
+.proj__flag-stats .n {
+  font-family: var(--serif); font-size: 1.5rem; font-weight: 420; color: var(--paper);
+  font-feature-settings: "tnum" 1;
+}
+.proj__flag-stats .l { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: color-mix(in srgb, var(--paper) 60%, transparent); }
+.proj__flag-tags { margin-top: 1.6rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.proj__flag-tags .tag { border-color: rgba(246,243,236,0.3); color: color-mix(in srgb, var(--paper) 80%, transparent); }
+
+/* index list of projects */
+.proj__list { list-style: none; border-top: 1px solid var(--line); }
+.proj__item {
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.proj__link {
+  display: grid;
+  grid-template-columns: 3rem 1.6fr 1.4fr auto;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: center;
+  padding: clamp(1.3rem, 3vh, 1.9rem) 0.25rem;
+  transition: padding 0.4s var(--ease);
+}
+.proj__item::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--paper-2);
+  opacity: 0; z-index: -1;
+  transition: opacity 0.4s var(--ease);
+  border-radius: 6px;
+}
+.proj__item:hover::before { opacity: 1; }
+.proj__item:hover .proj__link { padding-inline: 1.4rem; }
+.proj__num {
+  font-family: var(--serif); font-size: 0.9rem; color: var(--ink-mute);
+  font-feature-settings: "tnum" 1; letter-spacing: 0.04em;
+}
+.proj__item:hover .proj__num { color: var(--accent); }
+.proj__title {
+  font-family: var(--serif); font-weight: 420;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  letter-spacing: -0.015em; line-height: 1.12;
+}
+.proj__desc { font-size: 0.92rem; color: var(--ink-soft); line-height: 1.45; }
+.proj__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tag {
+  font-size: 0.7rem; letter-spacing: 0.03em;
+  border: 1px solid var(--line); color: var(--ink-soft);
+  padding: 0.2rem 0.6rem; border-radius: 100px;
+  white-space: nowrap; font-weight: 500;
+}
+.proj__arrow {
+  width: 38px; height: 38px; flex: none;
+  border: 1px solid var(--line); border-radius: 50%;
+  display: grid; place-items: center;
+  color: var(--ink-soft);
+  transition: background 0.4s var(--ease), color 0.4s var(--ease), border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.proj__arrow svg { width: 15px; height: 15px; transition: transform 0.4s var(--ease); }
+.proj__item:hover .proj__arrow {
+  background: var(--accent); border-color: var(--accent); color: var(--paper);
+}
+.proj__item:hover .proj__arrow svg { transform: translate(2px, -2px); }
+
+@media (max-width: 920px) {
+  .proj__link { grid-template-columns: 2.2rem 1fr auto; row-gap: 0.7rem; align-items: start; }
+  .proj__desc { grid-column: 2 / 4; }
+  .proj__tags { grid-column: 2 / 4; }
+  .proj__arrow { grid-row: 1; grid-column: 3; }
+}
+@media (max-width: 520px) {
+  .proj__link { grid-template-columns: 1.8rem 1fr auto; }
+}
+
+/* ============================================================
+   EXPERIENCE TIMELINE
+   ============================================================ */
+.tl { list-style: none; position: relative; }
+.tl::before {
+  content: ""; position: absolute; left: 0; top: 0.4rem; bottom: 0.4rem;
+  width: 1px; background: var(--line);
+}
+.tl__item {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.4fr) 1fr;
+  gap: clamp(1.2rem, 4vw, 3.5rem);
+  padding: clamp(1.6rem, 4vh, 2.6rem) 0 clamp(1.6rem, 4vh, 2.6rem) 1.8rem;
+  border-bottom: 1px solid var(--line-soft);
+  position: relative;
+}
+.tl__item:last-child { border-bottom: 0; }
+.tl__item::before {
+  content: ""; position: absolute; left: -4px; top: clamp(1.9rem, 4.6vh, 3rem);
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--paper); border: 1.5px solid var(--ink-mute);
+  transition: background 0.4s var(--ease), border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.tl__item:hover::before { background: var(--accent); border-color: var(--accent); transform: scale(1.25); }
+.tl__item--now::before { background: var(--accent); border-color: var(--accent); }
+.tl__period {
+  font-size: 0.78rem; letter-spacing: 0.05em; color: var(--ink-mute);
+  font-weight: 500; padding-top: 0.15rem;
+}
+.tl__now {
+  display: inline-block; margin-top: 0.5rem;
+  font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent);
+  padding: 0.15rem 0.5rem; border-radius: 100px; font-weight: 600;
+}
+.tl__role {
+  font-family: var(--serif); font-weight: 440;
+  font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+  letter-spacing: -0.015em; line-height: 1.12;
+}
+.tl__org { color: var(--accent); font-style: italic; }
+.tl__client { color: var(--ink-soft); }
+.tl__detail { margin-top: 0.7rem; color: var(--ink-soft); font-size: 0.95rem; max-width: 60ch; }
+.tl__meta { margin-top: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+@media (max-width: 640px) {
+  .tl__item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .tl__period { order: -1; }
+}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.about__grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+.about__pull {
+  font-family: var(--serif);
+  font-weight: 330;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  line-height: 1.22; letter-spacing: -0.018em;
+}
+.about__pull em { font-style: italic; color: var(--accent); }
+.about__body p { margin-bottom: 1.3rem; color: var(--ink-soft); font-size: 1.05rem; }
+.about__body p strong { color: var(--ink); font-weight: 600; }
+.about__body p:last-child { margin-bottom: 0; }
+.about__sig {
+  margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--line);
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.about__sig .name { font-family: var(--serif); font-style: italic; font-size: 1.5rem; }
+.about__sig .meta { font-size: 0.8rem; color: var(--ink-mute); letter-spacing: 0.04em; }
+@media (max-width: 800px) { .about__grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   BLOG
+   ============================================================ */
+.blog__list { list-style: none; border-top: 1px solid var(--line); }
+.blog__item { border-bottom: 1px solid var(--line); }
+.blog__link {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto auto;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: center;
+  padding: clamp(1.25rem, 3vh, 1.8rem) 0.25rem;
+  transition: padding 0.4s var(--ease), background 0.4s var(--ease);
+}
+.blog__item:hover .blog__link { padding-inline: 1.2rem; background: var(--paper-2); }
+.blog__num { font-family: var(--serif); font-size: 0.85rem; color: var(--ink-mute); font-feature-settings: "tnum" 1; }
+.blog__item:hover .blog__num { color: var(--accent); }
+.blog__title {
+  font-family: var(--serif); font-weight: 420;
+  font-size: clamp(1.1rem, 2.1vw, 1.45rem); letter-spacing: -0.012em; line-height: 1.2;
+  position: relative; display: inline-block;
+}
+.blog__title::after {
+  content: ""; position: absolute; left: 0; bottom: 0.05em; height: 1px; width: 100%;
+  background: var(--ink); transform: scaleX(0); transform-origin: right;
+  transition: transform 0.45s var(--ease);
+}
+.blog__item:hover .blog__title::after { transform: scaleX(1); transform-origin: left; }
+.blog__time { font-size: 0.8rem; color: var(--ink-mute); letter-spacing: 0.04em; white-space: nowrap; }
+.blog__read {
+  font-size: 0.78rem; color: var(--ink-soft); display: inline-flex; align-items: center; gap: 0.4rem;
+  white-space: nowrap;
+}
+.blog__read svg { width: 14px; height: 14px; transition: transform 0.4s var(--ease); }
+.blog__item:hover .blog__read svg { transform: translateX(3px); color: var(--accent); }
+@media (max-width: 720px) {
+  .blog__link { grid-template-columns: 2.2rem 1fr; row-gap: 0.5rem; }
+  .blog__time { grid-column: 2; }
+  .blog__read { grid-column: 2; }
+}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.skillcat {
+  padding: clamp(1.4rem, 3vw, 2.1rem);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.skillcat__head { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1.2rem; }
+.skillcat__idx { font-family: var(--serif); font-size: 0.8rem; color: var(--accent); font-feature-settings: "tnum" 1; }
+.skillcat__name { font-family: var(--serif); font-weight: 440; font-size: 1.2rem; letter-spacing: -0.01em; }
+.skillcat__list { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.skillcat__list span {
+  font-size: 0.8rem; color: var(--ink-soft);
+  border: 1px solid var(--line-soft); background: color-mix(in srgb, var(--paper) 50%, #fff);
+  padding: 0.3rem 0.7rem; border-radius: 6px; font-weight: 500;
+  transition: border-color 0.3s var(--ease), color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.skillcat__list span:hover { border-color: var(--accent); color: var(--ink); }
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact { background: var(--ink); color: var(--paper); border-radius: 14px; overflow: hidden; position: relative; }
+.contact::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at 80% 10%, rgba(184,67,31,0.22), transparent 50%);
+}
+.contact__inner { padding: clamp(2.5rem, 7vw, 5.5rem); position: relative; z-index: 1; }
+.contact .eyebrow { color: var(--accent); }
+.contact h2 {
+  font-family: var(--serif); font-weight: 330;
+  font-size: clamp(2.4rem, 7vw, 5.5rem); line-height: 0.98; letter-spacing: -0.025em;
+  margin: 1rem 0 1.6rem; max-width: 14ch;
+}
+.contact h2 em { font-style: italic; color: var(--accent); }
+.contact__lead {
+  color: color-mix(in srgb, var(--paper) 78%, transparent);
+  max-width: 52ch; font-size: 1.1rem; margin-bottom: 2.4rem;
+}
+.contact__open {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.6rem;
+}
+.contact__open span {
+  font-size: 0.78rem; letter-spacing: 0.04em;
+  border: 1px solid rgba(246,243,236,0.25); color: color-mix(in srgb, var(--paper) 85%, transparent);
+  padding: 0.4rem 0.9rem; border-radius: 100px;
+}
+.contact__rows { display: grid; gap: 0; border-top: 1px solid rgba(246,243,236,0.18); }
+.contact__row {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.3rem 0;
+  border-bottom: 1px solid rgba(246,243,236,0.18);
+  transition: padding 0.4s var(--ease);
+}
+.contact__row:hover { padding-inline: 0.8rem; }
+.contact__row .k { font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: color-mix(in srgb, var(--paper) 55%, transparent); }
+.contact__row .v {
+  font-family: var(--serif); font-size: clamp(1.05rem, 2.4vw, 1.5rem); font-weight: 400;
+  display: inline-flex; align-items: center; gap: 0.7rem;
+}
+.contact__row .v svg { width: 17px; height: 17px; transition: transform 0.4s var(--ease); opacity: 0.7; }
+.contact__row:hover .v svg { transform: translate(3px, -3px); opacity: 1; color: var(--accent); }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { padding-block: 3rem; }
+.footer__inner {
+  display: flex; flex-wrap: wrap; gap: 1rem 2rem;
+  justify-content: space-between; align-items: center;
+  padding-top: 2rem; border-top: 1px solid var(--line);
+}
+.footer__brand { font-family: var(--serif); font-style: italic; font-size: 1.1rem; }
+.footer__meta { font-size: 0.78rem; color: var(--ink-mute); letter-spacing: 0.03em; }
+.footer__top {
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-soft); display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.footer__top svg { width: 14px; height: 14px; transition: transform 0.4s var(--ease); }
+.footer__top:hover svg { transform: translateY(-3px); }
+.footer__top:hover { color: var(--accent); }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+  will-change: opacity, transform;
+}
+[data-reveal].is-in { opacity: 1; transform: none; }
+[data-reveal][data-delay="1"] { transition-delay: 0.08s; }
+[data-reveal][data-delay="2"] { transition-delay: 0.16s; }
+[data-reveal][data-delay="3"] { transition-delay: 0.24s; }
+[data-reveal][data-delay="4"] { transition-delay: 0.32s; }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+}
+
+.skip {
+  position: absolute; left: -999px; top: 0; z-index: 200;
+  background: var(--ink); color: var(--paper); padding: 0.75rem 1.2rem; border-radius: 0 0 6px 0;
+}
+.skip:focus { left: 0; }
+</style>
 </head>
+
 <body>
-    <nav class="nav" id="nav">
-        <div class="nav__inner">
-            <a href="#" class="nav__logo">GC<span class="accent">.</span></a>
-            <div class="nav__links" id="navLinks">
-                <a href="#architecture" data-i18n="nav.architecture">Architecture</a>
-                <a href="#projects" data-i18n="nav.projects">Projects</a>
-                <a href="#experience" data-i18n="nav.experience">Experience</a>
-                <a href="#about" data-i18n="nav.about">About</a>
-                <a href="#blog" data-i18n="nav.blog">Blog</a>
-                <a href="#skills" data-i18n="nav.skills">Skills</a>
-                <a href="#contact" data-i18n="nav.contact">Contact</a>
-            </div>
-            <div class="nav__actions">
-                <div class="lang-switcher" id="langSwitcher">
-                    <button class="lang-btn" id="langBtn" aria-label="Change language">
-                        <span id="currentLang">EN</span>
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    </button>
-                    <div class="lang-dropdown" id="langDropdown">
-                        <button data-lang="en" class="lang-option active">English</button>
-                        <button data-lang="es" class="lang-option">Español</button>
-                        <button data-lang="fr" class="lang-option">Français</button>
-                        <button data-lang="pt" class="lang-option">Português</button>
-                    </div>
-                </div>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                </button>
-                <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </div>
+<a class="skip" href="#projects" data-i18n="nav.skip">Skip to projects</a>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a href="#top" class="brand" aria-label="Guillem Climent — home">
+      <span class="brand__mark" aria-hidden="true"></span>
+      Guillem Climent
+    </a>
+    <nav aria-label="Primary">
+      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#architecture"><span class="nav__num">01</span><span data-i18n="nav.system">System</span></a></li>
+        <li><a href="#projects"><span class="nav__num">02</span><span data-i18n="nav.projects">Projects</span></a></li>
+        <li><a href="#experience"><span class="nav__num">03</span><span data-i18n="nav.experience">Experience</span></a></li>
+        <li><a href="#about"><span class="nav__num">04</span><span data-i18n="nav.about">About</span></a></li>
+        <li><a href="#writing"><span class="nav__num">05</span><span data-i18n="nav.writing">Writing</span></a></li>
+        <li><a href="#contact" class="nav__cta" data-i18n="nav.contact">Get in touch</a></li>
+        <li class="nav__langli">
+          <div class="langswitch" role="group" aria-label="Language / Idioma">
+            <button type="button" class="langswitch__btn" data-lang="en" lang="en">EN</button>
+            <span class="langswitch__sep" aria-hidden="true">·</span>
+            <button type="button" class="langswitch__btn" data-lang="es" lang="es">ES</button>
+            <span class="langswitch__sep" aria-hidden="true">·</span>
+            <button type="button" class="langswitch__btn" data-lang="fr" lang="fr">FR</button>
+            <span class="langswitch__sep" aria-hidden="true">·</span>
+            <button type="button" class="langswitch__btn" data-lang="pt" lang="pt">PT</button>
+          </div>
+        </li>
+      </ul>
     </nav>
+  </div>
+</header>
 
-    <!-- Hero -->
-    <section class="hero" id="hero">
-        <div class="container">
-            <div class="hero__content">
-                <p class="hero__greeting" data-i18n="hero.greeting">Hi, I'm</p>
-                <h1 class="hero__name">Guillem Climent<span class="accent">.</span></h1>
-                <h2 class="hero__title" data-i18n="hero.title">I build production systems for real operations.</h2>
-                <p class="hero__description" data-i18n="hero.description">I design and operate systems that keep real-world commerce moving.</p>
-                <div class="hero__cta">
-                    <a href="#projects" class="btn btn--primary" data-i18n="hero.cta_projects">View Projects</a>
-                    <a href="cv/" class="btn btn--outline" target="_blank" data-i18n="hero.cta_cv">Download CV</a>
-                </div>
-                <div class="hero__stats">
-                    <div class="stat">
-                        <span class="stat__number">5+</span>
-                        <span class="stat__label" data-i18n="hero.stat_years">Years Experience</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat__number">180+</span>
-                        <span class="stat__label" data-i18n="hero.stat_projects">Python Scripts</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat__number">4</span>
-                        <span class="stat__label" data-i18n="hero.stat_companies">Companies</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<main id="top">
 
-    <!-- Selected Impact -->
-    <section class="impact" id="impact">
-        <div class="container">
-            <div class="impact__header" data-animate>
-                <span class="impact__eyebrow" data-i18n="impact.eyebrow">Selected Impact</span>
-                <p class="impact__note" data-i18n="impact.note">Production systems tied to real inventory, real orders, and real warehouse operations.</p>
-            </div>
-            <div class="impact__grid">
-                <div class="impact-card" data-animate>
-                    <span class="impact-card__kicker" data-i18n="impact.erp_kicker">Built from scratch</span>
-                    <h3 data-i18n="impact.erp_title">Production ERP from Scratch</h3>
-                    <p data-i18n="impact.erp_desc">10+ modules, 342 frontend files, 25+ DB models, ~60 API endpoints, used daily by a 5-employee operation.</p>
-                </div>
-                <div class="impact-card" data-animate>
-                    <span class="impact-card__kicker" data-i18n="impact.inventory_kicker">Data backbone</span>
-                    <h3 data-i18n="impact.inventory_title">Inventory & Database</h3>
-                    <p data-i18n="impact.inventory_desc">PostgreSQL-backed system managing 40,000+ unique inventory references and operational records.</p>
-                </div>
-                <div class="impact-card" data-animate>
-                    <span class="impact-card__kicker" data-i18n="impact.sync_kicker">Marketplaces</span>
-                    <h3 data-i18n="impact.sync_title">Extraction & Sync</h3>
-                    <p data-i18n="impact.sync_desc">12 Wallapop accounts + eBay, with custom extraction and near-real-time synchronization into PostgreSQL.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ===================== HERO ===================== -->
+<section class="hero wrap" aria-labelledby="hero-name">
+  <div class="hero__top">
+    <span class="hero__avail"><span class="dot" aria-hidden="true"></span> <span data-i18n="hero.avail">Available for freelance, consulting &amp; co-founder roles</span></span>
+    <span class="hero__loc" data-i18n="hero.loc">Based in Spain · Working worldwide · MMXXVI</span>
+  </div>
 
-    <!-- Architecture -->
-    <section class="section" id="architecture">
-        <div class="container">
-            <h2 class="section__title" data-i18n="architecture.title">System Architecture</h2>
-            <p class="section__subtitle" data-i18n="architecture.subtitle">The full production system I designed, built, and operated — from marketplace APIs to physical label printing.</p>
-            <div class="arch-diagram" data-animate>
-                <div class="arch-row">
-                    <div class="arch-group">
-                        <div class="arch-label" data-i18n="architecture.sources">Data Sources</div>
-                        <div class="arch-nodes">
-                            <div class="arch-node arch-node--source">
-                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span>
-                                <strong>Amazon.es</strong>
-                                <small>HTML Scraping</small>
-                            </div>
-                            <div class="arch-node arch-node--source">
-                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
-                                <strong>B-Stock</strong>
-                                <small>Manifest CSVs</small>
-                            </div>
-                            <div class="arch-node arch-node--source">
-                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-                                <strong>Wallapop API</strong>
-                                <small>Reverse-Engineered</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="arch-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
-                <div class="arch-row">
-                    <div class="arch-group">
-                        <div class="arch-label" data-i18n="architecture.processing">Processing Layer</div>
-                        <div class="arch-nodes">
-                            <div class="arch-node arch-node--process">
-                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
-                                <strong>Extractors</strong>
-                                <small>Orders · Chats · Listings</small>
-                            </div>
-                            <div class="arch-node arch-node--process">
-                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></span>
-                                <strong>AI Enrichment</strong>
-                                <small>GPT Categorization · Descriptions</small>
-                            </div>
-                            <div class="arch-node arch-node--process">
-                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
-                                <strong>Scheduler</strong>
-                                <small>5 Recurring Jobs + Watchdog</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="arch-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
-                <div class="arch-row">
-                    <div class="arch-group arch-group--core">
-                        <div class="arch-label" data-i18n="architecture.core">Core</div>
-                        <div class="arch-core-node">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                            <div>
-                                <strong>PostgreSQL (NeonDB)</strong>
-                                <small data-i18n="architecture.core_desc">25+ models · 35+ migrations · Views · Triggers</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="arch-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg></div>
-                <div class="arch-row">
-                    <div class="arch-group">
-                        <div class="arch-label" data-i18n="architecture.outputs">Outputs</div>
-                        <div class="arch-nodes">
-                            <div class="arch-node arch-node--output">
-                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></span>
-                                <strong>Custom ERP Frontend</strong>
-                                <small>342 Frontend Files · 10+ Modules</small>
-                            </div>
-                            <div class="arch-node arch-node--output">
-                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-                                <strong>Marketplaces</strong>
-                                <small>Wallapop · eBay · PortalHero</small>
-                            </div>
-                            <div class="arch-node arch-node--output">
-                                <span class="arch-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
-                                <strong>Label Printer</strong>
-                                <small>Brother QL-700 via USB</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="arch-bridge" data-animate>
-                    <div class="arch-bridge__label" data-i18n="architecture.bridge">Command Bridge Pattern</div>
-                    <div class="arch-bridge__flow">
-                        <span>Retool Cloud</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        <span>DB Queue</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        <span>On-Prem Worker</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                        <span>Hardware</span>
-                    </div>
-                    <small data-i18n="architecture.bridge_desc">Local worker polls DB queue for USB hardware · No inbound network access required</small>
-                </div>
-            </div>
-        </div>
-    </section>
+  <h1 class="hero__name" id="hero-name">
+    <span class="line"><span data-reveal>Guillem</span></span>
+    <span class="line"><span data-reveal data-delay="1">Climent<span class="amp">.</span></span></span>
+  </h1>
 
-    <!-- Projects -->
-    <section class="section section--alt" id="projects">
-        <div class="container">
-            <h2 class="section__title" data-i18n="projects.title">Projects</h2>
-            <p class="section__subtitle" data-i18n="projects.subtitle">Components of a production e-commerce platform — built, iterated, and operated over 3 years.</p>
+  <div class="hero__grid">
+    <p class="hero__lead" data-reveal data-delay="2" data-i18n-html="hero.lead">
+      I build the <em>infrastructure</em> that runs a real six-figure e-commerce business — because it runs mine.
+    </p>
+    <div class="hero__side" data-reveal data-delay="3">
+      <p class="hero__role" data-i18n-html="hero.role">
+        <strong>Founder &amp; sole technical architect of REUSALIA.</strong>
+        I designed and built 100% of the platform's infrastructure and automation — the systems that move real inventory and real money.
+      </p>
+      <div class="hero__cta">
+        <a href="#projects" class="btn btn--solid">
+          <span data-i18n="hero.viewProjects">View Projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <a href="cv/" class="btn btn--ghost" target="_blank" rel="noopener">
+          <span data-i18n="hero.cv">View / Download CV</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+        </a>
+      </div>
+      <div class="hero__socials">
+        <a href="https://github.com/AspiranteD/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a href="https://linkedin.com/in/gcliment/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <a href="mailto:guillemclim@gmail.com">Email ↗</a>
+      </div>
+    </div>
+  </div>
 
-            <!-- Flagship System Card -->
-            <a href="blog/reusalia-full-system.html" class="project-card project-card--flagship" data-animate>
-                <div class="project-card--flagship__inner">
-                    <div class="project-card--flagship__content">
-                        <span class="project-card__badge">Flagship System</span>
-                        <h3 class="project-card__title" data-i18n="projects.flagship_title">The Full REUSALIA Platform</h3>
-                        <p class="project-card__metric" data-i18n="projects.flagship_metric">40,000+ references · 12 Wallapop accounts + eBay · 342 frontend files · PostgreSQL sync</p>
-                        <p class="project-card__desc" data-i18n="projects.flagship_desc">Production infrastructure for a physical e-commerce operation: custom ERP, PostgreSQL backbone, reverse-engineered marketplace extraction, AI catalog enrichment, and cloud-to-local hardware workflows.</p>
-                    </div>
-                    <span class="project-card--flagship__cta" data-i18n="projects.flagship_cta">Read the full case study →</span>
-                </div>
-            </a>
+  <div class="statstrip" data-reveal aria-label="Key metrics">
+    <div class="stat"><div class="stat__n" data-i18n-html="stat.1n">6<span class="accent">-figure</span></div><div class="stat__l" data-i18n="stat.1l">Annual revenue, infrastructure built solo</div></div>
+    <div class="stat"><div class="stat__n"><span class="accent">+</span>50<span class="accent">%</span></div><div class="stat__l" data-i18n="stat.2l">Revenue growth YoY</div></div>
+    <div class="stat"><div class="stat__n">40,000<span class="accent">+</span></div><div class="stat__l" data-i18n="stat.3l">References managed</div></div>
+    <div class="stat"><div class="stat__n">~100<span class="accent">/day</span></div><div class="stat__l" data-i18n="stat.4l">Orders processed</div></div>
+  </div>
+</section>
 
-            <!-- Featured Projects (3 hero cards) -->
-            <div class="projects__featured" id="projectsFeatured">
-                <article class="project-card project-card--featured" data-category="api infra" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/inventory-ops-api" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <div class="project-card__badge" data-i18n="projects.badge_core">Core System</div>
-                    <h3 class="project-card__title">Inventory Operations API</h3>
-                    <p class="project-card__metric" data-i18n="projects.inventory_metric">40,000+ inventory refs · 6 domain models · 6 services · production business rules</p>
-                    <p class="project-card__desc" data-i18n="projects.inventory_desc">Production inventory domain layer (extracted): items, orders, sales, incidents, listings — business rules and side effects. The full platform adds FastAPI (~60 endpoints), scheduler, and auth.</p>
-                    <div class="project-card__tags">
-                        <span>Python</span><span>SQLModel</span><span>PostgreSQL</span><span>Domain layer</span>
-                    </div>
-                </article>
+<!-- ===================== ARCHITECTURE ===================== -->
+<section class="section wrap" id="architecture" aria-labelledby="arch-title">
+  <div class="shead" data-reveal>
+    <div class="shead__num">01</div>
+    <div>
+      <h2 class="shead__title" data-i18n-html="arch.title">System <em>Architecture</em></h2>
+      <p class="shead__meta" data-i18n="arch.meta">The REUSALIA platform — an end-to-end pipeline that moves data from public marketplaces, through processing and a custom ERP core, out to live storefronts and physical hardware on the warehouse floor.</p>
+    </div>
+  </div>
 
-                <article class="project-card project-card--featured" data-category="scraping api" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/wallapop-data-extractors" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <div class="project-card__badge" data-i18n="projects.badge_unique">Unique Engineering</div>
-                    <h3 class="project-card__title">Wallapop Data Extractors</h3>
-                    <p class="project-card__metric" data-i18n="projects.wallapop_metric">Replaces ~5h/day manual work · Makes multi-account ops physically possible</p>
-                    <p class="project-card__desc" data-i18n="projects.wallapop_desc">Reverse-engineered private API. Multi-account extraction with cookie auth, anti-detection, parallel processing. 2,100+ lines, 5 major versions, ~100 orders/day across 12 accounts.</p>
-                    <div class="project-card__tags">
-                        <span>Python</span><span>Reverse Engineering</span><span>Threading</span><span>PostgreSQL</span>
-                    </div>
-                </article>
+  <p class="arch__intro" data-reveal data-i18n-html="arch.intro">
+    Everything routes through a single source of truth. <strong>Data sources</strong> feed a <strong>processing layer</strong>, which writes to the <strong>ERP core</strong>, which in turn drives <strong>outputs</strong> — from marketplace listings to label printers running on local hardware.
+  </p>
 
-                <article class="project-card project-card--featured" data-category="ai scraping" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/ai-product-enrichment" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <div class="project-card__badge" data-i18n="projects.badge_ai">AI Pipeline</div>
-                    <h3 class="project-card__title">AI Product Enrichment</h3>
-                    <p class="project-card__metric" data-i18n="projects.ai_enrichment_metric">Saves ~40h/week vs manual descriptions · Thousands of SKUs processed</p>
-                    <p class="project-card__desc" data-i18n="projects.ai_enrichment_desc">Automated pipeline: Amazon scraping → GPT categorization → description generation → listing sync. Processes thousands of SKUs autonomously in production.</p>
-                    <div class="project-card__tags">
-                        <span>Python</span><span>OpenAI</span><span>BeautifulSoup</span><span>FastAPI</span>
-                    </div>
-                </article>
-            </div>
+  <div class="diagram" role="list" aria-label="Architecture pipeline: sources, processing, core, outputs">
+    <article class="stage" role="listitem" data-reveal data-delay="1">
+      <div class="stage__head"><span class="stage__kicker" data-i18n="arch.s1.kicker">Inputs</span><span class="stage__idx">01</span></div>
+      <h3 class="stage__title" data-i18n="arch.s1.title">Data Sources</h3>
+      <ul class="stage__list">
+        <li data-i18n="arch.s1.i1">12 Wallapop accounts (private API)</li>
+        <li data-i18n="arch.s1.i2">eBay marketplace integration</li>
+        <li data-i18n="arch.s1.i3">Amazon product catalog scraping</li>
+        <li data-i18n="arch.s1.i4">Supplier &amp; Google Sheets feeds</li>
+      </ul>
+    </article>
 
-            <!-- Toggle button -->
-            <div class="projects__toggle-wrap">
-                <button class="btn btn--outline projects__toggle" id="toggleProjects" data-i18n="projects.show_all">Show all components (9 more)</button>
-            </div>
+    <article class="stage" role="listitem" data-reveal data-delay="2">
+      <div class="stage__head"><span class="stage__kicker" data-i18n="arch.s2.kicker">Pipeline</span><span class="stage__idx">02</span></div>
+      <h3 class="stage__title" data-i18n="arch.s2.title">Processing</h3>
+      <ul class="stage__list">
+        <li data-i18n="arch.s2.i1">Extraction &amp; normalization</li>
+        <li data-i18n="arch.s2.i2">GPT-powered AI enrichment</li>
+        <li data-i18n="arch.s2.i3">Business-rules &amp; validation layer</li>
+        <li data-i18n="arch.s2.i4">Celery async task queue</li>
+      </ul>
+    </article>
 
-            <!-- Remaining projects (collapsed by default) -->
-            <div class="projects__grid projects__grid--collapsed" id="projectsGrid">
-                <article class="project-card" data-category="api" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/ebay-automation-toolkit" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <h3 class="project-card__title">eBay Automation Toolkit</h3>
-                    <p class="project-card__metric" data-i18n="projects.ebay_metric">1,000+ item batch uploads · Full order lifecycle automated</p>
-                    <p class="project-card__desc" data-i18n="projects.ebay_desc">End-to-end eBay automation: OAuth2 auth, bulk CSV generation, Feed API uploads, order import, shipping with tracking.</p>
-                    <div class="project-card__tags"><span>Python</span><span>eBay API</span><span>OAuth2</span><span>pandas</span></div>
-                </article>
+    <article class="stage" role="listitem" data-reveal data-delay="3">
+      <div class="stage__head"><span class="stage__kicker" data-i18n="arch.s3.kicker">Core</span><span class="stage__idx">03</span></div>
+      <h3 class="stage__title" data-i18n="arch.s3.title">Custom ERP</h3>
+      <ul class="stage__list">
+        <li data-i18n="arch.s3.i1">PostgreSQL single source of truth</li>
+        <li data-i18n="arch.s3.i2">6 domain models, FastAPI services</li>
+        <li data-i18n="arch.s3.i3">Retool / Angular operations frontend</li>
+        <li data-i18n="arch.s3.i4">40,000+ live references</li>
+      </ul>
+    </article>
 
-                <article class="project-card" data-category="infra" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/cloud-local-command-bridge" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <h3 class="project-card__title">Cloud-Local Command Bridge</h3>
-                    <p class="project-card__metric" data-i18n="projects.bridge_metric">~60s failover · Bridges cloud Retool UI to local label printers</p>
-                    <p class="project-card__desc" data-i18n="projects.bridge_desc">Distributed pattern: cloud UI enqueues commands via database, local backend processes with exclusive locking, heartbeat, and ~60s failover.</p>
-                    <div class="project-card__tags"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Distributed Systems</span></div>
-                </article>
+    <article class="stage" role="listitem" data-reveal data-delay="4">
+      <div class="stage__head"><span class="stage__kicker" data-i18n="arch.s4.kicker">Outputs</span><span class="stage__idx">04</span></div>
+      <h3 class="stage__title" data-i18n="arch.s4.title">Outputs</h3>
+      <ul class="stage__list">
+        <li data-i18n="arch.s4.i1">Multi-platform listing sync</li>
+        <li data-i18n="arch.s4.i2">Order lifecycle automation</li>
+        <li data-i18n="arch.s4.i3">Cloud→local command bridge</li>
+        <li data-i18n="arch.s4.i4">Brother QL-700 label printing</li>
+      </ul>
+    </article>
+  </div>
 
-                <article class="project-card" data-category="data" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/sheets-to-postgres-migration" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <h3 class="project-card__title">Sheets → Postgres Migration</h3>
-                    <p class="project-card__metric" data-i18n="projects.migration_metric">3 years of production data · Zero-downtime cutover</p>
-                    <p class="project-card__desc" data-i18n="projects.migration_desc">5-phase production migration pipeline: extract → validate → migrate → sync → verify. Financial reconciliation per Amazon truckload.</p>
-                    <div class="project-card__tags"><span>Python</span><span>PostgreSQL</span><span>gspread</span><span>pandas</span></div>
-                </article>
+  <p class="arch__caption" data-reveal>
+    <span class="badge">↳</span> <span data-i18n="arch.caption">Cloud-hosted core, with a database command-queue pattern bridging to local warehouse hardware in real time.</span>
+  </p>
+</section>
 
-                <article class="project-card" data-category="api" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/marketplace-sync-engine" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <h3 class="project-card__title">Marketplace Sync Engine</h3>
-                    <p class="project-card__metric" data-i18n="projects.sync_metric">3 marketplaces synced · Single source of truth for all stock</p>
-                    <p class="project-card__desc" data-i18n="projects.sync_desc">Multi-platform inventory sync: single source of truth in PostgreSQL, syncs to Wallapop, eBay, and PortalHero with marketplace-specific formatting.</p>
-                    <div class="project-card__tags"><span>Python</span><span>FastAPI</span><span>Google Drive</span><span>PostgreSQL</span></div>
-                </article>
+<hr class="rule wrap" aria-hidden="true" />
 
-                <article class="project-card" data-category="scraping" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/amazon-product-scraper" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <h3 class="project-card__title">Amazon Product Scraper</h3>
-                    <p class="project-card__metric" data-i18n="projects.scraper_metric">Feeds AI pipeline with product data at scale · Autonomous execution</p>
-                    <p class="project-card__desc" data-i18n="projects.scraper_desc">Production scraper for Amazon.es: titles, prices, hi-res images, features. Anti-detection with UA rotation and request throttling.</p>
-                    <div class="project-card__tags"><span>Python</span><span>BeautifulSoup</span><span>Requests</span></div>
-                </article>
+<!-- ===================== PROJECTS ===================== -->
+<section class="section wrap" id="projects" aria-labelledby="proj-title">
+  <div class="shead" data-reveal>
+    <div class="shead__num">02</div>
+    <div>
+      <h2 class="shead__title" data-i18n-html="proj.title">Selected <em>Work</em></h2>
+      <p class="shead__meta" data-i18n="proj.meta">Production systems — not demos. Each ships against real inventory, real orders and real money. Source available on GitHub.</p>
+    </div>
+  </div>
 
-                <article class="project-card" data-category="scraping infra" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/marketplace-auth-manager" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <h3 class="project-card__title">Marketplace Auth Manager</h3>
-                    <p class="project-card__metric" data-i18n="projects.auth_metric">12+ accounts managed · Automatic rotation across all extractors</p>
-                    <p class="project-card__desc" data-i18n="projects.auth_desc">Multi-account authentication lifecycle: cookie/bearer management, JWT decoding, automatic token refresh, secure storage in PostgreSQL.</p>
-                    <div class="project-card__tags"><span>Python</span><span>JWT</span><span>Requests</span><span>PostgreSQL</span></div>
-                </article>
+  <!-- Flagship -->
+  <article class="proj__flag" data-reveal>
+    <div class="proj__flag-inner">
+      <span class="eyebrow" data-i18n="proj.flag.eyebrow">Flagship · 2023 — Present</span>
+      <h3 data-i18n="proj.flag.title">The Full REUSALIA Platform</h3>
+      <p data-i18n="proj.flag.desc">A complete, custom-built operating system for a circular e-commerce business: a marketplace extraction engine, AI enrichment pipeline, custom ERP, and cloud-to-local hardware workflows — designed, built and maintained as technical founder.</p>
+      <div class="proj__flag-stats">
+        <div><span class="n">40,000+</span><span class="l" data-i18n="proj.flag.s1">References</span></div>
+        <div><span class="n">12 + eBay</span><span class="l" data-i18n="proj.flag.s2">Marketplaces</span></div>
+        <div><span class="n">~100/day</span><span class="l" data-i18n="proj.flag.s3">Orders processed</span></div>
+        <div><span class="n">PostgreSQL</span><span class="l" data-i18n="proj.flag.s4">Synced core</span></div>
+      </div>
+      <div class="proj__flag-tags">
+        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span>
+        <span class="tag">Celery</span><span class="tag">LLM / OpenAI</span><span class="tag">Retool</span><span class="tag">Hardware</span>
+      </div>
+    </div>
+  </article>
 
-                <article class="project-card" data-category="ai scraping" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/product-image-pipeline" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <h3 class="project-card__title">Product Image Pipeline</h3>
-                    <p class="project-card__metric" data-i18n="projects.image_metric">Anti-duplicate transforms bypass marketplace filters</p>
-                    <p class="project-card__desc" data-i18n="projects.image_desc">Warehouse image ops (this repo): photo validation, thermal labels, barcodes, carrier PDFs (PIL). The full platform also uses OpenCV for listing anti-duplicate transforms.</p>
-                    <div class="project-card__tags"><span>Python</span><span>PIL</span><span>Pillow</span><span>Labels</span></div>
-                </article>
+  <ol class="proj__list" id="projList">
+    <!-- items injected/declared below -->
+  </ol>
+</section>
 
-                <article class="project-card" data-category="infra data" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/retool-erp-modules" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <h3 class="project-card__title">Custom ERP Frontend</h3>
-                    <p class="project-card__metric" data-i18n="projects.retool_metric">342 frontend files · 10+ modules · Used daily by 5 employees</p>
-                    <p class="project-card__desc" data-i18n="projects.retool_desc">Internal production ERP: 342 frontend files across 10+ modules — orders, inventory, invoicing, incidents, chat analytics, mobile scanner.</p>
-                    <div class="project-card__tags"><span>SQL</span><span>JavaScript</span><span>Retool</span><span>PostgreSQL</span></div>
-                </article>
+<hr class="rule wrap" aria-hidden="true" />
 
-                <article class="project-card" data-category="ai infra" data-animate>
-                    <div class="project-card__header">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                        <div class="project-card__links">
-                            <a href="https://github.com/AspiranteD/job-inbox-monitor" target="_blank" aria-label="GitHub"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg></a>
-                        </div>
-                    </div>
-                    <h3 class="project-card__title">Job Inbox Monitor</h3>
-                    <p class="project-card__metric" data-i18n="projects.jobmonitor_metric">Automated daily digest · Two-phase classification · Follow-up reminders</p>
-                    <p class="project-card__desc" data-i18n="projects.jobmonitor_desc">Gmail bot that classifies job application responses using regex heuristics + LLM. Tracks applications in CSV, flags unanswered follow-ups, generates daily markdown reports with per-platform stats.</p>
-                    <div class="project-card__tags"><span>Python</span><span>Gmail API</span><span>OpenAI</span><span>Automation</span></div>
-                </article>
-            </div>
-        </div>
-    </section>
+<!-- ===================== EXPERIENCE ===================== -->
+<section class="section wrap" id="experience" aria-labelledby="exp-title">
+  <div class="shead" data-reveal>
+    <div class="shead__num">03</div>
+    <div>
+      <h2 class="shead__title" data-i18n-html="exp.title">Experience <em>Timeline</em></h2>
+      <p class="shead__meta" data-i18n="exp.meta">From enterprise consulting at scale to founding and engineering an entire platform. A through-line of building systems that have to work.</p>
+    </div>
+  </div>
 
-    <!-- Experience -->
-    <section class="section" id="experience">
-        <div class="container">
-            <h2 class="section__title" data-i18n="experience.title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline__item" data-animate>
-                    <div class="timeline__marker"></div>
-                    <div class="timeline__content">
-                        <div class="timeline__header">
-                            <h3>Technical Founder & Lead Engineer</h3>
-                            <span class="timeline__company">REUSALIA</span>
-                            <span class="timeline__date" data-i18n="experience.reusalia_date">Apr 2023 – Present</span>
-                        </div>
-                        <ul class="timeline__details">
-                            <li data-i18n="experience.reusalia_1">Lead a 5-person operation (warehouse, logistics, admin) — hiring, scheduling, training, and operational accountability</li>
-                            <li data-i18n="experience.reusalia_2">Built production ERP from scratch: 10+ modules, 342 frontend files, 25+ DB models, ~60 API endpoints</li>
-                            <li data-i18n="experience.reusalia_3">Built marketplace extraction and sync: 12 Wallapop accounts + eBay with near-real-time PostgreSQL synchronization</li>
-                            <li data-i18n="experience.reusalia_4">Operationalized LLM workflows for attribute extraction, taxonomy normalization, product descriptions, and catalog publishing consistency</li>
-                            <li data-i18n="experience.reusalia_5">Rebuilt warehouse operations after a natural disaster destroyed inventory and equipment, with volunteer support over several weeks</li>
-                            <li data-i18n="experience.reusalia_6">Migrated production data from Google Sheets → PostgreSQL (5-phase pipeline)</li>
-                        </ul>
-                        <div class="timeline__tags">
-                            <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">OpenAI</span><span class="tag">Retool</span><span class="tag">eBay API</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline__item" data-animate>
-                    <div class="timeline__marker"></div>
-                    <div class="timeline__content">
-                        <div class="timeline__header">
-                            <h3>Senior Software Engineer</h3>
-                            <span class="timeline__company">LittleBig Connection</span>
-                            <span class="timeline__date" data-i18n="experience.lbc_date">Dec 2022 – Feb 2024</span>
-                        </div>
-                        <ul class="timeline__details">
-                            <li data-i18n="experience.lbc_1">Full-stack delivery: Java/Spring Boot APIs + Angular frontends</li>
-                            <li data-i18n="experience.lbc_2">Database design and optimization (MySQL) + Docker containerization</li>
-                            <li data-i18n="experience.lbc_3">Remote-first distributed team, agile methodologies</li>
-                        </ul>
-                        <div class="timeline__tags">
-                            <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Angular</span><span class="tag">MySQL</span><span class="tag">Docker</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline__item" data-animate>
-                    <div class="timeline__marker"></div>
-                    <div class="timeline__content">
-                        <div class="timeline__header">
-                            <h3>Software Engineer</h3>
-                            <span class="timeline__company">Sopra Steria <span class="timeline__client" data-i18n="experience.sopra_client">(Client: AIRBUS)</span></span>
-                            <span class="timeline__date" data-i18n="experience.sopra_date">Mar 2022 – Dec 2022</span>
-                        </div>
-                        <ul class="timeline__details">
-                            <li data-i18n="experience.sopra_1">Technical ownership of e-Business contract infrastructure — monolith → microservices</li>
-                            <li data-i18n="experience.sopra_2">Re-architected Angular state management (NgRx), eliminating UI rendering freezes</li>
-                            <li data-i18n="experience.sopra_3">CI/CD pipelines with Jenkins + OpenShift cloud deployments</li>
-                        </ul>
-                        <div class="timeline__tags">
-                            <span class="tag">Java 11</span><span class="tag">Spring Boot</span><span class="tag">Angular 13</span><span class="tag">NgRx</span><span class="tag">Jenkins</span><span class="tag">OpenShift</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline__item" data-animate>
-                    <div class="timeline__marker"></div>
-                    <div class="timeline__content">
-                        <div class="timeline__header">
-                            <h3>Software Engineer</h3>
-                            <span class="timeline__company">Capgemini <span class="timeline__client" data-i18n="experience.capgemini_client">(Client: Mercadona)</span></span>
-                            <span class="timeline__date" data-i18n="experience.capgemini_date">Oct 2020 – Feb 2022</span>
-                        </div>
-                        <ul class="timeline__details">
-                            <li data-i18n="experience.capgemini_1">Optimized legacy supply chain systems processing massive daily volumes</li>
-                            <li data-i18n="experience.capgemini_2">Database overhaul (OracleSQL) — redesigned bottlenecked transaction layers</li>
-                            <li data-i18n="experience.capgemini_3">Primary technical interface for Europe's largest grocery supply chain</li>
-                        </ul>
-                        <div class="timeline__tags">
-                            <span class="tag">Java 11</span><span class="tag">C++</span><span class="tag">OracleSQL</span><span class="tag">MyBatis</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <ol class="tl">
+    <li class="tl__item tl__item--now" data-reveal>
+      <div class="tl__period"><span data-i18n="exp.e1.period">Apr 2023 — Present</span><span class="tl__now" data-i18n="exp.current">Current</span></div>
+      <div>
+        <h3 class="tl__role"><span data-i18n="exp.e1.role">Founder &amp; Technical Lead</span> <span class="tl__org">@ REUSALIA</span></h3>
+        <p class="tl__detail" data-i18n="exp.e1.detail">Sole architect of the entire platform. Built all backend, automation and the Retool ERP single-handedly. Lead, train and delegate to a 5-person team.</p>
+        <div class="tl__meta"><span class="tag" data-i18n="exp.e1.t1">Founder</span><span class="tag">Python · FastAPI</span><span class="tag">PostgreSQL</span><span class="tag" data-i18n="exp.e1.t4">Team of 5</span></div>
+      </div>
+    </li>
+    <li class="tl__item" data-reveal data-delay="1">
+      <div class="tl__period" data-i18n="exp.e2.period">Software Engineering</div>
+      <div>
+        <h3 class="tl__role"><span data-i18n="exp.e2.role">Senior Software Engineer</span> <span class="tl__org">@ LittleBig Connection</span></h3>
+        <p class="tl__detail" data-i18n="exp.e2.detail">Senior engineering on production software at a platform connecting enterprises with technology talent — building and shipping robust backend services.</p>
+        <div class="tl__meta"><span class="tag" data-i18n="exp.e2.t1">Backend</span><span class="tag">REST APIs</span><span class="tag">CI/CD</span></div>
+      </div>
+    </li>
+    <li class="tl__item" data-reveal data-delay="2">
+      <div class="tl__period" data-i18n="exp.e3.period">Consulting</div>
+      <div>
+        <h3 class="tl__role"><span data-i18n="exp.e3.role">Software Engineer</span> <span class="tl__org">@ Sopra Steria</span> <span class="tl__client" data-i18n="exp.e3.client">· client: AIRBUS</span></h3>
+        <p class="tl__detail" data-i18n="exp.e3.detail">Engineering on mission-critical systems for AIRBUS — enterprise-grade software where reliability and rigor are non-negotiable.</p>
+        <div class="tl__meta"><span class="tag">Java · Spring Boot</span><span class="tag" data-i18n="exp.e3.t2">Enterprise</span><span class="tag" data-i18n="exp.e3.t3">Aerospace</span></div>
+      </div>
+    </li>
+    <li class="tl__item" data-reveal data-delay="3">
+      <div class="tl__period" data-i18n="exp.e4.period">Consulting</div>
+      <div>
+        <h3 class="tl__role"><span data-i18n="exp.e4.role">Software Engineer</span> <span class="tl__org">@ Capgemini</span> <span class="tl__client" data-i18n="exp.e4.client">· client: Mercadona</span></h3>
+        <p class="tl__detail" data-i18n="exp.e4.detail">Built and maintained software for Mercadona, one of Spain's largest retailers — high-volume retail systems operating at national scale.</p>
+        <div class="tl__meta"><span class="tag">Java</span><span class="tag">Oracle SQL</span><span class="tag" data-i18n="exp.e4.t3">Retail at scale</span></div>
+      </div>
+    </li>
+  </ol>
+</section>
 
-    <!-- About -->
-    <section class="section section--alt" id="about">
-        <div class="container">
-            <h2 class="section__title" data-i18n="about.title">About Me</h2>
-            <div class="about__grid">
-                <div class="about__text">
-                    <p data-i18n="about.p1">I founded a company at 25, built its entire tech stack from zero, and run it today with a 5-person team (warehouse, logistics, admin) under my direct leadership.</p>
-                    <p data-i18n="about.p2">Before that, I cut my teeth at enterprise consultancies (Capgemini, Sopra Steria, LittleBig Connection), working on systems for AIRBUS and Mercadona — learning what scale, reliability, and stakeholder management really mean.</p>
-                    <p data-i18n-html="about.p3">In October 2024, a natural disaster destroyed our warehouse operations, including inventory and equipment. With volunteer support over several weeks, we rebuilt operations within two months and used the reset to improve our systems, documentation, and internal structure. <a href="blog/rebuilding-after-dana.html">Read the full story →</a></p>
-                    <p data-i18n="about.p4">I'm not a tutorial developer. Every line of code I write handles real inventory, real money, and real operations. I've reverse-engineered private APIs, migrated production databases, integrated physical printers into cloud workflows, and built AI pipelines that run autonomously in production.</p>
-                </div>
-                <div class="about__highlights">
-                    <div class="highlight">
-                        <div class="highlight__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-                        <h3 data-i18n="about.h_architect">Systems Architect</h3>
-                        <p data-i18n="about.d_architect">End-to-end platform design — from database schema to cloud deployment to hardware integration.</p>
-                    </div>
-                    <div class="highlight">
-                        <div class="highlight__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-                        <h3 data-i18n="about.h_founder">Technical Founder</h3>
-                        <p data-i18n="about.d_founder">Built and ran a real business — team management, operations, and full-stack development simultaneously.</p>
-                    </div>
-                    <div class="highlight">
-                        <div class="highlight__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
-                        <h3 data-i18n="about.h_solver">Problem Solver</h3>
-                        <p data-i18n="about.d_solver">Reverse engineering, data migration, anti-detection — I solve problems others avoid.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<hr class="rule wrap" aria-hidden="true" />
 
-    <!-- Blog -->
-    <section class="section" id="blog">
-        <div class="container">
-            <h2 class="section__title" data-i18n="blog.title">Technical Writing</h2>
-            <p class="section__subtitle" data-i18n="blog.subtitle">Deep dives into real problems I solved — technical and otherwise.</p>
-            <div class="blog-grid">
-                <a href="blog/reusalia-full-system.html" class="blog-card blog-card--flagship" data-animate>
-                    <span class="blog-card__badge">Flagship Case Study</span>
-                    <div class="blog-card__meta"><span>2026</span><span>18 min</span></div>
-                    <h3 class="blog-card__title" data-i18n="blog.flagship_title">How I Built a Full ERP That Runs a Multi-Marketplace E-Commerce Operation</h3>
-                    <p class="blog-card__excerpt" data-i18n="blog.flagship_excerpt">40,000+ inventory references, 12 Wallapop accounts + eBay, 342 frontend files, PostgreSQL sync, and cloud-to-local hardware workflows — the full production system behind REUSALIA.</p>
-                    <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
-                </a>
-                <a href="blog/sheets-to-postgres-migration.html" class="blog-card" data-animate>
-                    <div class="blog-card__meta"><span>2026</span><span>12 min</span></div>
-                    <h3 class="blog-card__title" data-i18n="blog.migration_title">How I Migrated a Production Business from Google Sheets to PostgreSQL</h3>
-                    <p class="blog-card__excerpt" data-i18n="blog.migration_excerpt">5 phases, daily syncs, financial reconciliation, and zero downtime — while running the business with 5 employees. The real engineering behind a spreadsheet-to-database migration.</p>
-                    <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
-                </a>
-                <a href="blog/reverse-engineering-wallapop.html" class="blog-card" data-animate>
-                    <div class="blog-card__meta"><span>2026</span><span>14 min</span></div>
-                    <h3 class="blog-card__title" data-i18n="blog.wallapop_title">From Manual Posting to Reverse Engineering: My Wallapop Journey</h3>
-                    <p class="blog-card__excerpt" data-i18n="blog.wallapop_excerpt">10 min/item manually → Selenium bots across 6 remote PCs → reverse engineering a private API → 2,100-line extraction system processing 100 orders/day across 12 accounts.</p>
-                    <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
-                </a>
-                <a href="blog/rebuilding-after-dana.html" class="blog-card" data-animate>
-                    <div class="blog-card__meta"><span>2026</span><span>10 min</span></div>
-                    <h3 class="blog-card__title" data-i18n="blog.dana_title">Rebuilding a Company After a Catastrophic Flood</h3>
-                    <p class="blog-card__excerpt" data-i18n="blog.dana_excerpt">A natural disaster destroyed our warehouse operations, including inventory and equipment. With volunteer support over several weeks, we rebuilt within two months and improved the systems behind the business.</p>
-                    <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
-                </a>
-                <a href="blog/cloud-local-command-bridge.html" class="blog-card" data-animate>
-                    <div class="blog-card__meta"><span>2026</span><span>6 min</span></div>
-                    <h3 class="blog-card__title" data-i18n="blog.bridge_title">Bridging Cloud and Local: A Database Command Queue Pattern</h3>
-                    <p class="blog-card__excerpt" data-i18n="blog.bridge_excerpt">When your cloud UI needs to print a physical label on a USB printer in a warehouse — you need a creative architectural solution.</p>
-                    <span class="blog-card__read" data-i18n="blog.read_more">Read article →</span>
-                </a>
-            </div>
-        </div>
-    </section>
+<!-- ===================== ABOUT ===================== -->
+<section class="section wrap" id="about" aria-labelledby="about-title">
+  <div class="shead" data-reveal>
+    <div class="shead__num">04</div>
+    <div>
+      <h2 class="shead__title" data-i18n-html="about.title">About &amp; <em>Resilience</em></h2>
+    </div>
+  </div>
 
-    <!-- Skills -->
-    <section class="section section--alt" id="skills">
-        <div class="container">
-            <h2 class="section__title" data-i18n="skills.title">Technical Stack</h2>
-            <div class="skills__grid">
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.backend">Backend & APIs</h3>
-                    <div class="skill-pills">
-                        <span class="pill">Python</span><span class="pill">FastAPI</span><span class="pill">Java</span><span class="pill">Spring Boot</span><span class="pill">SQLModel</span><span class="pill">REST APIs</span><span class="pill">Celery</span>
-                    </div>
-                </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.frontend">Frontend</h3>
-                    <div class="skill-pills">
-                        <span class="pill">Angular</span><span class="pill">Vue.js</span><span class="pill">HTML/CSS/JS</span><span class="pill">NgRx</span>
-                    </div>
-                </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.databases">Databases</h3>
-                    <div class="skill-pills">
-                        <span class="pill">PostgreSQL</span><span class="pill">MySQL</span><span class="pill">OracleSQL</span><span class="pill">NeonDB</span><span class="pill">SQLite</span>
-                    </div>
-                </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.ai">AI & Data</h3>
-                    <div class="skill-pills">
-                        <span class="pill">OpenAI GPT</span><span class="pill">LangChain</span><span class="pill">RAG</span><span class="pill">LLM Pipelines</span><span class="pill">pandas</span><span class="pill">NumPy</span><span class="pill">ETL</span><span class="pill">OpenCV</span>
-                    </div>
-                </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.scraping">Scraping & Automation</h3>
-                    <div class="skill-pills">
-                        <span class="pill">BeautifulSoup</span><span class="pill">Selenium</span><span class="pill">Scrapy</span><span class="pill">Playwright</span><span class="pill">n8n</span><span class="pill">Zapier</span><span class="pill">Reverse Engineering</span><span class="pill">Anti-Detection</span><span class="pill">APScheduler</span>
-                    </div>
-                </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.devops">DevOps & Infra</h3>
-                    <div class="skill-pills">
-                        <span class="pill">Docker</span><span class="pill">Jenkins</span><span class="pill">OpenShift</span><span class="pill">GitHub Actions</span><span class="pill">Airflow</span><span class="pill">Git</span><span class="pill">CI/CD</span>
-                    </div>
-                </div>
-                <div class="skill-group" data-animate>
-                    <h3 data-i18n="skills.integrations">Integrations</h3>
-                    <div class="skill-pills">
-                        <span class="pill">eBay API</span><span class="pill">Gmail API</span><span class="pill">Google Sheets/Drive</span><span class="pill">OpenAI API</span><span class="pill">Anthropic API</span><span class="pill">Wallapop API (Reverse-Engineered)</span><span class="pill">Brother QL-700</span><span class="pill">Retool</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <div class="about__grid">
+    <p class="about__pull" data-reveal data-i18n-html="about.pull">
+      In October 2024 a catastrophic flood hit. We <em>rebuilt the company</em> — and the systems that run it — from the ground up.
+    </p>
+    <div class="about__body" data-reveal data-delay="1">
+      <p data-i18n-html="about.p1">I founded REUSALIA at <strong>25</strong>. Three years on it's a profitable six-figure operation with a 5-person team, running entirely on infrastructure I designed and built alone — self-taught, iterating in production. I lead the team, teach each person their role, then delegate, review, correct, and iterate again.</p>
+      <p data-i18n-html="about.p2">At REUSALIA I architected and built the entire platform: a custom ERP backed by PostgreSQL, marketplace extraction engines that process roughly <strong>100 orders a day</strong>, an AI enrichment pipeline that <strong>saves around 40 hours every week</strong>, and a cloud-to-local bridge that drives physical label printers on the warehouse floor.</p>
+      <p data-i18n-html="about.p3">Then, in October 2024, a catastrophic flood wiped out operations. Rather than walk away, we rebuilt — the warehouse, the team, and the software stack. That recovery is the part of my story I'm proudest of: it proved the systems were sound and the team was resilient. I don't just design architecture diagrams; I'm the founder who ships the code that brings them back online.</p>
+      <div class="about__sig">
+        <span class="name">Guillem Climent</span>
+        <span class="meta" data-i18n="about.sigmeta">Technical Founder · Systems Architect · Spain</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Contact -->
-    <section class="section" id="contact">
-        <div class="container">
-            <h2 class="section__title" data-i18n="contact.title">Get In Touch</h2>
-            <div class="contact__content">
-                <p class="contact__text" data-i18n="contact.text">I'm open to freelance projects, consulting, and technical co-founder opportunities. If you're building something interesting and need someone who can architect, build, and operate — let's talk.</p>
-                <div class="contact__links">
-                    <a href="https://github.com/AspiranteD/AspiranteD" target="_blank" class="contact__link">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/gcliment/" target="_blank" class="contact__link">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="mailto:guillemclim@gmail.com" class="contact__link">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        <span>Email</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<hr class="rule wrap" aria-hidden="true" />
 
-    <footer class="footer">
-        <div class="container">
-            <p data-i18n-html="footer.text">Built by Guillem Climent. Source on <a href="https://github.com/AspiranteD/AspiranteD.github.io" target="_blank">GitHub</a>.</p>
-        </div>
-    </footer>
+<!-- ===================== WRITING ===================== -->
+<section class="section wrap" id="writing" aria-labelledby="writing-title">
+  <div class="shead" data-reveal>
+    <div class="shead__num">05</div>
+    <div>
+      <h2 class="shead__title" data-i18n-html="writing.title">Technical <em>Writing</em></h2>
+      <p class="shead__meta" data-i18n="writing.meta">Long-form notes from the field — how the real systems were actually built, migrated and recovered.</p>
+    </div>
+  </div>
 
-    <script src="js/i18n.js"></script>
-    <script src="js/main.js"></script>
+  <ol class="blog__list">
+    <li class="blog__item" data-reveal>
+      <a class="blog__link" href="blog/reusalia-full-system.html" aria-label="Read: How I Built a Full ERP">
+        <span class="blog__num">01</span>
+        <span class="blog__title">How I Built a Full ERP</span>
+        <span class="blog__time" data-i18n="writing.cat.engineering">Engineering</span>
+        <span class="blog__read"><span data-i18n="writing.read.18">18 min read</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </span>
+      </a>
+    </li>
+    <li class="blog__item" data-reveal data-delay="1">
+      <a class="blog__link" href="blog/sheets-to-postgres-migration.html" aria-label="Read: How I Migrated a Production Business from Google Sheets to PostgreSQL">
+        <span class="blog__num">02</span>
+        <span class="blog__title">How I Migrated a Production Business from Google Sheets to PostgreSQL</span>
+        <span class="blog__time" data-i18n="writing.cat.data">Data</span>
+        <span class="blog__read"><span data-i18n="writing.read.12">12 min read</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </span>
+      </a>
+    </li>
+    <li class="blog__item" data-reveal data-delay="2">
+      <a class="blog__link" href="blog/reverse-engineering-wallapop.html" aria-label="Read: From Manual Posting to Reverse Engineering">
+        <span class="blog__num">03</span>
+        <span class="blog__title">From Manual Posting to Reverse Engineering</span>
+        <span class="blog__time" data-i18n="writing.cat.reverse">Reverse engineering</span>
+        <span class="blog__read"><span data-i18n="writing.read.14">14 min read</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </span>
+      </a>
+    </li>
+    <li class="blog__item" data-reveal data-delay="3">
+      <a class="blog__link" href="blog/rebuilding-after-dana.html" aria-label="Read: Rebuilding a Company After a Catastrophic Flood">
+        <span class="blog__num">04</span>
+        <span class="blog__title">Rebuilding a Company After a Catastrophic Flood</span>
+        <span class="blog__time" data-i18n="writing.cat.resilience">Resilience</span>
+        <span class="blog__read"><span data-i18n="writing.read.10">10 min read</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </span>
+      </a>
+    </li>
+    <li class="blog__item" data-reveal data-delay="4">
+      <a class="blog__link" href="blog/cloud-local-command-bridge.html" aria-label="Read: Bridging Cloud and Local: A Database Command Queue Pattern">
+        <span class="blog__num">05</span>
+        <span class="blog__title">Bridging Cloud and Local: A Database Command Queue Pattern</span>
+        <span class="blog__time" data-i18n="writing.cat.architecture">Architecture</span>
+        <span class="blog__read"><span data-i18n="writing.read.6">6 min read</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </span>
+      </a>
+    </li>
+  </ol>
+</section>
+
+<hr class="rule wrap" aria-hidden="true" />
+
+<!-- ===================== SKILLS ===================== -->
+<section class="section wrap" id="skills" aria-labelledby="skills-title">
+  <div class="shead" data-reveal>
+    <div class="shead__num">06</div>
+    <div>
+      <h2 class="shead__title" data-i18n-html="skills.title">Skills &amp; <em>Stack</em></h2>
+      <p class="shead__meta" data-i18n="skills.meta">The tools behind the systems — from backend services and databases to specialized reverse-engineering and hardware integration.</p>
+    </div>
+  </div>
+
+  <div class="skills__grid" data-reveal>
+    <div class="skillcat">
+      <div class="skillcat__head"><span class="skillcat__idx">01</span><h3 class="skillcat__name" data-i18n="skills.c1.name">AI &amp; Agents</h3></div>
+      <div class="skillcat__list">
+        <span data-i18n="skills.c1.i1">Production LLM pipelines (GPT-4o / 4o-mini)</span><span data-i18n="skills.c1.i2">AI enrichment &amp; classification at scale</span><span data-i18n="skills.c1.i3">GPT-vision document extraction</span><span data-i18n="skills.c1.i4">Agentic tool-use &amp; RAG</span><span data-i18n="skills.c1.i5">Embeddings / vector search</span><span data-i18n="skills.c1.i6">Prompt engineering</span>
+      </div>
+    </div>
+    <div class="skillcat">
+      <div class="skillcat__head"><span class="skillcat__idx">02</span><h3 class="skillcat__name" data-i18n="skills.c2.name">Backend</h3></div>
+      <div class="skillcat__list">
+        <span>Python</span><span>FastAPI</span><span>Java</span><span>Spring Boot</span><span>SQLModel</span><span>REST APIs</span><span>Celery</span>
+      </div>
+    </div>
+    <div class="skillcat">
+      <div class="skillcat__head"><span class="skillcat__idx">03</span><h3 class="skillcat__name" data-i18n="skills.c3.name">Databases</h3></div>
+      <div class="skillcat__list">
+        <span>PostgreSQL</span><span>MySQL</span><span>Oracle SQL</span><span>NeonDB</span><span>SQLite</span>
+      </div>
+    </div>
+    <div class="skillcat">
+      <div class="skillcat__head"><span class="skillcat__idx">04</span><h3 class="skillcat__name" data-i18n="skills.c4.name">Frontend</h3></div>
+      <div class="skillcat__list">
+        <span>Angular</span><span>Vue.js</span><span>HTML / CSS / JS</span><span>NgRx</span><span>Retool</span>
+      </div>
+    </div>
+    <div class="skillcat">
+      <div class="skillcat__head"><span class="skillcat__idx">05</span><h3 class="skillcat__name" data-i18n="skills.c5.name">Specialized</h3></div>
+      <div class="skillcat__list">
+        <span data-i18n="skills.c5.i1">API reverse-engineering</span><span data-i18n="skills.c5.i2">Web scraping</span><span>BeautifulSoup</span><span>Selenium</span><span data-i18n="skills.c5.i5">Anti-detection</span><span data-i18n="skills.c5.i6">LLM integration</span><span data-i18n="skills.c5.i7">Data migration</span><span data-i18n="skills.c5.i8">Hardware (Brother QL-700)</span>
+      </div>
+    </div>
+    <div class="skillcat">
+      <div class="skillcat__head"><span class="skillcat__idx">06</span><h3 class="skillcat__name" data-i18n="skills.c6.name">DevOps</h3></div>
+      <div class="skillcat__list">
+        <span>Docker</span><span>Jenkins</span><span>OpenShift</span><span>GitHub Actions</span><span>CI/CD</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section class="section--tight wrap" id="contact" aria-labelledby="contact-title">
+  <div class="contact" data-reveal>
+    <div class="contact__inner">
+      <span class="eyebrow" data-i18n="contact.eyebrow">07 — Contact</span>
+      <h2 id="contact-title" data-i18n-html="contact.title">Let's build something <em>that ships.</em></h2>
+      <p class="contact__lead" data-i18n="contact.lead">If you need production infrastructure that holds up under real load — or a technical co-founder who writes the code — I'd like to hear about it.</p>
+
+      <div class="contact__open">
+        <span data-i18n="contact.open1">Open to · Freelance</span>
+        <span data-i18n="contact.open2">Consulting</span>
+        <span data-i18n="contact.open3">Technical co-founder opportunities</span>
+      </div>
+
+      <div class="contact__rows">
+        <a class="contact__row" href="mailto:guillemclim@gmail.com">
+          <span class="k" data-i18n="contact.kEmail">Email</span>
+          <span class="v">guillemclim@gmail.com
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </span>
+        </a>
+        <a class="contact__row" href="https://github.com/AspiranteD/" target="_blank" rel="noopener noreferrer">
+          <span class="k">GitHub</span>
+          <span class="v">github.com/AspiranteD
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </span>
+        </a>
+        <a class="contact__row" href="https://linkedin.com/in/gcliment/" target="_blank" rel="noopener noreferrer">
+          <span class="k">LinkedIn</span>
+          <span class="v">linkedin.com/in/gcliment
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer wrap">
+  <div class="footer__inner">
+    <span class="footer__brand">Guillem Climent</span>
+    <span class="footer__meta" data-i18n="footer.meta">© 2026 · Designed &amp; built from a blank base · Spain</span>
+    <a href="#top" class="footer__top"><span data-i18n="footer.top">Back to top</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Project data → indexed list ----------
+     Titles/descriptions are looked up from the i18n dictionary
+     (keys proj.items.N.t / proj.items.N.d). Tags, repo URLs and
+     proper nouns stay untranslated. */
+  var projects = [
+    { k: "0",  g: "https://github.com/AspiranteD/cloud-local-command-bridge", tags: ["Python","Celery","PostgreSQL"] },
+    { k: "1",  g: "https://github.com/AspiranteD/wallapop-data-extractors", tags: ["Python","Reverse-engineering","Anti-detection"] },
+    { k: "2",  g: "https://github.com/AspiranteD/ai-product-enrichment", tags: ["Python","LLM","OpenAI"] },
+    { k: "3",  g: "https://github.com/AspiranteD/inventory-ops-api", tags: ["Python","FastAPI","SQLModel","PostgreSQL"] },
+    { k: "4",  g: "https://github.com/AspiranteD/ai-ops-agent", tags: ["Python","OpenAI","Agents","RAG","Embeddings"] },
+    { k: "5",  g: "https://github.com/AspiranteD/marketplace-sync-engine", tags: ["Python","FastAPI"] },
+    { k: "6",  g: "https://github.com/AspiranteD/ebay-automation-toolkit", tags: ["Python","REST"] },
+    { k: "7",  g: "https://github.com/AspiranteD/sheets-postgresql-migration", tags: ["Python","PostgreSQL"] },
+    { k: "8",  g: "https://github.com/AspiranteD/amazon-product-scraper", tags: ["Python","Selenium","BeautifulSoup"] },
+    { k: "9",  g: "https://github.com/AspiranteD/retool-erp", tags: ["Retool","Angular","Vue"] },
+    { k: "10", g: "https://github.com/AspiranteD/job-inbox-monitor", tags: ["Python","LLM","Gmail API"] }
+  ];
+
+  var arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+  var list = document.getElementById("projList");
+
+  /* ---------- Scroll reveal ---------- */
+  var io = null;
+  if ("IntersectionObserver" in window) {
+    io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  }
+  function observeReveals() {
+    var reveals = document.querySelectorAll("[data-reveal]:not(.is-in)");
+    if (io) {
+      reveals.forEach(function (el) { io.observe(el); });
+    } else {
+      reveals.forEach(function (el) { el.classList.add("is-in"); });
+    }
+  }
+  observeReveals();
+
+  /* ---------- Nav: stuck shadow + mobile toggle ---------- */
+  var nav = document.getElementById("nav");
+  var onScroll = function () {
+    if (window.scrollY > 12) { nav.classList.add("is-stuck"); }
+    else { nav.classList.remove("is-stuck"); }
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  var toggle = document.getElementById("navToggle");
+  var links = document.getElementById("navLinks");
+  if (toggle && links) {
+    toggle.addEventListener("click", function () {
+      var open = links.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    links.addEventListener("click", function (e) {
+      if (e.target.closest("a")) {
+        links.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  /* ---------- CV download (graceful, no asset required) ---------- */
+  document.querySelectorAll("[data-cv]").forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
+      var cv =
+        "GUILLEM CLIMENT\n" +
+        "Founder & Technical Architect — Spain\n" +
+        "guillemclim@gmail.com · github.com/AspiranteD · linkedin.com/in/gcliment\n\n" +
+        "SUMMARY\n" +
+        "Founder & sole technical architect of REUSALIA. Built 100% of the platform's infrastructure\n" +
+        "and automation — the systems that run a real six-figure e-commerce business.\n\n" +
+        "EXPERIENCE\n" +
+        "2023–Present      Founder & Technical Lead, REUSALIA (team of 5)\n" +
+        "                  Senior Software Engineer, LittleBig Connection\n" +
+        "                  Software Engineer, Sopra Steria (client: AIRBUS)\n" +
+        "                  Software Engineer, Capgemini (client: Mercadona)\n\n" +
+        "FLAGSHIP — REUSALIA Platform\n" +
+        "40,000+ references · 12 Wallapop accounts + eBay · ~100 orders/day · PostgreSQL core.\n" +
+        "Custom ERP, marketplace extraction, AI enrichment, cloud-to-local hardware workflows.\n\n" +
+        "SKILLS\n" +
+        "AI & Agents: LLM pipelines (GPT-4o/4o-mini), RAG, embeddings/vector search, GPT-vision, prompt engineering\n" +
+        "Backend: Python, FastAPI, Java, Spring Boot, SQLModel, REST, Celery\n" +
+        "Databases: PostgreSQL, MySQL, Oracle SQL, NeonDB, SQLite\n" +
+        "Frontend: Angular, Vue.js, HTML/CSS/JS, NgRx, Retool\n" +
+        "Specialized: API reverse-engineering, scraping, anti-detection, LLM, data migration, hardware\n" +
+        "DevOps: Docker, Jenkins, OpenShift, GitHub Actions, CI/CD\n";
+      var blob = new Blob([cv], { type: "text/plain;charset=utf-8" });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement("a");
+      a.href = url; a.download = "Guillem-Climent-CV.txt";
+      document.body.appendChild(a); a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    });
+  });
+
+  /* ============================================================
+     I18N — inline, self-contained (works on file:// and Pages)
+     ============================================================ */
+  var I18N = {
+    en: {
+      "meta.title": "Guillem Climent — Technical Founder & Systems Architect",
+      "meta.description": "Guillem Climent — Technical Founder & Engineer. I build production infrastructure for real e-commerce operations: custom ERP, marketplace extraction, AI enrichment, and cloud-to-local hardware workflows.",
+      "meta.ogDescription": "Founder & sole technical architect of REUSALIA — I build the infrastructure that runs a real six-figure e-commerce business.",
+      "nav.skip": "Skip to projects",
+      "nav.system": "System", "nav.projects": "Projects", "nav.experience": "Experience",
+      "nav.about": "About", "nav.writing": "Writing", "nav.contact": "Get in touch",
+      "hero.avail": "Available for freelance, consulting & co-founder roles",
+      "hero.loc": "Based in Spain · Working worldwide · MMXXVI",
+      "hero.lead": "I build the <em>infrastructure</em> that runs a real six-figure e-commerce business — because it runs mine.",
+      "hero.role": "<strong>Founder & sole technical architect of REUSALIA.</strong> I designed and built 100% of the platform's infrastructure and automation — the systems that move real inventory and real money.",
+      "hero.viewProjects": "View Projects",
+      "hero.cv": "View / Download CV",
+      "stat.1n": "6<span class=\"accent\">-figure</span>",
+      "stat.1l": "Annual revenue, infrastructure built solo",
+      "stat.2l": "Revenue growth YoY",
+      "stat.3l": "References managed",
+      "stat.4l": "Orders processed",
+      "arch.title": "System <em>Architecture</em>",
+      "arch.meta": "The REUSALIA platform — an end-to-end pipeline that moves data from public marketplaces, through processing and a custom ERP core, out to live storefronts and physical hardware on the warehouse floor.",
+      "arch.intro": "Everything routes through a single source of truth. <strong>Data sources</strong> feed a <strong>processing layer</strong>, which writes to the <strong>ERP core</strong>, which in turn drives <strong>outputs</strong> — from marketplace listings to label printers running on local hardware.",
+      "arch.s1.kicker": "Inputs", "arch.s1.title": "Data Sources",
+      "arch.s1.i1": "12 Wallapop accounts (private API)", "arch.s1.i2": "eBay marketplace integration",
+      "arch.s1.i3": "Amazon product catalog scraping", "arch.s1.i4": "Supplier & Google Sheets feeds",
+      "arch.s2.kicker": "Pipeline", "arch.s2.title": "Processing",
+      "arch.s2.i1": "Extraction & normalization", "arch.s2.i2": "GPT-powered AI enrichment",
+      "arch.s2.i3": "Business-rules & validation layer", "arch.s2.i4": "Celery async task queue",
+      "arch.s3.kicker": "Core", "arch.s3.title": "Custom ERP",
+      "arch.s3.i1": "PostgreSQL single source of truth", "arch.s3.i2": "6 domain models, FastAPI services",
+      "arch.s3.i3": "Retool / Angular operations frontend", "arch.s3.i4": "40,000+ live references",
+      "arch.s4.kicker": "Outputs", "arch.s4.title": "Outputs",
+      "arch.s4.i1": "Multi-platform listing sync", "arch.s4.i2": "Order lifecycle automation",
+      "arch.s4.i3": "Cloud→local command bridge", "arch.s4.i4": "Brother QL-700 label printing",
+      "arch.caption": "Cloud-hosted core, with a database command-queue pattern bridging to local warehouse hardware in real time.",
+      "proj.title": "Selected <em>Work</em>",
+      "proj.meta": "Production systems — not demos. Each ships against real inventory, real orders and real money. Source available on GitHub.",
+      "proj.flag.eyebrow": "Flagship · 2023 — Present",
+      "proj.flag.title": "The Full REUSALIA Platform",
+      "proj.flag.desc": "A complete, custom-built operating system for a circular e-commerce business: a marketplace extraction engine, AI enrichment pipeline, custom ERP, and cloud-to-local hardware workflows — designed, built and maintained as technical founder.",
+      "proj.flag.s1": "References", "proj.flag.s2": "Marketplaces", "proj.flag.s3": "Orders processed", "proj.flag.s4": "Synced core",
+      "proj.viewOn": "View {t} on GitHub",
+      "proj.items.0.t": "Cloud-Local Command Bridge", "proj.items.0.d": "Distributed lock + PostgreSQL command queue (SKIP LOCKED) with heartbeat failover, bridging cloud services to local warehouse hardware.",
+      "proj.items.1.t": "Wallapop Data Extractors", "proj.items.1.d": "Reverse-engineered private API with anti-detection, processing ~100 orders/day.",
+      "proj.items.2.t": "AI Product Enrichment", "proj.items.2.d": "Multi-stage LLM pipeline enriching thousands of items/day and saving ~40h every week.",
+      "proj.items.3.t": "Inventory Ops API", "proj.items.3.d": "Domain models, business rules and state machines governing every inventory mutation.",
+      "proj.items.4.t": "AI Ops Agent", "proj.items.4.d": "Agentic operations assistant: LLM tool-use loop + RAG over the product catalog (embeddings + vector search).",
+      "proj.items.5.t": "Marketplace Sync Engine", "proj.items.5.d": "Multi-platform inventory sync keeping every storefront consistent in real time.",
+      "proj.items.6.t": "eBay Automation Toolkit", "proj.items.6.d": "Bulk listing uploads and full order-lifecycle automation over the eBay REST API.",
+      "proj.items.7.t": "Sheets → PostgreSQL Migration", "proj.items.7.d": "Zero-downtime production cutover from Google Sheets to a relational core.",
+      "proj.items.8.t": "Amazon Product Scraper", "proj.items.8.d": "Catalog scraper with a robust anti-detection implementation.",
+      "proj.items.9.t": "Custom ERP Frontend", "proj.items.9.d": "10+ operational modules powering daily warehouse and sales workflows.",
+      "proj.items.10.t": "Job Inbox Monitor", "proj.items.10.d": "A Gmail bot that classifies incoming messages with an LLM.",
+      "exp.title": "Experience <em>Timeline</em>",
+      "exp.meta": "From enterprise consulting at scale to founding and engineering an entire platform. A through-line of building systems that have to work.",
+      "exp.current": "Current",
+      "exp.e1.period": "Apr 2023 — Present", "exp.e1.role": "Founder & Technical Lead",
+      "exp.e1.detail": "Sole architect of the entire platform. Built all backend, automation and the Retool ERP single-handedly. Lead, train and delegate to a 5-person team.",
+      "exp.e1.t1": "Founder", "exp.e1.t4": "Team of 5",
+      "exp.e2.period": "Software Engineering", "exp.e2.role": "Senior Software Engineer",
+      "exp.e2.detail": "Senior engineering on production software at a platform connecting enterprises with technology talent — building and shipping robust backend services.",
+      "exp.e2.t1": "Backend",
+      "exp.e3.period": "Consulting", "exp.e3.role": "Software Engineer", "exp.e3.client": "· client: AIRBUS",
+      "exp.e3.detail": "Engineering on mission-critical systems for AIRBUS — enterprise-grade software where reliability and rigor are non-negotiable.",
+      "exp.e3.t2": "Enterprise", "exp.e3.t3": "Aerospace",
+      "exp.e4.period": "Consulting", "exp.e4.role": "Software Engineer", "exp.e4.client": "· client: Mercadona",
+      "exp.e4.detail": "Built and maintained software for Mercadona, one of Spain's largest retailers — high-volume retail systems operating at national scale.",
+      "exp.e4.t3": "Retail at scale",
+      "about.title": "About & <em>Resilience</em>",
+      "about.pull": "In October 2024 a catastrophic flood hit. We <em>rebuilt the company</em> — and the systems that run it — from the ground up.",
+      "about.p1": "I founded REUSALIA at <strong>25</strong>. Three years on it's a profitable six-figure operation with a 5-person team, running entirely on infrastructure I designed and built alone — self-taught, iterating in production. I lead the team, teach each person their role, then delegate, review, correct, and iterate again.",
+      "about.p2": "At REUSALIA I architected and built the entire platform: a custom ERP backed by PostgreSQL, marketplace extraction engines that process roughly <strong>100 orders a day</strong>, an AI enrichment pipeline that <strong>saves around 40 hours every week</strong>, and a cloud-to-local bridge that drives physical label printers on the warehouse floor.",
+      "about.p3": "Then, in October 2024, a catastrophic flood wiped out operations. Rather than walk away, we rebuilt — the warehouse, the team, and the software stack. That recovery is the part of my story I'm proudest of: it proved the systems were sound and the team was resilient. I don't just design architecture diagrams; I'm the founder who ships the code that brings them back online.",
+      "about.sigmeta": "Technical Founder · Systems Architect · Spain",
+      "writing.title": "Technical <em>Writing</em>",
+      "writing.meta": "Long-form notes from the field — how the real systems were actually built, migrated and recovered.",
+      "writing.cat.engineering": "Engineering", "writing.cat.data": "Data", "writing.cat.reverse": "Reverse engineering",
+      "writing.cat.resilience": "Resilience", "writing.cat.architecture": "Architecture",
+      "writing.read.18": "18 min read", "writing.read.12": "12 min read", "writing.read.14": "14 min read",
+      "writing.read.10": "10 min read", "writing.read.6": "6 min read",
+      "skills.title": "Skills & <em>Stack</em>",
+      "skills.meta": "The tools behind the systems — from backend services and databases to specialized reverse-engineering and hardware integration.",
+      "skills.c1.name": "AI & Agents",
+      "skills.c1.i1": "Production LLM pipelines (GPT-4o / 4o-mini)", "skills.c1.i2": "AI enrichment & classification at scale",
+      "skills.c1.i3": "GPT-vision document extraction", "skills.c1.i4": "Agentic tool-use & RAG",
+      "skills.c1.i5": "Embeddings / vector search", "skills.c1.i6": "Prompt engineering",
+      "skills.c2.name": "Backend", "skills.c3.name": "Databases", "skills.c4.name": "Frontend",
+      "skills.c5.name": "Specialized",
+      "skills.c5.i1": "API reverse-engineering", "skills.c5.i2": "Web scraping", "skills.c5.i5": "Anti-detection",
+      "skills.c5.i6": "LLM integration", "skills.c5.i7": "Data migration", "skills.c5.i8": "Hardware (Brother QL-700)",
+      "skills.c6.name": "DevOps",
+      "contact.eyebrow": "07 — Contact",
+      "contact.title": "Let's build something <em>that ships.</em>",
+      "contact.lead": "If you need production infrastructure that holds up under real load — or a technical co-founder who writes the code — I'd like to hear about it.",
+      "contact.open1": "Open to · Freelance", "contact.open2": "Consulting", "contact.open3": "Technical co-founder opportunities",
+      "contact.kEmail": "Email",
+      "footer.meta": "© {year} · Designed & built from a blank base · Spain",
+      "footer.top": "Back to top"
+    },
+    es: {
+      "meta.title": "Guillem Climent — Fundador técnico y arquitecto de sistemas",
+      "meta.description": "Guillem Climent — Fundador técnico e ingeniero. Construyo infraestructura de producción para operaciones reales de e-commerce: ERP a medida, extracción de marketplaces, enriquecimiento con IA y flujos de hardware de la nube al almacén.",
+      "meta.ogDescription": "Fundador y único arquitecto técnico de REUSALIA — construyo la infraestructura que hace funcionar un negocio real de e-commerce de seis cifras.",
+      "nav.skip": "Saltar a proyectos",
+      "nav.system": "Sistema", "nav.projects": "Proyectos", "nav.experience": "Experiencia",
+      "nav.about": "Sobre mí", "nav.writing": "Artículos", "nav.contact": "Hablemos",
+      "hero.avail": "Disponible para freelance, consultoría y roles de cofundador",
+      "hero.loc": "Con base en España · Trabajando en todo el mundo · MMXXVI",
+      "hero.lead": "Construyo la <em>infraestructura</em> que hace funcionar un negocio real de e-commerce de seis cifras — porque hace funcionar el mío.",
+      "hero.role": "<strong>Fundador y único arquitecto técnico de REUSALIA.</strong> Diseñé y construí el 100% de la infraestructura y la automatización de la plataforma — los sistemas que mueven inventario real y dinero real.",
+      "hero.viewProjects": "Ver proyectos",
+      "hero.cv": "Ver / Descargar CV",
+      "stat.1n": "6<span class=\"accent\"> cifras</span>",
+      "stat.1l": "Facturación anual, infraestructura construida en solitario",
+      "stat.2l": "Crecimiento de ingresos interanual",
+      "stat.3l": "Referencias gestionadas",
+      "stat.4l": "Pedidos procesados",
+      "arch.title": "Arquitectura del <em>sistema</em>",
+      "arch.meta": "La plataforma REUSALIA — un pipeline de extremo a extremo que mueve datos desde los marketplaces públicos, a través del procesamiento y un núcleo ERP a medida, hasta tiendas en vivo y hardware físico en el almacén.",
+      "arch.intro": "Todo pasa por una única fuente de verdad. Las <strong>fuentes de datos</strong> alimentan una <strong>capa de procesamiento</strong>, que escribe en el <strong>núcleo ERP</strong>, que a su vez impulsa las <strong>salidas</strong> — desde anuncios en marketplaces hasta impresoras de etiquetas que corren en hardware local.",
+      "arch.s1.kicker": "Entradas", "arch.s1.title": "Fuentes de datos",
+      "arch.s1.i1": "12 cuentas de Wallapop (API privada)", "arch.s1.i2": "Integración con el marketplace de eBay",
+      "arch.s1.i3": "Scraping del catálogo de Amazon", "arch.s1.i4": "Feeds de proveedores y Google Sheets",
+      "arch.s2.kicker": "Pipeline", "arch.s2.title": "Procesamiento",
+      "arch.s2.i1": "Extracción y normalización", "arch.s2.i2": "Enriquecimiento con IA basado en GPT",
+      "arch.s2.i3": "Capa de reglas de negocio y validación", "arch.s2.i4": "Cola de tareas asíncronas con Celery",
+      "arch.s3.kicker": "Núcleo", "arch.s3.title": "ERP a medida",
+      "arch.s3.i1": "PostgreSQL como única fuente de verdad", "arch.s3.i2": "6 modelos de dominio, servicios FastAPI",
+      "arch.s3.i3": "Frontend de operaciones en Retool / Angular", "arch.s3.i4": "Más de 40.000 referencias en vivo",
+      "arch.s4.kicker": "Salidas", "arch.s4.title": "Salidas",
+      "arch.s4.i1": "Sincronización de anuncios multiplataforma", "arch.s4.i2": "Automatización del ciclo de vida del pedido",
+      "arch.s4.i3": "Puente de comandos nube→local", "arch.s4.i4": "Impresión de etiquetas Brother QL-700",
+      "arch.caption": "Núcleo alojado en la nube, con un patrón de cola de comandos en base de datos que se conecta en tiempo real con el hardware local del almacén.",
+      "proj.title": "Trabajo <em>seleccionado</em>",
+      "proj.meta": "Sistemas de producción — no demos. Cada uno funciona contra inventario real, pedidos reales y dinero real. Código disponible en GitHub.",
+      "proj.flag.eyebrow": "Proyecto estrella · 2023 — Actualidad",
+      "proj.flag.title": "La plataforma REUSALIA completa",
+      "proj.flag.desc": "Un sistema operativo completo y hecho a medida para un negocio de e-commerce circular: un motor de extracción de marketplaces, un pipeline de enriquecimiento con IA, un ERP a medida y flujos de hardware de la nube al almacén — diseñado, construido y mantenido como fundador técnico.",
+      "proj.flag.s1": "Referencias", "proj.flag.s2": "Marketplaces", "proj.flag.s3": "Pedidos procesados", "proj.flag.s4": "Núcleo sincronizado",
+      "proj.viewOn": "Ver {t} en GitHub",
+      "proj.items.0.t": "Puente de comandos nube-local", "proj.items.0.d": "Bloqueo distribuido + cola de comandos en PostgreSQL (SKIP LOCKED) con failover por heartbeat, conectando servicios en la nube con el hardware local del almacén.",
+      "proj.items.1.t": "Extractores de datos de Wallapop", "proj.items.1.d": "API privada con ingeniería inversa y anti-detección, procesando ~100 pedidos al día.",
+      "proj.items.2.t": "Enriquecimiento de productos con IA", "proj.items.2.d": "Pipeline LLM multietapa que enriquece miles de artículos al día y ahorra ~40 h cada semana.",
+      "proj.items.3.t": "API de operaciones de inventario", "proj.items.3.d": "Modelos de dominio, reglas de negocio y máquinas de estados que gobiernan cada cambio de inventario.",
+      "proj.items.4.t": "Agente de operaciones con IA", "proj.items.4.d": "Asistente de operaciones agéntico: bucle de uso de herramientas con LLM + RAG sobre el catálogo de productos (embeddings + búsqueda vectorial).",
+      "proj.items.5.t": "Motor de sincronización de marketplaces", "proj.items.5.d": "Sincronización de inventario multiplataforma que mantiene cada tienda coherente en tiempo real.",
+      "proj.items.6.t": "Toolkit de automatización de eBay", "proj.items.6.d": "Subidas masivas de anuncios y automatización completa del ciclo de vida del pedido sobre la API REST de eBay.",
+      "proj.items.7.t": "Migración de Sheets a PostgreSQL", "proj.items.7.d": "Migración en producción sin tiempo de inactividad desde Google Sheets a un núcleo relacional.",
+      "proj.items.8.t": "Scraper de productos de Amazon", "proj.items.8.d": "Scraper de catálogo con una implementación robusta de anti-detección.",
+      "proj.items.9.t": "Frontend del ERP a medida", "proj.items.9.d": "Más de 10 módulos operativos que impulsan los flujos diarios de almacén y ventas.",
+      "proj.items.10.t": "Monitor de bandeja de entrada", "proj.items.10.d": "Un bot de Gmail que clasifica los mensajes entrantes con un LLM.",
+      "exp.title": "Trayectoria <em>profesional</em>",
+      "exp.meta": "De la consultoría empresarial a gran escala a fundar y desarrollar una plataforma entera. Un hilo conductor: construir sistemas que tienen que funcionar.",
+      "exp.current": "Actual",
+      "exp.e1.period": "Abr 2023 — Actualidad", "exp.e1.role": "Fundador y responsable técnico",
+      "exp.e1.detail": "Único arquitecto de toda la plataforma. Construí todo el backend, la automatización y el ERP en Retool sin ayuda. Dirijo, formo y delego en un equipo de 5 personas.",
+      "exp.e1.t1": "Fundador", "exp.e1.t4": "Equipo de 5",
+      "exp.e2.period": "Ingeniería de software", "exp.e2.role": "Ingeniero de software sénior",
+      "exp.e2.detail": "Ingeniería sénior de software en producción en una plataforma que conecta empresas con talento tecnológico — construyendo y desplegando servicios backend robustos.",
+      "exp.e2.t1": "Backend",
+      "exp.e3.period": "Consultoría", "exp.e3.role": "Ingeniero de software", "exp.e3.client": "· cliente: AIRBUS",
+      "exp.e3.detail": "Ingeniería en sistemas críticos para AIRBUS — software de nivel empresarial donde la fiabilidad y el rigor son innegociables.",
+      "exp.e3.t2": "Empresarial", "exp.e3.t3": "Aeronáutica",
+      "exp.e4.period": "Consultoría", "exp.e4.role": "Ingeniero de software", "exp.e4.client": "· cliente: Mercadona",
+      "exp.e4.detail": "Desarrollé y mantuve software para Mercadona, uno de los mayores minoristas de España — sistemas de retail de alto volumen operando a escala nacional.",
+      "exp.e4.t3": "Retail a escala",
+      "about.title": "Sobre mí y <em>resiliencia</em>",
+      "about.pull": "En octubre de 2024 nos golpeó una inundación catastrófica. <em>Reconstruimos la empresa</em> — y los sistemas que la hacen funcionar — desde cero.",
+      "about.p1": "Fundé REUSALIA con <strong>25 años</strong>. Tres años después es una operación rentable de seis cifras con un equipo de 5 personas, funcionando íntegramente sobre una infraestructura que diseñé y construí yo solo — autodidacta, iterando en producción. Dirijo el equipo, enseño a cada persona su rol y luego delego, reviso, corrijo e itero de nuevo.",
+      "about.p2": "En REUSALIA diseñé y construí toda la plataforma: un ERP a medida sobre PostgreSQL, motores de extracción de marketplaces que procesan unos <strong>100 pedidos al día</strong>, un pipeline de enriquecimiento con IA que <strong>ahorra unas 40 horas cada semana</strong> y un puente nube-local que controla impresoras físicas de etiquetas en el almacén.",
+      "about.p3": "Entonces, en octubre de 2024, una inundación catastrófica arrasó las operaciones. En lugar de rendirnos, reconstruimos — el almacén, el equipo y la pila de software. Esa recuperación es la parte de mi historia de la que estoy más orgulloso: demostró que los sistemas eran sólidos y el equipo, resiliente. No solo diseño diagramas de arquitectura; soy el fundador que escribe el código que los vuelve a poner en marcha.",
+      "about.sigmeta": "Fundador técnico · Arquitecto de sistemas · España",
+      "writing.title": "Artículos <em>técnicos</em>",
+      "writing.meta": "Notas extensas desde el terreno — cómo se construyeron, migraron y recuperaron de verdad los sistemas reales.",
+      "writing.cat.engineering": "Ingeniería", "writing.cat.data": "Datos", "writing.cat.reverse": "Ingeniería inversa",
+      "writing.cat.resilience": "Resiliencia", "writing.cat.architecture": "Arquitectura",
+      "writing.read.18": "18 min de lectura", "writing.read.12": "12 min de lectura", "writing.read.14": "14 min de lectura",
+      "writing.read.10": "10 min de lectura", "writing.read.6": "6 min de lectura",
+      "skills.title": "Skills y <em>stack</em>",
+      "skills.meta": "Las herramientas detrás de los sistemas — desde servicios backend y bases de datos hasta ingeniería inversa especializada e integración de hardware.",
+      "skills.c1.name": "IA y agentes",
+      "skills.c1.i1": "Pipelines LLM en producción (GPT-4o / 4o-mini)", "skills.c1.i2": "Enriquecimiento y clasificación con IA a escala",
+      "skills.c1.i3": "Extracción de documentos con GPT-vision", "skills.c1.i4": "Uso agéntico de herramientas y RAG",
+      "skills.c1.i5": "Embeddings / búsqueda vectorial", "skills.c1.i6": "Ingeniería de prompts",
+      "skills.c2.name": "Backend", "skills.c3.name": "Bases de datos", "skills.c4.name": "Frontend",
+      "skills.c5.name": "Especializado",
+      "skills.c5.i1": "Ingeniería inversa de APIs", "skills.c5.i2": "Web scraping", "skills.c5.i5": "Anti-detección",
+      "skills.c5.i6": "Integración de LLM", "skills.c5.i7": "Migración de datos", "skills.c5.i8": "Hardware (Brother QL-700)",
+      "skills.c6.name": "DevOps",
+      "contact.eyebrow": "07 — Contacto",
+      "contact.title": "Construyamos algo <em>que funcione de verdad.</em>",
+      "contact.lead": "Si necesitas infraestructura de producción que aguante carga real — o un cofundador técnico que escriba el código — me gustaría que me lo contaras.",
+      "contact.open1": "Abierto a · Freelance", "contact.open2": "Consultoría", "contact.open3": "Oportunidades de cofundador técnico",
+      "contact.kEmail": "Correo",
+      "footer.meta": "© {year} · Diseñado y construido desde cero · España",
+      "footer.top": "Volver arriba"
+    },
+    fr: {
+      "meta.title": "Guillem Climent — Fondateur technique et architecte de systèmes",
+      "meta.description": "Guillem Climent — Fondateur technique et ingénieur. Je construis l'infrastructure de production d'opérations e-commerce réelles : ERP sur mesure, extraction de marketplaces, enrichissement par IA et workflows matériels du cloud à l'entrepôt.",
+      "meta.ogDescription": "Fondateur et unique architecte technique de REUSALIA — je construis l'infrastructure qui fait tourner une véritable activité e-commerce à six chiffres.",
+      "nav.skip": "Aller aux projets",
+      "nav.system": "Système", "nav.projects": "Projets", "nav.experience": "Expérience",
+      "nav.about": "À propos", "nav.writing": "Articles", "nav.contact": "Me contacter",
+      "hero.avail": "Disponible pour des missions freelance, du conseil et des rôles de cofondateur",
+      "hero.loc": "Basé en Espagne · Travaille dans le monde entier · MMXXVI",
+      "hero.lead": "Je construis l'<em>infrastructure</em> qui fait tourner une véritable activité e-commerce à six chiffres — parce qu'elle fait tourner la mienne.",
+      "hero.role": "<strong>Fondateur et unique architecte technique de REUSALIA.</strong> J'ai conçu et construit 100 % de l'infrastructure et de l'automatisation de la plateforme — les systèmes qui font circuler un vrai stock et un vrai chiffre d'affaires.",
+      "hero.viewProjects": "Voir les projets",
+      "hero.cv": "Voir / Télécharger le CV",
+      "stat.1n": "6<span class=\"accent\"> chiffres</span>",
+      "stat.1l": "Chiffre d'affaires annuel, infrastructure construite en solo",
+      "stat.2l": "Croissance du CA en glissement annuel",
+      "stat.3l": "Références gérées",
+      "stat.4l": "Commandes traitées",
+      "arch.title": "Architecture du <em>système</em>",
+      "arch.meta": "La plateforme REUSALIA — un pipeline de bout en bout qui déplace les données des marketplaces publiques, à travers le traitement et un cœur ERP sur mesure, jusqu'aux boutiques en ligne et au matériel physique dans l'entrepôt.",
+      "arch.intro": "Tout passe par une source de vérité unique. Les <strong>sources de données</strong> alimentent une <strong>couche de traitement</strong>, qui écrit dans le <strong>cœur ERP</strong>, lequel pilote à son tour les <strong>sorties</strong> — des annonces sur les marketplaces aux imprimantes d'étiquettes tournant sur du matériel local.",
+      "arch.s1.kicker": "Entrées", "arch.s1.title": "Sources de données",
+      "arch.s1.i1": "12 comptes Wallapop (API privée)", "arch.s1.i2": "Intégration de la marketplace eBay",
+      "arch.s1.i3": "Scraping du catalogue Amazon", "arch.s1.i4": "Flux fournisseurs et Google Sheets",
+      "arch.s2.kicker": "Pipeline", "arch.s2.title": "Traitement",
+      "arch.s2.i1": "Extraction et normalisation", "arch.s2.i2": "Enrichissement par IA propulsé par GPT",
+      "arch.s2.i3": "Couche de règles métier et de validation", "arch.s2.i4": "File de tâches asynchrones Celery",
+      "arch.s3.kicker": "Cœur", "arch.s3.title": "ERP sur mesure",
+      "arch.s3.i1": "PostgreSQL, source de vérité unique", "arch.s3.i2": "6 modèles de domaine, services FastAPI",
+      "arch.s3.i3": "Frontend d'exploitation Retool / Angular", "arch.s3.i4": "Plus de 40 000 références en direct",
+      "arch.s4.kicker": "Sorties", "arch.s4.title": "Sorties",
+      "arch.s4.i1": "Synchronisation d'annonces multiplateforme", "arch.s4.i2": "Automatisation du cycle de vie des commandes",
+      "arch.s4.i3": "Pont de commandes cloud→local", "arch.s4.i4": "Impression d'étiquettes Brother QL-700",
+      "arch.caption": "Cœur hébergé dans le cloud, avec un motif de file de commandes en base de données reliant en temps réel le matériel local de l'entrepôt.",
+      "proj.title": "Travaux <em>sélectionnés</em>",
+      "proj.meta": "Des systèmes de production — pas des démos. Chacun tourne avec du vrai stock, de vraies commandes et de l'argent réel. Code source disponible sur GitHub.",
+      "proj.flag.eyebrow": "Projet phare · 2023 — Aujourd'hui",
+      "proj.flag.title": "La plateforme REUSALIA complète",
+      "proj.flag.desc": "Un système d'exploitation complet et sur mesure pour une activité e-commerce circulaire : un moteur d'extraction de marketplaces, un pipeline d'enrichissement par IA, un ERP sur mesure et des workflows matériels du cloud à l'entrepôt — conçu, construit et maintenu en tant que fondateur technique.",
+      "proj.flag.s1": "Références", "proj.flag.s2": "Marketplaces", "proj.flag.s3": "Commandes traitées", "proj.flag.s4": "Cœur synchronisé",
+      "proj.viewOn": "Voir {t} sur GitHub",
+      "proj.items.0.t": "Pont de commandes cloud-local", "proj.items.0.d": "Verrou distribué + file de commandes PostgreSQL (SKIP LOCKED) avec bascule par heartbeat, reliant les services cloud au matériel local de l'entrepôt.",
+      "proj.items.1.t": "Extracteurs de données Wallapop", "proj.items.1.d": "API privée reverse-engineerée avec anti-détection, traitant ~100 commandes/jour.",
+      "proj.items.2.t": "Enrichissement de produits par IA", "proj.items.2.d": "Pipeline LLM multi-étapes enrichissant des milliers d'articles/jour et économisant ~40 h chaque semaine.",
+      "proj.items.3.t": "API d'opérations d'inventaire", "proj.items.3.d": "Modèles de domaine, règles métier et machines à états gouvernant chaque modification d'inventaire.",
+      "proj.items.4.t": "Agent d'opérations IA", "proj.items.4.d": "Assistant d'opérations agentique : boucle d'utilisation d'outils LLM + RAG sur le catalogue produits (embeddings + recherche vectorielle).",
+      "proj.items.5.t": "Moteur de synchronisation des marketplaces", "proj.items.5.d": "Synchronisation d'inventaire multiplateforme gardant chaque boutique cohérente en temps réel.",
+      "proj.items.6.t": "Boîte à outils d'automatisation eBay", "proj.items.6.d": "Mises en ligne d'annonces en masse et automatisation complète du cycle de vie des commandes via l'API REST d'eBay.",
+      "proj.items.7.t": "Migration Sheets → PostgreSQL", "proj.items.7.d": "Bascule en production sans interruption de Google Sheets vers un cœur relationnel.",
+      "proj.items.8.t": "Scraper de produits Amazon", "proj.items.8.d": "Scraper de catalogue avec une implémentation robuste d'anti-détection.",
+      "proj.items.9.t": "Frontend d'ERP sur mesure", "proj.items.9.d": "Plus de 10 modules opérationnels alimentant les flux quotidiens d'entrepôt et de vente.",
+      "proj.items.10.t": "Moniteur de boîte de réception", "proj.items.10.d": "Un bot Gmail qui classe les messages entrants avec un LLM.",
+      "exp.title": "Parcours <em>professionnel</em>",
+      "exp.meta": "Du conseil en entreprise à grande échelle à la création et au développement d'une plateforme entière. Un fil conducteur : construire des systèmes qui doivent fonctionner.",
+      "exp.current": "Actuel",
+      "exp.e1.period": "Avr. 2023 — Aujourd'hui", "exp.e1.role": "Fondateur et responsable technique",
+      "exp.e1.detail": "Unique architecte de toute la plateforme. J'ai construit tout le backend, l'automatisation et l'ERP Retool seul. Je dirige, forme et délègue à une équipe de 5 personnes.",
+      "exp.e1.t1": "Fondateur", "exp.e1.t4": "Équipe de 5",
+      "exp.e2.period": "Ingénierie logicielle", "exp.e2.role": "Ingénieur logiciel senior",
+      "exp.e2.detail": "Ingénierie senior sur des logiciels en production, sur une plateforme reliant les entreprises aux talents technologiques — conception et déploiement de services backend robustes.",
+      "exp.e2.t1": "Backend",
+      "exp.e3.period": "Conseil", "exp.e3.role": "Ingénieur logiciel", "exp.e3.client": "· client : AIRBUS",
+      "exp.e3.detail": "Ingénierie sur des systèmes critiques pour AIRBUS — logiciels de niveau entreprise où la fiabilité et la rigueur sont non négociables.",
+      "exp.e3.t2": "Entreprise", "exp.e3.t3": "Aéronautique",
+      "exp.e4.period": "Conseil", "exp.e4.role": "Ingénieur logiciel", "exp.e4.client": "· client : Mercadona",
+      "exp.e4.detail": "Conception et maintenance de logiciels pour Mercadona, l'un des plus grands distributeurs d'Espagne — systèmes de retail à fort volume opérant à l'échelle nationale.",
+      "exp.e4.t3": "Retail à grande échelle",
+      "about.title": "À propos et <em>résilience</em>",
+      "about.pull": "En octobre 2024, une inondation catastrophique a frappé. Nous avons <em>reconstruit l'entreprise</em> — et les systèmes qui la font tourner — de fond en comble.",
+      "about.p1": "J'ai fondé REUSALIA à <strong>25 ans</strong>. Trois ans plus tard, c'est une activité rentable à six chiffres avec une équipe de 5 personnes, fonctionnant entièrement sur une infrastructure que j'ai conçue et construite seul — en autodidacte, en itérant en production. Je dirige l'équipe, j'enseigne à chacun son rôle, puis je délègue, je révise, je corrige et j'itère à nouveau.",
+      "about.p2": "Chez REUSALIA, j'ai architecturé et construit toute la plateforme : un ERP sur mesure adossé à PostgreSQL, des moteurs d'extraction de marketplaces qui traitent environ <strong>100 commandes par jour</strong>, un pipeline d'enrichissement par IA qui <strong>fait gagner environ 40 heures chaque semaine</strong>, et un pont cloud-local qui pilote des imprimantes d'étiquettes physiques dans l'entrepôt.",
+      "about.p3": "Puis, en octobre 2024, une inondation catastrophique a anéanti les opérations. Plutôt que de tout abandonner, nous avons reconstruit — l'entrepôt, l'équipe et la stack logicielle. Cette reprise est la partie de mon histoire dont je suis le plus fier : elle a prouvé que les systèmes étaient solides et l'équipe résiliente. Je ne fais pas que dessiner des diagrammes d'architecture ; je suis le fondateur qui écrit le code qui les remet en ligne.",
+      "about.sigmeta": "Fondateur technique · Architecte de systèmes · Espagne",
+      "writing.title": "Articles <em>techniques</em>",
+      "writing.meta": "Notes de fond depuis le terrain — comment les vrais systèmes ont réellement été construits, migrés et récupérés.",
+      "writing.cat.engineering": "Ingénierie", "writing.cat.data": "Données", "writing.cat.reverse": "Rétro-ingénierie",
+      "writing.cat.resilience": "Résilience", "writing.cat.architecture": "Architecture",
+      "writing.read.18": "18 min de lecture", "writing.read.12": "12 min de lecture", "writing.read.14": "14 min de lecture",
+      "writing.read.10": "10 min de lecture", "writing.read.6": "6 min de lecture",
+      "skills.title": "Compétences et <em>stack</em>",
+      "skills.meta": "Les outils derrière les systèmes — des services backend et bases de données à la rétro-ingénierie spécialisée et à l'intégration matérielle.",
+      "skills.c1.name": "IA et agents",
+      "skills.c1.i1": "Pipelines LLM en production (GPT-4o / 4o-mini)", "skills.c1.i2": "Enrichissement et classification par IA à grande échelle",
+      "skills.c1.i3": "Extraction de documents par GPT-vision", "skills.c1.i4": "Utilisation agentique d'outils et RAG",
+      "skills.c1.i5": "Embeddings / recherche vectorielle", "skills.c1.i6": "Prompt engineering",
+      "skills.c2.name": "Backend", "skills.c3.name": "Bases de données", "skills.c4.name": "Frontend",
+      "skills.c5.name": "Spécialisé",
+      "skills.c5.i1": "Rétro-ingénierie d'API", "skills.c5.i2": "Web scraping", "skills.c5.i5": "Anti-détection",
+      "skills.c5.i6": "Intégration de LLM", "skills.c5.i7": "Migration de données", "skills.c5.i8": "Matériel (Brother QL-700)",
+      "skills.c6.name": "DevOps",
+      "contact.eyebrow": "07 — Contact",
+      "contact.title": "Construisons quelque chose <em>qui tient la route.</em>",
+      "contact.lead": "Si vous avez besoin d'une infrastructure de production qui tient sous une charge réelle — ou d'un cofondateur technique qui écrit le code — j'aimerais en entendre parler.",
+      "contact.open1": "Ouvert à · Freelance", "contact.open2": "Conseil", "contact.open3": "Opportunités de cofondateur technique",
+      "contact.kEmail": "E-mail",
+      "footer.meta": "© {year} · Conçu et construit à partir de zéro · Espagne",
+      "footer.top": "Haut de page"
+    },
+    pt: {
+      "meta.title": "Guillem Climent — Fundador técnico e arquiteto de sistemas",
+      "meta.description": "Guillem Climent — Fundador técnico e engenheiro. Construo infraestrutura de produção para operações reais de e-commerce: ERP sob medida, extração de marketplaces, enriquecimento com IA e fluxos de hardware da nuvem ao armazém.",
+      "meta.ogDescription": "Fundador e único arquiteto técnico da REUSALIA — construo a infraestrutura que faz funcionar um negócio real de e-commerce de seis dígitos.",
+      "nav.skip": "Ir para projetos",
+      "nav.system": "Sistema", "nav.projects": "Projetos", "nav.experience": "Experiência",
+      "nav.about": "Sobre", "nav.writing": "Artigos", "nav.contact": "Fale comigo",
+      "hero.avail": "Disponível para freelance, consultoria e papéis de cofundador",
+      "hero.loc": "Sediado na Espanha · Trabalhando no mundo todo · MMXXVI",
+      "hero.lead": "Construo a <em>infraestrutura</em> que faz funcionar um negócio real de e-commerce de seis dígitos — porque faz funcionar o meu.",
+      "hero.role": "<strong>Fundador e único arquiteto técnico da REUSALIA.</strong> Projetei e construí 100% da infraestrutura e da automação da plataforma — os sistemas que movimentam estoque real e dinheiro real.",
+      "hero.viewProjects": "Ver projetos",
+      "hero.cv": "Ver / Baixar CV",
+      "stat.1n": "6<span class=\"accent\"> dígitos</span>",
+      "stat.1l": "Faturamento anual, infraestrutura construída sozinho",
+      "stat.2l": "Crescimento da receita ano a ano",
+      "stat.3l": "Referências geridas",
+      "stat.4l": "Pedidos processados",
+      "arch.title": "Arquitetura do <em>sistema</em>",
+      "arch.meta": "A plataforma REUSALIA — um pipeline de ponta a ponta que move dados dos marketplaces públicos, passando pelo processamento e por um núcleo ERP sob medida, até as lojas online e o hardware físico no armazém.",
+      "arch.intro": "Tudo passa por uma única fonte de verdade. As <strong>fontes de dados</strong> alimentam uma <strong>camada de processamento</strong>, que escreve no <strong>núcleo ERP</strong>, que por sua vez impulsiona as <strong>saídas</strong> — de anúncios em marketplaces a impressoras de etiquetas rodando em hardware local.",
+      "arch.s1.kicker": "Entradas", "arch.s1.title": "Fontes de dados",
+      "arch.s1.i1": "12 contas do Wallapop (API privada)", "arch.s1.i2": "Integração com o marketplace do eBay",
+      "arch.s1.i3": "Scraping do catálogo da Amazon", "arch.s1.i4": "Feeds de fornecedores e Google Sheets",
+      "arch.s2.kicker": "Pipeline", "arch.s2.title": "Processamento",
+      "arch.s2.i1": "Extração e normalização", "arch.s2.i2": "Enriquecimento com IA baseado em GPT",
+      "arch.s2.i3": "Camada de regras de negócio e validação", "arch.s2.i4": "Fila de tarefas assíncronas com Celery",
+      "arch.s3.kicker": "Núcleo", "arch.s3.title": "ERP sob medida",
+      "arch.s3.i1": "PostgreSQL como única fonte de verdade", "arch.s3.i2": "6 modelos de domínio, serviços FastAPI",
+      "arch.s3.i3": "Frontend de operações em Retool / Angular", "arch.s3.i4": "Mais de 40.000 referências ao vivo",
+      "arch.s4.kicker": "Saídas", "arch.s4.title": "Saídas",
+      "arch.s4.i1": "Sincronização de anúncios multiplataforma", "arch.s4.i2": "Automação do ciclo de vida do pedido",
+      "arch.s4.i3": "Ponte de comandos nuvem→local", "arch.s4.i4": "Impressão de etiquetas Brother QL-700",
+      "arch.caption": "Núcleo hospedado na nuvem, com um padrão de fila de comandos em banco de dados conectando em tempo real ao hardware local do armazém.",
+      "proj.title": "Trabalho <em>selecionado</em>",
+      "proj.meta": "Sistemas de produção — não demos. Cada um roda contra estoque real, pedidos reais e dinheiro real. Código disponível no GitHub.",
+      "proj.flag.eyebrow": "Projeto principal · 2023 — Presente",
+      "proj.flag.title": "A plataforma REUSALIA completa",
+      "proj.flag.desc": "Um sistema operacional completo e sob medida para um negócio de e-commerce circular: um motor de extração de marketplaces, um pipeline de enriquecimento com IA, um ERP sob medida e fluxos de hardware da nuvem ao armazém — projetado, construído e mantido como fundador técnico.",
+      "proj.flag.s1": "Referências", "proj.flag.s2": "Marketplaces", "proj.flag.s3": "Pedidos processados", "proj.flag.s4": "Núcleo sincronizado",
+      "proj.viewOn": "Ver {t} no GitHub",
+      "proj.items.0.t": "Ponte de comandos nuvem-local", "proj.items.0.d": "Bloqueio distribuído + fila de comandos PostgreSQL (SKIP LOCKED) com failover por heartbeat, conectando serviços de nuvem ao hardware local do armazém.",
+      "proj.items.1.t": "Extratores de dados do Wallapop", "proj.items.1.d": "API privada com engenharia reversa e anti-detecção, processando ~100 pedidos/dia.",
+      "proj.items.2.t": "Enriquecimento de produtos com IA", "proj.items.2.d": "Pipeline LLM multietapa que enriquece milhares de itens/dia e economiza ~40 h por semana.",
+      "proj.items.3.t": "API de operações de estoque", "proj.items.3.d": "Modelos de domínio, regras de negócio e máquinas de estado governando cada alteração de estoque.",
+      "proj.items.4.t": "Agente de operações com IA", "proj.items.4.d": "Assistente de operações agêntico: laço de uso de ferramentas com LLM + RAG sobre o catálogo de produtos (embeddings + busca vetorial).",
+      "proj.items.5.t": "Motor de sincronização de marketplaces", "proj.items.5.d": "Sincronização de estoque multiplataforma mantendo cada loja consistente em tempo real.",
+      "proj.items.6.t": "Kit de automação do eBay", "proj.items.6.d": "Envios de anúncios em massa e automação completa do ciclo de vida do pedido pela API REST do eBay.",
+      "proj.items.7.t": "Migração de Sheets → PostgreSQL", "proj.items.7.d": "Migração em produção sem tempo de inatividade do Google Sheets para um núcleo relacional.",
+      "proj.items.8.t": "Scraper de produtos da Amazon", "proj.items.8.d": "Scraper de catálogo com uma implementação robusta de anti-detecção.",
+      "proj.items.9.t": "Frontend do ERP sob medida", "proj.items.9.d": "Mais de 10 módulos operacionais impulsionando os fluxos diários de armazém e vendas.",
+      "proj.items.10.t": "Monitor de caixa de entrada", "proj.items.10.d": "Um bot do Gmail que classifica as mensagens recebidas com um LLM.",
+      "exp.title": "Trajetória <em>profissional</em>",
+      "exp.meta": "Da consultoria empresarial em larga escala à fundação e engenharia de uma plataforma inteira. Um fio condutor: construir sistemas que precisam funcionar.",
+      "exp.current": "Atual",
+      "exp.e1.period": "Abr 2023 — Presente", "exp.e1.role": "Fundador e líder técnico",
+      "exp.e1.detail": "Único arquiteto de toda a plataforma. Construí todo o backend, a automação e o ERP em Retool sozinho. Lidero, treino e delego a uma equipe de 5 pessoas.",
+      "exp.e1.t1": "Fundador", "exp.e1.t4": "Equipe de 5",
+      "exp.e2.period": "Engenharia de software", "exp.e2.role": "Engenheiro de software sênior",
+      "exp.e2.detail": "Engenharia sênior em software de produção numa plataforma que conecta empresas a talentos de tecnologia — construindo e entregando serviços backend robustos.",
+      "exp.e2.t1": "Backend",
+      "exp.e3.period": "Consultoria", "exp.e3.role": "Engenheiro de software", "exp.e3.client": "· cliente: AIRBUS",
+      "exp.e3.detail": "Engenharia em sistemas de missão crítica para a AIRBUS — software de nível empresarial onde confiabilidade e rigor são inegociáveis.",
+      "exp.e3.t2": "Empresarial", "exp.e3.t3": "Aeronáutica",
+      "exp.e4.period": "Consultoria", "exp.e4.role": "Engenheiro de software", "exp.e4.client": "· cliente: Mercadona",
+      "exp.e4.detail": "Construí e mantive software para a Mercadona, um dos maiores varejistas da Espanha — sistemas de varejo de alto volume operando em escala nacional.",
+      "exp.e4.t3": "Varejo em escala",
+      "about.title": "Sobre e <em>resiliência</em>",
+      "about.pull": "Em outubro de 2024 uma enchente catastrófica atingiu. <em>Reconstruímos a empresa</em> — e os sistemas que a fazem funcionar — do zero.",
+      "about.p1": "Fundei a REUSALIA aos <strong>25 anos</strong>. Três anos depois é uma operação lucrativa de seis dígitos com uma equipe de 5 pessoas, funcionando inteiramente sobre uma infraestrutura que projetei e construí sozinho — autodidata, iterando em produção. Lidero a equipe, ensino a cada pessoa o seu papel e depois delego, reviso, corrijo e itero de novo.",
+      "about.p2": "Na REUSALIA arquitetei e construí toda a plataforma: um ERP sob medida apoiado em PostgreSQL, motores de extração de marketplaces que processam cerca de <strong>100 pedidos por dia</strong>, um pipeline de enriquecimento com IA que <strong>economiza cerca de 40 horas por semana</strong> e uma ponte nuvem-local que controla impressoras físicas de etiquetas no armazém.",
+      "about.p3": "Então, em outubro de 2024, uma enchente catastrófica destruiu as operações. Em vez de desistir, reconstruímos — o armazém, a equipe e a stack de software. Essa recuperação é a parte da minha história da qual mais me orgulho: provou que os sistemas eram sólidos e a equipe, resiliente. Eu não só desenho diagramas de arquitetura; sou o fundador que escreve o código que os coloca de volta no ar.",
+      "about.sigmeta": "Fundador técnico · Arquiteto de sistemas · Espanha",
+      "writing.title": "Artigos <em>técnicos</em>",
+      "writing.meta": "Notas aprofundadas do campo — como os sistemas reais foram de fato construídos, migrados e recuperados.",
+      "writing.cat.engineering": "Engenharia", "writing.cat.data": "Dados", "writing.cat.reverse": "Engenharia reversa",
+      "writing.cat.resilience": "Resiliência", "writing.cat.architecture": "Arquitetura",
+      "writing.read.18": "18 min de leitura", "writing.read.12": "12 min de leitura", "writing.read.14": "14 min de leitura",
+      "writing.read.10": "10 min de leitura", "writing.read.6": "6 min de leitura",
+      "skills.title": "Habilidades e <em>stack</em>",
+      "skills.meta": "As ferramentas por trás dos sistemas — de serviços backend e bancos de dados a engenharia reversa especializada e integração de hardware.",
+      "skills.c1.name": "IA e agentes",
+      "skills.c1.i1": "Pipelines LLM em produção (GPT-4o / 4o-mini)", "skills.c1.i2": "Enriquecimento e classificação com IA em escala",
+      "skills.c1.i3": "Extração de documentos com GPT-vision", "skills.c1.i4": "Uso agêntico de ferramentas e RAG",
+      "skills.c1.i5": "Embeddings / busca vetorial", "skills.c1.i6": "Engenharia de prompts",
+      "skills.c2.name": "Backend", "skills.c3.name": "Bancos de dados", "skills.c4.name": "Frontend",
+      "skills.c5.name": "Especializado",
+      "skills.c5.i1": "Engenharia reversa de APIs", "skills.c5.i2": "Web scraping", "skills.c5.i5": "Anti-detecção",
+      "skills.c5.i6": "Integração de LLM", "skills.c5.i7": "Migração de dados", "skills.c5.i8": "Hardware (Brother QL-700)",
+      "skills.c6.name": "DevOps",
+      "contact.eyebrow": "07 — Contato",
+      "contact.title": "Vamos construir algo <em>que funcione de verdade.</em>",
+      "contact.lead": "Se você precisa de infraestrutura de produção que aguente carga real — ou de um cofundador técnico que escreve o código — eu adoraria saber.",
+      "contact.open1": "Aberto a · Freelance", "contact.open2": "Consultoria", "contact.open3": "Oportunidades de cofundador técnico",
+      "contact.kEmail": "E-mail",
+      "footer.meta": "© {year} · Projetado e construído do zero · Espanha",
+      "footer.top": "Voltar ao topo"
+    }
+  };
+
+  var SUPPORTED = ["en", "es", "fr", "pt"];
+  var YEAR = String(new Date().getFullYear());
+
+  function t(lang, key) {
+    var dict = I18N[lang] || I18N.en;
+    var val = dict[key];
+    if (val == null) { val = I18N.en[key]; }
+    if (val == null) { return null; }
+    return val.replace("{year}", YEAR);
+  }
+
+  function renderProjects(lang) {
+    if (!list) { return; }
+    var html = "";
+    projects.forEach(function (p, i) {
+      var n = String(i + 1).padStart(2, "0");
+      var title = t(lang, "proj.items." + p.k + ".t") || "";
+      var desc = t(lang, "proj.items." + p.k + ".d") || "";
+      var tags = p.tags.map(function (tg) { return '<span class="tag">' + tg + "</span>"; }).join("");
+      var label = (t(lang, "proj.viewOn") || "View {t} on GitHub").replace("{t}", title);
+      html +=
+        '<li class="proj__item" data-reveal data-delay="' + (i % 4) + '">' +
+          '<a class="proj__link" href="' + p.g + '" target="_blank" rel="noopener noreferrer" aria-label="' + label.replace(/"/g, "&quot;") + '">' +
+            '<span class="proj__num">' + n + '</span>' +
+            '<span class="proj__title">' + title + '</span>' +
+            '<span class="proj__desc">' + desc + '</span>' +
+            '<span class="proj__arrow">' + arrow + '</span>' +
+            '<span class="proj__tags" style="grid-column:2/4">' + tags + '</span>' +
+          '</a>' +
+        '</li>';
+    });
+    list.innerHTML = html;
+  }
+
+  function applyLang(lang) {
+    if (SUPPORTED.indexOf(lang) === -1) { lang = "en"; }
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var val = t(lang, el.getAttribute("data-i18n"));
+      if (val != null) { el.textContent = val; }
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+      var val = t(lang, el.getAttribute("data-i18n-html"));
+      if (val != null) { el.innerHTML = val; }
+    });
+    document.querySelectorAll("[data-i18n-attr]").forEach(function (el) {
+      el.getAttribute("data-i18n-attr").split(",").forEach(function (pair) {
+        var bits = pair.split(":");
+        var attr = bits[0].trim();
+        var val = t(lang, bits[1].trim());
+        if (attr && val != null) { el.setAttribute(attr, val); }
+      });
+    });
+
+    renderProjects(lang);
+    observeReveals();
+
+    document.querySelectorAll(".langswitch__btn").forEach(function (btn) {
+      var active = btn.getAttribute("data-lang") === lang;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+  }
+
+  function detectLang() {
+    var stored = null;
+    try { stored = localStorage.getItem("lang"); } catch (e) {}
+    if (stored && SUPPORTED.indexOf(stored) !== -1) { return stored; }
+    var navLangs = navigator.languages || [navigator.language || "en"];
+    for (var i = 0; i < navLangs.length; i++) {
+      var code = String(navLangs[i] || "").slice(0, 2).toLowerCase();
+      if (SUPPORTED.indexOf(code) !== -1) { return code; }
+    }
+    return "en";
+  }
+
+  document.querySelectorAll(".langswitch__btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      applyLang(btn.getAttribute("data-lang"));
+    });
+  });
+
+  applyLang(detectLang());
+})();
+</script>
 </body>
 </html>
