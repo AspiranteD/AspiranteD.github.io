@@ -570,6 +570,21 @@ a { color: inherit; text-decoration: none; }
 .proj__flag-tags { margin-top: 1.6rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .proj__flag-tags .tag { border-color: rgba(246,243,236,0.3); color: color-mix(in srgb, var(--paper) 80%, transparent); }
 .proj__list .proj__tags { grid-column: 2 / 4; }
+/* Featured top-3 */
+.proj__feat { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.6rem 0 2.6rem; }
+.proj__feat-card { display: flex; flex-direction: column; gap: 0.55rem; padding: 1.4rem 1.4rem 1.6rem; border: 1px solid var(--line); border-radius: 12px; background: color-mix(in srgb, var(--paper) 45%, #fff); color: inherit; transition: transform 0.4s var(--ease), border-color 0.3s var(--ease), box-shadow 0.4s var(--ease); }
+.proj__feat-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 20px 44px -26px rgba(26,24,20,0.45); }
+.proj__feat-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.proj__feat-top { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.proj__feat-num { font-family: var(--serif); font-size: 0.9rem; color: var(--ink-mute); font-feature-settings: "tnum" 1; }
+.proj__feat-kicker { font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--accent); text-align: right; }
+.proj__feat-title { font-family: var(--serif); font-size: 1.25rem; font-weight: 540; letter-spacing: -0.015em; line-height: 1.08; color: var(--ink); }
+.proj__feat-desc { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; flex: 1; }
+.proj__feat-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.proj__feat-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 600; color: var(--accent); }
+.proj__feat-link svg { width: 14px; height: 14px; transition: transform 0.35s var(--ease); }
+.proj__feat-card:hover .proj__feat-link svg { transform: translate(2px, -2px); }
+@media (max-width: 880px) { .proj__feat { grid-template-columns: 1fr; } }
 
 /* index list of projects */
 .proj__list { list-style: none; border-top: 1px solid var(--line); }
@@ -773,6 +788,9 @@ a { color: inherit; text-decoration: none; }
 .skillcat__idx { font-family: var(--serif); font-size: 0.8rem; color: var(--accent); font-feature-settings: "tnum" 1; }
 .skillcat__name { font-family: var(--serif); font-weight: 440; font-size: 1.2rem; letter-spacing: -0.01em; }
 .skillcat__list { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.skillcat--feat { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.skillcat--feat .skillcat__name { color: var(--accent); }
+.skillcat--feat .skillcat__name::after { content: "★"; font-size: 0.62em; margin-left: 0.5rem; vertical-align: 0.15em; }
 .skillcat__list span {
   font-size: 0.8rem; color: var(--ink-soft);
   border: 1px solid var(--line-soft); background: color-mix(in srgb, var(--paper) 50%, #fff);
@@ -1011,7 +1029,7 @@ a { color: inherit; text-decoration: none; }
         <li data-i18n="arch.s4.i1">Multi-platform listing sync</li>
         <li data-i18n="arch.s4.i2">Order lifecycle automation</li>
         <li data-i18n="arch.s4.i3">Cloud→local command bridge</li>
-        <li data-i18n="arch.s4.i4">Brother QL-700 label printing</li>
+        <li data-i18n="arch.s4.i4">Warehouse label printing</li>
       </ul>
     </article>
   </div>
@@ -1051,6 +1069,31 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
   </article>
+
+  <!-- Featured top-3 -->
+  <div class="proj__feat" aria-label="Featured projects">
+    <a class="proj__feat-card" data-reveal href="https://github.com/AspiranteD/wallapop-data-extractors" target="_blank" rel="noopener noreferrer">
+      <div class="proj__feat-top"><span class="proj__feat-num">01</span><span class="proj__feat-kicker" data-i18n="proj.feat.k1">Reverse-engineered API</span></div>
+      <h3 class="proj__feat-title" data-i18n="proj.items.1.t">Wallapop Data Extractors</h3>
+      <p class="proj__feat-desc" data-i18n="proj.items.1.d">Reverse-engineered a marketplace's private API to sync orders at ~100/day, with resilient rate-limited extraction.</p>
+      <div class="proj__feat-tags"><span class="tag">Python</span><span class="tag">Reverse-engineering</span><span class="tag">Resilient scraping</span></div>
+      <span class="proj__feat-link">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+    </a>
+    <a class="proj__feat-card" data-reveal data-delay="1" href="https://github.com/AspiranteD/ai-product-enrichment" target="_blank" rel="noopener noreferrer">
+      <div class="proj__feat-top"><span class="proj__feat-num">02</span><span class="proj__feat-kicker" data-i18n="proj.feat.k2">AI · ~40h/wk saved</span></div>
+      <h3 class="proj__feat-title" data-i18n="proj.items.2.t">AI Product Enrichment</h3>
+      <p class="proj__feat-desc" data-i18n="proj.items.2.d">Multi-stage LLM pipeline enriching thousands of items/day and saving ~40h every week.</p>
+      <div class="proj__feat-tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">OpenAI</span></div>
+      <span class="proj__feat-link">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+    </a>
+    <a class="proj__feat-card" data-reveal data-delay="2" href="https://github.com/AspiranteD/amazon-product-scraper" target="_blank" rel="noopener noreferrer">
+      <div class="proj__feat-top"><span class="proj__feat-num">03</span><span class="proj__feat-kicker" data-i18n="proj.feat.k3">Beats paid scrapers</span></div>
+      <h3 class="proj__feat-title" data-i18n="proj.items.8.t">Amazon Product Scraper</h3>
+      <p class="proj__feat-desc" data-i18n="proj.items.8.d">Production catalog scraper that outperforms paid scraping services — resilient and rate-limited at scale.</p>
+      <div class="proj__feat-tags"><span class="tag">Python</span><span class="tag">Selenium</span><span class="tag">BeautifulSoup</span></div>
+      <span class="proj__feat-link">GitHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+    </a>
+  </div>
 
   <ol class="proj__list" id="projList">
     <!-- items injected/declared below -->
@@ -1211,7 +1254,7 @@ a { color: inherit; text-decoration: none; }
   </div>
 
   <div class="skills__grid" data-reveal>
-    <div class="skillcat">
+    <div class="skillcat skillcat--feat">
       <div class="skillcat__head"><span class="skillcat__idx">01</span><h3 class="skillcat__name" data-i18n="skills.c1.name">AI &amp; Agents</h3></div>
       <div class="skillcat__list">
         <span data-i18n="skills.c1.i1">Production LLM pipelines (GPT-4o / 4o-mini)</span><span data-i18n="skills.c1.i2">AI enrichment &amp; classification at scale</span><span data-i18n="skills.c1.i3">GPT-vision document extraction</span><span data-i18n="skills.c1.i4">Agentic tool-use &amp; RAG</span><span data-i18n="skills.c1.i5">Embeddings / vector search</span><span data-i18n="skills.c1.i6">Prompt engineering</span>
@@ -1235,10 +1278,10 @@ a { color: inherit; text-decoration: none; }
         <span>Angular</span><span>Vue.js</span><span>HTML / CSS / JS</span><span>NgRx</span><span>Retool</span>
       </div>
     </div>
-    <div class="skillcat">
+    <div class="skillcat skillcat--feat">
       <div class="skillcat__head"><span class="skillcat__idx">05</span><h3 class="skillcat__name" data-i18n="skills.c5.name">Specialized</h3></div>
       <div class="skillcat__list">
-        <span data-i18n="skills.c5.i1">API reverse-engineering</span><span data-i18n="skills.c5.i2">Web scraping</span><span>BeautifulSoup</span><span>Selenium</span><span data-i18n="skills.c5.i5">Rate-limited / resilient scraping</span><span data-i18n="skills.c5.i6">LLM integration</span><span data-i18n="skills.c5.i7">Data migration</span><span data-i18n="skills.c5.i8">Hardware (Brother QL-700)</span>
+        <span data-i18n="skills.c5.i1">API reverse-engineering</span><span data-i18n="skills.c5.i2">Web scraping</span><span>BeautifulSoup</span><span>Selenium</span><span data-i18n="skills.c5.i5">Rate-limited / resilient scraping</span><span data-i18n="skills.c5.i6">LLM integration</span><span data-i18n="skills.c5.i7">Data migration</span>
       </div>
     </div>
     <div class="skillcat">
@@ -1310,16 +1353,13 @@ a { color: inherit; text-decoration: none; }
      (keys proj.items.N.t / proj.items.N.d). Tags, repo URLs and
      proper nouns stay untranslated. */
   var projects = [
-    { k: "0",  g: "https://github.com/AspiranteD/cloud-local-command-bridge", tags: ["Python","Celery","PostgreSQL"] },
-    { k: "1",  g: "https://github.com/AspiranteD/wallapop-data-extractors", tags: ["Python","Reverse-engineering","Resilient scraping"] },
-    { k: "2",  g: "https://github.com/AspiranteD/ai-product-enrichment", tags: ["Python","LLM","OpenAI"] },
     { k: "3",  g: "https://github.com/AspiranteD/inventory-ops-api", tags: ["Python","FastAPI","SQLModel","PostgreSQL"] },
     { k: "4",  g: "https://github.com/AspiranteD/ai-ops-agent", tags: ["Python","OpenAI","Agents","RAG","Embeddings"] },
     { k: "5",  g: "https://github.com/AspiranteD/marketplace-sync-engine", tags: ["Python","FastAPI"] },
     { k: "6",  g: "https://github.com/AspiranteD/ebay-automation-toolkit", tags: ["Python","REST"] },
     { k: "7",  g: "https://github.com/AspiranteD/sheets-to-postgres-migration", tags: ["Python","PostgreSQL"] },
-    { k: "8",  g: "https://github.com/AspiranteD/amazon-product-scraper", tags: ["Python","Selenium","BeautifulSoup"] },
-    { k: "9",  g: "https://github.com/AspiranteD/retool-erp-modules", tags: ["Retool","Angular","Vue"] }
+    { k: "9",  g: "https://github.com/AspiranteD/retool-erp-modules", tags: ["Retool","Angular","Vue"] },
+    { k: "0",  g: "https://github.com/AspiranteD/cloud-local-command-bridge", tags: ["Python","Celery","PostgreSQL"] }
   ];
 
   var arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>';
@@ -1411,11 +1451,12 @@ a { color: inherit; text-decoration: none; }
       "arch.s3.i3": "Retool / Angular operations frontend", "arch.s3.i4": "40,000+ live references",
       "arch.s4.kicker": "Outputs", "arch.s4.title": "Outputs",
       "arch.s4.i1": "Multi-platform listing sync", "arch.s4.i2": "Order lifecycle automation",
-      "arch.s4.i3": "Cloud→local command bridge", "arch.s4.i4": "Brother QL-700 label printing",
+      "arch.s4.i3": "Cloud→local command bridge", "arch.s4.i4": "Warehouse label printing",
       "arch.caption": "Cloud-hosted core, with a database command-queue pattern bridging to local warehouse hardware in real time.",
       "proj.title": "Selected <em>Work</em>",
       "proj.meta": "Production systems — not demos. Each ships against real inventory, real orders and real money. Source available on GitHub.",
       "proj.flag.eyebrow": "Flagship · 2023 — Present",
+      "proj.feat.k1": "Reverse-engineered API", "proj.feat.k2": "AI · ~40h/wk saved", "proj.feat.k3": "Beats paid scrapers",
       "proj.flag.title": "The Full REUSALIA Platform",
       "proj.flag.desc": "A complete, custom-built operating system for a circular e-commerce business: a marketplace extraction engine, AI enrichment pipeline, custom ERP, and cloud-to-local hardware workflows — designed, built and maintained as technical founder.",
       "proj.flag.s1": "References", "proj.flag.s2": "Marketplaces", "proj.flag.s3": "Orders processed", "proj.flag.s4": "Revenue YoY",
@@ -1428,7 +1469,7 @@ a { color: inherit; text-decoration: none; }
       "proj.items.5.t": "Marketplace Sync Engine", "proj.items.5.d": "Multi-platform inventory sync keeping every storefront consistent in real time.",
       "proj.items.6.t": "eBay Automation Toolkit", "proj.items.6.d": "Bulk listing uploads and full order-lifecycle automation over the eBay REST API.",
       "proj.items.7.t": "Sheets → PostgreSQL Migration", "proj.items.7.d": "Zero-downtime production cutover from Google Sheets to a relational core.",
-      "proj.items.8.t": "Amazon Product Scraper", "proj.items.8.d": "Resilient, rate-limited catalog scraper built for reliability at scale.",
+      "proj.items.8.t": "Amazon Product Scraper", "proj.items.8.d": "Production catalog scraper that outperforms paid scraping services — resilient and rate-limited at scale.",
       "proj.items.9.t": "Custom ERP Frontend", "proj.items.9.d": "10+ operational modules powering daily warehouse and sales workflows.",
       "exp.title": "Experience <em>Timeline</em>",
       "exp.meta": "From enterprise consulting at scale to founding and engineering an entire platform. A through-line of building systems that have to work.",
@@ -1459,7 +1500,7 @@ a { color: inherit; text-decoration: none; }
       "writing.read.18": "18 min read", "writing.read.12": "12 min read", "writing.read.14": "14 min read",
       "writing.read.10": "10 min read", "writing.read.6": "6 min read",
       "skills.title": "Skills & <em>Stack</em>",
-      "skills.meta": "The tools behind the systems — from backend services and databases to specialized reverse-engineering and hardware integration.",
+      "skills.meta": "The tools behind the systems — led by production AI agents and reverse-engineering, backed by resilient data extraction, backend services and databases.",
       "skills.c1.name": "AI & Agents",
       "skills.c1.i1": "Production LLM pipelines (GPT-4o / 4o-mini)", "skills.c1.i2": "AI enrichment & classification at scale",
       "skills.c1.i3": "GPT-vision document extraction", "skills.c1.i4": "Agentic tool-use & RAG",
@@ -1467,7 +1508,7 @@ a { color: inherit; text-decoration: none; }
       "skills.c2.name": "Backend", "skills.c3.name": "Databases", "skills.c4.name": "Frontend",
       "skills.c5.name": "Specialized",
       "skills.c5.i1": "API reverse-engineering", "skills.c5.i2": "Web scraping", "skills.c5.i5": "Rate-limited / resilient scraping",
-      "skills.c5.i6": "LLM integration", "skills.c5.i7": "Data migration", "skills.c5.i8": "Hardware (Brother QL-700)",
+      "skills.c5.i6": "LLM integration", "skills.c5.i7": "Data migration",
       "skills.c6.name": "DevOps",
       "contact.eyebrow": "07 — Contact",
       "contact.title": "Let's build something <em>that ships.</em>",
@@ -1509,11 +1550,12 @@ a { color: inherit; text-decoration: none; }
       "arch.s3.i3": "Frontend de operaciones en Retool / Angular", "arch.s3.i4": "Más de 40.000 referencias en vivo",
       "arch.s4.kicker": "Salidas", "arch.s4.title": "Salidas",
       "arch.s4.i1": "Sincronización de anuncios multiplataforma", "arch.s4.i2": "Automatización del ciclo de vida del pedido",
-      "arch.s4.i3": "Puente de comandos nube→local", "arch.s4.i4": "Impresión de etiquetas Brother QL-700",
+      "arch.s4.i3": "Puente de comandos nube→local", "arch.s4.i4": "Impresión de etiquetas en almacén",
       "arch.caption": "Núcleo alojado en la nube, con un patrón de cola de comandos en base de datos que se conecta en tiempo real con el hardware local del almacén.",
       "proj.title": "Trabajo <em>seleccionado</em>",
       "proj.meta": "Sistemas de producción — no demos. Cada uno funciona contra inventario real, pedidos reales y dinero real. Código disponible en GitHub.",
       "proj.flag.eyebrow": "Proyecto estrella · 2023 — Actualidad",
+      "proj.feat.k1": "API con ingeniería inversa", "proj.feat.k2": "IA · ~40h/sem ahorradas", "proj.feat.k3": "Mejor que scrapers de pago",
       "proj.flag.title": "La plataforma REUSALIA completa",
       "proj.flag.desc": "Un sistema operativo completo y hecho a medida para un negocio de e-commerce circular: un motor de extracción de marketplaces, un pipeline de enriquecimiento con IA, un ERP a medida y flujos de hardware de la nube al almacén — diseñado, construido y mantenido como fundador técnico.",
       "proj.flag.s1": "Referencias", "proj.flag.s2": "Marketplaces", "proj.flag.s3": "Pedidos procesados", "proj.flag.s4": "Facturación interanual",
@@ -1526,7 +1568,7 @@ a { color: inherit; text-decoration: none; }
       "proj.items.5.t": "Motor de sincronización de marketplaces", "proj.items.5.d": "Sincronización de inventario multiplataforma que mantiene cada tienda coherente en tiempo real.",
       "proj.items.6.t": "Toolkit de automatización de eBay", "proj.items.6.d": "Subidas masivas de anuncios y automatización completa del ciclo de vida del pedido sobre la API REST de eBay.",
       "proj.items.7.t": "Migración de Sheets a PostgreSQL", "proj.items.7.d": "Migración en producción sin tiempo de inactividad desde Google Sheets a un núcleo relacional.",
-      "proj.items.8.t": "Scraper de productos de Amazon", "proj.items.8.d": "Scraper de catálogo resiliente y limitado por tasa, pensado para fiabilidad a escala.",
+      "proj.items.8.t": "Scraper de productos de Amazon", "proj.items.8.d": "Scraper de catálogo en producción que supera a los servicios de scraping de pago — resiliente y con límite de tasa, a escala.",
       "proj.items.9.t": "Frontend del ERP a medida", "proj.items.9.d": "Más de 10 módulos operativos que impulsan los flujos diarios de almacén y ventas.",
       "exp.title": "Trayectoria <em>profesional</em>",
       "exp.meta": "De la consultoría empresarial a gran escala a fundar y desarrollar una plataforma entera. Un hilo conductor: construir sistemas que tienen que funcionar.",
@@ -1557,7 +1599,7 @@ a { color: inherit; text-decoration: none; }
       "writing.read.18": "18 min de lectura", "writing.read.12": "12 min de lectura", "writing.read.14": "14 min de lectura",
       "writing.read.10": "10 min de lectura", "writing.read.6": "6 min de lectura",
       "skills.title": "Tecnologías y <em>stack</em>",
-      "skills.meta": "Las herramientas detrás de los sistemas — desde servicios backend y bases de datos hasta ingeniería inversa especializada e integración de hardware.",
+      "skills.meta": "Las herramientas detrás de los sistemas — encabezadas por agentes de IA en producción e ingeniería inversa, con extracción de datos resiliente, servicios backend y bases de datos.",
       "skills.c1.name": "IA y agentes",
       "skills.c1.i1": "Pipelines LLM en producción (GPT-4o / 4o-mini)", "skills.c1.i2": "Enriquecimiento y clasificación con IA a escala",
       "skills.c1.i3": "Extracción de documentos con GPT-vision", "skills.c1.i4": "Uso agéntico de herramientas y RAG",
@@ -1565,7 +1607,7 @@ a { color: inherit; text-decoration: none; }
       "skills.c2.name": "Backend", "skills.c3.name": "Bases de datos", "skills.c4.name": "Frontend",
       "skills.c5.name": "Especializado",
       "skills.c5.i1": "Ingeniería inversa de APIs", "skills.c5.i2": "Web scraping", "skills.c5.i5": "Scraping resiliente con límite de tasa",
-      "skills.c5.i6": "Integración de LLM", "skills.c5.i7": "Migración de datos", "skills.c5.i8": "Hardware (Brother QL-700)",
+      "skills.c5.i6": "Integración de LLM", "skills.c5.i7": "Migración de datos",
       "skills.c6.name": "DevOps",
       "contact.eyebrow": "07 — Contacto",
       "contact.title": "Construyamos algo <em>que funcione de verdad.</em>",
@@ -1607,11 +1649,12 @@ a { color: inherit; text-decoration: none; }
       "arch.s3.i3": "Frontend d'exploitation Retool / Angular", "arch.s3.i4": "Plus de 40 000 références en direct",
       "arch.s4.kicker": "Sorties", "arch.s4.title": "Sorties",
       "arch.s4.i1": "Synchronisation d'annonces multiplateforme", "arch.s4.i2": "Automatisation du cycle de vie des commandes",
-      "arch.s4.i3": "Pont de commandes cloud→local", "arch.s4.i4": "Impression d'étiquettes Brother QL-700",
+      "arch.s4.i3": "Pont de commandes cloud→local", "arch.s4.i4": "Impression d'étiquettes en entrepôt",
       "arch.caption": "Cœur hébergé dans le cloud, avec un motif de file de commandes en base de données reliant en temps réel le matériel local de l'entrepôt.",
       "proj.title": "Travaux <em>sélectionnés</em>",
       "proj.meta": "Des systèmes de production — pas des démos. Chacun tourne avec du vrai stock, de vraies commandes et de l'argent réel. Code source disponible sur GitHub.",
       "proj.flag.eyebrow": "Projet phare · 2023 — Aujourd'hui",
+      "proj.feat.k1": "API rétro-ingéniée", "proj.feat.k2": "IA · ~40h/sem économisées", "proj.feat.k3": "Mieux que les scrapers payants",
       "proj.flag.title": "La plateforme REUSALIA complète",
       "proj.flag.desc": "Un système d'exploitation complet et sur mesure pour une activité e-commerce circulaire : un moteur d'extraction de marketplaces, un pipeline d'enrichissement par IA, un ERP sur mesure et des workflows matériels du cloud à l'entrepôt — conçu, construit et maintenu en tant que fondateur technique.",
       "proj.flag.s1": "Références", "proj.flag.s2": "Marketplaces", "proj.flag.s3": "Commandes traitées", "proj.flag.s4": "Croissance annuelle",
@@ -1624,7 +1667,7 @@ a { color: inherit; text-decoration: none; }
       "proj.items.5.t": "Moteur de synchronisation des marketplaces", "proj.items.5.d": "Synchronisation d'inventaire multiplateforme gardant chaque boutique cohérente en temps réel.",
       "proj.items.6.t": "Boîte à outils d'automatisation eBay", "proj.items.6.d": "Mises en ligne d'annonces en masse et automatisation complète du cycle de vie des commandes via l'API REST d'eBay.",
       "proj.items.7.t": "Migration Sheets → PostgreSQL", "proj.items.7.d": "Bascule en production sans interruption de Google Sheets vers un cœur relationnel.",
-      "proj.items.8.t": "Scraper de produits Amazon", "proj.items.8.d": "Scraper de catalogue résilient et à débit limité, conçu pour la fiabilité à grande échelle.",
+      "proj.items.8.t": "Scraper de produits Amazon", "proj.items.8.d": "Scraper de catalogue en production qui surpasse les services de scraping payants — résilient et à débit limité, à grande échelle.",
       "proj.items.9.t": "Frontend d'ERP sur mesure", "proj.items.9.d": "Plus de 10 modules opérationnels alimentant les flux quotidiens d'entrepôt et de vente.",
       "exp.title": "Parcours <em>professionnel</em>",
       "exp.meta": "Du conseil en entreprise à grande échelle à la création et au développement d'une plateforme entière. Un fil conducteur : construire des systèmes qui doivent fonctionner.",
@@ -1655,7 +1698,7 @@ a { color: inherit; text-decoration: none; }
       "writing.read.18": "18 min de lecture", "writing.read.12": "12 min de lecture", "writing.read.14": "14 min de lecture",
       "writing.read.10": "10 min de lecture", "writing.read.6": "6 min de lecture",
       "skills.title": "Compétences et <em>stack</em>",
-      "skills.meta": "Les outils derrière les systèmes — des services backend et bases de données à la rétro-ingénierie spécialisée et à l'intégration matérielle.",
+      "skills.meta": "Les outils derrière les systèmes — menés par des agents IA en production et la rétro-ingénierie, soutenus par une extraction de données résiliente, des services backend et des bases de données.",
       "skills.c1.name": "IA et agents",
       "skills.c1.i1": "Pipelines LLM en production (GPT-4o / 4o-mini)", "skills.c1.i2": "Enrichissement et classification par IA à grande échelle",
       "skills.c1.i3": "Extraction de documents par GPT-vision", "skills.c1.i4": "Utilisation agentique d'outils et RAG",
@@ -1663,7 +1706,7 @@ a { color: inherit; text-decoration: none; }
       "skills.c2.name": "Backend", "skills.c3.name": "Bases de données", "skills.c4.name": "Frontend",
       "skills.c5.name": "Spécialisé",
       "skills.c5.i1": "Rétro-ingénierie d'API", "skills.c5.i2": "Web scraping", "skills.c5.i5": "Scraping résilient à débit limité",
-      "skills.c5.i6": "Intégration de LLM", "skills.c5.i7": "Migration de données", "skills.c5.i8": "Matériel (Brother QL-700)",
+      "skills.c5.i6": "Intégration de LLM", "skills.c5.i7": "Migration de données",
       "skills.c6.name": "DevOps",
       "contact.eyebrow": "07 — Contact",
       "contact.title": "Construisons quelque chose <em>qui tient la route.</em>",
@@ -1705,11 +1748,12 @@ a { color: inherit; text-decoration: none; }
       "arch.s3.i3": "Frontend de operações em Retool / Angular", "arch.s3.i4": "Mais de 40.000 referências ao vivo",
       "arch.s4.kicker": "Saídas", "arch.s4.title": "Saídas",
       "arch.s4.i1": "Sincronização de anúncios multiplataforma", "arch.s4.i2": "Automação do ciclo de vida do pedido",
-      "arch.s4.i3": "Ponte de comandos nuvem→local", "arch.s4.i4": "Impressão de etiquetas Brother QL-700",
+      "arch.s4.i3": "Ponte de comandos nuvem→local", "arch.s4.i4": "Impressão de etiquetas no armazém",
       "arch.caption": "Núcleo hospedado na nuvem, com um padrão de fila de comandos em banco de dados conectando em tempo real ao hardware local do armazém.",
       "proj.title": "Trabalho <em>selecionado</em>",
       "proj.meta": "Sistemas de produção — não demos. Cada um roda contra estoque real, pedidos reais e dinheiro real. Código disponível no GitHub.",
       "proj.flag.eyebrow": "Projeto principal · 2023 — Presente",
+      "proj.feat.k1": "API com engenharia reversa", "proj.feat.k2": "IA · ~40h/sem poupadas", "proj.feat.k3": "Melhor que scrapers pagos",
       "proj.flag.title": "A plataforma REUSALIA completa",
       "proj.flag.desc": "Um sistema operacional completo e sob medida para um negócio de e-commerce circular: um motor de extração de marketplaces, um pipeline de enriquecimento com IA, um ERP sob medida e fluxos de hardware da nuvem ao armazém — projetado, construído e mantido como fundador técnico.",
       "proj.flag.s1": "Referências", "proj.flag.s2": "Marketplaces", "proj.flag.s3": "Pedidos processados", "proj.flag.s4": "Faturamento anual",
@@ -1722,7 +1766,7 @@ a { color: inherit; text-decoration: none; }
       "proj.items.5.t": "Motor de sincronização de marketplaces", "proj.items.5.d": "Sincronização de estoque multiplataforma mantendo cada loja consistente em tempo real.",
       "proj.items.6.t": "Kit de automação do eBay", "proj.items.6.d": "Envios de anúncios em massa e automação completa do ciclo de vida do pedido pela API REST do eBay.",
       "proj.items.7.t": "Migração de Sheets → PostgreSQL", "proj.items.7.d": "Migração em produção sem tempo de inatividade do Google Sheets para um núcleo relacional.",
-      "proj.items.8.t": "Scraper de produtos da Amazon", "proj.items.8.d": "Scraper de catálogo resiliente e com limite de taxa, feito para confiabilidade em escala.",
+      "proj.items.8.t": "Scraper de produtos da Amazon", "proj.items.8.d": "Scraper de catálogo em produção que supera os serviços de scraping pagos — resiliente e com limite de taxa, em escala.",
       "proj.items.9.t": "Frontend do ERP sob medida", "proj.items.9.d": "Mais de 10 módulos operacionais impulsionando os fluxos diários de armazém e vendas.",
       "exp.title": "Trajetória <em>profissional</em>",
       "exp.meta": "Da consultoria empresarial em larga escala à fundação e engenharia de uma plataforma inteira. Um fio condutor: construir sistemas que precisam funcionar.",
@@ -1753,7 +1797,7 @@ a { color: inherit; text-decoration: none; }
       "writing.read.18": "18 min de leitura", "writing.read.12": "12 min de leitura", "writing.read.14": "14 min de leitura",
       "writing.read.10": "10 min de leitura", "writing.read.6": "6 min de leitura",
       "skills.title": "Habilidades e <em>stack</em>",
-      "skills.meta": "As ferramentas por trás dos sistemas — de serviços backend e bancos de dados a engenharia reversa especializada e integração de hardware.",
+      "skills.meta": "As ferramentas por trás dos sistemas — lideradas por agentes de IA em produção e engenharia reversa, com extração de dados resiliente, serviços backend e bancos de dados.",
       "skills.c1.name": "IA e agentes",
       "skills.c1.i1": "Pipelines LLM em produção (GPT-4o / 4o-mini)", "skills.c1.i2": "Enriquecimento e classificação com IA em escala",
       "skills.c1.i3": "Extração de documentos com GPT-vision", "skills.c1.i4": "Uso agêntico de ferramentas e RAG",
@@ -1761,7 +1805,7 @@ a { color: inherit; text-decoration: none; }
       "skills.c2.name": "Backend", "skills.c3.name": "Bancos de dados", "skills.c4.name": "Frontend",
       "skills.c5.name": "Especializado",
       "skills.c5.i1": "Engenharia reversa de APIs", "skills.c5.i2": "Web scraping", "skills.c5.i5": "Scraping resiliente com limite de taxa",
-      "skills.c5.i6": "Integração de LLM", "skills.c5.i7": "Migração de dados", "skills.c5.i8": "Hardware (Brother QL-700)",
+      "skills.c5.i6": "Integração de LLM", "skills.c5.i7": "Migração de dados",
       "skills.c6.name": "DevOps",
       "contact.eyebrow": "07 — Contato",
       "contact.title": "Vamos construir algo <em>que funcione de verdade.</em>",
