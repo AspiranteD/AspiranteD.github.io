@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Faire le pont entre le cloud et le local : un modèle de file d&#x27;attente de commandes en base de données — Guillem Climent</title>
+<meta name="description" content="Comment j&#x27;ai utilisé PostgreSQL comme file de commandes avec verrouillage, heartbeat et bascule pour qu&#x27;une UI cloud pilote du matériel local comme une imprimante d&#x27;étiquettes USB." />
+<meta name="author" content="Guillem Climent" />
+<meta name="theme-color" content="#f7f4ee" />
+<link rel="canonical" href="https://aspiranted.github.io/blog/fr/cloud-local-command-bridge.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Faire le pont entre le cloud et le local : un modèle de file d&#x27;attente de commandes en base de données" />
+<meta property="og:description" content="Comment j&#x27;ai utilisé PostgreSQL comme file de commandes avec verrouillage, heartbeat et bascule pour qu&#x27;une UI cloud pilote du matériel local comme une imprimante d&#x27;étiquettes USB." />
+<meta property="og:url" content="https://aspiranted.github.io/blog/fr/cloud-local-command-bridge.html" />
+<meta property="og:image" content="https://aspiranted.github.io/og-image.png" />
+<meta property="og:site_name" content="Guillem Climent" />
+<meta property="og:locale" content="fr_FR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Faire le pont entre le cloud et le local : un modèle de file d&#x27;attente de commandes en base de données" />
+<meta name="twitter:description" content="Comment j&#x27;ai utilisé PostgreSQL comme file de commandes avec verrouillage, heartbeat et bascule pour qu&#x27;une UI cloud pilote du matériel local comme une imprimante d&#x27;étiquettes USB." />
+<meta name="twitter:image" content="https://aspiranted.github.io/og-image.png" />
+<link rel="alternate" hreflang="en" href="https://aspiranted.github.io/blog/cloud-local-command-bridge.html" />
+<link rel="alternate" hreflang="es" href="https://aspiranted.github.io/blog/es/cloud-local-command-bridge.html" />
+<link rel="alternate" hreflang="fr" href="https://aspiranted.github.io/blog/fr/cloud-local-command-bridge.html" />
+<link rel="alternate" hreflang="pt" href="https://aspiranted.github.io/blog/pt/cloud-local-command-bridge.html" />
+<link rel="alternate" hreflang="x-default" href="https://aspiranted.github.io/blog/cloud-local-command-bridge.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Faire le pont entre le cloud et le local : un modèle de file d'attente de commandes en base de données", "description": "Comment j'ai utilisé PostgreSQL comme file de commandes avec verrouillage, heartbeat et bascule pour qu'une UI cloud pilote du matériel local comme une imprimante d'étiquettes USB.", "inLanguage": "fr", "datePublished": "2026-01-01", "author": {"@type": "Person", "name": "Guillem Climent", "url": "https://aspiranted.github.io/"}, "publisher": {"@type": "Person", "name": "Guillem Climent"}, "url": "https://aspiranted.github.io/blog/fr/cloud-local-command-bridge.html", "mainEntityOfPage": "https://aspiranted.github.io/blog/fr/cloud-local-command-bridge.html", "image": "https://aspiranted.github.io/og-image.png"}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--paper:#f7f4ee;--paper2:#efeae0;--ink:#1d1b16;--ink-soft:#45403a;--ink-mute:#6f6a60;--line:#ded7c9;--line-soft:#ebe5d8;--accent:#b8431f;--serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;--ease:cubic-bezier(.22,1,.36,1)}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink-soft);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;z-index:100;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:6px}
+.tb{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tb__in{max-width:760px;margin-inline:auto;padding:.8rem clamp(1rem,4vw,1.6rem);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.back{display:inline-flex;align-items:center;gap:.45rem;font-size:.88rem;font-weight:500;color:var(--ink-soft)}
+.back svg{width:16px;height:16px}.back:hover{color:var(--accent)}
+.langsw{display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;font-weight:600}
+.langsw a{color:var(--ink-mute)}.langsw a.on{color:var(--accent)}.langsw a:hover{color:var(--ink)}.langsw span{color:var(--line)}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1.1rem,4vw,1.6rem) 4rem}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:500}
+h1.title{font-family:var(--serif);font-weight:560;font-size:clamp(2rem,5.5vw,3.1rem);line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin:.7rem 0 .9rem}
+.meta{font-size:.85rem;color:var(--ink-mute);letter-spacing:.02em;padding-bottom:1.4rem;border-bottom:2px solid var(--ink);margin-bottom:2.2rem}
+.body{font-size:1.05rem}
+.body h2{font-family:var(--serif);font-weight:560;font-size:clamp(1.4rem,3.4vw,1.9rem);line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:2.6rem 0 1rem}
+.body h3{font-family:var(--serif);font-weight:560;font-size:1.25rem;color:var(--ink);margin:2rem 0 .7rem}
+.body p{margin:0 0 1.2rem}
+.body strong{color:var(--ink);font-weight:600}
+.body em{font-style:italic}
+.body a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.body ul,.body ol{margin:0 0 1.3rem 1.2rem;display:flex;flex-direction:column;gap:.5rem}
+.body li{padding-left:.3rem}
+.body ul li::marker{color:var(--accent)}
+.body blockquote{border-left:3px solid var(--accent);background:var(--paper2);padding:1rem 1.3rem;margin:0 0 1.4rem;border-radius:0 8px 8px 0;color:var(--ink-soft)}
+.body blockquote strong{color:var(--accent)}
+.body pre{background:#1d1b16;color:#e9e4d8;border-radius:10px;padding:1.1rem 1.2rem;overflow-x:auto;margin:0 0 1.5rem;font-family:var(--mono);font-size:.82rem;line-height:1.6;border:1px solid #000}
+.body pre code{font-family:var(--mono);background:none;padding:0;color:inherit;font-size:inherit}
+.body code{font-family:var(--mono);background:var(--paper2);border:1px solid var(--line);border-radius:5px;padding:.08em .4em;font-size:.86em;color:var(--accent)}
+.body table{width:100%;border-collapse:collapse;margin:0 0 1.6rem;font-size:.92rem}
+.body th,.body td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line)}
+.body th{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600}
+.body td strong{color:var(--ink)}
+.body hr{border:0;border-top:1px solid var(--line);margin:2.4rem 0}
+.body img{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin:0 0 1.5rem}
+.foot{max-width:760px;margin:0 auto;padding:2rem clamp(1.1rem,4vw,1.6rem) 3rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.foot a{font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:.4rem}
+.foot .nm{font-family:var(--serif);color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<a class="skip" href="#article">Skip to content</a>
+<div class="tb"><div class="tb__in">
+  <a class="back" href="/fr/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Retour au portfolio</a>
+  <div class="langsw" role="group" aria-label="Language"><a href="/blog/cloud-local-command-bridge.html">EN</a><span aria-hidden="true">·</span><a href="/blog/es/cloud-local-command-bridge.html">ES</a><span aria-hidden="true">·</span><a class="on" aria-current="true" href="/blog/fr/cloud-local-command-bridge.html">FR</a><span aria-hidden="true">·</span><a href="/blog/pt/cloud-local-command-bridge.html">PT</a></div>
+</div></div>
+<main class="wrap" id="article">
+  <span class="eyebrow">Architecture</span>
+  <h1 class="title">Faire le pont entre le cloud et le local : un modèle de file d&#x27;attente de commandes en base de données</h1>
+  <div class="meta">6 min de lecture · 2026</div>
+  <article class="body">
+<p>Lorsque votre interface cloud doit imprimer une étiquette physique sur une imprimante USB installée dans un entrepôt, il vous faut une solution architecturale créative. Voici le modèle que j'ai conçu.</p>
+
+<h2>Le problème</h2>
+
+<p>Mon frontend ERP sur mesure tourne sur Retool Cloud. Mon imprimante d'étiquettes (Brother QL-700) est connectée en USB à un PC Windows dans l'entrepôt. Ma base de données (NeonDB) est dans le cloud. Quand un employé clique sur « Imprimer l'étiquette » dans Retool, une étiquette physique doit sortir d'une imprimante située à 3 000 km des serveurs de Retool.</p>
+
+<p>Retool Cloud ne peut pas communiquer avec une imprimante locale. Il n'existe aucun chemin réseau direct. La redirection de port est fragile. Les VPN ajoutent de la complexité. Les webhooks exigent un point d'accès public.</p>
+
+<p>Il me fallait quelque chose de plus simple et de plus fiable.</p>
+
+<h2>La solution : PostgreSQL comme file de commandes</h2>
+
+<p>L'idée clé, c'était que les deux côtés — Retool Cloud et le backend local — partageaient déjà une chose : la base de données PostgreSQL. Pourquoi ne pas l'utiliser comme courtier de messages ?</p>
+
+<pre><code>Retool Cloud                     NeonDB (PostgreSQL)
+    │                                    │
+    │  INSERT INTO                       │
+    │  extraction_command_queue           │
+    │  (type='print', payload=...)       │
+    │ ──────────────────────────────────→ │
+    │                                    │
+    │                                    │  ← POLL every 5s
+    │                                    │     (SELECT ... WHERE
+    │                                    │      status='pending')
+    │                                    │
+    │                     Local Backend (Windows)
+    │                           │
+    │                           │  Process command
+    │                           │  Download label PDF
+    │                           │  Send to Brother QL-700
+    │                           │  UPDATE status='completed'
+    │                           │
+    │  ← Query result           │
+    │    (status='completed')   │</code></pre>
+
+<h2>Les détails d'ingénierie</h2>
+
+<h3>Verrouillage exclusif</h3>
+
+<p>Que se passe-t-il si deux instances du backend tournent en parallèle ? Ou si le backend plante en plein milieu d'une commande ? J'ai mis en place un modèle de verrou exclusif :</p>
+
+<ul>
+    <li>Au démarrage, le <code>CommandPoller</code> acquiert un verrou en écrivant son nom d'hôte et son PID dans une table <code>backend_lock</code></li>
+    <li>Avant de traiter une commande, il vérifie qu'il détient toujours le verrou</li>
+    <li>Si une autre instance tente de démarrer, elle voit le verrou et se met en retrait</li>
+</ul>
+
+<h3>Surveillance par heartbeat</h3>
+
+<p>Un verrou sans heartbeat, c'est un interblocage en puissance. Toutes les 30 secondes, le backend actif met à jour son horodatage <code>last_heartbeat</code>. Si le heartbeat est obsolète (&gt;60 secondes), toute nouvelle instance du backend peut s'emparer du verrou — partant du principe que le détenteur précédent a planté.</p>
+
+<h3>Types de commandes</h3>
+
+<p>La file ne se limite pas à l'impression :</p>
+
+<ul>
+    <li><strong>Imprimer une étiquette</strong> — Télécharger l'étiquette du transporteur depuis l'API Wallapop, générer un code-barres, l'envoyer à la Brother QL-700</li>
+    <li><strong>Imprimer une étiquette LPN</strong> — Générer un code-barres Code128 pour un article en stock, l'imprimer sur une étiquette thermique</li>
+    <li><strong>Enrichir un article</strong> — Déclencher le pipeline d'enrichissement par IA (scraping d'Amazon → catégorisation → génération de description)</li>
+    <li><strong>Lancer une extraction</strong> — Déclencher une extraction à la demande des commandes/conversations/annonces</li>
+</ul>
+
+<h3>Récupération après échec</h3>
+
+<p>Les commandes peuvent échouer (imprimante hors ligne, Amazon bloquant le scraping, délai réseau dépassé). Le système gère cela :</p>
+
+<ul>
+    <li>Les commandes en échec sont marquées avec <code>status='failed'</code> et un message d'erreur</li>
+    <li>Retool affiche l'erreur à l'utilisateur avec un bouton « Réessayer »</li>
+    <li>Au démarrage, le backend recherche les commandes orphelines (status='processing' mais heartbeat obsolète) et les réinitialise à 'pending'</li>
+</ul>
+
+<h2>Pourquoi cela fonctionne mieux que les alternatives</h2>
+
+<ul>
+    <li><strong>face aux webhooks :</strong> Aucun point d'accès public requis. Aucun certificat SSL. Aucun DDNS. Le backend local n'est qu'un consommateur qui interroge une base de données</li>
+    <li><strong>face aux files de messages (RabbitMQ, Redis) :</strong> Aucune infrastructure supplémentaire. PostgreSQL est déjà là. Pour mon volume (~50 commandes/jour), c'est parfait</li>
+    <li><strong>face au WebSocket :</strong> Aucune connexion persistante à maintenir. Une interrogation toutes les 5 secondes convient tout à fait pour l'impression d'étiquettes — un délai de 5 secondes est imperceptible</li>
+</ul>
+
+<h2>Résultats en production</h2>
+
+<p>Ce système tourne en production depuis plus d'un an. Il traite de manière fiable les commandes d'impression, les demandes d'enrichissement et les déclenchements d'extraction. La bascule a été testée (involontairement) à plusieurs reprises lorsque mon PC local redémarrait — le backend redémarre, récupère le verrou et reprend le traitement en moins de 60 secondes.</p>
+
+<p>Le modèle est open source : <a href="https://github.com/AspiranteD/cloud-local-command-bridge">github.com/AspiranteD/cloud-local-command-bridge</a></p>
+  </article>
+</main>
+<footer class="foot">
+  <span class="nm">Guillem Climent</span>
+  <a href="/fr/#writing">Plus d'articles <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+</footer>
+</body>
+</html>

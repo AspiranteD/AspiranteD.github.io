@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>De publicar a mano a la ingeniería inversa: mi viaje automatizando Wallapop — Guillem Climent</title>
+<meta name="description" content="Cómo pasé de 10 minutos por anuncio a bots de Selenium en 6 PC y a un sistema de extracción con API por ingeniería inversa, porque Wallapop no tiene API pública." />
+<meta name="author" content="Guillem Climent" />
+<meta name="theme-color" content="#f7f4ee" />
+<link rel="canonical" href="https://aspiranted.github.io/blog/es/reverse-engineering-wallapop.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="De publicar a mano a la ingeniería inversa: mi viaje automatizando Wallapop" />
+<meta property="og:description" content="Cómo pasé de 10 minutos por anuncio a bots de Selenium en 6 PC y a un sistema de extracción con API por ingeniería inversa, porque Wallapop no tiene API pública." />
+<meta property="og:url" content="https://aspiranted.github.io/blog/es/reverse-engineering-wallapop.html" />
+<meta property="og:image" content="https://aspiranted.github.io/og-image.png" />
+<meta property="og:site_name" content="Guillem Climent" />
+<meta property="og:locale" content="es_ES" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="De publicar a mano a la ingeniería inversa: mi viaje automatizando Wallapop" />
+<meta name="twitter:description" content="Cómo pasé de 10 minutos por anuncio a bots de Selenium en 6 PC y a un sistema de extracción con API por ingeniería inversa, porque Wallapop no tiene API pública." />
+<meta name="twitter:image" content="https://aspiranted.github.io/og-image.png" />
+<link rel="alternate" hreflang="en" href="https://aspiranted.github.io/blog/reverse-engineering-wallapop.html" />
+<link rel="alternate" hreflang="es" href="https://aspiranted.github.io/blog/es/reverse-engineering-wallapop.html" />
+<link rel="alternate" hreflang="fr" href="https://aspiranted.github.io/blog/fr/reverse-engineering-wallapop.html" />
+<link rel="alternate" hreflang="pt" href="https://aspiranted.github.io/blog/pt/reverse-engineering-wallapop.html" />
+<link rel="alternate" hreflang="x-default" href="https://aspiranted.github.io/blog/reverse-engineering-wallapop.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "De publicar a mano a la ingeniería inversa: mi viaje automatizando Wallapop", "description": "Cómo pasé de 10 minutos por anuncio a bots de Selenium en 6 PC y a un sistema de extracción con API por ingeniería inversa, porque Wallapop no tiene API pública.", "inLanguage": "es", "datePublished": "2026-01-01", "author": {"@type": "Person", "name": "Guillem Climent", "url": "https://aspiranted.github.io/"}, "publisher": {"@type": "Person", "name": "Guillem Climent"}, "url": "https://aspiranted.github.io/blog/es/reverse-engineering-wallapop.html", "mainEntityOfPage": "https://aspiranted.github.io/blog/es/reverse-engineering-wallapop.html", "image": "https://aspiranted.github.io/og-image.png"}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--paper:#f7f4ee;--paper2:#efeae0;--ink:#1d1b16;--ink-soft:#45403a;--ink-mute:#6f6a60;--line:#ded7c9;--line-soft:#ebe5d8;--accent:#b8431f;--serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;--ease:cubic-bezier(.22,1,.36,1)}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink-soft);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;z-index:100;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:6px}
+.tb{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tb__in{max-width:760px;margin-inline:auto;padding:.8rem clamp(1rem,4vw,1.6rem);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.back{display:inline-flex;align-items:center;gap:.45rem;font-size:.88rem;font-weight:500;color:var(--ink-soft)}
+.back svg{width:16px;height:16px}.back:hover{color:var(--accent)}
+.langsw{display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;font-weight:600}
+.langsw a{color:var(--ink-mute)}.langsw a.on{color:var(--accent)}.langsw a:hover{color:var(--ink)}.langsw span{color:var(--line)}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1.1rem,4vw,1.6rem) 4rem}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:500}
+h1.title{font-family:var(--serif);font-weight:560;font-size:clamp(2rem,5.5vw,3.1rem);line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin:.7rem 0 .9rem}
+.meta{font-size:.85rem;color:var(--ink-mute);letter-spacing:.02em;padding-bottom:1.4rem;border-bottom:2px solid var(--ink);margin-bottom:2.2rem}
+.body{font-size:1.05rem}
+.body h2{font-family:var(--serif);font-weight:560;font-size:clamp(1.4rem,3.4vw,1.9rem);line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:2.6rem 0 1rem}
+.body h3{font-family:var(--serif);font-weight:560;font-size:1.25rem;color:var(--ink);margin:2rem 0 .7rem}
+.body p{margin:0 0 1.2rem}
+.body strong{color:var(--ink);font-weight:600}
+.body em{font-style:italic}
+.body a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.body ul,.body ol{margin:0 0 1.3rem 1.2rem;display:flex;flex-direction:column;gap:.5rem}
+.body li{padding-left:.3rem}
+.body ul li::marker{color:var(--accent)}
+.body blockquote{border-left:3px solid var(--accent);background:var(--paper2);padding:1rem 1.3rem;margin:0 0 1.4rem;border-radius:0 8px 8px 0;color:var(--ink-soft)}
+.body blockquote strong{color:var(--accent)}
+.body pre{background:#1d1b16;color:#e9e4d8;border-radius:10px;padding:1.1rem 1.2rem;overflow-x:auto;margin:0 0 1.5rem;font-family:var(--mono);font-size:.82rem;line-height:1.6;border:1px solid #000}
+.body pre code{font-family:var(--mono);background:none;padding:0;color:inherit;font-size:inherit}
+.body code{font-family:var(--mono);background:var(--paper2);border:1px solid var(--line);border-radius:5px;padding:.08em .4em;font-size:.86em;color:var(--accent)}
+.body table{width:100%;border-collapse:collapse;margin:0 0 1.6rem;font-size:.92rem}
+.body th,.body td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line)}
+.body th{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600}
+.body td strong{color:var(--ink)}
+.body hr{border:0;border-top:1px solid var(--line);margin:2.4rem 0}
+.body img{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin:0 0 1.5rem}
+.foot{max-width:760px;margin:0 auto;padding:2rem clamp(1.1rem,4vw,1.6rem) 3rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.foot a{font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:.4rem}
+.foot .nm{font-family:var(--serif);color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<a class="skip" href="#article">Skip to content</a>
+<div class="tb"><div class="tb__in">
+  <a class="back" href="/es/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Volver al portfolio</a>
+  <div class="langsw" role="group" aria-label="Language"><a href="/blog/reverse-engineering-wallapop.html">EN</a><span aria-hidden="true">·</span><a class="on" aria-current="true" href="/blog/es/reverse-engineering-wallapop.html">ES</a><span aria-hidden="true">·</span><a href="/blog/fr/reverse-engineering-wallapop.html">FR</a><span aria-hidden="true">·</span><a href="/blog/pt/reverse-engineering-wallapop.html">PT</a></div>
+</div></div>
+<main class="wrap" id="article">
+  <span class="eyebrow">Ingeniería inversa</span>
+  <h1 class="title">De publicar a mano a la ingeniería inversa: mi viaje automatizando Wallapop</h1>
+  <div class="meta">14 min de lectura · 2026</div>
+  <article class="body">
+<p>Cómo pasé de dedicar 10 minutos a cada anuncio, a ejecutar bots de Selenium en 6 PC remotos, a aplicar ingeniería inversa a una API privada y construir sistemas de extracción que nadie más ha construido, todo porque Wallapop no tiene una API pública.</p>
+
+<blockquote><strong>Una nota sobre el alcance.</strong> Todo lo que se describe aquí se construyó para operar <em>mi propio</em> negocio: las cuentas de vendedor, el inventario y los datos de pedidos son míos. Son herramientas operativas internas que gestionan mis propios anuncios y pedidos, con peticiones conservadoras, limitadas por tasa y a ritmo humano, porque la plataforma no expone ninguna API pública para vendedores. Es infraestructura para un negocio que yo opero, no herramientas dirigidas a nadie más.</blockquote>
+
+<h2>Capítulo 1: el infierno manual</h2>
+
+<p>Wallapop es el mayor mercado de segunda mano de España. Millones de usuarios. Miles de millones en volumen de transacciones. Y en 2023 no había <strong>ninguna forma de publicar anuncios de forma masiva</strong>.</p>
+
+<p>Cada anuncio había que crearlo manualmente a través de su interfaz web. Subir fotos. Escribir un título. Escribir una descripción. Poner un precio. Elegir una categoría. Fijar la ubicación. Pulsar publicar. <strong>De 5 a 10 minutos por artículo.</strong></p>
+
+<p>Cuando llevas un negocio de comercio electrónico vendiendo liquidaciones de Amazon, puedes tener entre 500 y 600 artículos en tu catálogo en cualquier momento. Echa cuentas: 600 artículos × 7 minutos = 70 horas de trabajo manual solo para publicarlo todo una vez. Y tienes que volver a publicar cada pocos días para mantenerte visible en los resultados de búsqueda.</p>
+
+<p>Eso no es un modelo de negocio. Es un trabajo de introducción de datos.</p>
+
+<h2>Capítulo 2: el bot de Selenium</h2>
+
+<p>Así que construí un bot. Un sistema de automatización de navegador basado en Selenium capaz de navegar por la interfaz web de Wallapop, rellenar todos los campos, subir imágenes y publicar, de forma automática.</p>
+
+<p>La arquitectura era sencilla, pero exigía resolver varios problemas nada triviales:</p>
+
+<ul>
+    <li><strong>XPaths dinámicos</strong>: el frontend en React de Wallapop genera estructuras del DOM distintas según la categoría, el estado y las opciones de envío. Creé un archivo <code>xpaths.json</code> configurable que asociaba cada campo a su selector, de modo que cuando Wallapop cambiaba su interfaz (cosa que pasaba con regularidad) solo tenía que actualizar la configuración</li>
+    <li><strong>Aleatorización de imágenes</strong>: subir exactamente las mismas imágenes de producto en varias cuentas activaría la detección de duplicados. Construí un pipeline con OpenCV que aplicaba transformaciones sutiles a cada imagen: microrrotación, inyección de ruido, variación de brillo, ligero estiramiento. Suficiente para engañar al hashing perceptual, invisible al ojo humano</li>
+    <li><strong>Tiempos antidetección</strong>: un bot que rellena formularios en 0,5 segundos parece un bot. Añadí retardos aleatorizados entre acciones (variación en la velocidad de escritura, pausa antes de hacer clic, comportamiento de desplazamiento) para imitar la interacción humana. Cada anuncio tardaba alrededor de 1 minuto, más lento de lo que podría ir una máquina, pero lo bastante rápido para ser útil</li>
+</ul>
+
+<h2>Capítulo 3: la granja de 6 PC</h2>
+
+<p>Un minuto por anuncio. 600 artículos. Eso son 10 horas en una sola máquina. Seguía siendo demasiado lento, sobre todo cuando hay que volver a publicar cada 3 días para el posicionamiento SEO.</p>
+
+<p>Mi solución fue la fuerza bruta: monté <strong>5-6 PC</strong>, me conecté a todos ellos de forma remota mediante AnyDesk y ejecuté varias instancias del bot simultáneamente en cada máquina. Cada PC tenía su propia cuenta de Wallapop, su propio perfil de navegador, su propia IP (redes distintas).</p>
+
+<p>El flujo de trabajo era así:</p>
+
+<pre><code>Me (AnyDesk) ──→ PC 1 (Office):      2 browser instances × Account A, B
+              ──→ PC 2 (Warehouse):   2 browser instances × Account C, D
+              ──→ PC 3 (Home):        2 browser instances × Account E, F
+              ──→ PC 4 (Employee 1):  1 browser instance  × Account G
+              ──→ PC 5 (Employee 2):  1 browser instance  × Account H
+              ──→ PC 6 (Laptop):      1 browser instance  × Account I
+
+Result: ~600 listings published in ~1 hour
+Frequency: Every 3 days (re-publish for positioning)</code></pre>
+
+<p>¿Era elegante? En absoluto. ¿Era eficaz? Me permitía operar a una escala que habría sido imposible de forma manual. Mientras los competidores pasaban el día entero publicando artículos uno a uno, yo tenía todo mi catálogo activo en varias cuentas en una hora.</p>
+
+<h2>Capítulo 4: el giro, de publicar a operar</h2>
+
+<p>A medida que el negocio crecía, aparecieron herramientas externas como PortalHero capaces de gestionar la publicación masiva. Delegué esa parte por completo. Pero surgió un problema nuevo y mayor: <strong>la gestión de pedidos</strong>.</p>
+
+<p>Cuando tienes 10 pedidos al día de una cuenta, los gestionas manualmente desde la app de Wallapop. Abres la app, miras si hay pedidos nuevos, apuntas el código del artículo, vas al almacén, lo encuentras, lo embalas, imprimes la etiqueta y lo envías. Bien.</p>
+
+<p>Pero estábamos escalando. Rápido. Pasamos de 10 pedidos al día a <strong>casi 100 pedidos al día</strong> repartidos entre <strong>más de 12 cuentas</strong>. Cada cuenta tenía su propia bandeja de entrada, sus propios pedidos, sus propias etiquetas de envío. Mi equipo de almacén necesitaba una vista unificada de todos los pedidos pendientes. Yo necesitaba analíticas sobre qué cuentas rendían mejor. Necesitaba hacer seguimiento de qué artículos se habían vendido, cuáles estaban pendientes de envío y cuáles se habían devuelto.</p>
+
+<p>La interfaz web de Wallapop no te da nada de esto. Sin exportaciones. Sin API. Sin operaciones masivas. Solo una app pensada para móvil y diseñada para particulares que venden sus zapatos viejos.</p>
+
+<p>Necesitaba datos. Y Wallapop no iba a dármelos.</p>
+
+<h2>Capítulo 5: abriendo el capó</h2>
+
+<p>Abrí las DevTools de Chrome en la web de Wallapop y empecé a vigilar la pestaña Network.</p>
+
+<p>Cada clic, cada carga de página, cada desplazamiento: el navegador hacía peticiones HTTP a <code>api.wallapop.com</code>. Y las respuestas eran JSON limpio y estructurado. Los endpoints seguían patrones. La autenticación era un token bearer en la cabecera. La paginación estaba basada en cursores.</p>
+
+<p>Empecé a mapearlo todo:</p>
+
+<ul>
+    <li><code>/bff/delivery/orders/ongoing</code>: todos los pedidos activos de una cuenta</li>
+    <li><code>/bff/delivery/orders/{id}</code>: detalles del pedido, incluidas las URL de las etiquetas de envío</li>
+    <li><code>/bff/messaging/inbox</code>: todas las conversaciones (útil tanto para validación COMO para analíticas)</li>
+    <li><code>/bff/sales/as_seller</code>: historial de ventas completadas</li>
+    <li><code>/api/v3/user/items</code>: todos los anuncios publicados con sus estadísticas</li>
+</ul>
+
+<p>Pasé días explorando. Cada petición, cada respuesta, cada cabecera. Cambiaba parámetros y observaba qué ocurría. Probaba a llamar a los endpoints con distintos tokens de autenticación. Trazaba el flujo del ciclo de vida completo de un pedido: creación → aceptación → envío → entrega → finalización.</p>
+
+<p>Y encontré oro. No solo los endpoints evidentes, sino otros sin documentar. Detalles de pedidos de tipo bundle. Transacciones del monedero. Estadísticas a nivel de cuenta. URL de descarga de etiquetas de envío. Historial de mensajes del chat con marcas de tiempo.</p>
+
+<p>Nadie había publicado nada de esto. No había ninguna documentación de la API de Wallapop en ningún rincón de internet. Estaba construyendo este mapa desde cero.</p>
+
+<h2>Capítulo 6: construyendo los extractores</h2>
+
+<p>Con la API mapeada, empecé a construir sistemas de extracción. No scripts rápidos, sino <strong>pipelines de datos de nivel de producción</strong> que se ejecutarían cada 15 minutos, 24/7, en las más de 12 cuentas.</p>
+
+<h3>El extractor de pedidos (2.100 líneas)</h3>
+
+<p>Este es el núcleo de las operaciones de mi negocio. Extrae todos los pedidos de todas las cuentas y los persiste en PostgreSQL con un seguimiento completo de estados:</p>
+
+<ul>
+    <li><strong>Más de 20 estados de pedido</strong>: pending, accepted, shipped, in_transit, delivered, completed, cancelled, returned, disputed... cada uno con datos disponibles distintos y acciones requeridas distintas</li>
+    <li><strong>Detección de bundles</strong>: los bundles de Wallapop (pedidos de varios artículos) tienen una estructura de respuesta de API completamente diferente. El extractor los detecta, los descompone en artículos individuales y extrae el código LPN de la descripción de cada producto mediante regex</li>
+    <li><strong>Creación de ventas</strong>: cuando un pedido llega a "completed", crea automáticamente un registro de venta con: precio del artículo, comisión de la plataforma, ingreso neto, fecha de pago e información del comprador</li>
+    <li><strong>Seguimiento de devoluciones</strong>: detecta devoluciones y crea registros de retirada que actualizan el estado del inventario</li>
+</ul>
+
+<p>Este único extractor sustituyó lo que habrían sido 2 o 3 empleados a tiempo completo revisando manualmente 12 cuentas de Wallapop cada hora.</p>
+
+<h3>El extractor de chats</h3>
+
+<p>Cada conversación con cada comprador potencial, extraída y almacenada. Esto me da algo que Wallapop nunca proporciona: <strong>analíticas del embudo de ventas</strong>.</p>
+
+<ul>
+    <li>¿Cuántas conversaciones al día?</li>
+    <li>¿Cuál es la tasa de conversión de conversación a venta?</li>
+    <li>¿Qué cuentas generan más interacción?</li>
+    <li>¿A qué horas del día escriben más los compradores?</li>
+    <li>Tiempo medio de respuesta por cuenta (¿responden mis empleados con suficiente rapidez?)</li>
+</ul>
+
+<p>Ninguno de estos datos existe en la interfaz de Wallapop. Yo los construí.</p>
+
+<h3>El extractor de anuncios</h3>
+
+<p>Hace seguimiento de cada artículo publicado en todas las cuentas: visitas, favoritos, conversaciones, precio, estado. Esto revela qué productos rinden bien y cuáles son invisibles.</p>
+
+<p>Un reto de ingeniería clave fue la <strong>anti-oscilación de los IDs de producto</strong>. Cuando los sistemas de Wallapop reindexan un anuncio, el <code>product_id</code> puede cambiar temporalmente. Un seguimiento ingenuo crearía registros duplicados. Construí una lógica de detección que reconoce estas oscilaciones y mantiene un seguimiento coherente.</p>
+
+<h2>La evolución: V1 → V3</h2>
+
+<p>Los extractores pasaron por 5 versiones principales a medida que el negocio escalaba y yo aprendía más sobre la API:</p>
+
+<pre><code>V1 (2023)
+  └─ Hardcoded bearer tokens in JSON files
+  └─ Single account, sequential processing
+  └─ Manual token refresh every few hours
+
+V2 (2023)
+  └─ Bearers stored in Google Sheets (shared across scripts)
+  └─ Multi-account with user_hash tracking
+  └─ Tkinter UI for employees to paste new bearers
+  └─ Validation before each extraction run
+
+V2.5 (2024)
+  └─ Cookie-based auth (no more manual bearer management)
+  └─ Automatic accessToken refresh via session cookies
+  └─ JWT decoding for expiration checking
+  └─ Accounts stay authenticated for weeks
+
+V2.6 (2024)
+  └─ ThreadPoolExecutor for parallel multi-account extraction
+  └─ Each account gets its own thread and rate limiting
+  └─ 12 accounts extracted in parallel instead of sequential
+
+V3 (2024-2025)
+  └─ Bundle order support (multi-item orders)
+  └─ LPN extraction from descriptions via regex
+  └─ Warehouse location enrichment
+  └─ Cross-reference with preparation Excel from Drive
+  └─ ~2,100 lines for orders alone</code></pre>
+
+<h2>Antidetección a escala</h2>
+
+<p>Hacer miles de llamadas a la API al día en más de 12 cuentas exige un trabajo serio de antidetección. Si te pillan, las cuentas se banean, lo que significa inventario perdido, ventas perdidas, ingresos perdidos.</p>
+
+<ul>
+    <li><strong>Rotación de User-Agent</strong>: un conjunto de más de 50 UA reales de navegador almacenados en PostgreSQL, rotados por sesión</li>
+    <li><strong>Tiempos de las peticiones</strong>: retardos aleatorizados entre peticiones. No <code>sleep(1)</code>, sino <code>sleep(random.uniform(0.8, 2.3))</code>. Los intervalos fijos son una señal de detección</li>
+    <li><strong>Fingerprinting de cabeceras</strong>: replicación exacta de las cabeceras de petición del navegador, incluyendo el orden, las mayúsculas/minúsculas y las cabeceras opcionales. Una petición de la librería <code>requests</code> de Python tiene un aspecto distinto al de Chrome a menos que iguales todas las cabeceras</li>
+    <li><strong>Coherencia de sesión</strong>: el mismo UA, las mismas cookies, el mismo conjunto de cabeceras durante toda la sesión. Cambiar a mitad de sesión es sospechoso</li>
+    <li><strong>Perturbación de imágenes</strong> (para el publicador de Selenium): transformaciones con OpenCV: ruido gaussiano, microrrotación (0,1-0,5°), variación de brillo (±3%), ligero estiramiento. Derrota al hashing perceptual sin dejar de ser invisible para las personas</li>
+</ul>
+
+<h2>Las guerras de los duplicados</h2>
+
+<p>Cuando operas más de 12 cuentas en el mismo mercado, te topas inevitablemente con la <strong>detección de anuncios duplicados</strong>. Los sistemas de Wallapop marcan los anuncios que parecen idénticos en varias cuentas y pueden aplicarles shadow ban o eliminarlos.</p>
+
+<p>Construí una suite completa de investigación y mitigación de duplicados:</p>
+
+<ul>
+    <li><strong>Detección de anuncios fantasma</strong>: scripts que comprueban si los anuncios son realmente visibles en los resultados de búsqueda (un anuncio puede existir en tu perfil pero ser invisible para los compradores)</li>
+    <li><strong>Parser de correos de eliminación de Wallapop</strong>: analiza archivos MBOX de Gmail para identificar qué anuncios se eliminaron y por qué</li>
+    <li><strong>Sanitizador de políticas</strong>: revisa los títulos y descripciones de los anuncios en busca de "palabras trampa" que disparan la eliminación automática (ciertas categorías de producto, términos restringidos)</li>
+    <li><strong>Deduplicación de títulos</strong>: garantiza que ninguna pareja de cuentas tenga anuncios con títulos idénticos, usando variaciones generadas</li>
+</ul>
+
+<p>Fue una carrera armamentística constante. Wallapop actualizaba su detección, yo investigaba los nuevos patrones, construía contramedidas y me adaptaba. Más de 15 scripts dedicados por completo a este problema.</p>
+
+<h2>Lo que permite este sistema</h2>
+
+<p>Hoy mis extractores se ejecutan automáticamente cada 15 minutos mediante APScheduler. Los datos fluyen a PostgreSQL, donde los dashboards de Retool dan a mi equipo visibilidad en tiempo real de:</p>
+
+<ul>
+    <li><strong>Todos los pedidos pendientes</strong> de todas las cuentas en una vista unificada</li>
+    <li><strong>Analíticas de ventas</strong>: ingresos por cuenta, por día, por categoría de producto</li>
+    <li><strong>Tiempos de respuesta del chat</strong>: ¿responden los empleados dentro de nuestro SLA?</li>
+    <li><strong>Rendimiento de los anuncios</strong>: visitas, favoritos, tasa de conversación por artículo</li>
+    <li><strong>Conciliación del monedero</strong>: ¿coincide el dinero del monedero de Wallapop con nuestros registros de ventas?</li>
+</ul>
+
+<p>Este sistema es único. Nadie más ha construido este nivel de automatización para Wallapop. Hay empresas con cientos de anuncios que lo gestionan todo manualmente porque "no hay API". Yo demostré que sí la hay: solo tienes que encontrarla por ti mismo.</p>
+
+<h2>El arco completo</h2>
+
+<pre><code>2023 Q1: Publishing manually          → 10 min/item, max 50 items/day
+2023 Q2: Selenium bot                  → 1 min/item, 1 machine
+2023 Q3: 6-PC farm via AnyDesk         → 600 items/hour across 12 accounts
+2023 Q4: Delegated publishing          → Focus shifted to operations
+2024 Q1: First API reverse engineering → Manual bearer tokens, 1 account
+2024 Q2: Multi-account extractors      → Bearers in Sheets, UI for team
+2024 Q3: Cookie-based auth             → No more manual token management
+2024 Q4: Parallel extraction           → 12 accounts in &lt;5 minutes
+2025:    Bundles + full ERP integration → 2,100-line orders extractor
+         Anti-duplicate suite           → 15+ investigation scripts
+         Production scheduler           → Automatic every 15 minutes</code></pre>
+
+<p>De 10 minutos por anuncio a un sistema de extracción totalmente automatizado, multicuenta y con antidetección funcionando 24/7. No leyendo documentación, sino leyendo paquetes de red.</p>
+
+<p>Los extractores son de código abierto: <a href="https://github.com/AspiranteD/wallapop-data-extractors">github.com/AspiranteD/wallapop-data-extractors</a></p>
+  </article>
+</main>
+<footer class="foot">
+  <span class="nm">Guillem Climent</span>
+  <a href="/es/#writing">Más artículos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+</footer>
+</body>
+</html>

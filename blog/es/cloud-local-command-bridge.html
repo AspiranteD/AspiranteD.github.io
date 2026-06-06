@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Bridging Cloud and Local: A Database Command Queue Pattern — Guillem Climent</title>
-<meta name="description" content="How I used PostgreSQL as a command queue with locking, heartbeat, and failover so a cloud UI can trigger local hardware like a USB label printer." />
+<title>Conectar la nube con lo local: un patrón de cola de comandos en base de datos — Guillem Climent</title>
+<meta name="description" content="Cómo usé PostgreSQL como cola de comandos con bloqueo, latido y conmutación por error para que una interfaz en la nube active hardware local como una impresora de etiquetas USB." />
 <meta name="author" content="Guillem Climent" />
 <meta name="theme-color" content="#f7f4ee" />
-<link rel="canonical" href="https://aspiranted.github.io/blog/cloud-local-command-bridge.html" />
+<link rel="canonical" href="https://aspiranted.github.io/blog/es/cloud-local-command-bridge.html" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Bridging Cloud and Local: A Database Command Queue Pattern" />
-<meta property="og:description" content="How I used PostgreSQL as a command queue with locking, heartbeat, and failover so a cloud UI can trigger local hardware like a USB label printer." />
-<meta property="og:url" content="https://aspiranted.github.io/blog/cloud-local-command-bridge.html" />
+<meta property="og:title" content="Conectar la nube con lo local: un patrón de cola de comandos en base de datos" />
+<meta property="og:description" content="Cómo usé PostgreSQL como cola de comandos con bloqueo, latido y conmutación por error para que una interfaz en la nube active hardware local como una impresora de etiquetas USB." />
+<meta property="og:url" content="https://aspiranted.github.io/blog/es/cloud-local-command-bridge.html" />
 <meta property="og:image" content="https://aspiranted.github.io/og-image.png" />
 <meta property="og:site_name" content="Guillem Climent" />
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content="es_ES" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Bridging Cloud and Local: A Database Command Queue Pattern" />
-<meta name="twitter:description" content="How I used PostgreSQL as a command queue with locking, heartbeat, and failover so a cloud UI can trigger local hardware like a USB label printer." />
+<meta name="twitter:title" content="Conectar la nube con lo local: un patrón de cola de comandos en base de datos" />
+<meta name="twitter:description" content="Cómo usé PostgreSQL como cola de comandos con bloqueo, latido y conmutación por error para que una interfaz en la nube active hardware local como una impresora de etiquetas USB." />
 <meta name="twitter:image" content="https://aspiranted.github.io/og-image.png" />
 <link rel="alternate" hreflang="en" href="https://aspiranted.github.io/blog/cloud-local-command-bridge.html" />
 <link rel="alternate" hreflang="es" href="https://aspiranted.github.io/blog/es/cloud-local-command-bridge.html" />
@@ -30,7 +30,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Bridging Cloud and Local: A Database Command Queue Pattern", "description": "How I used PostgreSQL as a command queue with locking, heartbeat, and failover so a cloud UI can trigger local hardware like a USB label printer.", "inLanguage": "en", "datePublished": "2026-01-01", "author": {"@type": "Person", "name": "Guillem Climent", "url": "https://aspiranted.github.io/"}, "publisher": {"@type": "Person", "name": "Guillem Climent"}, "url": "https://aspiranted.github.io/blog/cloud-local-command-bridge.html", "mainEntityOfPage": "https://aspiranted.github.io/blog/cloud-local-command-bridge.html", "image": "https://aspiranted.github.io/og-image.png"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Conectar la nube con lo local: un patrón de cola de comandos en base de datos", "description": "Cómo usé PostgreSQL como cola de comandos con bloqueo, latido y conmutación por error para que una interfaz en la nube active hardware local como una impresora de etiquetas USB.", "inLanguage": "es", "datePublished": "2026-01-01", "author": {"@type": "Person", "name": "Guillem Climent", "url": "https://aspiranted.github.io/"}, "publisher": {"@type": "Person", "name": "Guillem Climent"}, "url": "https://aspiranted.github.io/blog/es/cloud-local-command-bridge.html", "mainEntityOfPage": "https://aspiranted.github.io/blog/es/cloud-local-command-bridge.html", "image": "https://aspiranted.github.io/og-image.png"}</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--paper:#f7f4ee;--paper2:#efeae0;--ink:#1d1b16;--ink-soft:#45403a;--ink-mute:#6f6a60;--line:#ded7c9;--line-soft:#ebe5d8;--accent:#b8431f;--serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;--ease:cubic-bezier(.22,1,.36,1)}
@@ -80,27 +80,27 @@ h1.title{font-family:var(--serif);font-weight:560;font-size:clamp(2rem,5.5vw,3.1
 <body>
 <a class="skip" href="#article">Skip to content</a>
 <div class="tb"><div class="tb__in">
-  <a class="back" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Back to portfolio</a>
-  <div class="langsw" role="group" aria-label="Language"><a class="on" aria-current="true" href="/blog/cloud-local-command-bridge.html">EN</a><span aria-hidden="true">·</span><a href="/blog/es/cloud-local-command-bridge.html">ES</a><span aria-hidden="true">·</span><a href="/blog/fr/cloud-local-command-bridge.html">FR</a><span aria-hidden="true">·</span><a href="/blog/pt/cloud-local-command-bridge.html">PT</a></div>
+  <a class="back" href="/es/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Volver al portfolio</a>
+  <div class="langsw" role="group" aria-label="Language"><a href="/blog/cloud-local-command-bridge.html">EN</a><span aria-hidden="true">·</span><a class="on" aria-current="true" href="/blog/es/cloud-local-command-bridge.html">ES</a><span aria-hidden="true">·</span><a href="/blog/fr/cloud-local-command-bridge.html">FR</a><span aria-hidden="true">·</span><a href="/blog/pt/cloud-local-command-bridge.html">PT</a></div>
 </div></div>
 <main class="wrap" id="article">
-  <span class="eyebrow">Architecture</span>
-  <h1 class="title">Bridging Cloud and Local: A Database Command Queue Pattern</h1>
-  <div class="meta">6 min read · 2026</div>
+  <span class="eyebrow">Arquitectura</span>
+  <h1 class="title">Conectar la nube con lo local: un patrón de cola de comandos en base de datos</h1>
+  <div class="meta">6 min de lectura · 2026</div>
   <article class="body">
-<p>When your cloud UI needs to print a physical label on a USB printer sitting in a warehouse — you need a creative architectural solution. Here's the pattern I built.</p>
+<p>Cuando tu interfaz en la nube necesita imprimir una etiqueta física en una impresora USB que está en un almacén, hace falta una solución arquitectónica creativa. Este es el patrón que construí.</p>
 
-<h2>The Problem</h2>
+<h2>El problema</h2>
 
-<p>My custom ERP frontend runs on Retool Cloud. My label printer (Brother QL-700) is connected via USB to a Windows PC in the warehouse. My database (NeonDB) is in the cloud. When an employee clicks "Print Label" in Retool, a physical label needs to come out of a printer 3,000 km away from the Retool servers.</p>
+<p>El frontend de mi ERP a medida se ejecuta en Retool Cloud. Mi impresora de etiquetas (Brother QL-700) está conectada por USB a un PC con Windows en el almacén. Mi base de datos (NeonDB) está en la nube. Cuando un empleado pulsa «Imprimir etiqueta» en Retool, tiene que salir una etiqueta física de una impresora situada a 3.000 km de los servidores de Retool.</p>
 
-<p>Retool Cloud can't talk to a local printer. There's no direct network path. Port forwarding is fragile. VPNs add complexity. Webhooks require a public endpoint.</p>
+<p>Retool Cloud no puede comunicarse con una impresora local. No hay una ruta de red directa. El reenvío de puertos es frágil. Las VPN añaden complejidad. Los webhooks requieren un endpoint público.</p>
 
-<p>I needed something simpler and more reliable.</p>
+<p>Necesitaba algo más sencillo y fiable.</p>
 
-<h2>The Solution: PostgreSQL as a Command Queue</h2>
+<h2>La solución: PostgreSQL como cola de comandos</h2>
 
-<p>The insight was that both sides — Retool Cloud and the local backend — already share one thing: the PostgreSQL database. Why not use it as a message broker?</p>
+<p>La clave estaba en que ambos lados —Retool Cloud y el backend local— ya comparten una cosa: la base de datos PostgreSQL. ¿Por qué no usarla como intermediario de mensajes?</p>
 
 <pre><code>Retool Cloud                     NeonDB (PostgreSQL)
     │                                    │
@@ -123,61 +123,61 @@ h1.title{font-family:var(--serif);font-weight:560;font-size:clamp(2rem,5.5vw,3.1
     │  ← Query result           │
     │    (status='completed')   │</code></pre>
 
-<h2>The Engineering Details</h2>
+<h2>Los detalles de ingeniería</h2>
 
-<h3>Exclusive Locking</h3>
+<h3>Bloqueo exclusivo</h3>
 
-<p>What if two backend instances are running? Or if the backend crashes mid-command? I implemented an exclusive lock pattern:</p>
-
-<ul>
-    <li>On startup, the <code>CommandPoller</code> acquires a lock by writing its hostname and PID to a <code>backend_lock</code> table</li>
-    <li>Before processing any command, it verifies it still holds the lock</li>
-    <li>If another instance tries to start, it sees the lock and backs off</li>
-</ul>
-
-<h3>Heartbeat Monitoring</h3>
-
-<p>A lock without a heartbeat is a deadlock waiting to happen. Every 30 seconds, the active backend updates its <code>last_heartbeat</code> timestamp. If the heartbeat is stale (&gt;60 seconds), any new backend instance can steal the lock — the assumption being that the previous holder has crashed.</p>
-
-<h3>Command Types</h3>
-
-<p>The queue handles more than just printing:</p>
+<p>¿Y si se están ejecutando dos instancias del backend? ¿O si el backend se cae a mitad de un comando? Implementé un patrón de bloqueo exclusivo:</p>
 
 <ul>
-    <li><strong>Print label</strong> — Download carrier label from Wallapop API, generate barcode, send to Brother QL-700</li>
-    <li><strong>Print LPN label</strong> — Generate Code128 barcode for inventory item, print on thermal label</li>
-    <li><strong>Enrich item</strong> — Trigger the AI enrichment pipeline (scrape Amazon → categorize → generate description)</li>
-    <li><strong>Run extraction</strong> — Trigger an on-demand extraction of orders/chats/listings</li>
+    <li>Al arrancar, el <code>CommandPoller</code> adquiere un bloqueo escribiendo su nombre de host y su PID en una tabla <code>backend_lock</code></li>
+    <li>Antes de procesar cualquier comando, comprueba que sigue teniendo el bloqueo</li>
+    <li>Si otra instancia intenta arrancar, ve el bloqueo y se retira</li>
 </ul>
 
-<h3>Failure Recovery</h3>
+<h3>Monitorización mediante latido</h3>
 
-<p>Commands can fail (printer offline, Amazon blocking scrape, network timeout). The system handles this:</p>
+<p>Un bloqueo sin latido es un interbloqueo en potencia. Cada 30 segundos, el backend activo actualiza su marca de tiempo <code>last_heartbeat</code>. Si el latido está obsoleto (&gt;60 segundos), cualquier instancia nueva del backend puede robar el bloqueo, partiendo de la suposición de que el anterior propietario se ha caído.</p>
+
+<h3>Tipos de comando</h3>
+
+<p>La cola gestiona algo más que la impresión:</p>
 
 <ul>
-    <li>Failed commands are marked with <code>status='failed'</code> and an error message</li>
-    <li>Retool shows the error to the user with a "Retry" button</li>
-    <li>On startup, the backend checks for orphaned commands (status='processing' but heartbeat stale) and resets them to 'pending'</li>
+    <li><strong>Imprimir etiqueta</strong>: descargar la etiqueta de transporte desde la API de Wallapop, generar el código de barras y enviarlo a la Brother QL-700</li>
+    <li><strong>Imprimir etiqueta LPN</strong>: generar un código de barras Code128 para un artículo de inventario e imprimirlo en una etiqueta térmica</li>
+    <li><strong>Enriquecer artículo</strong>: activar el pipeline de enriquecimiento con IA (scraping de Amazon → categorizar → generar descripción)</li>
+    <li><strong>Ejecutar extracción</strong>: lanzar una extracción bajo demanda de pedidos, chats o anuncios</li>
 </ul>
 
-<h2>Why This Works Better Than Alternatives</h2>
+<h3>Recuperación ante fallos</h3>
+
+<p>Los comandos pueden fallar (impresora desconectada, Amazon bloqueando el scraping, tiempo de espera de red agotado). El sistema lo gestiona:</p>
 
 <ul>
-    <li><strong>vs. Webhooks:</strong> No public endpoint needed. No SSL certs. No DDNS. The local backend is just a consumer polling a database</li>
-    <li><strong>vs. Message queues (RabbitMQ, Redis):</strong> No additional infrastructure. PostgreSQL is already there. For my volume (~50 commands/day), it's perfect</li>
-    <li><strong>vs. WebSocket:</strong> No persistent connection to maintain. Polling every 5 seconds is fine for label printing — a 5-second delay is imperceptible</li>
+    <li>Los comandos fallidos se marcan con <code>status='failed'</code> y un mensaje de error</li>
+    <li>Retool muestra el error al usuario con un botón «Reintentar»</li>
+    <li>Al arrancar, el backend busca comandos huérfanos (status='processing' pero con el latido obsoleto) y los restablece a 'pending'</li>
 </ul>
 
-<h2>Production Results</h2>
+<h2>Por qué esto funciona mejor que las alternativas</h2>
 
-<p>This system has been running in production for over a year. It processes print commands, enrichment requests, and extraction triggers reliably. The failover has been tested (unintentionally) multiple times when my local PC rebooted — the backend restarts, reclaims the lock, and resumes processing within 60 seconds.</p>
+<ul>
+    <li><strong>Frente a los webhooks:</strong> no hace falta un endpoint público. Ni certificados SSL. Ni DDNS. El backend local es simplemente un consumidor que sondea una base de datos</li>
+    <li><strong>Frente a las colas de mensajes (RabbitMQ, Redis):</strong> no hay infraestructura adicional. PostgreSQL ya está ahí. Para mi volumen (~50 comandos al día) es perfecto</li>
+    <li><strong>Frente a WebSocket:</strong> no hay que mantener una conexión persistente. Sondear cada 5 segundos es suficiente para imprimir etiquetas: un retardo de 5 segundos es imperceptible</li>
+</ul>
 
-<p>The pattern is open-source: <a href="https://github.com/AspiranteD/cloud-local-command-bridge">github.com/AspiranteD/cloud-local-command-bridge</a></p>
+<h2>Resultados en producción</h2>
+
+<p>Este sistema lleva más de un año funcionando en producción. Procesa de forma fiable comandos de impresión, solicitudes de enriquecimiento y disparadores de extracción. La conmutación por error se ha puesto a prueba (sin querer) varias veces cuando mi PC local se ha reiniciado: el backend arranca de nuevo, recupera el bloqueo y retoma el procesamiento en menos de 60 segundos.</p>
+
+<p>El patrón es de código abierto: <a href="https://github.com/AspiranteD/cloud-local-command-bridge">github.com/AspiranteD/cloud-local-command-bridge</a></p>
   </article>
 </main>
 <footer class="foot">
   <span class="nm">Guillem Climent</span>
-  <a href="/#writing">More writing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+  <a href="/es/#writing">Más artículos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
 </footer>
 </body>
 </html>

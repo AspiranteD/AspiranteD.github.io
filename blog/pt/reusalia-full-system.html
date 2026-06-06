@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Como Construí um ERP Completo que Gere uma Operação de E-Commerce Multi-Marketplace — Guillem Climent</title>
+<meta name="description" content="A história técnica completa da construção da plataforma de produção da REUSALIA: de bots Selenium em 6 PCs a um ERP completo com APIs por engenharia inversa e IA." />
+<meta name="author" content="Guillem Climent" />
+<meta name="theme-color" content="#f7f4ee" />
+<link rel="canonical" href="https://aspiranted.github.io/blog/pt/reusalia-full-system.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Como Construí um ERP Completo que Gere uma Operação de E-Commerce Multi-Marketplace" />
+<meta property="og:description" content="A história técnica completa da construção da plataforma de produção da REUSALIA: de bots Selenium em 6 PCs a um ERP completo com APIs por engenharia inversa e IA." />
+<meta property="og:url" content="https://aspiranted.github.io/blog/pt/reusalia-full-system.html" />
+<meta property="og:image" content="https://aspiranted.github.io/og-image.png" />
+<meta property="og:site_name" content="Guillem Climent" />
+<meta property="og:locale" content="pt_PT" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Como Construí um ERP Completo que Gere uma Operação de E-Commerce Multi-Marketplace" />
+<meta name="twitter:description" content="A história técnica completa da construção da plataforma de produção da REUSALIA: de bots Selenium em 6 PCs a um ERP completo com APIs por engenharia inversa e IA." />
+<meta name="twitter:image" content="https://aspiranted.github.io/og-image.png" />
+<link rel="alternate" hreflang="en" href="https://aspiranted.github.io/blog/reusalia-full-system.html" />
+<link rel="alternate" hreflang="es" href="https://aspiranted.github.io/blog/es/reusalia-full-system.html" />
+<link rel="alternate" hreflang="fr" href="https://aspiranted.github.io/blog/fr/reusalia-full-system.html" />
+<link rel="alternate" hreflang="pt" href="https://aspiranted.github.io/blog/pt/reusalia-full-system.html" />
+<link rel="alternate" hreflang="x-default" href="https://aspiranted.github.io/blog/reusalia-full-system.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Como Construí um ERP Completo que Gere uma Operação de E-Commerce Multi-Marketplace", "description": "A história técnica completa da construção da plataforma de produção da REUSALIA: de bots Selenium em 6 PCs a um ERP completo com APIs por engenharia inversa e IA.", "inLanguage": "pt", "datePublished": "2026-01-01", "author": {"@type": "Person", "name": "Guillem Climent", "url": "https://aspiranted.github.io/"}, "publisher": {"@type": "Person", "name": "Guillem Climent"}, "url": "https://aspiranted.github.io/blog/pt/reusalia-full-system.html", "mainEntityOfPage": "https://aspiranted.github.io/blog/pt/reusalia-full-system.html", "image": "https://aspiranted.github.io/og-image.png"}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--paper:#f7f4ee;--paper2:#efeae0;--ink:#1d1b16;--ink-soft:#45403a;--ink-mute:#6f6a60;--line:#ded7c9;--line-soft:#ebe5d8;--accent:#b8431f;--serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;--ease:cubic-bezier(.22,1,.36,1)}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink-soft);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;z-index:100;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:6px}
+.tb{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tb__in{max-width:760px;margin-inline:auto;padding:.8rem clamp(1rem,4vw,1.6rem);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.back{display:inline-flex;align-items:center;gap:.45rem;font-size:.88rem;font-weight:500;color:var(--ink-soft)}
+.back svg{width:16px;height:16px}.back:hover{color:var(--accent)}
+.langsw{display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;font-weight:600}
+.langsw a{color:var(--ink-mute)}.langsw a.on{color:var(--accent)}.langsw a:hover{color:var(--ink)}.langsw span{color:var(--line)}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1.1rem,4vw,1.6rem) 4rem}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:500}
+h1.title{font-family:var(--serif);font-weight:560;font-size:clamp(2rem,5.5vw,3.1rem);line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin:.7rem 0 .9rem}
+.meta{font-size:.85rem;color:var(--ink-mute);letter-spacing:.02em;padding-bottom:1.4rem;border-bottom:2px solid var(--ink);margin-bottom:2.2rem}
+.body{font-size:1.05rem}
+.body h2{font-family:var(--serif);font-weight:560;font-size:clamp(1.4rem,3.4vw,1.9rem);line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:2.6rem 0 1rem}
+.body h3{font-family:var(--serif);font-weight:560;font-size:1.25rem;color:var(--ink);margin:2rem 0 .7rem}
+.body p{margin:0 0 1.2rem}
+.body strong{color:var(--ink);font-weight:600}
+.body em{font-style:italic}
+.body a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.body ul,.body ol{margin:0 0 1.3rem 1.2rem;display:flex;flex-direction:column;gap:.5rem}
+.body li{padding-left:.3rem}
+.body ul li::marker{color:var(--accent)}
+.body blockquote{border-left:3px solid var(--accent);background:var(--paper2);padding:1rem 1.3rem;margin:0 0 1.4rem;border-radius:0 8px 8px 0;color:var(--ink-soft)}
+.body blockquote strong{color:var(--accent)}
+.body pre{background:#1d1b16;color:#e9e4d8;border-radius:10px;padding:1.1rem 1.2rem;overflow-x:auto;margin:0 0 1.5rem;font-family:var(--mono);font-size:.82rem;line-height:1.6;border:1px solid #000}
+.body pre code{font-family:var(--mono);background:none;padding:0;color:inherit;font-size:inherit}
+.body code{font-family:var(--mono);background:var(--paper2);border:1px solid var(--line);border-radius:5px;padding:.08em .4em;font-size:.86em;color:var(--accent)}
+.body table{width:100%;border-collapse:collapse;margin:0 0 1.6rem;font-size:.92rem}
+.body th,.body td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line)}
+.body th{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600}
+.body td strong{color:var(--ink)}
+.body hr{border:0;border-top:1px solid var(--line);margin:2.4rem 0}
+.body img{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin:0 0 1.5rem}
+.foot{max-width:760px;margin:0 auto;padding:2rem clamp(1.1rem,4vw,1.6rem) 3rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.foot a{font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:.4rem}
+.foot .nm{font-family:var(--serif);color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<a class="skip" href="#article">Skip to content</a>
+<div class="tb"><div class="tb__in">
+  <a class="back" href="/pt/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Voltar ao portfólio</a>
+  <div class="langsw" role="group" aria-label="Language"><a href="/blog/reusalia-full-system.html">EN</a><span aria-hidden="true">·</span><a href="/blog/es/reusalia-full-system.html">ES</a><span aria-hidden="true">·</span><a href="/blog/fr/reusalia-full-system.html">FR</a><span aria-hidden="true">·</span><a class="on" aria-current="true" href="/blog/pt/reusalia-full-system.html">PT</a></div>
+</div></div>
+<main class="wrap" id="article">
+  <span class="eyebrow">Engenharia</span>
+  <h1 class="title">Como Construí um ERP Completo que Gere uma Operação de E-Commerce Multi-Marketplace</h1>
+  <div class="meta">18 min de leitura · 2026</div>
+  <article class="body">
+<p>Um único engenheiro. Uma plataforma totalmente personalizada. 12 contas de marketplace. ~100 encomendas/dia. 5 colaboradores a utilizá-la diariamente. Esta é a história técnica completa de como concebi, construí e operei toda a plataforma de produção por detrás da REUSALIA — desde o primeiro bot Selenium até um ERP completo com APIs obtidas por engenharia inversa, pipelines de IA e integração com hardware físico.</p>
+
+<h2>O Problema: Gerir um Negócio Real com Processos Manuais</h2>
+
+<p>Em abril de 2023, fundei a REUSALIA — uma empresa de e-commerce que compra paletes de liquidação da Amazon, processa o inventário e revende artigos individuais em vários marketplaces (Wallapop, eBay, PortalHero). O modelo de negócio é simples. As operações por detrás dele não são.</p>
+
+<p>Cada palete que chega contém 50 a 200 artigos variados. Cada artigo tem de ser inspecionado, fotografado, categorizado, avaliado, anunciado em várias plataformas, acompanhado ao longo das vendas, embalado e expedido. Multiplique isto por milhares de SKUs distribuídos por 12 contas de marketplace e começa a perceber a dimensão do problema.</p>
+
+<p>Quando comecei, tudo era manual. Anunciar um único artigo no Wallapop demorava 5 a 10 minutos a escrever. As encomendas chegavam através de várias contas e tinham de ser verificadas uma a uma. O inventário era controlado em Google Sheets. Não existia qualquer sistema — apenas uma pessoa com um portátil e um armazém.</p>
+
+<p>Três anos mais tarde, toda a operação assenta numa plataforma que construí de raiz: um backend FastAPI com mais de 25 modelos de base de dados, um ERP personalizado em Retool com mais de 10 módulos operacionais, APIs de marketplace obtidas por engenharia inversa, enriquecimento de produtos com IA e uma ponte de hardware personalizada que liga interfaces na cloud a impressoras de etiquetas físicas. Esta é a história de como tudo evoluiu.</p>
+
+<h2>Fase 1: A Era do Selenium (2023)</h2>
+
+<p>O primeiro problema técnico que resolvi foi o mais penoso: publicar anúncios no Wallapop.</p>
+
+<p>O Wallapop não tem qualquer API de publicação em massa. Não há importação por CSV. Não há forma de anunciar produtos em escala. Cada anúncio tinha de ser criado manualmente através da interface web — preencher o título, a descrição, a categoria, o preço, carregar fotografias, definir a localização, confirmar. A 5 a 10 minutos por artigo, anunciar um catálogo de 500 a 600 artigos era um trabalho a tempo inteiro.</p>
+
+<p>Então construí um bot Selenium que automatizava todo o fluxo. Abria um navegador, navegava até ao formulário de anúncio, preenchia todos os campos, carregava imagens e submetia. Cada anúncio demorava cerca de 1 minuto (deliberadamente abrandado para evitar deteção).</p>
+
+<p>Mas 1 minuto por artigo ao longo de 600 artigos continua a ser 10 horas. E eu precisava de voltar a anunciar de 3 em 3 dias para manter o posicionamento no marketplace. Por isso escalei da única forma que conseguia: <strong>horizontalmente, em várias máquinas físicas</strong>.</p>
+
+<p>Montei 5 a 6 PCs, liguei-me a cada um remotamente via AnyDesk e lancei várias instâncias de bot por máquina. Cada instância usava cookies e user agents diferentes. Desta forma, conseguia publicar todo o meu catálogo em cerca de uma hora. De 3 em 3 dias, passava uma hora a gerir a frota distribuída de bots.</p>
+
+<p>Era feio. Era frágil. Funcionava.</p>
+
+<h3>O Que Aprendi</h3>
+<ul>
+<li>A automação não começa pela elegância — começa pela redução da dor</li>
+<li>Por vezes, "escalar" significa 6 portáteis numa secretária, e não Kubernetes</li>
+<li>A anti-deteção importa desde o primeiro dia: rotação de user agents, aleatorização de tempos, isolamento de sessões</li>
+</ul>
+
+<h2>Fase 2: Engenharia Inversa da API Privada do Wallapop (2023-2024)</h2>
+
+<p>À medida que o negócio crescia, também crescia a complexidade operacional. Passámos de 10 encomendas por dia para quase 100. De 1 conta Wallapop para 12. A abordagem com Selenium já não conseguia escalar — nem para publicação, e muito menos para a gestão de encomendas.</p>
+
+<p>O problema é que o Wallapop é um ecossistema fechado. Sem API pública. Sem documentação. Sem integrações de terceiros. Tudo acontece dentro da sua aplicação e do seu site. Para a maioria das pessoas, isto é um muro. Para mim, foi um convite.</p>
+
+<p>Comecei a intercetar o tráfego de rede. Em cada ação que realizava no site — navegar por anúncios, verificar encomendas, ler conversas — capturava o pedido HTTP, estudava os cabeçalhos, descodificava os payloads e mapeava as estruturas das respostas.</p>
+
+<h3>O Processo de Descoberta</h3>
+<p>Fazer engenharia inversa de uma API privada é trabalho de detetive:</p>
+
+<ol>
+<li><strong>Capturar</strong> — Usar as DevTools do navegador para intercetar todos os pedidos durante uma sessão</li>
+<li><strong>Classificar</strong> — Agrupar pedidos por padrão de endpoint e método HTTP</li>
+<li><strong>Descodificar</strong> — Analisar os cabeçalhos dos pedidos (em especial a autorização), os parâmetros de query e as estruturas JSON das respostas</li>
+<li><strong>Cruzar referências</strong> — Comparar respostas de diferentes contas para identificar o que é específico do utilizador face ao que é universal</li>
+<li><strong>Replicar</strong> — Construir um cliente Python capaz de se autenticar e fazer os mesmos pedidos fora do navegador</li>
+<li><strong>Iterar</strong> — Quando o Wallapop altera a sua API (e altera), atualizar o cliente</li>
+</ol>
+
+<p>Ao longo de 5 versões principais da base de código do extrator, mapeei o seu sistema de autenticação (baseado em cookies com bearer tokens), os seus endpoints de gestão de encomendas, a sua API de conversas e o seu sistema de metadados de anúncios. O resultado: mais de 2100 linhas de código Python de produção capazes de:</p>
+
+<ul>
+<li><strong>Orders Extractor</strong> — Obter todas as encomendas das 12 contas, normalizar os dados e alimentá-los no nosso ERP. Este único script substituiu o que teriam sido ~5 horas de trabalho manual diário</li>
+<li><strong>Chat Extractor</strong> — Obter dados de conversas para analisar métricas do funil de vendas: tempos de resposta, taxas de conversão, padrões de comportamento dos clientes</li>
+<li><strong>Listings Extractor</strong> — Monitorizar quais os artigos que recebem mais visualizações, quais precisam de reavaliação de preço, quais devem ser promovidos</li>
+</ul>
+
+<p>A arquitetura multi-conta foi a parte mais difícil. Cada conta tem o seu próprio ciclo de vida de autenticação: os cookies expiram, os tokens precisam de ser renovados, as sessões são invalidadas. Construí um gestor de autenticação centralizado que armazena as credenciais em PostgreSQL, renova automaticamente os tokens entre sessões e fornece contextos de autenticação limpos a cada extrator.</p>
+
+<p>Ninguém mais construiu isto. Existem ferramentas como o PortalHero para publicação em massa, mas nada para extração. Os nossos extratores são únicos — e são eles que tornam possível gerir uma operação de 12 contas com uma equipa de 5 pessoas, em vez de uma equipa de operações manuais muito maior.</p>
+
+<h2>Fase 3: A Plataforma Central — FastAPI + PostgreSQL (2024-2025)</h2>
+
+<p>Com os extratores a alimentar dados de forma fiável, precisava de um sítio onde esses dados pudessem viver e de algo que fizesse uso deles. O Google Sheets já não chegava (isso é <a href="sheets-to-postgres-migration.html">uma história totalmente à parte</a>).</p>
+
+<p>Concebi a plataforma central em torno de três princípios:</p>
+
+<ol>
+<li><strong>Fonte única de verdade</strong> — Cada elemento de dados vive em PostgreSQL. Sem folhas de cálculo, sem ficheiros locais, sem "atualizo depois"</li>
+<li><strong>API-first</strong> — Cada operação passa pelo backend FastAPI. O frontend do ERP personalizado construído em Retool, os extratores, os motores de sincronização — todos comunicam com a mesma API</li>
+<li><strong>Automação operacional</strong> — Se um humano faz algo mais de duas vezes, deve ser automatizado</li>
+</ol>
+
+<h3>Desenho da Base de Dados</h3>
+<p>O esquema PostgreSQL tem mais de 25 modelos com mais de 35 migrações, abrangendo:</p>
+
+<ul>
+<li><strong>Inventário</strong> — Artigos, SKUs, categorias, condições, localizações, fotografias</li>
+<li><strong>Encomendas</strong> — Acompanhamento de encomendas multi-marketplace com fluxos de estado</li>
+<li><strong>Vendas e Faturação</strong> — Acompanhamento de receitas, análise de custos, cálculo de margens por artigo e por palete</li>
+<li><strong>Autenticação</strong> — Armazenamento centralizado de credenciais para todas as contas de marketplace</li>
+<li><strong>Agendamento</strong> — Filas de tarefas para operações automatizadas (ciclos de sincronização, execuções de extração)</li>
+<li><strong>Incidentes</strong> — Reclamações de clientes, devoluções, problemas de expedição</li>
+</ul>
+
+<p>Uso SQLModel (SQLAlchemy + Pydantic) para a camada ORM, o que me dá modelos type-safe que funcionam tanto para operações de base de dados como para serialização da API. O Alembic trata das migrações e nunca tive de reverter uma em produção.</p>
+
+<h3>Arquitetura da API</h3>
+<p>O backend FastAPI expõe ~60 endpoints que cobrem operações CRUD, lógica de negócio e integrações. Decisões de desenho fundamentais:</p>
+
+<ul>
+<li><strong>Injeção de dependências</strong> para sessões de base de dados, autenticação e limitação de taxa</li>
+<li><strong>Tarefas em segundo plano</strong> para operações pesadas (importações em massa, ciclos de sincronização)</li>
+<li><strong>Tratamento estruturado de erros</strong> com códigos de erro específicos do negócio</li>
+<li><strong>Modelos de pedido/resposta</strong> validados na fronteira da API — se entrarem dados inválidos, falha de forma evidente e cedo</li>
+</ul>
+
+<h2>Fase 4: O ERP — Frontend em Retool (2025)</h2>
+
+<p>Uma base de dados e uma API não servem de nada se a sua equipa não conseguir interagir com elas. Precisava de uma interface que 6 colaboradores não técnicos pudessem usar diariamente — para tudo, desde processar paletes que chegavam até expedir encomendas e acompanhar incidentes.</p>
+
+<p>Escolhi o Retool porque me permitiu construir um frontend de ERP complexo e multi-módulo em semanas, em vez de meses. O resultado: um ERP personalizado com mais de 10 módulos operacionais:</p>
+
+<ul>
+<li><strong>Módulo de Encomendas</strong> — Vista em tempo real de todas as encomendas em todos os marketplaces. Filtrar por estado, conta, data. Transições de estado com um clique. Geração de etiquetas de expedição</li>
+<li><strong>Módulo de Inventário</strong> — Ciclo de vida completo do artigo: receção → categorização → anúncio → vendido → expedido. Acompanhamento da localização dentro do armazém</li>
+<li><strong>Módulo de Faturação</strong> — Faturas geradas automaticamente a partir dos dados de vendas. Relatórios mensais. Análise de margens por palete e por marketplace</li>
+<li><strong>Módulo de Incidentes</strong> — Acompanhamento de problemas dos clientes com encomendas associadas, fluxos de resolução e padrões históricos</li>
+<li><strong>Análise de Conversas</strong> — Métricas das conversas do Wallapop: tempos de resposta, funis de conversão, sinais de satisfação dos clientes</li>
+<li><strong>Scanner Móvel</strong> — Leitura de códigos de barras para operações de armazém. Os colaboradores leem os artigos para atualizar localizações, marcar como expedidos ou sinalizar problemas</li>
+</ul>
+
+<p>O grande desafio com o Retool foi fazer com que parecesse nativo. As aplicações Retool por defeito parecem painéis de administração. Investi um esforço considerável em CSS personalizado, renderização condicional e fluxos de UX intuitivos para colaboradores de armazém que nunca tinham usado software empresarial.</p>
+
+<h2>Fase 5: Pipeline de Enriquecimento de Produtos com IA</h2>
+
+<p>Uma das partes mais demoradas do negócio é a criação de anúncios de produtos. Cada artigo precisa de:</p>
+<ul>
+<li>Um título adequado ao marketplace</li>
+<li>Uma classificação de categoria rigorosa</li>
+<li>Uma descrição detalhada que venda</li>
+<li>Um preço competitivo baseado em dados de mercado</li>
+</ul>
+
+<p>Escrever isto manualmente para milhares de SKUs é uma loucura. A ~15 minutos por artigo, são mais de 40 horas por semana só em descrições. Por isso construí um pipeline de IA:</p>
+
+<ol>
+<li><strong>Amazon Scraper</strong> — Identifica produtos do nosso inventário de paletes na Amazon.es, extrai títulos, descrições, características, imagens e preços. Anti-deteção com rotação de UA e limitação de pedidos para evitar bloqueios</li>
+<li><strong>GPT Enrichment</strong> — Alimenta os dados extraídos no GPT-4 com prompts estruturados. O modelo categoriza artigos, gera títulos específicos para cada marketplace (o estilo do Wallapop é muito diferente do estilo do eBay), escreve descrições e sugere preços</li>
+<li><strong>Image Pipeline</strong> — Descarrega imagens de produtos, aplica transformações anti-duplicação (OpenCV) para evitar os filtros de imagens duplicadas dos marketplaces, redimensiona e comprime para um carregamento ótimo</li>
+<li><strong>Listing Sync</strong> — Envia os dados enriquecidos para cada marketplace com adaptações específicas de formato</li>
+</ol>
+
+<p>O pipeline corre de forma autónoma. Alimento-o com um lote de novos artigos e, horas depois, tenho anúncios totalmente enriquecidos prontos a publicar em todos os marketplaces. O que antes ocupava a semana inteira de um colaborador a tempo inteiro corre agora em segundo plano enquanto processamos a palete seguinte.</p>
+
+<h2>Fase 6: A Ponte Cloud-Local (O Problema Mais Difícil)</h2>
+
+<p>Eis um problema de que ninguém fala nos blogues de arquitetura: <strong>como se imprime uma etiqueta de expedição física a partir de uma UI na cloud?</strong></p>
+
+<p>O frontend do nosso ERP personalizado corre no Retool Cloud. A nossa impressora de etiquetas é uma Brother QL-700 ligada por USB a um PC no armazém. Não existe um caminho cloud-nativo entre os dois. Precisava de fazer a ponte sem obrigar a equipa do armazém a alternar entre aplicações.</p>
+
+<p>A solução é aquilo a que chamo o <a href="cloud-local-command-bridge.html">Command Bridge Pattern</a>:</p>
+
+<ol>
+<li>A UI do Retool escreve um registo de comando em PostgreSQL (por exemplo, "imprimir etiqueta para a encomenda #1234")</li>
+<li>Um daemon Python local no PC do armazém sonda novos comandos de poucos em poucos segundos</li>
+<li>Quando encontra um, adquire um bloqueio exclusivo na base de dados, processa o comando (gera e imprime a etiqueta) e marca-o como concluído</li>
+<li>A UI do Retool deteta a atualização de estado e reflete-a ao utilizador</li>
+</ol>
+
+<p>A parte complicada é a fiabilidade. E se o daemon local falhar? E se duas instâncias correrem em simultâneo? Implementei:</p>
+<ul>
+<li><strong>Monitorização por heartbeat</strong> — O daemon escreve um timestamp em cada ciclo. Se o heartbeat parar durante ~60 segundos, o sistema sinaliza-o e pode reiniciar</li>
+<li><strong>Bloqueio exclusivo</strong> — Os advisory locks do PostgreSQL impedem o processamento duplicado de comandos</li>
+<li><strong>Failover automático</strong> — Se um comando for reclamado mas não for concluído dentro da janela de timeout, é devolvido à fila</li>
+</ul>
+
+<p>Este padrão trata agora não só da impressão de etiquetas, mas de qualquer operação que exija interação com hardware local a partir de uma interface na cloud.</p>
+
+<h2>Fase 7: Sincronização Multi-Marketplace</h2>
+
+<p>Com o inventário em PostgreSQL, os anúncios enriquecidos por IA e as encomendas a fluir pelos extratores, a peça final era manter tudo sincronizado entre os marketplaces.</p>
+
+<p>O motor de sincronização mantém o PostgreSQL como fonte única de verdade e envia dados formatados para cada plataforma:</p>
+<ul>
+<li><strong>Wallapop</strong> — Através da API obtida por engenharia inversa (formato personalizado, limites de carateres, mapeamento de categorias)</li>
+<li><strong>eBay</strong> — Através da Feed API oficial (autenticação OAuth2, carregamentos CSV em lote de mais de 1000 artigos)</li>
+<li><strong>PortalHero</strong> — Através da sua camada de integração (formatação específica do marketplace)</li>
+</ul>
+
+<p>Quando um artigo é vendido numa plataforma, o motor de sincronização retira-o das outras em poucos minutos. Quando atualizo um preço no ERP, ele propaga-se para todo o lado. Quando chega novo inventário, os anúncios vão para todos os marketplaces em simultâneo.</p>
+
+<h2>A Arquitetura Completa</h2>
+
+<p>Afastando o zoom, o sistema completo tem o seguinte aspeto:</p>
+
+<pre><code>
+Data Sources          Processing Layer        Core              Outputs
+─────────────         ────────────────        ────              ───────
+Wallapop API ──┐                           ┌──────────┐
+eBay API ──────┤      FastAPI Backend       │PostgreSQL│ Custom ERP Frontend
+Amazon Scraper ┤──→   ( extractors )   ──→  │25+ models│──→ (   Retool ERP    )
+PortalHero ────┤      ThreadPoolExecutor    │35+ migr. │      10+ modules
+Google Drive ──┘      OpenAI GPT-4          └──────────┘
+                                                │
+                                      Command Bridge Pattern
+                                      (excl. lock + heartbeat)
+                                                │
+                                         Local Hardware
+                                      (Brother QL-700 printer)
+</code></pre>
+
+<p>Cada componente comunica com a mesma API. Cada elemento de dados vive na mesma base de dados. Cada operação é registada, acompanhada e recuperável.</p>
+
+<h2>Escala e Impacto</h2>
+
+<p>Eis o que este sistema gere em produção, diariamente:</p>
+
+<table>
+<thead>
+<tr><th>Métrica</th><th>Valor</th></tr>
+</thead>
+<tbody>
+<tr><td>Encomendas processadas/dia</td><td>~100+</td></tr>
+<tr><td>Contas de marketplace ativas</td><td>12</td></tr>
+<tr><td>Membros da equipa a usar o ERP diariamente</td><td>6</td></tr>
+<tr><td>Marketplaces sincronizados</td><td>3 (Wallapop, eBay, PortalHero)</td></tr>
+<tr><td>Processamento manual de encomendas substituído</td><td>~5h/dia</td></tr>
+<tr><td>Criação manual de anúncios substituída</td><td>~40h/semana</td></tr>
+<tr><td>APIs de marketplace obtidas por engenharia inversa</td><td>Wallapop, eBay</td></tr>
+<tr><td>Módulos do ERP (Retool)</td><td>10+</td></tr>
+<tr><td>Modelos de base de dados</td><td>25+</td></tr>
+<tr><td>Migrações de base de dados</td><td>35+</td></tr>
+<tr><td>Versões do extrator (Wallapop)</td><td>5 principais</td></tr>
+</tbody>
+</table>
+
+<p>Isto não é um projeto de demonstração. É um sistema de produção que gere inventário real, dinheiro real e operações reais de clientes. Todos os dias. Construído e mantido por um único engenheiro.</p>
+
+<h2>O Que Faria de Forma Diferente</h2>
+
+<p>Três anos de iteração ensinam-nos muito sobre os nossos próprios erros:</p>
+
+<ul>
+<li><strong>Comece pela base de dados, não pelos scripts.</strong> Construí primeiro os scripts de automação e a base de dados só depois. Isto significou meses de Google Sheets como intermediário, o que criou problemas de integridade de dados que demoraram semanas a corrigir</li>
+<li><strong>Invista mais cedo em monitorização.</strong> Adicionei registo estruturado e verificações de saúde tarde demais. Durante demasiado tempo, baseei-me no "se ninguém se queixa, é porque provavelmente está a funcionar"</li>
+<li><strong>Não construa a UI durante a migração.</strong> Construí o frontend do ERP personalizado em Retool em paralelo com a migração do Sheets→PostgreSQL. A minha equipa via interfaces meio acabadas durante a transição, o que abrandou a adoção</li>
+<li><strong>Documente a engenharia inversa das APIs à medida que avança.</strong> Quando o Wallapop alterou a sua API, por vezes tive de redescobrir endpoints porque não tinha documentado o mapeamento original suficientemente bem</li>
+</ul>
+
+<h2>A Conclusão</h2>
+
+<p>Construir um ERP de produção como engenheiro solo enquanto se gere o próprio negócio que ele foi concebido para automatizar é um desafio de engenharia único. Somos, em simultâneo, o arquiteto, o programador, o DBA, o QA, o engenheiro de DevOps e o gestor de produto — além de CEO, gestor de armazém e responsável pelo apoio ao cliente.</p>
+
+<p>O trabalho técnico é a parte fácil. A parte difícil é:</p>
+
+<ul>
+<li>Conceber sistemas que colegas não técnicos consigam usar sem formação</li>
+<li>Migrar dados de produção sem perder uma única encomenda nem baralhar as contagens de inventário</li>
+<li>Manter 12 sessões de contas de marketplace que podem falhar a qualquer momento</li>
+<li>Recuperar de uma inundação catastrófica que destruiu o armazém e ainda assim voltar mais forte</li>
+<li>Lançar funcionalidades às 2 da manhã porque a palete de amanhã chega às 8 e a equipa precisa do novo módulo</li>
+</ul>
+
+<p>Não trocaria isto por nada. É assim que se parece a engenharia a sério — não código perfeito, mas código que resolve problemas reais para pessoas reais, todos os dias.</p>
+
+<p>Os componentes da plataforma são open-source: <a href="https://github.com/AspiranteD/AspiranteD">github.com/AspiranteD/AspiranteD</a></p>
+  </article>
+</main>
+<footer class="foot">
+  <span class="nm">Guillem Climent</span>
+  <a href="/pt/#writing">Mais artigos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+</footer>
+</body>
+</html>

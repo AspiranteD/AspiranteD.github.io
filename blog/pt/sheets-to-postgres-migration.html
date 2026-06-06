@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Como Migrei um Negócio em Produção do Google Sheets para o PostgreSQL — Guillem Climent</title>
+<meta name="description" content="A história real da migração de um negócio de e-commerce em funcionamento do Google Sheets para o PostgreSQL em 5 fases, com sincronizações diárias e zero interrupções." />
+<meta name="author" content="Guillem Climent" />
+<meta name="theme-color" content="#f7f4ee" />
+<link rel="canonical" href="https://aspiranted.github.io/blog/pt/sheets-to-postgres-migration.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Como Migrei um Negócio em Produção do Google Sheets para o PostgreSQL" />
+<meta property="og:description" content="A história real da migração de um negócio de e-commerce em funcionamento do Google Sheets para o PostgreSQL em 5 fases, com sincronizações diárias e zero interrupções." />
+<meta property="og:url" content="https://aspiranted.github.io/blog/pt/sheets-to-postgres-migration.html" />
+<meta property="og:image" content="https://aspiranted.github.io/og-image.png" />
+<meta property="og:site_name" content="Guillem Climent" />
+<meta property="og:locale" content="pt_PT" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Como Migrei um Negócio em Produção do Google Sheets para o PostgreSQL" />
+<meta name="twitter:description" content="A história real da migração de um negócio de e-commerce em funcionamento do Google Sheets para o PostgreSQL em 5 fases, com sincronizações diárias e zero interrupções." />
+<meta name="twitter:image" content="https://aspiranted.github.io/og-image.png" />
+<link rel="alternate" hreflang="en" href="https://aspiranted.github.io/blog/sheets-to-postgres-migration.html" />
+<link rel="alternate" hreflang="es" href="https://aspiranted.github.io/blog/es/sheets-to-postgres-migration.html" />
+<link rel="alternate" hreflang="fr" href="https://aspiranted.github.io/blog/fr/sheets-to-postgres-migration.html" />
+<link rel="alternate" hreflang="pt" href="https://aspiranted.github.io/blog/pt/sheets-to-postgres-migration.html" />
+<link rel="alternate" hreflang="x-default" href="https://aspiranted.github.io/blog/sheets-to-postgres-migration.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Como Migrei um Negócio em Produção do Google Sheets para o PostgreSQL", "description": "A história real da migração de um negócio de e-commerce em funcionamento do Google Sheets para o PostgreSQL em 5 fases, com sincronizações diárias e zero interrupções.", "inLanguage": "pt", "datePublished": "2026-01-01", "author": {"@type": "Person", "name": "Guillem Climent", "url": "https://aspiranted.github.io/"}, "publisher": {"@type": "Person", "name": "Guillem Climent"}, "url": "https://aspiranted.github.io/blog/pt/sheets-to-postgres-migration.html", "mainEntityOfPage": "https://aspiranted.github.io/blog/pt/sheets-to-postgres-migration.html", "image": "https://aspiranted.github.io/og-image.png"}</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--paper:#f7f4ee;--paper2:#efeae0;--ink:#1d1b16;--ink-soft:#45403a;--ink-mute:#6f6a60;--line:#ded7c9;--line-soft:#ebe5d8;--accent:#b8431f;--serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;--ease:cubic-bezier(.22,1,.36,1)}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--ink-soft);font-family:var(--sans);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;z-index:100;background:var(--ink);color:#fff;padding:.7rem 1rem;border-radius:6px}
+.tb{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tb__in{max-width:760px;margin-inline:auto;padding:.8rem clamp(1rem,4vw,1.6rem);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.back{display:inline-flex;align-items:center;gap:.45rem;font-size:.88rem;font-weight:500;color:var(--ink-soft)}
+.back svg{width:16px;height:16px}.back:hover{color:var(--accent)}
+.langsw{display:inline-flex;align-items:center;gap:.35rem;font-size:.82rem;font-weight:600}
+.langsw a{color:var(--ink-mute)}.langsw a.on{color:var(--accent)}.langsw a:hover{color:var(--ink)}.langsw span{color:var(--line)}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(2rem,6vw,4rem) clamp(1.1rem,4vw,1.6rem) 4rem}
+.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:500}
+h1.title{font-family:var(--serif);font-weight:560;font-size:clamp(2rem,5.5vw,3.1rem);line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin:.7rem 0 .9rem}
+.meta{font-size:.85rem;color:var(--ink-mute);letter-spacing:.02em;padding-bottom:1.4rem;border-bottom:2px solid var(--ink);margin-bottom:2.2rem}
+.body{font-size:1.05rem}
+.body h2{font-family:var(--serif);font-weight:560;font-size:clamp(1.4rem,3.4vw,1.9rem);line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:2.6rem 0 1rem}
+.body h3{font-family:var(--serif);font-weight:560;font-size:1.25rem;color:var(--ink);margin:2rem 0 .7rem}
+.body p{margin:0 0 1.2rem}
+.body strong{color:var(--ink);font-weight:600}
+.body em{font-style:italic}
+.body a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+.body ul,.body ol{margin:0 0 1.3rem 1.2rem;display:flex;flex-direction:column;gap:.5rem}
+.body li{padding-left:.3rem}
+.body ul li::marker{color:var(--accent)}
+.body blockquote{border-left:3px solid var(--accent);background:var(--paper2);padding:1rem 1.3rem;margin:0 0 1.4rem;border-radius:0 8px 8px 0;color:var(--ink-soft)}
+.body blockquote strong{color:var(--accent)}
+.body pre{background:#1d1b16;color:#e9e4d8;border-radius:10px;padding:1.1rem 1.2rem;overflow-x:auto;margin:0 0 1.5rem;font-family:var(--mono);font-size:.82rem;line-height:1.6;border:1px solid #000}
+.body pre code{font-family:var(--mono);background:none;padding:0;color:inherit;font-size:inherit}
+.body code{font-family:var(--mono);background:var(--paper2);border:1px solid var(--line);border-radius:5px;padding:.08em .4em;font-size:.86em;color:var(--accent)}
+.body table{width:100%;border-collapse:collapse;margin:0 0 1.6rem;font-size:.92rem}
+.body th,.body td{text-align:left;padding:.6rem .8rem;border-bottom:1px solid var(--line)}
+.body th{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600}
+.body td strong{color:var(--ink)}
+.body hr{border:0;border-top:1px solid var(--line);margin:2.4rem 0}
+.body img{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--line);margin:0 0 1.5rem}
+.foot{max-width:760px;margin:0 auto;padding:2rem clamp(1.1rem,4vw,1.6rem) 3rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.foot a{font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:.4rem}
+.foot .nm{font-family:var(--serif);color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<a class="skip" href="#article">Skip to content</a>
+<div class="tb"><div class="tb__in">
+  <a class="back" href="/pt/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Voltar ao portfólio</a>
+  <div class="langsw" role="group" aria-label="Language"><a href="/blog/sheets-to-postgres-migration.html">EN</a><span aria-hidden="true">·</span><a href="/blog/es/sheets-to-postgres-migration.html">ES</a><span aria-hidden="true">·</span><a href="/blog/fr/sheets-to-postgres-migration.html">FR</a><span aria-hidden="true">·</span><a class="on" aria-current="true" href="/blog/pt/sheets-to-postgres-migration.html">PT</a></div>
+</div></div>
+<main class="wrap" id="article">
+  <span class="eyebrow">Dados</span>
+  <h1 class="title">Como Migrei um Negócio em Produção do Google Sheets para o PostgreSQL</h1>
+  <div class="meta">12 min de leitura · 2026</div>
+  <article class="body">
+<p>Depois de uma cheia catastrófica ter destruído o nosso armazém e nos ter obrigado a reconstruir do zero, decidi que desta vez ia fazer as coisas como deve ser — migrar das folhas de cálculo para uma base de dados a sério, construir um ERP em condições e nunca mais perder o controlo dos nossos dados. Esta é a história dessa migração.</p>
+
+<h2>Contexto: A Cheia Que Mudou Tudo</h2>
+
+<p>Em abril de 2024, mudámo-nos para um armazém industrial em Alfafar, Valencia, para escalar as operações. Seis meses depois, em outubro de 2024, a DANA — um fenómeno meteorológico catastrófico — atingiu Valencia. O nosso armazém ficava numa das zonas mais afetadas. A água das cheias destruiu o stock, os equipamentos e meses de dinâmica operacional.</p>
+
+<p>O que se seguiu foram dois meses de gestão de crise que nada tinham a ver com código. Nas semanas a seguir à cheia, voluntários e militares vieram ajudar-nos a recuperar as operações do armazém — inventário, equipamentos, limpeza e logística. Depois vieram os pedidos de indemnização ao seguro, os orçamentos de emergência sem qualquer receita e o reset mental de ver tudo o que tínhamos construído debaixo de água. Foi o período mais difícil da minha vida.</p>
+
+<p>Mas foi também um recomeço. Quando reconstruímos — e reconstruímos mesmo — tomei uma decisão: <strong>desta vez íamos fazer as coisas como deve ser.</strong> Acabou-se a fita-cola. Acabou-se o "já chega". Reconstruímos a equipa de 2 para 5 colaboradores e comprometi-me a construir uma infraestrutura em condições: uma base de dados a sério, um ERP a sério, documentação a sério. A era do Google Sheets tinha terminado.</p>
+
+<h2>O Ponto de Partida: Porque é Que o Google Sheets Tinha de Desaparecer</h2>
+
+<p>Quando fundei a empresa, o Google Sheets foi a escolha óbvia para gerir o inventário. É colaborativo, visual, toda a gente sabe usá-lo e é gratuito. A minha equipa do armazém conseguia atualizar as localizações do stock. Eu conseguia escrever fórmulas. Toda a gente conseguia ver tudo em tempo real.</p>
+
+<p>O problema é que o Google Sheets nunca foi concebido para ser uma base de dados. E quando se está a processar milhares de SKUs de liquidação da Amazon em várias contas de marketplace, começa a falhar de formas difíceis de prever:</p>
+
+<ul>
+    <li><strong>Limites de taxa da API</strong> — a API do Google Sheets tem uma quota de cerca de 60 pedidos por minuto por utilizador. Quando se tem 5 scripts automatizados a aceder à mesma folha, esgota-se isso num instante</li>
+    <li><strong>Pesadelos de concorrência</strong> — dois scripts a atualizar a mesma linha ao mesmo tempo. Um colaborador a editar enquanto um script escreve. Recálculos de fórmulas durante importações de dados. A corrupção de dados era um risco constante</li>
+    <li><strong>Sem integridade referencial</strong> — uma "venda" era uma linha num separador. O "artigo" a que se referia era uma linha noutro separador. A ligação? Uma cadeia de texto (o código LPN). Um erro de escrita no LPN? Venda órfã. Nenhuma chave estrangeira para salvar o dia</li>
+    <li><strong>Degradação do desempenho</strong> — com cerca de 8000 linhas com fórmulas, a folha demorava mais de 15 segundos a carregar. Os meus colaboradores estavam à espera. As operações estavam a abrandar</li>
+    <li><strong>Sem capacidade de consulta</strong> — "Mostra-me todos os artigos do camião A2Z33838 que ainda estão em stock e que ainda não foram anunciados no eBay" exige uma fórmula QUERY de 200 caracteres que rebenta se alguém inserir uma coluna</li>
+</ul>
+
+<p>Tinha de migrar. Mas não podia parar o negócio para o fazer.</p>
+
+<h2>A Restrição Que Mudou Tudo</h2>
+
+<p>Isto não foi a migração de um projeto paralelo de fim de semana. Era um <strong>negócio em produção</strong> com restrições reais:</p>
+
+<ul>
+    <li><strong>5 colaboradores</strong> que dependiam do Google Sheets todos os dias — operários de armazém a digitalizar artigos, administrativos a processar encomendas, logística a coordenar envios</li>
+    <li><strong>Encomendas a entrar diariamente</strong> através do Wallapop (o nosso canal principal), cada uma precisando de ser processada em poucas horas</li>
+    <li><strong>Dados financeiros</strong> que tinham de estar certos ao cêntimo — registamos os custos por camião da Amazon (códigos A2Z) para efeitos fiscais e de relatórios de rentabilidade</li>
+    <li><strong>Sem um segundo engenheiro</strong> — eu era o único programador E geria as operações do negócio em simultâneo</li>
+</ul>
+
+<p>Não podia simplesmente carregar num interruptor. Precisava de uma estratégia de migração que me permitisse avançar de forma incremental, validar em cada passo e reverter se algo corresse mal.</p>
+
+<h2>O Pipeline de 5 Fases</h2>
+
+<p>Concebi a migração como um pipeline de 5 fases, em que cada fase podia ser executada de forma independente em modo <code>dry-run</code> ou <code>execute</code>:</p>
+
+<pre><code>Phase 1: EXTRACT &amp; ANALYZE
+  └─ Pull all data from 3 Google Sheets tabs → CSVs
+  └─ Generate analysis report (row counts, data types, anomalies)
+
+Phase 2: VALIDATE
+  └─ Parse every row against the target PostgreSQL schema
+  └─ Type conversions (dates, decimals, booleans, enums)
+  └─ Flag invalid rows with specific error reasons
+  └─ Generate validation report
+
+Phase 3: MIGRATE
+  └─ Load validated data into PostgreSQL
+  └─ Respect foreign key ordering (items → listings → sales)
+  └─ Dry-run mode: simulate without writing
+  └─ Execute mode: actual INSERT with transaction safety
+
+Phase 4: SYNC OPERATIONAL DATA
+  └─ Pull "Prep de Pedidos" (order preparation) tab
+  └─ Match warehouse status to database records
+  └─ Update pick/pack states
+
+Phase 5: CONTINUOUS SYNC
+  └─ Daily: Sheet → DB delta sync
+  └─ Handles new rows, updates, and edge cases
+  └─ Runs alongside the database as source of truth transitions</code></pre>
+
+<h2>As Partes Difíceis de Que Ninguém Fala</h2>
+
+<h3>1. A Qualidade dos Dados Nunca é a Que Pensamos</h3>
+
+<p>O Google Sheets é "flexível" — o que significa que os teus dados são uma confusão. Eis o que encontrei quando tentei processar mais de 8000 linhas de inventário:</p>
+
+<ul>
+    <li>Preços guardados como texto com símbolos de euro: <code>"12,50 €"</code>, <code>"12.50"</code>, <code>"12,5"</code> e <code>""</code> (vazio) — todos a significar coisas diferentes</li>
+    <li>Datas em 4 formatos diferentes, consoante quem as introduziu e a localização configurada no navegador</li>
+    <li>Códigos LPN (o nosso identificador principal) com capitalização inconsistente, espaços no final e duplicados ocasionais</li>
+    <li>Campos de estado que tinham evoluído de forma orgânica: <code>"vendido"</code>, <code>"VENDIDO"</code>, <code>"Vendido (devuelto)"</code>, <code>"vendido?"</code></li>
+</ul>
+
+<p>Passei mais tempo a escrever código de limpeza e normalização de dados do que na lógica de migração propriamente dita. Cada caso-limite que corrigia revelava mais dois.</p>
+
+<h3>2. Reconciliação Financeira por Camião</h3>
+
+<p>Compramos liquidações da Amazon ao camião. Cada camião tem um código (A2Z33838, A2Z34102, etc.) e um custo. Para efeitos fiscais, preciso de saber: para cada camião, quanto pagámos, quanto vendemos, o que ainda está em stock e qual é a margem?</p>
+
+<p>No Google Sheets, isto era um separador com fórmulas SUMIFS. No PostgreSQL, precisei de reconstruir isto como uma vista (<code>v_resumen_a2z</code>) e validar que os números coincidiam <strong>ao cêntimo</strong>.</p>
+
+<pre><code>Truckload  | Sheet Total | DB Total  | Diff    | Status
+A2Z33838   | €14,230.50  | €14,230.50| €0.00   | ✓ MATCH
+A2Z34102   | €8,445.00   | €8,445.00 | €0.00   | ✓ MATCH
+A2Z34567   | €11,200.75  | €11,198.25| €2.50   | ✗ INVESTIGATE
+           |             |           |         |   → 1 sale missing
+           |             |           |         |   → LPN XU-20240312</code></pre>
+
+<p>Gerei centenas destes relatórios de reconciliação. Cada discrepância tinha de ser investigada. A maioria era causada por problemas de timing (uma venda registada na folha mas ainda não extraída da API do Wallapop) ou por colaboradores meus a fazer correções manuais diretamente na folha.</p>
+
+<h3>3. O Período de Operação em Paralelo</h3>
+
+<p>Durante cerca de 3 semanas, mantive os dois sistemas a funcionar em simultâneo. O Google Sheets continuou a ser a fonte de verdade para os meus colaboradores, enquanto a base de dados era preenchida e validada em segundo plano.</p>
+
+<p>Todas as manhãs:</p>
+<ol>
+    <li>Executar o script de sincronização para puxar as alterações do Sheets para o PostgreSQL</li>
+    <li>Verificar o relatório de reconciliação à procura de discrepâncias</li>
+    <li>Investigar e corrigir quaisquer problemas (normalmente 2 a 5 por dia)</li>
+    <li>Testar os dashboards do Retool com dados reais</li>
+    <li>Processar as encomendas do dia (as operações reais do negócio)</li>
+</ol>
+
+<p>Todas as noites:</p>
+<ol>
+    <li>Rever o que os colaboradores alteraram no Sheets ao longo do dia</li>
+    <li>Executar a sincronização novamente</li>
+    <li>Verificar que os totais financeiros continuavam a coincidir</li>
+</ol>
+
+<p>Isto era exaustivo. Estava essencialmente a gerir dois sistemas, a fazer o meu trabalho como operador do negócio E a depurar casos-limite da migração. Mas era a única forma de garantir confiança antes do cutover.</p>
+
+<h3>4. Os Scripts de Correção</h3>
+
+<p>Nenhuma migração é limpa. Escrevi mais de 15 scripts de correção especializados para problemas descobertos durante ou depois do período de operação em paralelo:</p>
+
+<ul>
+    <li><code>fix_listing_prices_from_sheet.py</code> — alguns preços de anúncios na BD vinham da API do Wallapop (que mostra o preço atual), mas a folha tinha o preço de anúncio original. Estes precisavam de reconciliação</li>
+    <li><code>fix_cash_transaction_duplicates.py</code> — transações em numerário que tinham sido introduzidas duas vezes (uma pelo script de sincronização, outra pela interface do Retool depois do cutover)</li>
+    <li><code>fix_incidents_create_returned_sales.py</code> — devoluções que existiam como "incidentes" no Sheets mas precisavam dos registos de "venda" correspondentes na base de dados</li>
+    <li><code>borrar_ventas_no_cuadran_sheet.py</code> — vendas que existiam na BD mas não tinham correspondência na folha (dados fantasma de erros iniciais na extração da API)</li>
+    <li><code>fix_zero_price_sales.py</code> — vendas importadas com preço de €0,00 devido a um erro no extrator que não capturava o campo do preço para certos estados de encomenda</li>
+</ul>
+
+<p>Cada script de correção seguia o mesmo padrão: <strong>diagnosticar → dry-run → rever → executar → verificar</strong>. Nada de correções às cegas.</p>
+
+<h3>5. Explicar à Equipa</h3>
+
+<p>A parte mais difícil não foi técnica. Foi explicar a 4 colaboradores não técnicos porque é que estávamos a mudar a forma como trabalhavam.</p>
+
+<p>"A folha de cálculo funciona bem" é uma coisa perfeitamente razoável para um operário de armazém dizer. E, do ponto de vista deles, funcionava mesmo bem. Eles não viam os limites de taxa da API, os riscos de corrupção de dados ou os scripts a rebentar às 3 da manhã por causa de um recálculo de fórmula.</p>
+
+<p>Tive de:</p>
+<ul>
+    <li>Construir interfaces no Retool que fossem <strong>pelo menos tão fáceis</strong> como a folha de cálculo (caso contrário, a adoção iria falhar)</li>
+    <li>Formar cada pessoa individualmente no novo fluxo de trabalho</li>
+    <li>Manter a folha disponível como cópia de segurança apenas de leitura durante as primeiras 2 semanas após o cutover</li>
+    <li>Ser recetivo ao feedback do tipo "isto não funciona como antes" (a maior parte do qual era válido)</li>
+</ul>
+
+<h2>O Cutover</h2>
+
+<p>Depois de 3 semanas de operação em paralelo, mais de 200 relatórios de reconciliação e 15 scripts de correção, documentei o plano de cutover:</p>
+
+<pre><code>CUTOVER CHECKLIST
+─────────────────
+[✓] All truckloads reconciled to €0.00 difference
+[✓] All active listings matched between Sheet and DB
+[✓] All pending orders present in both systems
+[✓] Retool modules tested: orders, items, sales, invoicing
+[✓] Employees trained on new workflow
+[✓] Sheet set to read-only with banner: "USE RETOOL"
+[✓] Automated extractors pointed to DB (not Sheet)
+[✓] Backup snapshot of all table counts taken
+[✓] Rollback procedure documented (Sheet restore)</code></pre>
+
+<p>O cutover em si foi anticlimático — que é exatamente o que se quer. Mudei os extratores para escreverem diretamente no PostgreSQL, defini o Google Sheets como apenas de leitura e disse à minha equipa: "a partir de hoje, usem o Retool para tudo".</p>
+
+<h2>O Que Construí (A Stack Técnica)</h2>
+
+<p>A migração não foram apenas scripts. Exigiu construir toda a infraestrutura de destino:</p>
+
+<ul>
+    <li><strong>16 ficheiros DDL modulares</strong> a definir o esquema do PostgreSQL (tabelas, vistas, vistas materializadas, funções, triggers)</li>
+    <li><strong>Mais de 35 ficheiros de migração incremental</strong> para a evolução do esquema após o cutover</li>
+    <li><strong>Mais de 25 modelos de dados SQLModel</strong> em Python para o backend em FastAPI</li>
+    <li><strong>Vistas materializadas</strong> como <code>mv_portalhero_feed</code> para a geração de feeds de marketplace</li>
+    <li><strong>Vistas</strong> como <code>v_resumen_a2z</code> para relatórios financeiros por camião</li>
+    <li><strong>Funções de trigger</strong> para o registo automático de vendas e atualizações de inventário</li>
+</ul>
+
+<h2>Resultados</h2>
+
+<p>6 meses após a migração:</p>
+
+<ul>
+    <li><strong>Tempos de consulta:</strong> de mais de 15 segundos (carregamento da folha) para menos de 50 ms (consulta no PostgreSQL)</li>
+    <li><strong>Concorrência:</strong> 5 scripts automatizados + 5 colaboradores + dashboards do Retool, todos a aceder à BD em simultâneo com zero conflitos</li>
+    <li><strong>Integridade dos dados:</strong> chaves estrangeiras, restrições e triggers detetam erros que teriam corrompido silenciosamente a folha</li>
+    <li><strong>Escala operacional:</strong> expandimos de apenas Wallapop para Wallapop + eBay + PortalHero — algo que teria sido impossível com o Sheets como espinha dorsal</li>
+    <li><strong>Rigor financeiro:</strong> a reconciliação por camião, que antes me demorava 2 horas com SUMIFS, corre agora em 3 segundos como uma vista materializada</li>
+</ul>
+
+<h2>O Que Faria de Forma Diferente</h2>
+
+<p>Se voltasse a fazer isto:</p>
+
+<ol>
+    <li><strong>Começar logo com a base de dados desde o primeiro dia.</strong> O imposto do "migramos mais tarde" é real e caro. Mesmo uma configuração simples de PostgreSQL + um frontend de ERP personalizado no Retool desde o início ter-me-ia poupado centenas de horas</li>
+    <li><strong>Automatizar as verificações de reconciliação</strong> em vez de as executar manualmente todas as manhãs. Um pipeline ao estilo de CI que me enviasse um e-mail apenas quando fossem encontradas discrepâncias</li>
+    <li><strong>Construir a interface do Retool primeiro e só depois migrar.</strong> Construí-as em paralelo, o que significou que os colaboradores viram interfaces meio-acabadas durante o período de transição. Se a interface estivesse polida antes do cutover, a adoção teria sido mais suave</li>
+</ol>
+
+<h2>A Conclusão</h2>
+
+<p>Migrar um sistema em produção não é um problema técnico. É um problema operacional que exige soluções técnicas. O código é talvez 30% do trabalho. Os outros 70% são:</p>
+
+<ul>
+    <li>Compreender todos os casos-limite dos teus dados existentes</li>
+    <li>Construir confiança através da operação em paralelo e da reconciliação</li>
+    <li>Gerir o lado humano — formação, comunicação, feedback</li>
+    <li>Ter a disciplina de não cortar caminho quando estás exausto e a contagem de discrepâncias está finalmente a zero</li>
+</ul>
+
+<p>Fiz tudo isto como engenheiro a solo a gerir um negócio com 5 colaboradores. Sem uma equipa de DBAs. Sem QA dedicado. Apenas engenharia sistemática e muito café.</p>
+
+<p>O pipeline de migração é open-source: <a href="https://github.com/AspiranteD/sheets-to-postgres-migration">github.com/AspiranteD/sheets-to-postgres-migration</a></p>
+  </article>
+</main>
+<footer class="foot">
+  <span class="nm">Guillem Climent</span>
+  <a href="/pt/#writing">Mais artigos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+</footer>
+</body>
+</html>
