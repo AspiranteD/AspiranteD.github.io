@@ -953,7 +953,7 @@ a { color: inherit; text-decoration: none; }
           <span data-i18n="hero.viewProjects">View Projects</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
         </a>
-        <a href="cv/" class="btn btn--ghost" target="_blank" rel="noopener">
+        <a href="cv/" class="btn btn--ghost" target="_blank" rel="noopener" data-cvlink>
           <span data-i18n="hero.cv">View / Download CV</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
         </a>
@@ -1874,6 +1874,18 @@ a { color: inherit; text-decoration: none; }
 
     renderProjects(lang);
     observeReveals();
+
+    /* localize cross-page links (blog posts + CV) to the active language */
+    var blogBase = lang === "en" ? "/blog/" : "/blog/" + lang + "/";
+    document.querySelectorAll(".blog__link").forEach(function (a) {
+      var href = a.getAttribute("href") || "";
+      var slug = href.substring(href.lastIndexOf("/") + 1);
+      if (slug) { a.setAttribute("href", blogBase + slug); }
+    });
+    var cvHref = lang === "es" ? "/cv/es/" : "/cv/";
+    document.querySelectorAll("[data-cvlink]").forEach(function (a) {
+      a.setAttribute("href", cvHref);
+    });
 
     document.querySelectorAll(".langswitch__btn").forEach(function (btn) {
       var active = btn.getAttribute("data-lang") === lang;
