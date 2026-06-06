@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Guillem Climent — CV · Technical Founder &amp; Systems Architect</title>
-<meta name="description" content="Curriculum Vitae of Guillem Climent — Technical Founder & Systems Architect. Founder and sole technical architect of REUSALIA, a profitable and growing e-commerce company." />
+<meta name="description" content="One-page CV of Guillem Climent — Technical Founder & Systems Architect. Founder and sole technical architect of REUSALIA, a profitable and growing e-commerce company." />
 <meta name="author" content="Guillem Climent" />
 <meta name="theme-color" content="#f6f3ec" />
 
@@ -13,240 +13,183 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
 <style>
-/* ============================================================
-   TOKENS
-   ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   --paper:     #f7f4ee;
   --card:      #ffffff;
-  --ink:       #1d1b16;       /* near-black, high contrast */
-  --ink-soft:  #45403a;       /* body text */
-  --ink-mute:  #6f6a60;       /* meta / labels */
+  --ink:       #1d1b16;
+  --ink-soft:  #45403a;
+  --ink-mute:  #6f6a60;
   --line:      #ded7c9;
   --line-soft: #ebe5d8;
   --accent:    #b8431f;
-
   --serif: "Fraunces", Georgia, serif;
   --sans:  "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-
-  --maxw: 860px;
+  --maxw: 880px;
 }
 
 html { -webkit-text-size-adjust: 100%; }
 body {
-  background: var(--paper);
-  color: var(--ink-soft);
-  font-family: var(--sans);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  background: var(--paper); color: var(--ink-soft);
+  font-family: var(--sans); font-size: 15px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
 a { color: inherit; text-decoration: none; }
 svg { display: block; }
 ::selection { background: var(--accent); color: #fff; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
 .skip { position: absolute; left: -999px; }
 .skip:focus { left: 8px; top: 8px; z-index: 100; background: var(--ink); color: #fff; padding: 0.7rem 1rem; border-radius: 6px; }
 
-/* ============================================================
-   TOOLBAR (screen only)
-   ============================================================ */
+/* TOOLBAR (screen only) */
 .toolbar {
   position: sticky; top: 0; z-index: 50;
   background: color-mix(in srgb, var(--paper) 90%, transparent);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
 }
 .toolbar__inner {
   max-width: var(--maxw); margin-inline: auto;
-  padding: 0.8rem clamp(1rem, 4vw, 1.6rem);
+  padding: 0.75rem clamp(1rem, 4vw, 1.6rem);
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
 }
-.back {
-  display: inline-flex; align-items: center; gap: 0.45rem;
-  font-size: 0.9rem; font-weight: 500; color: var(--ink-soft);
-}
+.back { display: inline-flex; align-items: center; gap: 0.45rem; font-size: 0.88rem; font-weight: 500; color: var(--ink-soft); }
 .back svg { width: 16px; height: 16px; }
 .back:hover { color: var(--accent); }
 .dl {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  font-size: 0.92rem; font-weight: 600; cursor: pointer;
-  padding: 0.6rem 1.3rem; border-radius: 8px;
+  font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  padding: 0.55rem 1.2rem; border-radius: 8px;
   background: var(--ink); color: #fff; border: 0; font-family: var(--sans);
   transition: background 0.2s ease;
 }
 .dl svg { width: 16px; height: 16px; }
 .dl:hover { background: var(--accent); }
 
-/* ============================================================
-   SHEET
-   ============================================================ */
+/* SHEET */
 .sheet {
   max-width: var(--maxw);
-  margin: clamp(1.2rem, 4vh, 2.4rem) auto clamp(2rem, 6vh, 3.5rem);
-  padding: clamp(1.5rem, 5vw, 3rem);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  box-shadow: 0 30px 70px -45px rgba(29,27,22,0.4);
+  margin: clamp(1rem, 3vh, 2rem) auto clamp(2rem, 5vh, 3rem);
+  padding: clamp(1.4rem, 4.5vw, 2.6rem);
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; box-shadow: 0 30px 70px -45px rgba(29,27,22,0.4);
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .head {
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;
-  gap: 1.2rem 2rem;
-  padding-bottom: 1.4rem;
-  border-bottom: 3px solid var(--ink);
+  gap: 0.8rem 2rem; padding-bottom: 1rem; border-bottom: 3px solid var(--ink);
 }
-.name {
-  font-family: var(--serif); font-weight: 560;
-  font-size: clamp(2.3rem, 6vw, 3.4rem);
-  line-height: 1; letter-spacing: -0.02em; color: var(--ink);
-}
-.title {
-  margin-top: 0.55rem;
-  font-size: clamp(1rem, 2.4vw, 1.2rem); font-weight: 600;
-  color: var(--accent);
-}
-.tagline {
-  margin-top: 0.5rem; font-size: 0.95rem; color: var(--ink-mute); max-width: 42ch;
-}
-.contact {
-  font-size: 0.9rem; line-height: 1.5; color: var(--ink-soft);
-  display: grid; gap: 0.5rem; min-width: 220px;
-}
-.contact a { display: inline-flex; align-items: center; gap: 0.5rem; }
+.name { font-family: var(--serif); font-weight: 560; font-size: clamp(2.1rem, 5.5vw, 3rem); line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
+.title { margin-top: 0.45rem; font-size: clamp(0.98rem, 2.2vw, 1.12rem); font-weight: 600; color: var(--accent); }
+.tagline { margin-top: 0.4rem; font-size: 0.9rem; color: var(--ink-mute); max-width: 44ch; }
+.contact { font-size: 0.86rem; line-height: 1.45; color: var(--ink-soft); display: grid; gap: 0.35rem; }
+.contact a, .contact .plain { display: inline-flex; align-items: center; gap: 0.5rem; }
 .contact a:hover { color: var(--accent); }
-.contact .ic { width: 15px; height: 15px; color: var(--ink-mute); flex: none; }
-.contact .plain { display: inline-flex; align-items: center; gap: 0.5rem; }
+.contact .ic { width: 14px; height: 14px; color: var(--ink-mute); flex: none; }
 
-/* ===== SECTION ===== */
-.sec { margin-top: clamp(1.6rem, 4vh, 2.2rem); }
+/* SECTION */
+.sec { margin-top: 1.3rem; }
 .sec__title {
-  font-family: var(--serif); font-weight: 560;
-  font-size: 1.25rem; color: var(--ink);
-  display: flex; align-items: center; gap: 0.7rem;
-  padding-bottom: 0.6rem; margin-bottom: 1rem;
-  border-bottom: 1px solid var(--line);
+  font-family: var(--serif); font-weight: 560; font-size: 1.12rem; color: var(--ink);
+  display: flex; align-items: center; gap: 0.6rem;
+  padding-bottom: 0.45rem; margin-bottom: 0.75rem; border-bottom: 1px solid var(--line);
 }
-.sec__title::before {
-  content: ""; width: 12px; height: 12px; flex: none;
-  background: var(--accent); border-radius: 2px;
-}
+.sec__title::before { content: ""; width: 11px; height: 11px; flex: none; background: var(--accent); border-radius: 2px; }
 
-/* ===== SUMMARY ===== */
-.summary { font-size: 1.02rem; color: var(--ink-soft); max-width: 70ch; }
+/* SUMMARY */
+.summary { font-size: 0.95rem; color: var(--ink-soft); max-width: 80ch; }
 .summary strong { color: var(--ink); font-weight: 600; }
 
-/* ===== IMPACT ===== */
-.impact {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem;
-}
-.kpi {
-  background: var(--paper);
-  border: 1px solid var(--line-soft);
-  border-radius: 8px; padding: 0.9rem 1rem;
-}
-.kpi__n {
-  font-family: var(--serif); font-weight: 560;
-  font-size: 1.7rem; line-height: 1; color: var(--ink);
-  font-feature-settings: "tnum" 1;
-}
-.kpi__n .u { color: var(--accent); font-size: 0.62em; }
-.kpi__l { margin-top: 0.45rem; font-size: 0.82rem; line-height: 1.3; color: var(--ink-mute); }
+/* IMPACT */
+.impact { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; }
+.kpi { background: var(--paper); border: 1px solid var(--line-soft); border-radius: 7px; padding: 0.7rem 0.8rem; }
+.kpi__n { font-family: var(--serif); font-weight: 560; font-size: 1.45rem; line-height: 1; color: var(--ink); font-feature-settings: "tnum" 1; }
+.kpi__n .u { color: var(--accent); font-size: 0.6em; }
+.kpi__l { margin-top: 0.35rem; font-size: 0.76rem; line-height: 1.25; color: var(--ink-mute); }
 
-/* ===== EXPERIENCE ===== */
-.job { padding: 1rem 0; border-bottom: 1px solid var(--line-soft); }
-.job:first-of-type { padding-top: 0.2rem; }
+/* EXPERIENCE */
+.job { padding: 0.7rem 0; border-bottom: 1px solid var(--line-soft); }
+.job:first-of-type { padding-top: 0.1rem; }
 .job:last-child { border-bottom: 0; padding-bottom: 0; }
-.job__top {
-  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
-  gap: 0.3rem 1rem;
-}
-.job__role { font-size: 1.08rem; font-weight: 700; color: var(--ink); }
+.job__top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.2rem 1rem; }
+.job__role { font-size: 1.02rem; font-weight: 700; color: var(--ink); }
 .job__role .org { color: var(--accent); }
-.job__date {
-  font-size: 0.85rem; font-weight: 600; color: var(--ink-mute);
-  white-space: nowrap;
-}
-.job__meta { margin-top: 0.15rem; font-size: 0.9rem; color: var(--ink-mute); font-weight: 500; }
-.job__lead { margin-top: 0.55rem; font-size: 0.95rem; color: var(--ink-soft); }
-.job ul { list-style: none; margin-top: 0.55rem; display: grid; gap: 0.4rem; }
-.job li { display: flex; gap: 0.6rem; font-size: 0.94rem; color: var(--ink-soft); }
-.job li::before { content: ""; flex: none; margin-top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.job__date { font-size: 0.82rem; font-weight: 600; color: var(--ink-mute); white-space: nowrap; }
+.job__lead { margin-top: 0.35rem; font-size: 0.9rem; color: var(--ink-soft); }
+.job ul { list-style: none; margin-top: 0.4rem; display: grid; gap: 0.3rem; }
+.job li { display: flex; gap: 0.55rem; font-size: 0.89rem; color: var(--ink-soft); }
+.job li::before { content: ""; flex: none; margin-top: 0.6em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
 .job li strong { color: var(--ink); font-weight: 600; }
+.subhead { margin: 0.8rem 0 0.1rem; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); }
+.earlier { display: grid; gap: 0.25rem; margin-top: 0.3rem; }
+.earlier__row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.1rem 1rem; font-size: 0.89rem; }
+.earlier__row b { color: var(--ink); font-weight: 700; }
+.earlier__row .org { color: var(--accent); font-weight: 600; }
+.earlier__row .meta { color: var(--ink-mute); }
 
-.subhead {
-  margin: 1.1rem 0 0.2rem; font-size: 0.78rem; font-weight: 700;
-  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute);
-}
+/* TWO-COLUMN LOWER BLOCK */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem 2rem; }
 
-/* ===== SKILLS ===== */
-.skill { display: grid; grid-template-columns: 150px 1fr; gap: 0.5rem 1.4rem; align-items: baseline; padding: 0.6rem 0; border-bottom: 1px solid var(--line-soft); }
+/* SKILLS */
+.skill { display: grid; grid-template-columns: 88px 1fr; gap: 0.4rem 0.8rem; align-items: baseline; padding: 0.32rem 0; border-bottom: 1px solid var(--line-soft); }
 .skill:last-child { border-bottom: 0; }
-.skill__cat { font-weight: 700; color: var(--ink); font-size: 0.96rem; }
+.skill__cat { font-weight: 700; color: var(--ink); font-size: 0.84rem; }
 .skill__cat .star { color: var(--accent); }
-.skill__list { font-size: 0.94rem; color: var(--ink-soft); }
+.skill__list { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.4; }
 .skill__list b { color: var(--ink); font-weight: 600; }
 
-/* ===== PROJECTS ===== */
-.proj { padding: 0.8rem 0; border-bottom: 1px solid var(--line-soft); }
-.proj:last-child { border-bottom: 0; padding-bottom: 0; }
-.proj__name { font-size: 1rem; font-weight: 700; color: var(--ink); }
-.proj__link { display: block; margin-top: 0.1rem; font-size: 0.85rem; font-weight: 500; color: var(--accent); }
+/* PROJECTS */
+.proj { padding: 0.4rem 0; border-bottom: 1px solid var(--line-soft); }
+.proj:last-child { border-bottom: 0; }
+.proj__name { font-size: 0.92rem; font-weight: 700; color: var(--ink); }
+.proj__desc { margin-top: 0.15rem; font-size: 0.82rem; color: var(--ink-soft); line-height: 1.4; }
+.proj__link { font-size: 0.78rem; font-weight: 500; color: var(--accent); }
 .proj__link:hover { text-decoration: underline; }
-.proj__desc { margin-top: 0.35rem; font-size: 0.92rem; color: var(--ink-soft); max-width: 72ch; }
 
-/* ===== LANGUAGES ===== */
-.langs { display: flex; flex-wrap: wrap; gap: 0.7rem 2.5rem; }
-.langs div { font-size: 0.96rem; }
+/* LANGUAGES */
+.langs { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; margin-top: 0.2rem; }
+.langs div { font-size: 0.86rem; }
 .langs b { color: var(--ink); font-weight: 600; }
 .langs span { color: var(--ink-mute); }
 
-/* ===== FOOTER ===== */
-.foot { margin-top: 1.8rem; padding-top: 1rem; border-top: 1px solid var(--line); font-size: 0.82rem; color: var(--ink-mute); }
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/* RESPONSIVE */
 @media (max-width: 640px) {
   .impact { grid-template-columns: repeat(2, 1fr); }
-  .skill { grid-template-columns: 1fr; gap: 0.3rem; }
-  .job__date { font-size: 0.8rem; }
+  .cols { grid-template-columns: 1fr; gap: 1rem; }
+  .skill { grid-template-columns: 1fr; gap: 0.2rem; }
 }
 
-/* ============================================================
-   PRINT — clean A4
-   ============================================================ */
+/* PRINT — single A4 page */
 @media print {
-  @page { size: A4; margin: 14mm 15mm; }
+  @page { size: A4; margin: 10mm 11mm; }
   html, body {
-    background: #fff !important; font-size: 10pt; line-height: 1.4;
+    background: #fff !important; font-size: 8.6pt; line-height: 1.3;
     -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
   }
   .toolbar, .skip { display: none !important; }
   .sheet { max-width: 100%; margin: 0; padding: 0; border: 0; border-radius: 0; box-shadow: none; background: #fff !important; }
   a { color: inherit !important; }
 
-  .name { font-size: 26pt; }
-  .title { font-size: 12.5pt; }
-  .tagline { font-size: 9pt; }
-  .contact { font-size: 9pt; gap: 0.3rem; }
-  .sec { margin-top: 12pt; }
-  .sec__title { font-size: 12.5pt; margin-bottom: 7pt; padding-bottom: 4pt; }
-  .summary { font-size: 10pt; }
-  .kpi__n { font-size: 15pt; }
-  .kpi__l { font-size: 7.6pt; }
-  .kpi { padding: 7pt 9pt; }
-  .job__role { font-size: 11pt; }
-  .job li, .job__lead, .skill__list, .proj__desc { font-size: 9pt; }
-  .proj__name, .skill__cat { font-size: 9.6pt; }
+  .name { font-size: 23pt; }
+  .title { font-size: 11pt; margin-top: 3pt; }
+  .tagline { font-size: 8.4pt; margin-top: 3pt; }
+  .contact { font-size: 8.2pt; gap: 2pt; }
+  .head { padding-bottom: 6pt; }
 
-  .job, .proj, .skill, .impact, .sec__title, .head { break-inside: avoid; page-break-inside: avoid; }
+  .sec { margin-top: 7pt; }
+  .sec__title { font-size: 10.5pt; margin-bottom: 4pt; padding-bottom: 3pt; }
+  .summary { font-size: 8.7pt; }
+  .kpi { padding: 4pt 6pt; }
+  .kpi__n { font-size: 12pt; }
+  .kpi__l { font-size: 6.6pt; margin-top: 2pt; }
+  .job { padding: 4pt 0; }
+  .job__role { font-size: 9.6pt; }
+  .job li, .job__lead, .skill__list, .proj__desc, .earlier__row, .langs div { font-size: 8pt; }
+  .proj__name, .skill__cat { font-size: 8.4pt; }
+  .cols { gap: 0.6rem 1.6rem; }
+
+  .head, .impact, .kpi, .job, .skill, .proj, .sec__title, .cols { break-inside: avoid; page-break-inside: avoid; }
   .sec__title { break-after: avoid; page-break-after: avoid; }
 }
 </style>
@@ -255,7 +198,6 @@ svg { display: block; }
 <body>
 <a class="skip" href="#cv">Skip to CV content</a>
 
-<!-- TOOLBAR -->
 <div class="toolbar">
   <div class="toolbar__inner">
     <a class="back" href="../">
@@ -298,11 +240,11 @@ svg { display: block; }
     </address>
   </header>
 
-  <!-- SUMMARY -->
+  <!-- PROFILE -->
   <section class="sec" aria-labelledby="s-profile">
     <h2 class="sec__title" id="s-profile">Profile</h2>
     <p class="summary">
-      Founder and <strong>sole technical architect</strong> of REUSALIA, a profitable and fast-growing e-commerce company. I designed and built <strong>100% of the platform</strong> — backend, automation and a custom ERP — that runs real inventory and real money. Pragmatic, production-first and self-taught. I founded the company at <strong>25</strong> and today I lead, train and delegate to a five-person team while still writing the core code myself.
+      Founder and <strong>sole technical architect</strong> of REUSALIA, a profitable and growing e-commerce company. I designed and built <strong>100% of the platform</strong> — backend, automation and a custom ERP — that runs real inventory and real money. Pragmatic, production-first and self-taught: I founded the company at <strong>25</strong> and today I lead a five-person team while still writing the core code myself.
     </p>
   </section>
 
@@ -326,87 +268,61 @@ svg { display: block; }
         <div class="job__role">Founder &amp; Technical Lead <span class="org">· REUSALIA</span></div>
         <div class="job__date">2023 — Present</div>
       </div>
-      <div class="job__meta">Founder-led e-commerce company · Spain</div>
       <p class="job__lead">Sole architect of the entire platform — I built the backend, all automation and a custom ERP single-handedly.</p>
       <ul>
-        <li><strong>Backend &amp; ERP:</strong> FastAPI/Python services and async pipelines on a PostgreSQL single source of truth, with a custom Retool ERP for daily operations.</li>
-        <li><strong>Multi-marketplace sync:</strong> automated 12 Wallapop accounts plus eBay — including reverse-engineered private APIs and anti-detection.</li>
-        <li><strong>AI &amp; automation:</strong> an LLM product-enrichment pipeline that eliminated ~40h/week of manual work, plus a cloud-to-local bridge driving warehouse label printers in real time.</li>
-        <li><strong>Leadership &amp; resilience:</strong> lead, train and delegate to a 5-person team; rebuilt the whole operation after a catastrophic 2024 flood.</li>
+        <li><strong>Backend &amp; ERP:</strong> FastAPI/Python services and async pipelines on a PostgreSQL single source of truth, plus a custom Retool ERP for daily operations.</li>
+        <li><strong>Marketplace &amp; AI:</strong> automated 12 Wallapop accounts + eBay (reverse-engineered private APIs, anti-detection) and an LLM enrichment pipeline that removed ~40h/week of manual work.</li>
+        <li><strong>Leadership &amp; resilience:</strong> lead and train a 5-person team; rebuilt the whole operation after a catastrophic 2024 flood.</li>
       </ul>
     </div>
 
-    <p class="subhead">Earlier experience · 2020 – 2023</p>
+    <p class="subhead">Earlier · 2020 – 2023</p>
+    <div class="earlier">
+      <div class="earlier__row"><span><b>Senior Software Engineer</b> <span class="org">· LittleBig Connection</span></span><span class="meta">Backend services &amp; REST APIs</span></div>
+      <div class="earlier__row"><span><b>Software Engineer</b> <span class="org">· Sopra Steria</span></span><span class="meta">client: Airbus — Java / Spring Boot, aerospace</span></div>
+      <div class="earlier__row"><span><b>Software Engineer</b> <span class="org">· Capgemini</span></span><span class="meta">client: Mercadona — Oracle SQL, retail at scale</span></div>
+    </div>
+  </section>
 
-    <div class="job">
-      <div class="job__top">
-        <div class="job__role">Senior Software Engineer <span class="org">· LittleBig Connection</span></div>
+  <!-- TWO-COLUMN: SKILLS | PROJECTS -->
+  <div class="cols">
+    <section class="sec" aria-labelledby="s-skills" style="margin-top:1.3rem">
+      <h2 class="sec__title" id="s-skills">Skills</h2>
+      <div class="skill"><div class="skill__cat"><span class="star">★</span> AI</div><div class="skill__list">LLM pipelines (GPT-4o), agentic tool-use &amp; RAG, embeddings/vector search, GPT-Vision, prompt engineering</div></div>
+      <div class="skill"><div class="skill__cat">Backend</div><div class="skill__list">Python, FastAPI, Java, Spring Boot, SQLModel, Celery, REST</div></div>
+      <div class="skill"><div class="skill__cat">Data</div><div class="skill__list">PostgreSQL, MySQL, Oracle SQL, NeonDB, SQLite</div></div>
+      <div class="skill"><div class="skill__cat">Frontend</div><div class="skill__list">Angular, Vue.js, Retool, JavaScript / TypeScript</div></div>
+      <div class="skill"><div class="skill__cat">Special</div><div class="skill__list">API reverse-engineering, web scraping, anti-detection, data migration, hardware integration</div></div>
+      <div class="skill"><div class="skill__cat">DevOps</div><div class="skill__list">Docker, Jenkins, OpenShift, GitHub Actions, CI/CD</div></div>
+    </section>
+
+    <section class="sec" aria-labelledby="s-proj" style="margin-top:1.3rem">
+      <h2 class="sec__title" id="s-proj">Selected Projects</h2>
+      <div class="proj">
+        <div class="proj__name">Cloud-Local Command Bridge</div>
+        <p class="proj__desc">PostgreSQL command-queue bridging a cloud core to local warehouse printers, with a distributed lock + failover.</p>
+        <a class="proj__link" href="https://github.com/AspiranteD/cloud-local-command-bridge" target="_blank" rel="noopener">github.com/AspiranteD/cloud-local-command-bridge</a>
       </div>
-      <p class="job__lead">Built and shipped robust backend services and REST APIs for a production platform connecting enterprises with technology talent.</p>
-    </div>
-
-    <div class="job">
-      <div class="job__top">
-        <div class="job__role">Software Engineer <span class="org">· Sopra Steria</span></div>
-        <div class="job__date">client: Airbus</div>
+      <div class="proj">
+        <div class="proj__name">AI Product Enrichment</div>
+        <p class="proj__desc">Production LLM pipeline classifying &amp; enriching thousands of SKUs/day with GPT-4o + GPT-Vision.</p>
+        <a class="proj__link" href="https://github.com/AspiranteD/ai-product-enrichment" target="_blank" rel="noopener">github.com/AspiranteD/ai-product-enrichment</a>
       </div>
-      <p class="job__lead">Enterprise-grade Java / Spring Boot engineering on mission-critical aerospace systems for Airbus, where reliability and rigor are non-negotiable.</p>
-    </div>
-
-    <div class="job">
-      <div class="job__top">
-        <div class="job__role">Software Engineer <span class="org">· Capgemini</span></div>
-        <div class="job__date">client: Mercadona</div>
+      <div class="proj">
+        <div class="proj__name">AI Ops Agent</div>
+        <p class="proj__desc">Agentic assistant: LLM tool-use loop + RAG over the catalog, with an offline fallback.</p>
+        <a class="proj__link" href="https://github.com/AspiranteD/ai-ops-agent" target="_blank" rel="noopener">github.com/AspiranteD/ai-ops-agent</a>
       </div>
-      <p class="job__lead">Built and maintained high-volume retail systems on Oracle SQL for Mercadona, one of Spain's largest retailers, operating at national scale.</p>
-    </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section class="sec" aria-labelledby="s-skills">
-    <h2 class="sec__title" id="s-skills">Skills</h2>
-    <div class="skill"><div class="skill__cat"><span class="star">★</span> AI &amp; Agents</div><div class="skill__list"><b>Production LLM pipelines (GPT-4o / 4o-mini)</b>, agentic tool-use &amp; RAG, embeddings / vector search, AI enrichment &amp; classification at scale, GPT-Vision, prompt engineering</div></div>
-    <div class="skill"><div class="skill__cat">Backend</div><div class="skill__list">Python, FastAPI, Java, Spring Boot, SQLModel, Celery, REST APIs</div></div>
-    <div class="skill"><div class="skill__cat">Databases</div><div class="skill__list">PostgreSQL, MySQL, Oracle SQL, NeonDB, SQLite</div></div>
-    <div class="skill"><div class="skill__cat">Frontend</div><div class="skill__list">Angular, Vue.js, Retool, JavaScript / TypeScript</div></div>
-    <div class="skill"><div class="skill__cat">Specialized</div><div class="skill__list">API reverse-engineering, web scraping, anti-detection, data migration, hardware integration</div></div>
-    <div class="skill"><div class="skill__cat">DevOps</div><div class="skill__list">Docker, Jenkins, OpenShift, GitHub Actions, CI/CD</div></div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section class="sec" aria-labelledby="s-proj">
-    <h2 class="sec__title" id="s-proj">Selected Projects</h2>
-    <div class="proj">
-      <div class="proj__name">Cloud-Local Command Bridge</div>
-      <a class="proj__link" href="https://github.com/AspiranteD/cloud-local-command-bridge" target="_blank" rel="noopener">github.com/AspiranteD/cloud-local-command-bridge</a>
-      <p class="proj__desc">A PostgreSQL command-queue pattern bridging a cloud core to local warehouse hardware in real time — driving label printers from a remote ERP, with a distributed lock and automatic failover.</p>
-    </div>
-    <div class="proj">
-      <div class="proj__name">AI Product Enrichment</div>
-      <a class="proj__link" href="https://github.com/AspiranteD/ai-product-enrichment" target="_blank" rel="noopener">github.com/AspiranteD/ai-product-enrichment</a>
-      <p class="proj__desc">A production LLM pipeline that classifies, enriches and standardizes thousands of product references a day with GPT-4o and GPT-Vision — eliminating ~40 hours of manual cataloguing per week.</p>
-    </div>
-    <div class="proj">
-      <div class="proj__name">AI Ops Agent</div>
-      <a class="proj__link" href="https://github.com/AspiranteD/ai-ops-agent" target="_blank" rel="noopener">github.com/AspiranteD/ai-ops-agent</a>
-      <p class="proj__desc">An agentic assistant for daily operations: an LLM tool-use loop plus RAG (embeddings + vector search) over the product catalog, with a clean offline fallback so it runs without an API key.</p>
-    </div>
-  </section>
-
-  <!-- LANGUAGES -->
-  <section class="sec" aria-labelledby="s-lang">
-    <h2 class="sec__title" id="s-lang">Languages</h2>
-    <div class="langs">
-      <div><b>Spanish</b> <span>— Native</span></div>
-      <div><b>English</b> <span>— Professional</span></div>
-      <div><b>French</b> <span>— Conversational</span></div>
-      <div><b>Portuguese</b> <span>— Conversational</span></div>
-    </div>
-  </section>
-
-  <footer class="foot">
-    References and a live walk-through of the production system available on request · guillemclim@gmail.com
-  </footer>
+      <h2 class="sec__title" id="s-lang" style="margin-top:1rem">Languages</h2>
+      <div class="langs">
+        <div><b>Spanish</b> <span>— Native</span></div>
+        <div><b>English</b> <span>— Professional</span></div>
+        <div><b>French</b> <span>— Conversational</span></div>
+        <div><b>Portuguese</b> <span>— Conversational</span></div>
+      </div>
+    </section>
+  </div>
 
 </main>
 
