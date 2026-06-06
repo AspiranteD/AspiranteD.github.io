@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Guillem Climent — CV · Technical Founder &amp; Systems Architect</title>
-<meta name="description" content="One-page CV of Guillem Climent — Technical Founder & Systems Architect. Founder and sole technical architect of REUSALIA, a profitable and growing e-commerce company." />
+<title>Guillem Climent — CV · Fundador Técnico y Arquitecto de Sistemas</title>
+<meta name="description" content="CV de una página de Guillem Climent — Fundador Técnico y Arquitecto de Sistemas. Fundador y único arquitecto técnico de REUSALIA, una empresa de e-commerce rentable y en crecimiento." />
 <meta name="author" content="Guillem Climent" />
 <meta name="theme-color" content="#f6f3ec" />
 
@@ -42,7 +42,7 @@ svg { display: block; }
 .skip { position: absolute; left: -999px; }
 .skip:focus { left: 8px; top: 8px; z-index: 100; background: var(--ink); color: #fff; padding: 0.7rem 1rem; border-radius: 6px; }
 
-/* TOOLBAR (screen only) */
+/* TOOLBAR (solo pantalla) */
 .toolbar {
   position: sticky; top: 0; z-index: 50;
   background: color-mix(in srgb, var(--paper) 90%, transparent);
@@ -81,20 +81,20 @@ svg { display: block; }
   border-radius: 10px; box-shadow: 0 30px 70px -45px rgba(29,27,22,0.4);
 }
 
-/* HEADER */
+/* CABECERA */
 .head {
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;
   gap: 0.8rem 2rem; padding-bottom: 1rem; border-bottom: 3px solid var(--ink);
 }
 .name { font-family: var(--serif); font-weight: 560; font-size: clamp(2.1rem, 5.5vw, 3rem); line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
 .title { margin-top: 0.45rem; font-size: clamp(0.98rem, 2.2vw, 1.12rem); font-weight: 600; color: var(--accent); }
-.tagline { margin-top: 0.4rem; font-size: 0.9rem; color: var(--ink-mute); max-width: 44ch; }
+.tagline { margin-top: 0.4rem; font-size: 0.9rem; color: var(--ink-mute); max-width: 46ch; }
 .contact { font-size: 0.86rem; line-height: 1.45; color: var(--ink-soft); display: grid; gap: 0.35rem; }
 .contact a, .contact .plain { display: inline-flex; align-items: center; gap: 0.5rem; }
 .contact a:hover { color: var(--accent); }
 .contact .ic { width: 14px; height: 14px; color: var(--ink-mute); flex: none; }
 
-/* SECTION */
+/* SECCIÓN */
 .sec { margin-top: 1.3rem; }
 .sec__title {
   font-family: var(--serif); font-weight: 560; font-size: 1.12rem; color: var(--ink);
@@ -103,18 +103,18 @@ svg { display: block; }
 }
 .sec__title::before { content: ""; width: 11px; height: 11px; flex: none; background: var(--accent); border-radius: 2px; }
 
-/* SUMMARY */
+/* PERFIL */
 .summary { font-size: 0.95rem; color: var(--ink-soft); max-width: 80ch; }
 .summary strong { color: var(--ink); font-weight: 600; }
 
-/* IMPACT */
+/* MÉTRICAS */
 .impact { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; }
 .kpi { background: var(--paper); border: 1px solid var(--line-soft); border-radius: 7px; padding: 0.7rem 0.8rem; }
 .kpi__n { font-family: var(--serif); font-weight: 560; font-size: 1.45rem; line-height: 1; color: var(--ink); font-feature-settings: "tnum" 1; }
 .kpi__n .u { color: var(--accent); font-size: 0.6em; }
 .kpi__l { margin-top: 0.35rem; font-size: 0.76rem; line-height: 1.25; color: var(--ink-mute); }
 
-/* EXPERIENCE */
+/* EXPERIENCIA */
 .job { padding: 0.7rem 0; border-bottom: 1px solid var(--line-soft); }
 .job:first-of-type { padding-top: 0.1rem; }
 .job:last-child { border-bottom: 0; padding-bottom: 0; }
@@ -134,18 +134,18 @@ svg { display: block; }
 .earlier__row .org { color: var(--accent); font-weight: 600; }
 .earlier__row .meta { color: var(--ink-mute); }
 
-/* TWO-COLUMN LOWER BLOCK */
+/* BLOQUE DOS COLUMNAS */
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem 2rem; }
 
-/* SKILLS */
-.skill { display: grid; grid-template-columns: 88px 1fr; gap: 0.4rem 0.8rem; align-items: baseline; padding: 0.32rem 0; border-bottom: 1px solid var(--line-soft); }
+/* TECNOLOGÍAS */
+.skill { display: grid; grid-template-columns: 92px 1fr; gap: 0.4rem 0.8rem; align-items: baseline; padding: 0.32rem 0; border-bottom: 1px solid var(--line-soft); }
 .skill:last-child { border-bottom: 0; }
 .skill__cat { font-weight: 700; color: var(--ink); font-size: 0.84rem; }
 .skill__cat .star { color: var(--accent); }
 .skill__list { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.4; }
 .skill__list b { color: var(--ink); font-weight: 600; }
 
-/* PROJECTS */
+/* PROYECTOS */
 .proj { padding: 0.4rem 0; border-bottom: 1px solid var(--line-soft); }
 .proj:last-child { border-bottom: 0; }
 .proj__name { font-size: 0.92rem; font-weight: 700; color: var(--ink); }
@@ -153,7 +153,7 @@ svg { display: block; }
 .proj__link { font-size: 0.78rem; font-weight: 500; color: var(--accent); }
 .proj__link:hover { text-decoration: underline; }
 
-/* LANGUAGES */
+/* IDIOMAS */
 .langs { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; margin-top: 0.2rem; }
 .langs div { font-size: 0.86rem; }
 .langs b { color: var(--ink); font-weight: 600; }
@@ -166,7 +166,7 @@ svg { display: block; }
   .skill { grid-template-columns: 1fr; gap: 0.2rem; }
 }
 
-/* PRINT — single A4 page */
+/* IMPRESIÓN — una sola página A4 */
 @media print {
   @page { size: A4; margin: 10mm 11mm; }
   html, body {
@@ -185,7 +185,7 @@ svg { display: block; }
 
   .sec { margin-top: 7pt; }
   .sec__title { font-size: 10.5pt; margin-bottom: 4pt; padding-bottom: 3pt; }
-  .summary { font-size: 8.7pt; }
+  .summary { font-size: 8.6pt; }
   .kpi { padding: 4pt 6pt; }
   .kpi__n { font-size: 12pt; }
   .kpi__l { font-size: 6.6pt; margin-top: 2pt; }
@@ -202,21 +202,21 @@ svg { display: block; }
 </head>
 
 <body>
-<a class="skip" href="#cv">Skip to CV content</a>
+<a class="skip" href="#cv">Saltar al contenido del CV</a>
 
 <div class="toolbar">
   <div class="toolbar__inner">
-    <a class="back" href="../">
+    <a class="back" href="../../">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>
-      Back to portfolio
+      Volver al portfolio
     </a>
     <div class="tb-right">
-      <div class="langsw" role="group" aria-label="CV language">
-        <a class="on" href="./" aria-current="true">EN</a><span>·</span><a href="es/">ES</a>
+      <div class="langsw" role="group" aria-label="Idioma del CV">
+        <a href="../">EN</a><span>·</span><a class="on" href="./" aria-current="true">ES</a>
       </div>
       <button class="dl" type="button" onclick="window.print()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
-        Download PDF
+        Descargar PDF
       </button>
     </div>
   </div>
@@ -224,12 +224,12 @@ svg { display: block; }
 
 <main class="sheet" id="cv">
 
-  <!-- HEADER -->
+  <!-- CABECERA -->
   <header class="head">
     <div>
       <h1 class="name">Guillem Climent</h1>
-      <p class="title">Technical Founder &amp; Systems Architect</p>
-      <p class="tagline">I build the production infrastructure that runs a real, growing e-commerce business.</p>
+      <p class="title">Fundador Técnico y Arquitecto de Sistemas</p>
+      <p class="tagline">Construyo la infraestructura de producción que hace funcionar un negocio real de e-commerce en crecimiento.</p>
     </div>
     <address class="contact">
       <a href="mailto:guillemclim@gmail.com">
@@ -246,91 +246,91 @@ svg { display: block; }
       </a>
       <span class="plain">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-        Spain · Working worldwide
+        España · Trabajando en todo el mundo
       </span>
     </address>
   </header>
 
-  <!-- PROFILE -->
+  <!-- PERFIL -->
   <section class="sec" aria-labelledby="s-profile">
-    <h2 class="sec__title" id="s-profile">Profile</h2>
+    <h2 class="sec__title" id="s-profile">Perfil</h2>
     <p class="summary">
-      Founder and <strong>sole technical architect</strong> of REUSALIA, a profitable and growing e-commerce company. I designed and built <strong>100% of the platform</strong> — backend, automation and a custom ERP — that runs real inventory and real money. Pragmatic, production-first and self-taught: I founded the company at <strong>25</strong> and today I lead a five-person team while still writing the core code myself.
+      Fundador y <strong>único arquitecto técnico</strong> de REUSALIA, una empresa de e-commerce rentable y en crecimiento. Diseñé y construí el <strong>100% de la plataforma</strong> — backend, automatización y un ERP propio — que gestiona inventario y dinero reales. Pragmático, orientado a producción y autodidacta: fundé la empresa a los <strong>25</strong> y hoy dirijo un equipo de cinco personas mientras sigo escribiendo yo mismo el código central.
     </p>
   </section>
 
-  <!-- KEY IMPACT -->
+  <!-- MÉTRICAS CLAVE -->
   <section class="sec" aria-labelledby="s-impact">
-    <h2 class="sec__title" id="s-impact">Key Impact</h2>
+    <h2 class="sec__title" id="s-impact">Métricas Clave</h2>
     <div class="impact">
-      <div class="kpi"><div class="kpi__n"><span class="u">+</span>50<span class="u">%</span></div><div class="kpi__l">Revenue growth, year over year</div></div>
-      <div class="kpi"><div class="kpi__n">40,000<span class="u">+</span></div><div class="kpi__l">Product references managed</div></div>
-      <div class="kpi"><div class="kpi__n">~100<span class="u">/day</span></div><div class="kpi__l">Orders processed &amp; automated</div></div>
-      <div class="kpi"><div class="kpi__n">~40<span class="u">h/wk</span></div><div class="kpi__l">Manual work eliminated</div></div>
+      <div class="kpi"><div class="kpi__n"><span class="u">+</span>50<span class="u">%</span></div><div class="kpi__l">Crecimiento de facturación interanual</div></div>
+      <div class="kpi"><div class="kpi__n">40.000<span class="u">+</span></div><div class="kpi__l">Referencias de producto gestionadas</div></div>
+      <div class="kpi"><div class="kpi__n">~100<span class="u">/día</span></div><div class="kpi__l">Pedidos procesados y automatizados</div></div>
+      <div class="kpi"><div class="kpi__n">~40<span class="u">h/sem</span></div><div class="kpi__l">Trabajo manual eliminado</div></div>
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
+  <!-- EXPERIENCIA -->
   <section class="sec" aria-labelledby="s-xp">
-    <h2 class="sec__title" id="s-xp">Experience</h2>
+    <h2 class="sec__title" id="s-xp">Experiencia</h2>
 
     <div class="job">
       <div class="job__top">
-        <div class="job__role">Founder &amp; Technical Lead <span class="org">· REUSALIA</span></div>
-        <div class="job__date">2023 — Present</div>
+        <div class="job__role">Fundador y Líder Técnico <span class="org">· REUSALIA</span></div>
+        <div class="job__date">2023 — Actualidad</div>
       </div>
-      <p class="job__lead">Sole architect of the entire platform — I built the backend, all automation and a custom ERP single-handedly.</p>
+      <p class="job__lead">Único arquitecto de toda la plataforma — construí el backend, toda la automatización y un ERP propio yo solo.</p>
       <ul>
-        <li><strong>Backend &amp; ERP:</strong> FastAPI/Python services and async pipelines on a PostgreSQL single source of truth, plus a custom Retool ERP for daily operations.</li>
-        <li><strong>Marketplace &amp; AI:</strong> automated 12 Wallapop accounts + eBay (reverse-engineered private APIs, anti-detection) and an LLM enrichment pipeline that removed ~40h/week of manual work.</li>
-        <li><strong>Leadership &amp; resilience:</strong> lead and train a 5-person team; rebuilt the whole operation after a catastrophic 2024 flood.</li>
+        <li><strong>Backend y ERP:</strong> servicios FastAPI/Python y pipelines asíncronos sobre PostgreSQL como única fuente de verdad, más un ERP propio en Retool para la operativa diaria.</li>
+        <li><strong>Marketplaces e IA:</strong> automaticé 12 cuentas de Wallapop + eBay (APIs privadas mediante reverse-engineering, anti-detección) y un pipeline de enriquecimiento con LLM que eliminó ~40h/semana de trabajo manual.</li>
+        <li><strong>Liderazgo y resiliencia:</strong> dirijo y formo a un equipo de 5 personas; reconstruí toda la operación tras la catastrófica DANA de 2024.</li>
       </ul>
     </div>
 
-    <p class="subhead">Earlier · 2020 – 2023</p>
+    <p class="subhead">Anterior · 2020 – 2023</p>
     <div class="earlier">
-      <div class="earlier__row"><span><b>Senior Software Engineer</b> <span class="org">· LittleBig Connection</span></span><span class="meta">Backend services &amp; REST APIs</span></div>
-      <div class="earlier__row"><span><b>Software Engineer</b> <span class="org">· Sopra Steria</span></span><span class="meta">client: Airbus — Java / Spring Boot, aerospace</span></div>
-      <div class="earlier__row"><span><b>Software Engineer</b> <span class="org">· Capgemini</span></span><span class="meta">client: Mercadona — Oracle SQL, retail at scale</span></div>
+      <div class="earlier__row"><span><b>Senior Software Engineer</b> <span class="org">· LittleBig Connection</span></span><span class="meta">Servicios backend y APIs REST</span></div>
+      <div class="earlier__row"><span><b>Software Engineer</b> <span class="org">· Sopra Steria</span></span><span class="meta">cliente: Airbus — Java / Spring Boot, aeronáutica</span></div>
+      <div class="earlier__row"><span><b>Software Engineer</b> <span class="org">· Capgemini</span></span><span class="meta">cliente: Mercadona — Oracle SQL, retail a gran escala</span></div>
     </div>
   </section>
 
-  <!-- TWO-COLUMN: SKILLS | PROJECTS -->
+  <!-- DOS COLUMNAS: TECNOLOGÍAS | PROYECTOS -->
   <div class="cols">
     <section class="sec" aria-labelledby="s-skills" style="margin-top:1.3rem">
-      <h2 class="sec__title" id="s-skills">Skills</h2>
-      <div class="skill"><div class="skill__cat"><span class="star">★</span> AI</div><div class="skill__list">LLM pipelines (GPT-4o), agentic tool-use &amp; RAG, embeddings/vector search, GPT-Vision, prompt engineering</div></div>
+      <h2 class="sec__title" id="s-skills">Tecnologías</h2>
+      <div class="skill"><div class="skill__cat"><span class="star">★</span> IA</div><div class="skill__list">Pipelines LLM (GPT-4o), agentes con tool-use y RAG, embeddings/búsqueda vectorial, GPT-Vision, prompt engineering</div></div>
       <div class="skill"><div class="skill__cat">Backend</div><div class="skill__list">Python, FastAPI, Java, Spring Boot, SQLModel, Celery, REST</div></div>
-      <div class="skill"><div class="skill__cat">Data</div><div class="skill__list">PostgreSQL, MySQL, Oracle SQL, NeonDB, SQLite</div></div>
+      <div class="skill"><div class="skill__cat">Datos</div><div class="skill__list">PostgreSQL, MySQL, Oracle SQL, NeonDB, SQLite</div></div>
       <div class="skill"><div class="skill__cat">Frontend</div><div class="skill__list">Angular, Vue.js, Retool, JavaScript / TypeScript</div></div>
-      <div class="skill"><div class="skill__cat">Special</div><div class="skill__list">API reverse-engineering, web scraping, anti-detection, data migration, hardware integration</div></div>
+      <div class="skill"><div class="skill__cat">Especial</div><div class="skill__list">Reverse-engineering de APIs, web scraping, anti-detección, migración de datos, integración de hardware</div></div>
       <div class="skill"><div class="skill__cat">DevOps</div><div class="skill__list">Docker, Jenkins, OpenShift, GitHub Actions, CI/CD</div></div>
     </section>
 
     <section class="sec" aria-labelledby="s-proj" style="margin-top:1.3rem">
-      <h2 class="sec__title" id="s-proj">Selected Projects</h2>
+      <h2 class="sec__title" id="s-proj">Proyectos Destacados</h2>
       <div class="proj">
         <div class="proj__name">Cloud-Local Command Bridge</div>
-        <p class="proj__desc">PostgreSQL command-queue bridging a cloud core to local warehouse printers, with a distributed lock + failover.</p>
+        <p class="proj__desc">Cola de comandos en PostgreSQL que conecta un núcleo en la nube con las impresoras del almacén, con lock distribuido + failover.</p>
         <a class="proj__link" href="https://github.com/AspiranteD/cloud-local-command-bridge" target="_blank" rel="noopener">github.com/AspiranteD/cloud-local-command-bridge</a>
       </div>
       <div class="proj">
         <div class="proj__name">AI Product Enrichment</div>
-        <p class="proj__desc">Production LLM pipeline classifying &amp; enriching thousands of SKUs/day with GPT-4o + GPT-Vision.</p>
+        <p class="proj__desc">Pipeline LLM en producción que clasifica y enriquece miles de SKUs/día con GPT-4o + GPT-Vision.</p>
         <a class="proj__link" href="https://github.com/AspiranteD/ai-product-enrichment" target="_blank" rel="noopener">github.com/AspiranteD/ai-product-enrichment</a>
       </div>
       <div class="proj">
         <div class="proj__name">AI Ops Agent</div>
-        <p class="proj__desc">Agentic assistant: LLM tool-use loop + RAG over the catalog, with an offline fallback.</p>
+        <p class="proj__desc">Asistente agéntico: bucle de tool-use con LLM + RAG sobre el catálogo, con fallback offline.</p>
         <a class="proj__link" href="https://github.com/AspiranteD/ai-ops-agent" target="_blank" rel="noopener">github.com/AspiranteD/ai-ops-agent</a>
       </div>
 
-      <h2 class="sec__title" id="s-lang" style="margin-top:1rem">Languages</h2>
+      <h2 class="sec__title" id="s-lang" style="margin-top:1rem">Idiomas</h2>
       <div class="langs">
-        <div><b>Spanish</b> <span>— Native</span></div>
-        <div><b>English</b> <span>— Professional</span></div>
-        <div><b>French</b> <span>— Conversational</span></div>
-        <div><b>Portuguese</b> <span>— Conversational</span></div>
+        <div><b>Español</b> <span>— Nativo</span></div>
+        <div><b>Inglés</b> <span>— Profesional</span></div>
+        <div><b>Francés</b> <span>— Conversacional</span></div>
+        <div><b>Portugués</b> <span>— Conversacional</span></div>
       </div>
     </section>
   </div>

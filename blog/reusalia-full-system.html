@@ -6,7 +6,7 @@
     <title>How I Built a Full ERP That Runs a Multi-Marketplace E-Commerce Operation — Guillem Climent</title>
     <meta name="description" content="The complete technical story of building REUSALIA's production platform: from Selenium bots on 6 PCs to a full ERP with reverse-engineered APIs, AI pipelines, and hardware integration.">
     <meta property="og:title" content="How I Built a Full ERP That Runs a Multi-Marketplace E-Commerce Operation">
-    <meta property="og:description" content="180+ Python scripts, 12 marketplace accounts, ~100 orders/day, 5 employees — one engineer. The full architecture behind a physical e-commerce operation supported by custom engineering.">
+    <meta property="og:description" content="A full custom platform, 12 marketplace accounts, ~100 orders/day, 5 employees — built by one engineer. The full architecture behind a physical e-commerce operation supported by custom engineering.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -31,7 +31,7 @@
                     <span class="blog-post__read">18 min read</span>
                 </div>
                 <h1>How I Built a Full ERP That Runs a Multi-Marketplace E-Commerce Operation</h1>
-                <p class="blog-post__lead">One engineer. 180+ Python scripts. 12 marketplace accounts. ~100 orders/day. 5 employees using it daily. This is the complete technical story of how I designed, built, and operated the entire production platform behind REUSALIA — from the first Selenium bot to a full ERP with reverse-engineered APIs, AI pipelines, and physical hardware integration.</p>
+                <p class="blog-post__lead">One engineer. A full custom platform. 12 marketplace accounts. ~100 orders/day. 5 employees using it daily. This is the complete technical story of how I designed, built, and operated the entire production platform behind REUSALIA — from the first Selenium bot to a full ERP with reverse-engineered APIs, AI pipelines, and physical hardware integration.</p>
                 <div class="blog-post__tags">
                     <span class="tag">Case Study</span>
                     <span class="tag">System Architecture</span>
@@ -52,7 +52,7 @@
 
                 <p>When I started, everything was manual. Listing a single item on Wallapop took 5-10 minutes of typing. Orders came in through multiple accounts and had to be checked one by one. Inventory was tracked in Google Sheets. There was no system — just a person with a laptop and a warehouse.</p>
 
-                <p>Three years later, the entire operation runs on a platform I built from scratch: a FastAPI backend with 25+ database models, a custom ERP frontend with 342 frontend files across 10+ modules, reverse-engineered marketplace APIs, AI-powered product enrichment, and a custom hardware bridge that connects cloud interfaces to physical label printers. This is the story of how it evolved.</p>
+                <p>Three years later, the entire operation runs on a platform I built from scratch: a FastAPI backend with 25+ database models, a custom Retool ERP with 10+ operational modules, reverse-engineered marketplace APIs, AI-powered product enrichment, and a custom hardware bridge that connects cloud interfaces to physical label printers. This is the story of how it evolved.</p>
 
                 <h2>Phase 1: The Selenium Era (2023)</h2>
 
@@ -147,7 +147,7 @@
 
                 <p>A database and API are useless if your team can't interact with them. I needed an interface that 6 non-technical employees could use daily — for everything from processing incoming pallets to shipping orders to tracking incidents.</p>
 
-                <p>I chose Retool because it let me build a complex, multi-module ERP frontend in weeks instead of months. The result: 342 frontend files across 10+ modules:</p>
+                <p>I chose Retool because it let me build a complex, multi-module ERP frontend in weeks instead of months. The result: a custom ERP with 10+ operational modules:</p>
 
                 <ul>
                     <li><strong>Orders Module</strong> — Real-time view of all orders across all marketplaces. Filter by status, account, date. One-click status transitions. Shipping label generation</li>
@@ -227,7 +227,7 @@ Data Sources          Processing Layer        Core              Outputs
 ─────────────         ────────────────        ────              ───────
 Wallapop API ──┐                           ┌──────────┐
 eBay API ──────┤      FastAPI Backend       │PostgreSQL│ Custom ERP Frontend
-Amazon Scraper ┤──→   (180+ scripts)   ──→  │25+ models│──→ (342 frontend files)
+Amazon Scraper ┤──→   ( extractors )   ──→  │25+ models│──→ (   Retool ERP    )
 PortalHero ────┤      ThreadPoolExecutor    │35+ migr. │      10+ modules
 Google Drive ──┘      OpenAI GPT-4          └──────────┘
                                                 │
@@ -255,8 +255,8 @@ Google Drive ──┘      OpenAI GPT-4          └─────────
                         <tr><td>Marketplaces synced</td><td>3 (Wallapop, eBay, PortalHero)</td></tr>
                         <tr><td>Manual order processing replaced</td><td>~5h/day</td></tr>
                         <tr><td>Manual listing creation replaced</td><td>~40h/week</td></tr>
-                        <tr><td>Python scripts in production</td><td>180+</td></tr>
-                        <tr><td>ERP files (Retool)</td><td>342</td></tr>
+                        <tr><td>Marketplace APIs reverse-engineered</td><td>Wallapop, eBay</td></tr>
+                        <tr><td>ERP modules (Retool)</td><td>10+</td></tr>
                         <tr><td>Database models</td><td>25+</td></tr>
                         <tr><td>Database migrations</td><td>35+</td></tr>
                         <tr><td>Extractor versions (Wallapop)</td><td>5 major</td></tr>
