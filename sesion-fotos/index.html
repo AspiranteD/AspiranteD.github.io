@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lookbook v2 — Sesión de fotos · Guillem Climent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#f7f4ee;--paper2:#efeae0;--card:#fff;
+  --ink:#1d1b16;--ink-soft:#45403a;--ink-mute:#6f6a60;
+  --line:#ded7c9;--line-soft:#ebe5d8;--accent:#b8431f;
+  --serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+}
+body{background:var(--paper);color:var(--ink-soft);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:clamp(1.4rem,4vw,3rem)}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500}
+h1{font-family:var(--serif);font-weight:560;font-size:clamp(2rem,5vw,3.2rem);line-height:1.04;letter-spacing:-.02em;color:var(--ink);margin:.5rem 0 .6rem}
+.lede{font-size:1.08rem;max-width:62ch;color:var(--ink-soft)}
+.lede b{color:var(--ink);font-weight:600}
+.rule{height:2px;background:var(--ink);margin:1.6rem 0 2.2rem}
+section{margin-bottom:2.8rem}
+
+/* panels */
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+@media(max-width:720px){.meta-grid{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.3rem}
+.panel h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;margin-bottom:.8rem}
+.sw{display:flex;gap:.5rem;flex-wrap:wrap}
+.sw div{flex:1;min-width:70px;border-radius:8px;border:1px solid var(--line-soft);padding:.5rem .55rem;font-family:var(--mono);font-size:.62rem;display:flex;flex-direction:column;justify-content:flex-end;height:74px}
+.sw .lab{font-weight:500}
+.logi{display:grid;gap:.45rem;font-size:.92rem}
+.logi div{display:flex;gap:.6rem}
+.logi b{color:var(--ink);min-width:92px;display:inline-block;font-weight:600}
+.logi .x{color:var(--accent);font-weight:600}
+
+/* section heading */
+.sechead{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;margin-bottom:.3rem}
+.sechead h2{font-family:var(--serif);font-weight:560;font-size:clamp(1.5rem,3.5vw,2.1rem);color:var(--ink);letter-spacing:-.01em}
+.sechead .n{font-family:var(--mono);font-size:.8rem;color:var(--accent)}
+.subhead{font-size:1rem;max-width:64ch;margin-bottom:1.3rem;color:var(--ink-soft)}
+.subhead b{color:var(--ink)}
+
+/* wardrobe callout */
+.callout{background:var(--ink);color:var(--paper);border-radius:14px;padding:1.4rem 1.6rem;margin-bottom:1.4rem}
+.callout .big{font-family:var(--serif);font-size:1.5rem;color:#fff;margin-bottom:.5rem}
+.callout .big em{color:#f0a98c;font-style:normal}
+.callout p{color:#cfc8ba;font-size:.96rem;max-width:70ch}
+.looks{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-bottom:1.5rem}
+@media(max-width:720px){.looks{grid-template-columns:1fr}}
+.look{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:.95rem 1.05rem}
+.look .lk{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.look h4{font-family:var(--serif);font-weight:560;font-size:1.12rem;color:var(--ink);margin:.25rem 0 .4rem}
+.look p{font-size:.88rem;color:var(--ink-soft)}
+
+/* image galleries */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:.7rem}
+.gal figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.gal img{width:100%;height:230px;object-fit:cover;display:block;background:var(--paper2)}
+.gal figcaption{font-size:.74rem;color:var(--ink-soft);padding:.5rem .6rem .65rem;line-height:1.35}
+.gal figcaption b{color:var(--accent);font-weight:600}
+
+/* timeline */
+.tl{display:grid;gap:.3rem}
+.tl-row{display:grid;grid-template-columns:118px 1fr;gap:.8rem;align-items:baseline;padding:.5rem .9rem;background:var(--card);border:1px solid var(--line-soft);border-radius:8px}
+.tl-row .t{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-weight:500}
+.tl-row .d{font-size:.92rem}.tl-row .d b{color:var(--ink)}
+
+/* shot cards */
+.shot{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:1.6rem}
+.shot__imgs{display:grid;gap:2px;background:var(--line);grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.shot__imgs figure{margin:0;position:relative;background:var(--paper2)}
+.shot__imgs img{width:100%;height:300px;object-fit:cover;display:block}
+.shot__imgs figcaption{position:absolute;left:0;right:0;bottom:0;font-size:.72rem;color:#fff;background:linear-gradient(transparent,rgba(29,27,22,.82));padding:1.2rem .7rem .55rem;line-height:1.3}
+.shot__body{padding:1.2rem 1.4rem 1.5rem}
+.tag{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:.25rem .6rem;border-radius:5px;font-weight:500}
+.shot__title{font-family:var(--serif);font-weight:560;font-size:1.45rem;color:var(--ink);margin:.65rem 0 .15rem;letter-spacing:-.01em}
+.shot__for{font-size:.84rem;color:var(--ink-mute);font-family:var(--mono);margin-bottom:.85rem}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:.3rem .9rem;font-size:.9rem;margin-bottom:.95rem}
+.kv dt{font-weight:600;color:var(--ink);font-size:.8rem;padding-top:.05rem}
+.kv dd{color:var(--ink-soft)}
+.cap{border-left:3px solid var(--accent);background:var(--paper2);border-radius:0 8px 8px 0;padding:.8rem 1.05rem;font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--ink-soft)}
+.cap span{display:block;font-family:var(--mono);font-style:normal;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.35rem}
+.reflink{display:inline-flex;align-items:center;gap:.4rem;margin-top:.9rem;font-size:.8rem;font-weight:600;color:var(--accent)}
+.reflink:hover{text-decoration:underline}
+.foot{margin-top:1rem;padding-top:1.5rem;border-top:1px solid var(--line);font-size:.8rem;color:var(--ink-mute);font-family:var(--mono)}
+a{color:inherit;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="eyebrow">Lookbook v2 · Sesión de fotos · Valencia · smart-casual</span>
+  <h1>El ingeniero que automatiza sistemas<br>y resuelve problemas caros</h1>
+  <p class="lede">Las fotos <b>no venden logística</b>, venden tu cerebro y tu fiabilidad: un consultor de automatización / co-fundador técnico. REUSALIA es la <b>prueba</b>, no el producto. Registro de ropa: <b>smart-casual en tonos tierra — nada de traje ni corbata</b>. Cada plano cae en dos mundos: <b>piensa en sistemas</b> y <b>construye de verdad</b>.</p>
+
+  <div class="rule"></div>
+
+  <!-- PALETTE + LOGISTICS -->
+  <section>
+    <div class="meta-grid">
+      <div class="panel">
+        <h3>Paleta — la guía de ropa, luz y localización</h3>
+        <div class="sw">
+          <div style="background:#f7f4ee;color:#45403a"><span class="lab">Crema</span>#f7f4ee</div>
+          <div style="background:#1d1b16;color:#f7f4ee"><span class="lab">Tinta</span>#1d1b16</div>
+          <div style="background:#b8431f;color:#fff"><span class="lab">Óxido ▸ acento</span>#b8431f</div>
+          <div style="background:#ded7c9;color:#45403a"><span class="lab">Línea</span>#ded7c9</div>
+        </div>
+        <p style="font-size:.85rem;color:var(--ink-mute);margin-top:.7rem">Ropa en esta gama. Luz cálida lateral (hora dorada). Fachadas ocre de Ruzafa = este color en la vida real.</p>
+      </div>
+      <div class="panel">
+        <h3>Logística — pocos sitios, ~2 h, con un amigo</h3>
+        <div class="logi">
+          <div><b>Dónde</b><span>Ruzafa (Valencia): 1 interior con pizarra/mesa + la calle al lado</span></div>
+          <div><b>Desplazam.</b><span class="x">0 — todo a pie, mismo barrio</span></div>
+          <div><b>Cuándo</b><span>Tarde, 19:45–21:45 · puesta de sol ~21:25 en junio</span></div>
+          <div><b>Equipo</b><span>Móvil/cámara + cartón pluma blanco como reflector</span></div>
+          <div><b>Evitar</b><span class="x">Traje, corbata, azul corporativo, fondo blanco de estudio</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARDROBE -->
+  <section>
+    <div class="sechead"><span class="n">00</span><h2>Vestuario — el estilo correcto</h2></div>
+    <p class="subhead">Lo que buscamos: <b>knitwear, sobrecamisa y oxford remangada</b> en tonos tierra (óxido, crema, oliva, tostado, burdeos, carbón). Punto = oficio; gafas = rol técnico. Fíjate cómo el <b>terracota</b> y el <b>crema</b> de las prendas son tu propia paleta.</p>
+
+    <div class="callout">
+      <div class="big">Respuesta directa: <em>no, nada de traje.</em></div>
+      <p>Tu público son founders y CTOs. El traje te haría parecer banca/comercial, no ingeniero senior. El smart-casual transmite competencia sin rigidez. Principio: <b style="color:#fff">una capa buena + base sencilla + buen corte + color tierra</b>. El corte importa más que la prenda.</p>
+    </div>
+
+    <div class="looks">
+      <div class="look"><div class="lk">Look 1 · relajado-pro</div><h4>Tee + sobrecamisa</h4><p>Camiseta lisa de calidad o henley + sobrecamisa / chore jacket en tono tierra. Cómodo, muy "founder".</p></div>
+      <div class="look"><div class="lk">Look 2 · un punto más</div><h4>Oxford remangada</h4><p>Camisa oxford o vaquera remangada, sin corbata — sola o con un jersey fino encima.</p></div>
+      <div class="look"><div class="lk">Look 3 · el más senior</div><h4>Punto fino</h4><p>Jersey de merino (cuello redondo) o media-cremallera, liso. Opcional americana SIN estructura encima de tee.</p></div>
+    </div>
+
+    <div class="gal">
+      <figure><img src="https://images.pexels.com/photos/5966898/pexels-photo-5966898.jpeg?auto=compress&cs=tinysrgb&w=700" loading="lazy" alt=""><figcaption><b>Punto trenzado terracota + gafas</b> — es tu color de acento</figcaption></figure>
+      <figure><img src="https://images.pexels.com/photos/36511044/pexels-photo-36511044.jpeg?auto=compress&cs=tinysrgb&w=700" loading="lazy" alt=""><figcaption>Media-cremallera crema sobre pared óxido</figcaption></figure>
+      <figure><img src="https://images.pexels.com/photos/36510855/pexels-photo-36510855.jpeg?auto=compress&cs=tinysrgb&w=700" loading="lazy" alt=""><figcaption>Media-cremallera crema/salvia, brazos cruzados</figcaption></figure>
+      <figure><img src="https://images.pexels.com/photos/4347480/pexels-photo-4347480.jpeg?auto=compress&cs=tinysrgb&w=700" loading="lazy" alt=""><figcaption><b>Sobrecamisa marrón + tee mostaza</b> — registro senior</figcaption></figure>
+      <figure><img src="https://images.pexels.com/photos/6454667/pexels-photo-6454667.jpeg?auto=compress&cs=tinysrgb&w=700" loading="lazy" alt=""><figcaption>Camisa vaquera sobre tee crema + chino tostado</figcaption></figure>
+      <figure><img src="https://images.pexels.com/photos/4444868/pexels-photo-4444868.jpeg?auto=compress&cs=tinysrgb&w=700" loading="lazy" alt=""><figcaption>Vaquera remangada + gafas (ambiente café)</figcaption></figure>
+      <figure><img src="https://images.pexels.com/photos/6322355/pexels-photo-6322355.jpeg?auto=compress&cs=tinysrgb&w=700" loading="lazy" alt=""><figcaption>Sobrecamisa chambray sobre camisa blanca</figcaption></figure>
+      <figure><img src="https://images.pexels.com/photos/12303992/pexels-photo-12303992.jpeg?auto=compress&cs=tinysrgb&w=700" loading="lazy" alt=""><figcaption>Jersey fino cuello alto burdeos</figcaption></figure>
+      <figure><img src="https://images.pexels.com/photos/36713035/pexels-photo-36713035.jpeg?auto=compress&cs=tinysrgb&w=700" loading="lazy" alt=""><figcaption>Jersey crema cuello redondo, oficina luminosa</figcaption></figure>
+      <figure><img src="https://images.pexels.com/photos/8830258/pexels-photo-8830258.jpeg?auto=compress&cs=tinysrgb&w=700" loading="lazy" alt=""><figcaption>Sobrecamisa de lino clara, relajado</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section>
+    <div class="sechead"><span class="n">·</span><h2>Plan cronometrado · ~2 h</h2></div>
+    <div class="tl">
+      <div class="tl-row"><span class="t">0:00–0:15</span><span class="d">Montar, ordenar el rincón, probar la luz junto a la ventana</span></div>
+      <div class="tl-row"><span class="t">0:15–0:40</span><span class="d"><b>A · Retrato consultor</b> — la cara de la marca</span></div>
+      <div class="tl-row"><span class="t">0:40–1:05</span><span class="d"><b>B · Pizarra / arquitectura</b> — la foto estrella</span></div>
+      <div class="tl-row"><span class="t">1:05–1:30</span><span class="d"><b>C · En código</b> — portátil, terminal/ERP</span></div>
+      <div class="tl-row"><span class="t">1:30–1:50</span><span class="d"><b>D · Modo asesor</b> — explicando, gesticulando</span></div>
+      <div class="tl-row"><span class="t">1:50–2:10</span><span class="d"><b>E · Exterior</b> — fachada cálida, hora dorada</span></div>
+    </div>
+  </section>
+
+  <!-- SHOTS -->
+  <section>
+    <div class="sechead"><span class="n">5 planos</span><h2>Referencia visual + caption</h2></div>
+
+    <!-- A -->
+    <div class="shot">
+      <div class="shot__imgs">
+        <figure><img src="https://images.pexels.com/photos/6454667/pexels-photo-6454667.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Vaquera + tee crema, mirada directa</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/5966898/pexels-photo-5966898.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Punto terracota + gafas</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/36511044/pexels-photo-36511044.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Media-cremallera crema, fondo óxido</figcaption></figure>
+      </div>
+      <div class="shot__body">
+        <span class="tag">A · Retrato consultor</span>
+        <div class="shot__title">La cara de la marca</div>
+        <div class="shot__for">→ hero de la web · LinkedIn · cabecera del CV</div>
+        <dl class="kv">
+          <dt>Encuadre</dt><dd>Medio cuerpo, fondo desenfocado, mirada directa, media sonrisa de confianza. Una vertical (LinkedIn) + una horizontal (hero).</dd>
+          <dt>Ropa</dt><dd>Punto liso o camisa sobre tee, gama tierra. Gafas suman.</dd>
+        </dl>
+        <div class="cap"><span>Caption sugerido</span>"Fundé REUSALIA a los 25 y construí solo el 100% de la plataforma: 40.000 referencias, ~100 pedidos/día. Hoy pongo esa capacidad al servicio de empresas que pierden horas en trabajo manual."</div>
+        <a class="reflink" href="https://www.pinterest.com/search/pins/?q=mens%20knitwear%20portrait%20earth%20tones%20glasses" target="_blank">Ver más referencias reales →</a>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="shot">
+      <div class="shot__imgs">
+        <figure><img src="https://images.pexels.com/photos/1181310/pexels-photo-1181310.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Dibujando la arquitectura (escena)</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/5257576/pexels-photo-5257576.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Diagrama de nodos, camisa casual</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/1181311/pexels-photo-1181311.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Detalle del diagrama + rotulador</figcaption></figure>
+      </div>
+      <div class="shot__body">
+        <span class="tag">B · Pizarra / arquitectura</span>
+        <div class="shot__title">«Diseño sistemas» — la foto estrella</div>
+        <div class="shot__for">→ sección Architecture · cabeceras de blog · la que mejor vende tu valor</div>
+        <dl class="kv">
+          <dt>Encuadre</dt><dd>Tú dibujando cajas y flechas de una arquitectura real (tu propio <b>ARCHITECTURE.md</b>: fuentes → procesado → ERP → outputs). Escena completa + detalle del diagrama con tu mano.</dd>
+          <dt>Ropa</dt><dd>Camisa o punto, mangas remangadas. Sin traje — como las referencias.</dd>
+          <dt>Truco</dt><dd>Dibuja el diagrama ANTES (buena letra) y luego te fotografías señalándolo.</dd>
+        </dl>
+        <div class="cap"><span>Caption sugerido</span>"Antes de escribir una línea, dibujo el sistema. Cada decisión técnica tiene que mapear a un resultado de negocio: menos tiempo, menos coste, menos errores."</div>
+        <a class="reflink" href="https://www.pinterest.com/search/pins/?q=casual%20engineer%20whiteboard%20system%20diagram" target="_blank">Ver más referencias reales →</a>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="shot">
+      <div class="shot__imgs">
+        <figure><img src="https://images.pexels.com/photos/6476564/pexels-photo-6476564.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Camisa oliva + pantalla con datos</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/6322355/pexels-photo-6322355.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Sobrecamisa + portátil en mano</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/34804007/pexels-photo-34804007.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Detalle: código con luz cálida</figcaption></figure>
+      </div>
+      <div class="shot__body">
+        <span class="tag">C · En código</span>
+        <div class="shot__title">El operador que construye de verdad</div>
+        <div class="shot__for">→ sección System · artículo de migración / ERP</div>
+        <dl class="kv">
+          <dt>Encuadre</dt><dd>Portátil con <b>terminal o tu ERP</b> visible, luz lateral cálida. Plano tuyo trabajando + un detalle solo de manos/pantalla.</dd>
+          <dt>Ropa</dt><dd>Camisa oliva o sobrecamisa, gama tierra.</dd>
+          <dt>Truco</dt><dd>Baja la luz de la sala y sube el brillo de la pantalla: el código "brilla", queda cinematográfico.</dd>
+        </dl>
+        <div class="cap"><span>Caption sugerido</span>"Una empresa media esconde ~40 h/semana en tareas repetitivas. Mi trabajo es encontrarlas y automatizarlas — y luego escribir el código que las elimina."</div>
+        <a class="reflink" href="https://www.pinterest.com/search/pins/?q=developer%20laptop%20warm%20light%20casual%20portrait" target="_blank">Ver más referencias reales →</a>
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="shot">
+      <div class="shot__imgs">
+        <figure><img src="https://images.pexels.com/photos/4347480/pexels-photo-4347480.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Sobrecamisa marrón, brazos cruzados (senior)</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/7888771/pexels-photo-7888771.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Explicando con boli, loft</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/36713035/pexels-photo-36713035.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Jersey crema, oficina, cercano</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/4345156/pexels-photo-4345156.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Polo coral, butaca junto a ventana</figcaption></figure>
+      </div>
+      <div class="shot__body">
+        <span class="tag">D · Modo asesor</span>
+        <div class="shot__title">El activo valioso en plena conversación</div>
+        <div class="shot__for">→ sección Services / Work with me · "co-fundador técnico"</div>
+        <dl class="kv">
+          <dt>Encuadre</dt><dd>Tú a media frase, gesto de manos, como explicando a un cliente. Tu amigo enfrente (fuera de plano) para que mires y gesticules natural.</dd>
+          <dt>Ropa</dt><dd>Sobrecamisa o punto en tono tierra = "consultor", no corporativo.</dd>
+          <dt>Props</dt><dd>Cuaderno, bolígrafo, portátil. Mesa de madera cálida.</dd>
+        </dl>
+        <div class="cap"><span>Caption sugerido</span>"Dame tu cuello de botella. Te digo si puedo ahorrarte tiempo o dinero. Si la respuesta es sí, lo construyo yo mismo."</div>
+        <a class="reflink" href="https://www.pinterest.com/search/pins/?q=consultant%20casual%20explaining%20meeting%20candid" target="_blank">Ver más referencias reales →</a>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="shot">
+      <div class="shot__imgs">
+        <figure><img src="https://images.pexels.com/photos/11067686/pexels-photo-11067686.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Esquina ocre de casco antiguo (tipo Ruzafa / Carmen)</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/17394209/pexels-photo-17394209.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Fachada blanca + terracota con plantas</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/15939318/pexels-photo-15939318.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Sobrecamisa melocotón, contraluz dorado</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/6008924/pexels-photo-6008924.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Jersey mostaza, paseando (luz cálida)</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/22811692/pexels-photo-22811692.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Calle cálida con flores (atmósfera)</figcaption></figure>
+        <figure><img src="https://images.pexels.com/photos/32581686/pexels-photo-32581686.jpeg?auto=compress&cs=tinysrgb&w=800" loading="lazy" alt=""><figcaption>Caminando, fachadas con color</figcaption></figure>
+      </div>
+      <div class="shot__body">
+        <span class="tag">E · Exterior</span>
+        <div class="shot__title">El profesional, en su ciudad</div>
+        <div class="shot__for">→ sección About · variedad · postales de marca</div>
+        <dl class="kv">
+          <dt>Encuadre</dt><dd>Fachada ocre/terracota de Ruzafa o El Carmen, de pie o caminando, profesional-relajado.</dd>
+          <dt>Ropa</dt><dd>Look del bloque 2 + sobrecamisa para variar.</dd>
+          <dt>Truco</dt><dd>Hora dorada: el sol bajo enciende el ocre = tu acento #b8431f en la vida real.</dd>
+        </dl>
+        <div class="cap"><span>Caption sugerido</span>"Desde Valencia, trabajando para cualquier sitio. Infraestructura de producción que aguanta carga real — o el co-fundador técnico que escribe el código."</div>
+        <a class="reflink" href="https://www.pinterest.com/search/pins/?q=mens%20portrait%20old%20town%20street%20golden%20hour%20spain" target="_blank">Ver más referencias reales →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="foot">
+    Guillem Climent · posicionamiento: ingeniero-consultor de automatización / co-fundador técnico · paleta y tipografías de tu propio portfolio (Fraunces · Inter · JetBrains Mono).<br>
+    Todas las imágenes son referencias de estilo de Pexels (modelos de stock) para ilustrar encuadre, luz y vestuario — no eres tú. La idea es replicarlas.
+  </div>
+
+</div>
+</body>
+</html>
