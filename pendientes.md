@@ -2,6 +2,28 @@
 
 _Última actualización: 2026-06-12 · handoff para continuar en otro PC._
 
+---
+## 📨 MENSAJE PARA TI (léelo desde el otro PC)
+
+Hola Guillem — esto es lo que tienes que saber al sentarte en el otro PC:
+
+1. **Todo está sincronizado y subido.** En el otro PC haz `git pull` dentro de
+   `AspiranteD.github.io` y tendrás `main` en el commit `6630b53` (limpio, sin nada
+   pendiente de subir). Acabo de hacer `git pull` aquí: **"Already up to date"**, así que
+   los dos lados coinciden.
+2. **El email NO se pudo enviar** — este entorno no tiene canal (ni Gmail MCP, ni navegador
+   conectado). Por eso te dejo el informe aquí en vez de por correo. Si quieres email la
+   próxima vez, conecta la extensión Claude for Chrome o un conector de Gmail (ver punto 1
+   de PENDIENTE más abajo).
+3. **No uses la carpeta `CursorProjects/AspiranteD.github.io`** — es un checkout viejo que
+   apunta al mismo repo de GitHub; si haces `push` desde ahí machacas la web. Usa siempre
+   la copia buena. (Detalle en PENDIENTE punto 2.)
+4. El resumen de lo corregido hoy está en "Hecho esta sesión" y lo que falta en "PENDIENTE".
+
+El loop sigue activo en la sesión original (auditoría profunda programada). Si cierras esa
+sesión el loop para, pero el repo ya está a salvo en GitHub.
+---
+
 ## Estado actual
 - **`main` limpio y subido.** `origin/main` == local == commit `678be1d`.
 - Trabajo de esta sesión integrado por encima de `09add26` (photo-session lookbook,
