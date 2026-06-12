@@ -19,6 +19,9 @@ Hola Guillem — esto es lo que tienes que saber al sentarte en el otro PC:
    apunta al mismo repo de GitHub; si haces `push` desde ahí machacas la web. Usa siempre
    la copia buena. (Detalle en PENDIENTE punto 2.)
 4. El resumen de lo corregido hoy está en "Hecho esta sesión" y lo que falta en "PENDIENTE".
+5. **Auditoría profunda completada** (iteración 3): CVs, sesion-fotos, sitemap y robots
+   revisados — todo limpio, sin bugs nuevos. Solo queda (opcional) un repaso fino de la
+   redacción de los blogs traducidos. El sitio está esencialmente revisado y listo.
 
 El loop sigue activo en la sesión original (auditoría profunda programada). Si cierras esa
 sesión el loop para, pero el repo ya está a salvo en GitHub.
@@ -55,11 +58,18 @@ apunta al **mismo remote** que el repo bueno (`Claude/AspiranteD.github.io`). Ri
 `git push` desde ahí podría sobrescribir el sitio en producción. **No se ha tocado.**
 Recomendación: archivarlo o borrarlo en local para evitar confusión/accidentes.
 
-### 3. Auditoría profunda aún no hecha (para la próxima vuelta del loop)
-- `cv/index.html` y `cv/es/index.html` — revisión de traducción/coherencia línea por línea
-  (solo se hizo chequeo rápido: email coherente, sin placeholders).
-- Contenido de los 20 archivos de blog localizados (es/fr/pt × 5) — revisión de traducción.
-- `sesion-fotos/index.html` — archivo nuevo del otro PC, aún sin revisar.
+### 3. Auditoría profunda — HECHA (iteración 3), todo limpio salvo 1 punto
+- ✅ `cv/index.html` + `cv/es/index.html` — revisados a fondo. Coherentes entre sí y con la
+  home (KPIs +50% / 40.000+ / ~100/día / ~40h/sem, experiencia, proyectos, idiomas).
+  Traducción fiel (el ES usa "DANA de 2024"). Sin bugs.
+- ✅ `sesion-fotos/index.html` — revisado. `noindex,nofollow`, NO enlazado ni en sitemap →
+  bien oculto. Coherente con la marca. Sin bugs.
+- ✅ `sitemap.xml` / `robots.txt` — bien formados; 26 URLs reales, sin exponer páginas
+  privadas. (Detalle menor: todos los `lastmod` = 2026-06-06, algo desactualizados; no es bug.)
+- ✅ Integridad de enlaces de todo el sitio: 0 rotos.
+- ⏳ **Único pendiente**: revisión de **calidad de traducción** del cuerpo de los 20 posts de
+  blog (es/fr/pt × 5). Estructuralmente OK (todos traducidos, enlazados, en sitemap); falta
+  un repaso fino de redacción post a post. Es opcional/subjetivo, no hay bug conocido.
 
 ### 4. Nota menor de coherencia (decisión de contenido tuya)
 El README del repo de perfil (`AspiranteD/AspiranteD`) dice "25+ DB models" mientras la

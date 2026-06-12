@@ -118,8 +118,9 @@ Ver también `pendientes.md` (lista corta y viva). Resumen:
    tu Gmail abierto, o un conector de Gmail, o pásame un SMTP/app-password.
 2. **Repo duplicado peligroso** (`CursorProjects/AspiranteD.github.io`): checkout viejo,
    mismo remote. Recomendación: archivarlo/borrarlo en local. **No usarlo para pushear.**
-3. **Auditoría profunda aún no hecha**: `cv/index.html` y `cv/es/index.html` línea por línea,
-   contenido de los 20 blogs localizados, y `sesion-fotos/index.html` (nuevo, sin revisar).
+3. **Auditoría profunda — HECHA y limpia** (iteración 3): `cv/` (en+es), `sesion-fotos/`,
+   `sitemap.xml` y `robots.txt` revisados; coherentes, sin bugs. Único resto opcional: repaso
+   fino de la redacción del cuerpo de los 20 blogs traducidos (estructuralmente ya OK).
 4. **Nota de coherencia menor**: "25+ DB models" (README) vs "6 domain models" (web).
 5. **Deuda arquitectónica**: 4 copias del `index.html` con diccionario duplicado ×4 →
    a futuro, generar las páginas localizadas desde una sola fuente (paso de build).
