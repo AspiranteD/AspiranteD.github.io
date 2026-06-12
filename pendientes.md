@@ -19,9 +19,11 @@ Hola Guillem — esto es lo que tienes que saber al sentarte en el otro PC:
    apunta al mismo repo de GitHub; si haces `push` desde ahí machacas la web. Usa siempre
    la copia buena. (Detalle en PENDIENTE punto 2.)
 4. El resumen de lo corregido hoy está en "Hecho esta sesión" y lo que falta en "PENDIENTE".
-5. **Auditoría profunda completada** (iteración 3): CVs, sesion-fotos, sitemap y robots
-   revisados — todo limpio, sin bugs nuevos. Solo queda (opcional) un repaso fino de la
-   redacción de los blogs traducidos. El sitio está esencialmente revisado y listo.
+5. **Revisión COMPLETA y convergida** (4 iteraciones): index ×4, CVs, sesion-fotos, sitemap,
+   robots y los 20 blogs traducidos — todo revisado y limpio. Se corrigieron 2 incoherencias
+   reales (claves stat huérfanas + sufijo "(en inglés)" falso), ya subidas. **No quedan bugs.**
+   Lo único abierto es 1 decisión de contenido tuya: "6 vs 25+ modelos" (punto 4). El loop
+   automático se ha PARADO porque ya no queda trabajo sustantivo (ver mensaje del chat).
 
 El loop sigue activo en la sesión original (auditoría profunda programada). Si cierras esa
 sesión el loop para, pero el repo ya está a salvo en GitHub.
@@ -67,14 +69,18 @@ Recomendación: archivarlo o borrarlo en local para evitar confusión/accidentes
 - ✅ `sitemap.xml` / `robots.txt` — bien formados; 26 URLs reales, sin exponer páginas
   privadas. (Detalle menor: todos los `lastmod` = 2026-06-06, algo desactualizados; no es bug.)
 - ✅ Integridad de enlaces de todo el sitio: 0 rotos.
-- ⏳ **Único pendiente**: revisión de **calidad de traducción** del cuerpo de los 20 posts de
-  blog (es/fr/pt × 5). Estructuralmente OK (todos traducidos, enlazados, en sitemap); falta
-  un repaso fino de redacción post a post. Es opcional/subjetivo, no hay bug conocido.
+- ✅ **Blogs traducidos — REVISADOS** (iteración 4): SEO impecable en los 20 (lang correcto,
+  canonical autorreferencial, 5 hreflang con 4 destinos correctos + x-default, back-links
+  localizados a /es//fr//pt/). Prosa verificada (muestra ES de reusalia-full-system):
+  natural y profesional, sin leakage de inglés. Calidad alta. **Sin bugs.**
 
-### 4. Nota menor de coherencia (decisión de contenido tuya)
-El README del repo de perfil (`AspiranteD/AspiranteD`) dice "25+ DB models" mientras la
-web dice "6 domain models". Defendible (modelos de dominio ≠ todas las tablas), pero
-quizá unificar el mensaje.
+### 4. ⚠️ ÚNICA inconsistencia de contenido por decidir (no la toco — es tu dato real)
+Cuántos modelos de base de datos: **3 fuentes, 2 cifras distintas**:
+- Home (`index.html`, `arch.s3.i2`): **"6 domain models"**, FastAPI services.
+- README perfil + los 5 posts de blog (todas las lenguas): **"25+ DB models / +25 modelos"**.
+La home es la que discrepa (2 vs 1). Puede ser intencionado (6 modelos de *dominio* ≠ 25+
+*tablas*), pero un visitante que pase de la home al blog ve "6" y luego "25+". **Decide tú**
+cuál es el mensaje y, si quieres, te unifico las dos cifras en un commit.
 
 ### 5. Deuda arquitectónica (no es bug)
 Hay **4 copias completas** de `index.html` (~130 KB c/u) con el diccionario i18n entero
