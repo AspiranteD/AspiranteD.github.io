@@ -15,9 +15,9 @@ Hola Guillem — esto es lo que tienes que saber al sentarte en el otro PC:
    conectado). Por eso te dejo el informe aquí en vez de por correo. Si quieres email la
    próxima vez, conecta la extensión Claude for Chrome o un conector de Gmail (ver punto 1
    de PENDIENTE más abajo).
-3. **No uses la carpeta `CursorProjects/AspiranteD.github.io`** — es un checkout viejo que
-   apunta al mismo repo de GitHub; si haces `push` desde ahí machacas la web. Usa siempre
-   la copia buena. (Detalle en PENDIENTE punto 2.)
+3. **Repo vivo único: `Claude/AspiranteD.github.io`.** La copia antigua ya está archivada
+   (`CursorProjects/_ARCHIVADO_AspiranteD.github.io_usar_carpeta_Claude`) y con el remote
+   neutralizado, así que no hay riesgo de pushear lo viejo. (Detalle en PENDIENTE punto 2.)
 4. El resumen de lo corregido hoy está en "Hecho esta sesión" y lo que falta en "PENDIENTE".
 5. **Revisión COMPLETA y convergida** (4 iteraciones): index ×4, CVs, sesion-fotos, sitemap,
    robots y los 20 blogs traducidos — todo revisado y limpio. Se corrigieron 2 incoherencias
@@ -54,11 +54,12 @@ Para habilitarlo la próxima vez, elige una:
 - O dame un SMTP/app-password y un script lo envía.
 Mientras tanto, el informe completo está abajo y en `ASPIRANTED-REVIEW-LOG.md` (local).
 
-### 2. Repo duplicado peligroso — `CursorProjects/AspiranteD.github.io`
-Es un checkout LOCAL antiguo (arquitectura vieja: css/js/lang separados, `i18n.js`) que
-apunta al **mismo remote** que el repo bueno (`Claude/AspiranteD.github.io`). Riesgo: un
-`git push` desde ahí podría sobrescribir el sitio en producción. **No se ha tocado.**
-Recomendación: archivarlo o borrarlo en local para evitar confusión/accidentes.
+### 2. ✅ RESUELTO — repo duplicado antiguo archivado y neutralizado
+El checkout LOCAL antiguo se ha **archivado**: ahora es
+`CursorProjects/_ARCHIVADO_AspiranteD.github.io_usar_carpeta_Claude`, y su remote `origin`
+se renombró a `origin-ARCHIVED-DO-NOT-PUSH`, así que un `git push` desde ahí **falla** (ya
+no puede sobrescribir producción). Estaba limpio, no se perdió nada. **Repo vivo único** =
+`Claude/AspiranteD.github.io`.
 
 ### 3. Auditoría profunda — HECHA (iteración 3), todo limpio salvo 1 punto
 - ✅ `cv/index.html` + `cv/es/index.html` — revisados a fondo. Coherentes entre sí y con la
