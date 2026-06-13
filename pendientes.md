@@ -22,8 +22,8 @@ Hola Guillem — esto es lo que tienes que saber al sentarte en el otro PC:
 5. **Revisión COMPLETA y convergida** (4 iteraciones): index ×4, CVs, sesion-fotos, sitemap,
    robots y los 20 blogs traducidos — todo revisado y limpio. Se corrigieron 2 incoherencias
    reales (claves stat huérfanas + sufijo "(en inglés)" falso), ya subidas. **No quedan bugs.**
-   Lo único abierto es 1 decisión de contenido tuya: "6 vs 25+ modelos" (punto 4). El loop
-   automático se ha PARADO porque ya no queda trabajo sustantivo (ver mensaje del chat).
+   La decisión "6 vs 25+ modelos" quedó RESUELTA → unificada a 25+ (punto 4). **No queda
+   NADA abierto.** El loop automático está parado (ver mensaje del chat).
 
 El loop sigue activo en la sesión original (auditoría profunda programada). Si cierras esa
 sesión el loop para, pero el repo ya está a salvo en GitHub.
@@ -74,13 +74,11 @@ Recomendación: archivarlo o borrarlo en local para evitar confusión/accidentes
   localizados a /es//fr//pt/). Prosa verificada (muestra ES de reusalia-full-system):
   natural y profesional, sin leakage de inglés. Calidad alta. **Sin bugs.**
 
-### 4. ⚠️ ÚNICA inconsistencia de contenido por decidir (no la toco — es tu dato real)
-Cuántos modelos de base de datos: **3 fuentes, 2 cifras distintas**:
-- Home (`index.html`, `arch.s3.i2`): **"6 domain models"**, FastAPI services.
-- README perfil + los 5 posts de blog (todas las lenguas): **"25+ DB models / +25 modelos"**.
-La home es la que discrepa (2 vs 1). Puede ser intencionado (6 modelos de *dominio* ≠ 25+
-*tablas*), pero un visitante que pase de la home al blog ve "6" y luego "25+". **Decide tú**
-cuál es el mensaje y, si quieres, te unifico las dos cifras en un commit.
+### 4. ✅ RESUELTO — nº de modelos unificado a "25+"
+Antes la home decía "6 domain models" y el README+blogs "25+". Decidiste **25+**, así que la
+home (`arch.s3.i2`, diccionario en/es/fr/pt + fallback del markup) ahora dice
+"25+ database models / Más de 25 / Plus de 25 / Mais de 25", coherente con README y blogs.
+Commit `2ee4f18`.
 
 ### 5. Deuda arquitectónica (no es bug)
 Hay **4 copias completas** de `index.html` (~130 KB c/u) con el diccionario i18n entero
