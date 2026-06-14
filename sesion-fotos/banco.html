@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Banco de referencias — Sesión de fotos · Guillem Climent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#f7f4ee;--paper2:#efeae0;--card:#fff;
+  --ink:#1d1b16;--ink-soft:#45403a;--ink-mute:#6f6a60;
+  --line:#ded7c9;--line-soft:#ebe5d8;--accent:#b8431f;--ok:#4a7c3f;
+  --serif:"Fraunces",Georgia,serif;--sans:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
+}
+body{background:var(--paper);color:var(--ink-soft);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1320px;margin:0 auto;padding:clamp(1.2rem,3.5vw,2.4rem)}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500}
+h1{font-family:var(--serif);font-weight:560;font-size:clamp(1.8rem,4.5vw,2.9rem);line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin:.45rem 0 .55rem}
+.lede{font-size:1.05rem;max-width:70ch;color:var(--ink-soft)}
+.lede b{color:var(--ink);font-weight:600}
+.backlink{font-family:var(--mono);font-size:.78rem;color:var(--accent);font-weight:500}
+.backlink:hover{text-decoration:underline}
+.rule{height:2px;background:var(--ink);margin:1.3rem 0 1.6rem}
+a{color:inherit;text-decoration:none}
+
+/* sticky toolbar */
+.bar{position:sticky;top:0;z-index:40;background:rgba(247,244,238,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 0 1.4rem}
+.bar-in{max-width:1320px;margin:0 auto;padding:.7rem clamp(1.2rem,3.5vw,2.4rem);display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.bar .count{font-family:var(--mono);font-size:.82rem;color:var(--ink)}
+.bar .count b{color:var(--accent);font-size:1.05rem}
+.bar .spacer{flex:1}
+.btn{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;border:1px solid var(--line);background:var(--card);color:var(--ink-soft);padding:.42rem .7rem;border-radius:7px;cursor:pointer;font-weight:500;transition:.12s}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.solid{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn.solid:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* category nav */
+.nav{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.nav a{font-family:var(--mono);font-size:.72rem;padding:.35rem .65rem;border:1px solid var(--line);border-radius:20px;color:var(--ink-mute)}
+.nav a:hover{border-color:var(--accent);color:var(--accent)}
+
+/* section */
+section{margin-bottom:2.6rem;scroll-margin-top:80px}
+.sechead{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.2rem}
+.sechead .n{font-family:var(--mono);font-size:.82rem;color:#fff;background:var(--accent);padding:.15rem .5rem;border-radius:5px;font-weight:600}
+.sechead h2{font-family:var(--serif);font-weight:560;font-size:clamp(1.35rem,3vw,1.9rem);color:var(--ink);letter-spacing:-.01em}
+.sechead .pick{font-family:var(--mono);font-size:.74rem;color:var(--ink-mute);margin-left:.2rem}
+.sechead .pick b{color:var(--ok)}
+.subhead{font-size:.95rem;max-width:78ch;margin-bottom:1rem;color:var(--ink-soft)}
+.subhead b{color:var(--ink)}
+
+/* grid */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.6rem}
+.gal figure{margin:0;position:relative;background:var(--card);border:1px solid var(--line);border-radius:9px;overflow:hidden;cursor:pointer;transition:.12s}
+.gal figure:hover{border-color:var(--accent)}
+.gal img{width:100%;height:215px;object-fit:cover;display:block;background:var(--paper2)}
+.gal .code{position:absolute;top:.4rem;left:.4rem;font-family:var(--mono);font-size:.6rem;font-weight:500;color:#fff;background:rgba(29,27,22,.66);padding:.12rem .38rem;border-radius:4px;letter-spacing:.04em}
+.gal .zoom{position:absolute;top:.4rem;right:.4rem;width:24px;height:24px;border:none;border-radius:6px;background:rgba(29,27,22,.55);color:#fff;font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:.12s}
+.gal figure:hover .zoom{opacity:1}
+.gal .zoom:hover{background:var(--accent)}
+/* selected state */
+.gal figure.sel{border-color:var(--ok);box-shadow:0 0 0 2px var(--ok)}
+.gal figure.sel::after{content:"✓";position:absolute;bottom:.4rem;right:.4rem;width:26px;height:26px;background:var(--ok);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-weight:700}
+.gal figure.sel .img-dim{opacity:.82}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:90;background:rgba(20,18,14,.93);display:none;align-items:center;justify-content:center;flex-direction:column;padding:1.5rem}
+.lb.open{display:flex}
+.lb img{max-width:92vw;max-height:80vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lb .lbcap{font-family:var(--mono);font-size:.8rem;color:#e8e2d6;margin-top:.9rem;display:flex;gap:1rem;align-items:center}
+.lb .lbcap a{color:#f0a98c;text-decoration:underline}
+.lb .lbbtn{position:fixed;top:50%;transform:translateY(-50%);width:48px;height:48px;border:none;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:1.4rem;cursor:pointer}
+.lb .lbbtn:hover{background:var(--accent)}
+.lb .prev{left:1.2rem}.lb .next{right:1.2rem}
+.lb .close{position:fixed;top:1.1rem;right:1.3rem;width:40px;height:40px;border:none;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:1.3rem;cursor:pointer}
+.lb .close:hover{background:var(--accent)}
+.lb .lbpick{margin-top:.2rem}
+
+.foot{margin-top:2rem;padding-top:1.3rem;border-top:1px solid var(--line);font-size:.8rem;color:var(--ink-mute);font-family:var(--mono);line-height:1.7}
+.hint{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 9px 9px 0;padding:.85rem 1.1rem;margin-bottom:1.4rem;font-size:.9rem;color:var(--ink-soft)}
+.hint b{color:var(--ink)}
+@media(max-width:600px){.gal img{height:175px}}
+</style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="bar">
+  <div class="bar-in">
+    <span class="count"><b id="selCount">0</b> seleccionadas <span id="totCount" style="color:var(--ink-mute)">/ 240</span></span>
+    <span class="spacer"></span>
+    <button class="btn" id="filterBtn">◔ Solo seleccionadas</button>
+    <button class="btn solid" id="copyBtn">⎘ Copiar selección</button>
+    <button class="btn" id="dlBtn">↓ .txt</button>
+    <button class="btn" id="clearBtn">✕ Limpiar</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <a class="backlink" href="index.html">← Volver al Lookbook</a>
+  <span class="eyebrow" style="margin-left:1rem">Banco de referencias · 240 imágenes · Valencia · smart-casual</span>
+  <h1>Escoge tus referencias para la sesión</h1>
+  <p class="lede">240 imágenes reales de stock — <b>40 por cada plano</b> del lookbook — para que navegues, te inspires y <b>marques las que más te encajen</b>. No eres tú: son referencias de <b>encuadre, luz, pose y vestuario</b> que luego replicamos. Clica una foto para seleccionarla (se guarda en tu navegador); usa la lupa para verla grande. Cuando termines, pulsa <b>«Copiar selección»</b> y pásamela: con eso afino el lookbook real.</p>
+
+  <div class="rule"></div>
+
+  <div class="hint">⚑ <b>Cómo elegir:</b> no busques que la cara sea la tuya. Fíjate en <b>el ángulo, la distancia, qué hace con las manos, la prenda y la luz</b>. Marca 3-6 por plano que te resulten naturales y "tú". Con eso reducimos la sesión a algo muy concreto y rápido de ejecutar.</div>
+
+  <div class="nav" id="nav"></div>
+
+  <div id="sections"></div>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb">
+  <button class="close" id="lbClose">✕</button>
+  <button class="lbbtn prev" id="lbPrev">‹</button>
+  <img id="lbImg" src="" alt="" />
+  <button class="lbbtn next" id="lbNext">›</button>
+  <div class="lbcap">
+    <span id="lbCode"></span>
+    <button class="btn lbpick" id="lbPick">Seleccionar ✓</button>
+    <a id="lbSrc" href="#" target="_blank">ver en pexels.com ↗</a>
+  </div>
+</div>
+
+<script>
+const CATS = [
+  { key:'wardrobe', code:'00', pfx:'W', name:'Vestuario — el estilo correcto',
+    sub:'Knitwear, sobrecamisa y oxford remangada en tonos tierra (óxido, crema, oliva, tostado, burdeos, carbón). Para fijar <b>prenda, color y registro</b> antes de los planos.',
+    ids:[1194421,1670847,2976373,3170635,3379216,3664444,4012767,4259729,4443831,5264934,5591268,5717679,5944141,6140370,6150523,6328420,6328422,6328427,6328444,6328445,6328565,6328570,6338324,6467905,6549824,6609403,6616673,6616675,6625887,6625893,6627004,6627007,6732388,6749746,6894154,6981130,7026412,7255277,7348836,7562077] },
+  { key:'A', code:'A', pfx:'A', name:'Retrato consultor — la cara de la marca',
+    sub:'Medio cuerpo, fondo desenfocado, <b>mirada directa</b>, media sonrisa de confianza, gafas suman. Una vertical (LinkedIn) + una horizontal (hero web / CV).',
+    ids:[673549,1114141,1204940,2112728,2182970,2829580,3785077,4048501,4116464,4855615,5092528,5256701,5412349,5604520,5914908,6030284,6037404,6073152,6121448,6231785,6250954,6250956,6258329,6582763,6601776,6626903,6706033,6868084,7010503,7010504,7121557,7150812,7432863,7447359,7927333,8063394,8087874,8185815,8785849,9418213] },
+  { key:'B', code:'B', pfx:'B', name:'Pizarra / arquitectura — la foto estrella',
+    sub:'Dibujando <b>cajas y flechas</b> de una arquitectura real, mangas remangadas. Escena completa + detalle del diagrama con tu mano. «Diseño sistemas».',
+    ids:[819497,1181310,1181311,1181345,1181365,1181366,1181538,3049394,3781338,3825462,3862370,3862380,3862615,4350108,4463587,4499739,4623468,4623484,4623488,4623490,4623492,4623493,4623498,4623511,5023567,5257576,5257579,5257756,5310563,5439481,5466268,5668762,5677100,6248949,6261125,6285093,6285121,6285156,6326044,6326067] },
+  { key:'C', code:'C', pfx:'C', name:'En código — el operador que construye',
+    sub:'Portátil con <b>terminal o ERP</b> visible, luz lateral cálida y cinematográfica. Plano trabajando + un detalle solo de manos/pantalla.',
+    ids:[226232,574069,574071,574077,574080,574087,1181325,1181326,1181330,1181675,1181676,1933900,2102416,3414792,3861967,3861972,4078342,4078343,4218883,4385543,4439901,4974912,5473298,5473299,5473309,5473312,5473879,5473892,5474282,5475755,5483070,5483071,5483077,5483188,5496459,5496463,5496464,5496467,5699845,5710689] },
+  { key:'D', code:'D', pfx:'D', name:'Modo asesor — en plena conversación',
+    sub:'A media frase, <b>gesto de manos</b>, como explicando a un cliente. Cuaderno, bolígrafo, portátil, mesa de madera cálida. «Co-fundador técnico».',
+    ids:[2182977,3205566,3277808,3316924,3861924,3862365,4063792,4347481,4623471,5055241,5257760,5439172,5453848,5467602,5646548,5668830,5708220,5716017,5756755,5816285,5922210,5922216,5990039,6285097,6325949,6326048,6326057,6326060,6326072,6334146,6334236,6502733,6517268,6517290,6584938,6647033,6712439,6773499,6773951,6773953] },
+  { key:'E', code:'E', pfx:'E', name:'Exterior — el profesional en su ciudad',
+    sub:'Fachada <b>ocre / terracota</b> (tipo Ruzafa o El Carmen), de pie o caminando, hora dorada. El sol bajo enciende el ocre = tu acento #b8431f en la vida real.',
+    ids:[907859,1597347,1826719,2272825,2535175,2587472,3249112,3643104,3751055,3916420,4488945,5476977,5949999,6009200,6830569,6980844,7078278,7078692,7528623,7528989,7551599,7555350,8092510,8124213,8126581,8253723,8499102,8899940,9027446,10962098,11258891,11654675,12098854,12338846,12678257,13095066,13423436,14759781,14907181,15007561] },
+];
+
+const thumb = id => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=600`;
+const big   = id => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&h=1100`;
+const pexel = id => `https://www.pexels.com/photo/${id}/`;
+
+const LSKEY = 'lookbook-banco-seleccion';
+let selected = new Set(JSON.parse(localStorage.getItem(LSKEY) || '[]'));
+const flat = []; // {id, code, cat}
+
+function codeOf(pfx, i){ return pfx + '-' + String(i+1).padStart(2,'0'); }
+
+function saveSel(){ localStorage.setItem(LSKEY, JSON.stringify([...selected])); refreshCounts(); }
+
+function refreshCounts(){
+  document.getElementById('selCount').textContent = selected.size;
+  CATS.forEach(c=>{
+    const el = document.getElementById('pick-'+c.key);
+    if(el){ const n = c.ids.filter(id=>selected.has(id)).length; el.innerHTML = n? `· <b>${n}</b> seleccionada${n>1?'s':''}` : ''; }
+  });
+}
+
+function toggle(id, figEl){
+  if(selected.has(id)){ selected.delete(id); figEl && figEl.classList.remove('sel'); }
+  else { selected.add(id); figEl && figEl.classList.add('sel'); }
+  saveSel();
+}
+
+// build nav + sections
+const nav = document.getElementById('nav');
+const sectionsEl = document.getElementById('sections');
+let total = 0;
+CATS.forEach(c=>{
+  total += c.ids.length;
+  const a = document.createElement('a');
+  a.href = '#sec-'+c.key; a.textContent = `${c.code} · ${c.name.split(' — ')[0]} (${c.ids.length})`;
+  nav.appendChild(a);
+
+  const sec = document.createElement('section');
+  sec.id = 'sec-'+c.key;
+  sec.innerHTML = `<div class="sechead"><span class="n">${c.code}</span><h2>${c.name}</h2><span class="pick" id="pick-${c.key}"></span></div><p class="subhead">${c.sub}</p>`;
+  const gal = document.createElement('div'); gal.className='gal';
+  c.ids.forEach((id,i)=>{
+    const code = codeOf(c.pfx, i);
+    flat.push({id, code, cat:c.code});
+    const fig = document.createElement('figure');
+    fig.dataset.id = id; fig.dataset.code = code;
+    if(selected.has(id)) fig.classList.add('sel');
+    fig.innerHTML = `<span class="code">${code}</span>`+
+      `<button class="zoom" title="Ver grande" data-zoom="${id}">⛶</button>`+
+      `<img class="img-dim" loading="lazy" src="${thumb(id)}" alt="${code}">`;
+    fig.addEventListener('click', e=>{ if(e.target.dataset.zoom) return; toggle(id, fig); });
+    fig.querySelector('.zoom').addEventListener('click', e=>{ e.stopPropagation(); openLB(id); });
+    gal.appendChild(fig);
+  });
+  sec.appendChild(gal);
+  sectionsEl.appendChild(sec);
+});
+document.getElementById('totCount').textContent = '/ ' + total;
+
+// ---- lightbox ----
+const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'),
+      lbCode = document.getElementById('lbCode'), lbSrc = document.getElementById('lbSrc'),
+      lbPick = document.getElementById('lbPick');
+let lbIdx = 0;
+function openLB(id){ lbIdx = flat.findIndex(x=>x.id===id); showLB(); lb.classList.add('open'); }
+function showLB(){
+  const it = flat[lbIdx];
+  lbImg.src = big(it.id); lbCode.textContent = `${it.code}  ·  Pexels #${it.id}`;
+  lbSrc.href = pexel(it.id);
+  lbPick.textContent = selected.has(it.id) ? 'Quitar ✓' : 'Seleccionar ✓';
+  lbPick.classList.toggle('active', selected.has(it.id));
+}
+function moveLB(d){ lbIdx = (lbIdx + d + flat.length) % flat.length; showLB(); }
+document.getElementById('lbClose').onclick = ()=> lb.classList.remove('open');
+document.getElementById('lbPrev').onclick = ()=> moveLB(-1);
+document.getElementById('lbNext').onclick = ()=> moveLB(1);
+lb.addEventListener('click', e=>{ if(e.target===lb) lb.classList.remove('open'); });
+lbPick.onclick = ()=>{
+  const it = flat[lbIdx];
+  toggle(it.id, document.querySelector(`figure[data-id="${it.id}"]`));
+  showLB();
+};
+document.addEventListener('keydown', e=>{
+  if(!lb.classList.contains('open')) return;
+  if(e.key==='Escape') lb.classList.remove('open');
+  if(e.key==='ArrowLeft') moveLB(-1);
+  if(e.key==='ArrowRight') moveLB(1);
+  if(e.key===' '){ e.preventDefault(); lbPick.click(); }
+});
+
+// ---- toolbar ----
+let filterOn = false;
+document.getElementById('filterBtn').onclick = function(){
+  filterOn = !filterOn; this.classList.toggle('active', filterOn);
+  document.querySelectorAll('.gal figure').forEach(f=>{
+    f.style.display = (!filterOn || selected.has(+f.dataset.id)) ? '' : 'none';
+  });
+  document.querySelectorAll('section').forEach(s=>{
+    const any = [...s.querySelectorAll('figure')].some(f=>f.style.display!=='none');
+    s.style.display = (!filterOn || any) ? '' : 'none';
+  });
+};
+function buildExport(){
+  let out = 'SELECCIÓN — Banco de referencias · sesión de fotos · Guillem Climent\n';
+  out += `Total seleccionadas: ${selected.size}\n`;
+  CATS.forEach(c=>{
+    const chosen = c.ids.map((id,i)=>({id,code:codeOf(c.pfx,i)})).filter(x=>selected.has(x.id));
+    if(!chosen.length) return;
+    out += `\n== ${c.code} · ${c.name} ==\n`;
+    chosen.forEach(x=> out += `${x.code}  #${x.id}  ${thumb(x.id)}\n`);
+  });
+  if(selected.size===0) out += '\n(— ninguna seleccionada todavía —)\n';
+  return out;
+}
+document.getElementById('copyBtn').onclick = function(){
+  const txt = buildExport();
+  navigator.clipboard.writeText(txt).then(()=>{
+    const o=this.textContent; this.textContent='✓ Copiado'; this.classList.add('active');
+    setTimeout(()=>{this.textContent=o;this.classList.remove('active')},1400);
+  }, ()=>{ window.prompt('Copia manualmente (Ctrl+C):', txt); });
+};
+document.getElementById('dlBtn').onclick = ()=>{
+  const blob = new Blob([buildExport()], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = 'seleccion-sesion-fotos.txt'; a.click();
+};
+document.getElementById('clearBtn').onclick = function(){
+  if(selected.size && !confirm('¿Borrar toda la selección?')) return;
+  selected.clear(); saveSel();
+  document.querySelectorAll('.gal figure.sel').forEach(f=>f.classList.remove('sel'));
+};
+
+document.getElementById('foot').innerHTML =
+  `240 referencias reales de Pexels (modelos de stock) · 40 por plano · seleccionadas se guardan en este navegador (localStorage).<br>`+
+  `Paleta y tipografías heredadas del lookbook: Fraunces · Inter · JetBrains Mono. Ninguna imagen eres tú — son guías de encuadre, luz, pose y vestuario para replicar.`;
+
+refreshCounts();
+</script>
+</body>
+</html>
