@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Guillem Climent — CV · Fundador Técnico y Arquitecto de Sistemas</title>
-<meta name="description" content="CV de una página de Guillem Climent — Fundador Técnico y Arquitecto de Sistemas. Fundador y único arquitecto técnico de REUSALIA, una empresa de e-commerce rentable y en crecimiento." />
+<title>Guillem Climent — CV · Cofundador de Reusalia</title>
+<meta name="description" content="CV de una página de Guillem Climent, cofundador de Reusalia (Valencia): vendemos devoluciones de Amazon artículo a artículo, con garantía y más baratas que nuevas." />
 <meta name="author" content="Guillem Climent" />
 <meta name="theme-color" content="#f7f4ee" />
 <link rel="canonical" href="https://aspiranted.github.io/cv/es/" />
 <meta property="og:type" content="profile" />
-<meta property="og:title" content="Guillem Climent — CV · Fundador Técnico y Arquitecto de Sistemas" />
-<meta property="og:description" content="CV de una página — fundador y único arquitecto técnico de REUSALIA." />
+<meta property="og:title" content="Guillem Climent — CV · Cofundador de Reusalia" />
+<meta property="og:description" content="CV de una página — cofundador de Reusalia." />
 <meta property="og:url" content="https://aspiranted.github.io/cv/es/" />
 <meta property="og:image" content="https://aspiranted.github.io/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -118,12 +118,6 @@ svg { display: block; }
 .summary { font-size: 0.95rem; color: var(--ink-soft); max-width: 80ch; }
 .summary strong { color: var(--ink); font-weight: 600; }
 
-/* MÉTRICAS */
-.impact { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; }
-.kpi { background: var(--paper); border: 1px solid var(--line-soft); border-radius: 7px; padding: 0.7rem 0.8rem; }
-.kpi__n { font-family: var(--serif); font-weight: 560; font-size: 1.45rem; line-height: 1; color: var(--ink); font-feature-settings: "tnum" 1; }
-.kpi__n .u { color: var(--accent); font-size: 0.6em; }
-.kpi__l { margin-top: 0.35rem; font-size: 0.76rem; line-height: 1.25; color: var(--ink-mute); }
 
 /* EXPERIENCIA */
 .job { padding: 0.7rem 0; border-bottom: 1px solid var(--line-soft); }
@@ -145,37 +139,11 @@ svg { display: block; }
 .earlier__row .org { color: var(--accent); font-weight: 600; }
 .earlier__row .meta { color: var(--ink-mute); }
 
-/* BLOQUE DOS COLUMNAS */
-.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem 2rem; }
-
-/* TECNOLOGÍAS */
-.skill { display: grid; grid-template-columns: 92px 1fr; gap: 0.4rem 0.8rem; align-items: baseline; padding: 0.32rem 0; border-bottom: 1px solid var(--line-soft); }
-.skill:last-child { border-bottom: 0; }
-.skill__cat { font-weight: 700; color: var(--ink); font-size: 0.84rem; }
-.skill__cat .star { color: var(--accent); }
-.skill__list { font-size: 0.82rem; color: var(--ink-soft); line-height: 1.4; }
-.skill__list b { color: var(--ink); font-weight: 600; }
-
-/* PROYECTOS */
-.proj { padding: 0.4rem 0; border-bottom: 1px solid var(--line-soft); }
-.proj:last-child { border-bottom: 0; }
-.proj__name { font-size: 0.92rem; font-weight: 700; color: var(--ink); }
-.proj__desc { margin-top: 0.15rem; font-size: 0.82rem; color: var(--ink-soft); line-height: 1.4; }
-.proj__link { font-size: 0.78rem; font-weight: 500; color: var(--accent); }
-.proj__link:hover { text-decoration: underline; }
-
 /* IDIOMAS */
 .langs { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; margin-top: 0.2rem; }
 .langs div { font-size: 0.86rem; }
 .langs b { color: var(--ink); font-weight: 600; }
 .langs span { color: var(--ink-mute); }
-
-/* RESPONSIVE */
-@media (max-width: 640px) {
-  .impact { grid-template-columns: repeat(2, 1fr); }
-  .cols { grid-template-columns: 1fr; gap: 1rem; }
-  .skill { grid-template-columns: 1fr; gap: 0.2rem; }
-}
 
 /* IMPRESIÓN — una sola página A4 */
 @media print {
@@ -197,16 +165,11 @@ svg { display: block; }
   .sec { margin-top: 7pt; }
   .sec__title { font-size: 10.5pt; margin-bottom: 4pt; padding-bottom: 3pt; }
   .summary { font-size: 8.6pt; }
-  .kpi { padding: 4pt 6pt; }
-  .kpi__n { font-size: 12pt; }
-  .kpi__l { font-size: 6.6pt; margin-top: 2pt; }
   .job { padding: 4pt 0; }
   .job__role { font-size: 9.6pt; }
-  .job li, .job__lead, .skill__list, .proj__desc, .earlier__row, .langs div { font-size: 8pt; }
-  .proj__name, .skill__cat { font-size: 8.4pt; }
-  .cols { gap: 0.6rem 1.6rem; }
+  .job li, .job__lead, .earlier__row, .langs div { font-size: 8pt; }
 
-  .head, .impact, .kpi, .job, .skill, .proj, .sec__title, .cols { break-inside: avoid; page-break-inside: avoid; }
+  .head, .job, .sec__title { break-inside: avoid; page-break-inside: avoid; }
   .sec__title { break-after: avoid; page-break-after: avoid; }
 }
 </style>
@@ -235,21 +198,20 @@ svg { display: block; }
 
 <main class="sheet" id="cv">
 
-  <!-- CABECERA -->
   <header class="head">
     <div>
       <h1 class="name">Guillem Climent</h1>
-      <p class="title">Fundador Técnico y Arquitecto de Sistemas</p>
-      <p class="tagline">Construyo la infraestructura de producción que hace funcionar un negocio real de e-commerce en crecimiento.</p>
+      <p class="title">Cofundador de Reusalia</p>
+      <p class="tagline">Vendemos devoluciones de Amazon artículo a artículo, con garantía y más baratas que nuevas.</p>
     </div>
     <address class="contact">
       <a href="mailto:guillemclim@gmail.com">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
         guillemclim@gmail.com
       </a>
-      <a href="https://github.com/AspiranteD" target="_blank" rel="noopener">
-        <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
-        github.com/AspiranteD
+      <a href="https://reusalia.es/" target="_blank" rel="noopener">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+        reusalia.es
       </a>
       <a href="https://linkedin.com/in/gcliment" target="_blank" rel="noopener">
         <svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.64h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.65 4.76 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>
@@ -257,97 +219,51 @@ svg { display: block; }
       </a>
       <span class="plain">
         <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
-        España · Trabajando en todo el mundo
+        Valencia · A tiempo completo en Reusalia
       </span>
     </address>
   </header>
 
-  <!-- PERFIL -->
   <section class="sec" aria-labelledby="s-profile">
     <h2 class="sec__title" id="s-profile">Perfil</h2>
     <p class="summary">
-      Fundador y <strong>único arquitecto técnico</strong> de REUSALIA, una empresa de e-commerce rentable y en crecimiento. Diseñé y construí el <strong>100% de la plataforma</strong> — backend, automatización y un ERP propio — que gestiona inventario y dinero reales. Pragmático, orientado a producción y autodidacta: fundé la empresa a los <strong>25</strong> y hoy dirijo un equipo de cinco personas mientras sigo escribiendo yo mismo el código central.
+      Cofundador de <strong>Reusalia</strong>, que llevo a tiempo completo con mi socio, Xu Chen, a partes iguales. Compramos palés de devoluciones de Amazon y vendemos cada artículo por separado, con <strong>un año de garantía</strong>, gracias a un sistema propio que he diseñado y construido yo. Antes de Reusalia fui ingeniero de software.
     </p>
   </section>
 
-  <!-- MÉTRICAS CLAVE -->
-  <section class="sec" aria-labelledby="s-impact">
-    <h2 class="sec__title" id="s-impact">Métricas Clave</h2>
-    <div class="impact">
-      <div class="kpi"><div class="kpi__n"><span class="u">+</span>50<span class="u">%</span></div><div class="kpi__l">Crecimiento de facturación interanual</div></div>
-      <div class="kpi"><div class="kpi__n">40.000<span class="u">+</span></div><div class="kpi__l">Referencias de producto gestionadas</div></div>
-      <div class="kpi"><div class="kpi__n">~100<span class="u">/día</span></div><div class="kpi__l">Pedidos procesados y automatizados</div></div>
-      <div class="kpi"><div class="kpi__n">~40<span class="u">h/sem</span></div><div class="kpi__l">Trabajo manual eliminado</div></div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCIA -->
   <section class="sec" aria-labelledby="s-xp">
     <h2 class="sec__title" id="s-xp">Experiencia</h2>
 
     <div class="job">
       <div class="job__top">
-        <div class="job__role">Fundador y Líder Técnico <span class="org">· REUSALIA</span></div>
+        <div class="job__role">Cofundador <span class="org">· Reusalia</span></div>
         <div class="job__date">2023 — Actualidad</div>
       </div>
-      <p class="job__lead">Único arquitecto de toda la plataforma — construí el backend, toda la automatización y un ERP propio yo solo.</p>
+      <p class="job__lead">Dirijo la empresa con mi socio, Xu Chen; los dos a tiempo completo.</p>
       <ul>
-        <li><strong>Backend y ERP:</strong> servicios FastAPI/Python y pipelines asíncronos sobre PostgreSQL como única fuente de verdad, más un ERP propio en Retool para la operativa diaria.</li>
-        <li><strong>Marketplaces e IA:</strong> automaticé 12 cuentas de Wallapop + eBay (APIs privadas mediante reverse-engineering, extracción resiliente y con límite de tasa) y un pipeline de enriquecimiento con LLM que eliminó ~40h/semana de trabajo manual.</li>
-        <li><strong>Liderazgo y resiliencia:</strong> dirijo y formo a un equipo de 5 personas; reconstruí toda la operación tras la catastrófica DANA de 2024.</li>
+        <li><span><strong>Sistema:</strong> diseñé y construí el sistema con el que trabaja todo el equipo: cada artículo se identifica, se tasa, tiene su sitio en el almacén y se publica por separado.</span></li>
+        <li><span><strong>Canales:</strong> vendemos por web propia, tienda con cita, marketplaces y lotes para profesionales.</span></li>
+        <li><span><strong>Equipo y resiliencia:</strong> formo y dirijo al equipo de almacén y tienda; reconstruimos toda la operación tras la DANA de 2024.</span></li>
       </ul>
     </div>
 
-    <p class="subhead">Anterior · 2020 – 2023</p>
+    <p class="subhead">Antes · 2020 – 2023</p>
     <div class="earlier">
-      <div class="earlier__row"><span><b>Senior Software Engineer</b> <span class="org">· LittleBig Connection</span></span><span class="meta">Servicios backend y APIs REST</span></div>
-      <div class="earlier__row"><span><b>Software Engineer</b> <span class="org">· Sopra Steria</span></span><span class="meta">cliente: Airbus — Java / Spring Boot, aeronáutica</span></div>
-      <div class="earlier__row"><span><b>Software Engineer</b> <span class="org">· Capgemini</span></span><span class="meta">cliente: Mercadona — Oracle SQL, retail a gran escala</span></div>
+      <div class="earlier__row"><span><b>Senior Software Engineer</b> <span class="org">· LittleBig Connection</span></span><span class="meta">Servicios backend</span></div>
+      <div class="earlier__row"><span><b>Software Engineer</b> <span class="org">· Sopra Steria</span></span><span class="meta">cliente: Airbus</span></div>
+      <div class="earlier__row"><span><b>Software Engineer</b> <span class="org">· Capgemini</span></span><span class="meta">cliente: Mercadona</span></div>
     </div>
   </section>
 
-  <!-- DOS COLUMNAS: TECNOLOGÍAS | PROYECTOS -->
-  <div class="cols">
-    <section class="sec" aria-labelledby="s-skills" style="margin-top:1.3rem">
-      <h2 class="sec__title" id="s-skills">Tecnologías</h2>
-      <div class="skill"><div class="skill__cat"><span class="star">★</span> IA</div><div class="skill__list">Pipelines LLM (GPT-4o), agentes con tool-use y RAG, embeddings/búsqueda vectorial, GPT-Vision, prompt engineering</div></div>
-      <div class="skill"><div class="skill__cat">Backend</div><div class="skill__list">Python, FastAPI, Java, Spring Boot, SQLModel, Celery, REST</div></div>
-      <div class="skill"><div class="skill__cat">Datos</div><div class="skill__list">PostgreSQL, MySQL, Oracle SQL, NeonDB, SQLite</div></div>
-      <div class="skill"><div class="skill__cat">Frontend</div><div class="skill__list">Angular, Vue.js, Retool, JavaScript / TypeScript</div></div>
-      <div class="skill"><div class="skill__cat">Especial</div><div class="skill__list">Reverse-engineering de APIs, web scraping, extracción resiliente con límite de tasa, migración de datos, integración de hardware</div></div>
-      <div class="skill"><div class="skill__cat">DevOps</div><div class="skill__list">Docker, Jenkins, OpenShift, GitHub Actions, CI/CD</div></div>
-    </section>
-
-    <section class="sec" aria-labelledby="s-proj" style="margin-top:1.3rem">
-      <h2 class="sec__title" id="s-proj">Proyectos Destacados</h2>
-      <div class="proj">
-        <div class="proj__name">Cloud-Local Command Bridge</div>
-        <p class="proj__desc">Cola de comandos en PostgreSQL que conecta un núcleo en la nube con las impresoras del almacén, con lock distribuido + failover.</p>
-        <a class="proj__link" href="https://github.com/AspiranteD/cloud-local-command-bridge" target="_blank" rel="noopener">github.com/AspiranteD/cloud-local-command-bridge</a>
-      </div>
-      <div class="proj">
-        <div class="proj__name">AI Product Enrichment</div>
-        <p class="proj__desc">Pipeline LLM en producción que clasifica y enriquece miles de SKUs/día con GPT-4o + GPT-Vision.</p>
-        <a class="proj__link" href="https://github.com/AspiranteD/ai-product-enrichment" target="_blank" rel="noopener">github.com/AspiranteD/ai-product-enrichment</a>
-      </div>
-      <div class="proj">
-        <div class="proj__name">AI Ops Agent</div>
-        <p class="proj__desc">Asistente agéntico: bucle de tool-use con LLM + RAG sobre el catálogo, con fallback offline.</p>
-        <a class="proj__link" href="https://github.com/AspiranteD/ai-ops-agent" target="_blank" rel="noopener">github.com/AspiranteD/ai-ops-agent</a>
-      </div>
-
-    </section>
-
-    <section class="sec" aria-labelledby="s-lang" style="margin-top:1.3rem; grid-column:1 / -1">
-      <h2 class="sec__title" id="s-lang">Idiomas</h2>
-      <div class="langs">
+  <section class="sec" aria-labelledby="s-lang">
+    <h2 class="sec__title" id="s-lang">Idiomas</h2>
+    <div class="langs">
         <div><b>Español</b> <span>— Nativo</span></div>
         <div><b>Inglés</b> <span>— Profesional</span></div>
         <div><b>Francés</b> <span>— Conversacional</span></div>
         <div><b>Portugués</b> <span>— Conversacional</span></div>
-      </div>
-    </section>
-  </div>
+    </div>
+  </section>
 
 </main>
 
